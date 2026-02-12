@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - Warm cream/orange tinted theme */
+    --background: 35 40% 98%;
+    --foreground: 25 30% 12%;
+    --card: 38 35% 97%;
+    --card-foreground: 25 30% 12%;
+    --popover: 38 35% 97%;
+    --popover-foreground: 25 30% 12%;
+    --primary: 25 90% 48%;
+    --primary-foreground: 38 100% 98%;
+    --secondary: 35 25% 93%;
+    --secondary-foreground: 25 40% 20%;
+    --muted: 35 20% 94%;
+    --muted-foreground: 25 15% 45%;
+    --accent: 38 45% 90%;
+    --accent-foreground: 25 50% 18%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 25% 88%;
+    --input: 35 25% 88%;
+    --ring: 25 90% 48%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode - Deep warm brown/chocolate with orange accents */
+    --background: 25 35% 8%;
+    --foreground: 35 30% 95%;
+    --card: 25 30% 11%;
+    --card-foreground: 35 30% 95%;
+    --popover: 25 30% 11%;
+    --popover-foreground: 35 30% 95%;
+    --primary: 30 95% 55%;
+    --primary-foreground: 25 40% 8%;
+    --secondary: 25 25% 16%;
+    --secondary-foreground: 35 30% 92%;
+    --muted: 25 20% 15%;
+    --muted-foreground: 35 15% 60%;
+    --accent: 30 40% 18%;
+    --accent-foreground: 38 80% 75%;
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 20% 18%;
+    --input: 25 20% 18%;
+    --ring: 30 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Prayer countdown animation */
+@keyframes prayerPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.prayer-countdown {
+  animation: prayerPulse 2s infinite;
+}
+
+/* Candle flame animation */
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1, 1.2);
+    opacity: 0.9;
+  }
+}
+
+.candle-flame {
+  animation: flicker 1.5s infinite alternate;
+}
+
+/* Ethiopian cross pattern */
+.ethiopian-cross {
+  position: relative;
+}
+
+.ethiopian-cross::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to right, #ea580c, #d97706);
+  opacity: 0.2;
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.ethiopian-cross:hover::before {
+  width: 80%;
+  height: 80%;
+  opacity: 0.3;
+}
+
+/* Manuscript-style borders */
+.manuscript-border {
+  position: relative;
+  border: 1px solid rgba(180, 83, 9, 0.2);
+  border-radius: 0.5rem;
+}
+
+.manuscript-border::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(180, 83, 9, 0.2);
+  border-radius: 0.25rem;
+  pointer-events: none;
+}
+
+/* Ge'ez typography fallback stack (no custom font file required) */
+.font-geez {
+  font-family: "Noto Serif Ethiopic", "Abyssinica SIL", "Times New Roman", serif;
+}
+
+/* Button hover effects */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-effect::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-hover-effect:hover::after {
+  transform: translateX(0);
+}
+
+/* Badge glow effect */
+.badge-glow {
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+}
+
+/* Progress bar animation */
+@keyframes progressGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+.animate-progress {
+  animation: progressGrow 1s ease-out forwards;
+}
