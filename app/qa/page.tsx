@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -109,22 +109,36 @@ const qaData: QAItem[] = [
 
 export default function QAPage() {
   const extractQuestionTitle = (post: TelegramPost) => {
-    const source = `${post.title} ${post.excerpt}`.replace(/\s+/g, " ").trim()
-    const questionMatch = source.match(/question\s*[:፦]\s*([\s\S]+)/i)
-    if (questionMatch?.[1]) {
-      const untilAnswer = questionMatch[1].split(/answer\s*[:፦]/i)[0].trim()
-      const clean = untilAnswer.replace(/^[-–—\s]+/, "").replace(/[#*_`]/g, "").trim()
-      if (clean) return clean.endsWith("?") ? clean : `${clean}?`
+    const normalize = (value: string) => value.replace(/\s+/g, " ").replace(/[#*_`]/g, "").trim()
+    const firstQuestionLine = (value: string) => {
+      const oneLine = normalize(value).split("\n")[0].trim()
+      if (!oneLine) return ""
+      const qIndex = oneLine.indexOf("?")
+      if (qIndex >= 0) return oneLine.slice(0, qIndex + 1).trim()
+      return oneLine
     }
 
-    const fallback = source
-      .replace(/^about\s+/i, "")
-      .replace(/[#*_`]/g, "")
-      .split(/answer\s*[:፦]/i)[0]
-      .trim()
+    const fromTitle = normalize(post.title)
+    const fromExcerpt = normalize(post.excerpt)
 
-    if (!fallback) return "Orthodox Q&A"
-    return fallback.endsWith("?") ? fallback : `${fallback}?`
+    const pickFrom = (source: string) => {
+      const questionMatch = source.match(/question\s*[:፦]\s*([\s\S]+)/i)
+      if (questionMatch?.[1]) {
+        const beforeAnswer = questionMatch[1].split(/answer\s*[:፦]/i)[0]
+        return firstQuestionLine(beforeAnswer)
+      }
+      return ""
+    }
+
+    let question = pickFrom(fromTitle) || pickFrom(fromExcerpt)
+
+    if (!question) {
+      // Fallback: use first line from title only to avoid title+excerpt repetition.
+      question = firstQuestionLine(fromTitle.replace(/^about\s+/i, ""))
+    }
+
+    if (!question) return "Orthodox Q&A"
+    return question.endsWith("?") ? question : `${question}?`
   }
 
   const isQuestionLike = (post: TelegramPost) => /question\s*[:፦]|answer\s*[:፦]/i.test(`${post.title} ${post.excerpt}`)
@@ -148,41 +162,33 @@ export default function QAPage() {
 
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [filteredQA, setFilteredQA] = useState<QAItem[]>(allQA)
   const [questionInput, setQuestionInput] = useState("")
-  const [suggestedTags, setSuggestedTags] = useState<string[]>([])
   const [activeAnswer, setActiveAnswer] = useState<QAItem | null>(null)
   const [resolvedAnswer, setResolvedAnswer] = useState("")
   const [isAnswerLoading, setIsAnswerLoading] = useState(false)
 
   // Extract all unique tags
-  const allTags = Array.from(new Set(allQA.flatMap((item) => item.tags)))
+  const allTags = useMemo(() => Array.from(new Set(allQA.flatMap((item) => item.tags))), [allQA])
+  const filteredQA = useMemo(
+    () =>
+      allQA.filter((item) => {
+        const matchesSearch =
+          searchTerm === "" ||
+          item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.answer.toLowerCase().includes(searchTerm.toLowerCase())
 
-  // Filter QA items based on search term and selected tags
-  useEffect(() => {
-    const filtered = allQA.filter((item) => {
-      const matchesSearch =
-        searchTerm === "" ||
-        item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.answer.toLowerCase().includes(searchTerm.toLowerCase())
+        const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => item.tags.includes(tag))
 
-      const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => item.tags.includes(tag))
-
-      return matchesSearch && matchesTags
-    })
-
-    setFilteredQA(filtered)
-
-    // Suggest tags based on search term
-    if (searchTerm) {
-      const suggestions = allTags
-        .filter((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()) && !selectedTags.includes(tag))
-        .slice(0, 5)
-      setSuggestedTags(suggestions)
-    } else {
-      setSuggestedTags([])
-    }
-  }, [searchTerm, selectedTags, allQA, allTags])
+        return matchesSearch && matchesTags
+      }),
+    [allQA, searchTerm, selectedTags],
+  )
+  const suggestedTags = useMemo(() => {
+    if (!searchTerm) return []
+    return allTags
+      .filter((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()) && !selectedTags.includes(tag))
+      .slice(0, 5)
+  }, [allTags, searchTerm, selectedTags])
 
   const handleTagClick = (tag: string) => {
     if (selectedTags.includes(tag)) {
@@ -196,14 +202,12 @@ export default function QAPage() {
     if (!selectedTags.includes(tag)) {
       setSelectedTags([...selectedTags, tag])
       setSearchTerm("")
-      setSuggestedTags([])
     }
   }
 
   const clearFilters = () => {
     setSearchTerm("")
     setSelectedTags([])
-    setSuggestedTags([])
   }
 
   const extractAnswerFromImportedText = (raw: string) => {
