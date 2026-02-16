@@ -6,8 +6,7 @@ title: "About the #missing_years of Christ Question፦ I came across a text that
 date: "2023-09-14T00:00:21"
 tags: ["missing_years"]
 isSaint: false
----
-About the #missing_years of Christ 
+---About the #missing_years of Christ 
 
 Question፦ I came across a text that claims to be a scroll of the missing 18 years of Jesus life when he traveled to teach in India, Africa, and Europe. 
 Does any of the 81 books of the Ethiopian Bible confirms this?

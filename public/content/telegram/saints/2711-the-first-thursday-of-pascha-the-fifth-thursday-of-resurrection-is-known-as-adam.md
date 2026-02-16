@@ -6,8 +6,7 @@ title: "The first #Thursday of #Pascha The fifth Thursday of Resurrection is kno
 date: "2024-05-09T21:49:01"
 tags: ["thursday", "pascha"]
 isSaint: true
----
-The first #Thursday of #Pascha
+---The first #Thursday of #Pascha
 
 The fifth Thursday of Resurrection is known as "Adam Thursday". Our father Adam, the first man, and the mother of us all, Eve, were filled with happiness and joy in the Garden of Eden until they were expelled due to their disobedience to God's commands. They repented of their sins and begged for forgiveness. God made a promise to Adam that after five and a half days, He would be born from his grandson and be crucified to save mankind by His death. This day is remembered as the memorial of Adam. (Mark 4:24-28)
 

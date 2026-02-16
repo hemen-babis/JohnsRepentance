@@ -6,8 +6,7 @@ title: "Certain spirits \"goeth not out but by prayer and fasting\" (Matthew 17:
 date: "2024-06-06T23:01:35"
 tags: []
 isSaint: true
----
-Certain spirits "goeth not out but by prayer and fasting" (Matthew 17:21). 
+---Certain spirits "goeth not out but by prayer and fasting" (Matthew 17:21). 
 
 Beloved ones, let us reflect upon the divine teaching conveyed in the Gospel according to Matthew, where it is inscribed that certain spirits "goeth not out but by prayer and fasting" (Matthew 17:21). This lesson, imparted to us by our Lord Jesus Christ, serves as a spiritual cornerstone for those who seek to comprehend the profound depths of battling spiritual adversities.
 

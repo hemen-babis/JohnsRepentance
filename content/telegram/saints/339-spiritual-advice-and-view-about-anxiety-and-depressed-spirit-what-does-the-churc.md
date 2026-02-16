@@ -6,8 +6,7 @@ title: "Spiritual advice and view about #anxiety and #depressed spirit What does
 date: "2023-01-06T20:31:01"
 tags: ["anxiety", "depressed"]
 isSaint: true
----
-Spiritual advice and view about #anxiety and #depressed spirit
+---Spiritual advice and view about #anxiety and #depressed spirit
 
 What does the Church say about anxiety and depression treatment?
 

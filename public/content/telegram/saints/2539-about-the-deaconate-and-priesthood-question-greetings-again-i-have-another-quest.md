@@ -6,8 +6,7 @@ title: "About the #deaconate and #priesthood Question፦ Greetings again, I have
 date: "2024-03-31T21:48:01"
 tags: ["deaconate", "priesthood"]
 isSaint: true
----
-About the #deaconate and #priesthood
+---About the #deaconate and #priesthood
 
 Question፦ Greetings again, I have another question. For me, being a Deacon is amazing. I feel like the Holy Spirit is dwelling with in me so much. I’m always intrigued to read the Holy Bible and to learn the Kidase. All though, I don’t know what a great blessing and significance being a Deacon truly is. Please explain to me the full history of Deaconhood and the history of the first Deacon who was known as St. Steven. Blessings, Goodnight.
 

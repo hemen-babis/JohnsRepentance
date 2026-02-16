@@ -4,10 +4,10 @@ from: "ዮሐንስ ንስሐ"
 type: "lesson"
 title: "About the #conception Virgin #Mary Beloved members, today we gather to commemorate the mon"
 date: "2023-07-07T22:31:01"
-tags: ["conception", "mary"]
+tags: ["conception", "mary", "announcement"]
 isSaint: true
----
-About the #conception Virgin #Mary 
+mergedFrom: [1439, 1447]
+---About the #conception Virgin #Mary 
 
 Beloved members, today we gather to commemorate the monthly feast of the conception of the blessed Virgin Mary. Let us delve into the profound significance of this event and may our hearts be enlightened by the wisdom and grace of the Holy Spirit.
 
@@ -27,4 +27,12 @@ While still in her mother's womb, our Lady, the fruit of the holy union between 
 
 Witnessing these events, Satan could not remain silent. Though unaware of the precise timing, he understood that a moment of great significance was upon him. If such miracles occurred even before her birth, what extraordinary wonders would unfold when she came into the world? In his relentless enmity, Satan stirred up the Jews against the parents of our Lady, seeking to torment her even while she resided within the sacred confines of her mother's womb. But the Virgin Mary had already confounded him, even before her birth, by opening the eyes of the blind and causing the mute to speak. Who among God's creation had ever achieved such wonders from the confines of the womb?
 
-(Continues) 👇🏾
+#Announcement 
+
+Dear members of John's Repentance service, as you may know, we have recently started a live Q&A program for kids (roughly 8-18 year olds). This is at 6pm EST every Sunday and it is lead by volunteer deacons that are capable of answering children's questions and discussing various Church topics with them. We are now extending it by 1hr to accomodate more people as well as to make it a little more convenient for some joining us from Europe. Hence it will now be from 5-7pm EST. One can come in and leave anytime during that time interval so we ask you to spread the word about this opportunity to your friends, family, or anyone you think might be interested. It is still via Google meet and the link is the same for every meeting: https://meet.google.com/qeu-moqk-jux
+
+May the name of the Holy God be praised forever and ever in every tongue that He has created, today and always. 
+
+May the blessings of God's mother, the virgin, and the cross be upon us. Amen.
+
+Reach out to us on our social media platforms and share it with your friends: https://linktr.ee/johnsrepentance

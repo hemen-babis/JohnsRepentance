@@ -6,8 +6,7 @@ title: "#Zewerede: The First Sunday of the #Great #Lent Beloved in Christ, as we
 date: "2024-03-09T21:04:21"
 tags: ["zewerede", "great", "lent"]
 isSaint: true
----
-#Zewerede: The First Sunday of the #Great #Lent
+---#Zewerede: The First Sunday of the #Great #Lent
 
 Beloved in Christ, as we stand at the threshold of this sacred season of the Great Lent, let us turn our hearts and minds to the profound mystery and divine significance that the first Sunday, known as Zewerede, unfolds before us.
 

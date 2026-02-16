@@ -6,8 +6,7 @@ title: "About St. #Tekle_Haymanot Dear members of John's Repentance spiritual se
 date: "2024-01-02T22:03:02"
 tags: ["tekle_haymanot"]
 isSaint: true
----
-About St. #Tekle_Haymanot 
+---About St. #Tekle_Haymanot 
 
 Dear members of John's Repentance spiritual service, today we send you a lesson on St. Tekle Haymanot, who's annual feast of nativity is celebrated today, so that you may better understand his story and use it as an inspiration to shape yours. 
 

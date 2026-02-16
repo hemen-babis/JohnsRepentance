@@ -6,8 +6,7 @@ title: "#Tears of #repentance Dear members of John's Repentance page; We have se
 date: "2023-02-07T20:32:01"
 tags: ["tears", "repentance"]
 isSaint: true
----
-#Tears of #repentance 
+---#Tears of #repentance 
 
 Dear members of John's Repentance page; We have sent you the following educational message regarding the tears of repentance so we entrust you to read and take it to heart as you fast, pray and suppoicate God to send his mercy upon us. 
 

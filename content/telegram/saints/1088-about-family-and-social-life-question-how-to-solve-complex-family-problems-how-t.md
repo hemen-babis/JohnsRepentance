@@ -6,8 +6,7 @@ title: "About #family and #social life Question: How to solve complex family pro
 date: "2023-05-05T21:30:21"
 tags: ["family", "social"]
 isSaint: true
----
-About #family and #social life
+---About #family and #social life
 
 Question: How to solve complex family problems? How to build a loving and Christ-centered family?
  

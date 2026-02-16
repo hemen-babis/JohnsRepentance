@@ -6,8 +6,7 @@ title: "Question፦ Hello father, does #age determine our ability to take part o
 date: "2023-07-10T22:11:01"
 tags: ["age", "communion"]
 isSaint: false
----
-Question፦ Hello father, does #age determine our ability to take part of Holy #communion? I wanted to take part..
+---Question፦ Hello father, does #age determine our ability to take part of Holy #communion? I wanted to take part..
 
 Answer፦ Age does not determine our ability to partake in the Holy Communion. Rather, it is our spiritual readiness and understanding of the sacrament that are of utmost importance. From the moment we are baptized and become children of God, we are invited to partake in the Holy Communion.
 

@@ -6,8 +6,7 @@ title: "About the #Church we should attend 👉 Question፦ I’m an Ethiopian C
 date: "2023-09-24T21:30:29"
 tags: ["church"]
 isSaint: false
----
-About the #Church we should attend 
+---About the #Church we should attend 
 
 👉 Question፦ 
 

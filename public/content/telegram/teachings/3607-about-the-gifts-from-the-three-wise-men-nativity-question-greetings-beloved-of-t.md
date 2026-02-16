@@ -6,8 +6,7 @@ title: "About the gifts from the three wise men. #Nativity Question፦ Greetings
 date: "2024-12-26T20:30:42"
 tags: ["nativity"]
 isSaint: false
----
-About the gifts from the three wise men. #Nativity
+---About the gifts from the three wise men. #Nativity
 
 Question፦ Greetings beloved of the Lord, as we are in the season of the birth of Our Lord;
 I wanted know more about the gifts given to Our Lord from the wise men. The gold, incense, and myrrh. I know about what it symbolizes. Gold because He is King. Incense because He is God, and Myrrh for His Death. But what happen to these gifts after they were given to Our Lord and the history of where the gifts originated. I heard oral tradition that these gifts originally came from Adam? Please, if you can, share more details about this.

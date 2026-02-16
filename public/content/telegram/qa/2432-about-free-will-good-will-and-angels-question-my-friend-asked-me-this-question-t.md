@@ -6,8 +6,7 @@ title: "About #free_will, #good_will and #angels 👉 Question፦ My friend aske
 date: "2024-02-28T23:00:01"
 tags: ["free_will", "good_will", "angels"]
 isSaint: false
----
-About #free_will, #good_will and #angels
+---About #free_will, #good_will and #angels
 
 👉 Question፦ My friend asked me this question that he said no one was able to answer for him. He was wondering if angels have a perfect will, how is it that lucifer was able to rebel against God?
 

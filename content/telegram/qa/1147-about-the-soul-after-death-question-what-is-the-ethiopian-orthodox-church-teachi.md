@@ -6,8 +6,7 @@ title: "About the #Soul After #Death Question፦ What is the Ethiopian Orthodox 
 date: "2023-05-13T21:54:38"
 tags: ["soul", "death"]
 isSaint: false
----
-About the #Soul After #Death
+---About the #Soul After #Death
 
 Question፦ What is the Ethiopian Orthodox Church Teaching on the Soul After Death?
 

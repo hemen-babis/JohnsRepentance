@@ -6,8 +6,7 @@ title: "About Coping With #Emotions 👉Question: How can I deal with feelings o
 date: "2023-05-12T22:28:16"
 tags: ["emotions"]
 isSaint: true
----
-About Coping With #Emotions 
+---About Coping With #Emotions 
 
 👉Question: How can I deal with feelings of loneliness and isolation and establish healthy relationships with others?
 

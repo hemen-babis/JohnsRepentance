@@ -6,8 +6,7 @@ title: "About #hardships in our #spiritual life Question፦ Good evening father,
 date: "2023-07-14T22:31:32"
 tags: ["hardships", "spiritual"]
 isSaint: true
----
-About #hardships in our #spiritual life
+---About #hardships in our #spiritual life
 
 Question፦ Good evening father, may Christ’s peace be with you!
 I have one question that I would like you to cover. 

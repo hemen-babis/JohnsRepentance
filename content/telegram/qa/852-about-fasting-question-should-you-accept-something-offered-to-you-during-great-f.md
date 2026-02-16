@@ -6,8 +6,7 @@ title: "About #fasting 👉🏾 Question፦ Should you accept something offered 
 date: "2023-03-25T21:54:33"
 tags: ["fasting"]
 isSaint: false
----
-About #fasting 
+---About #fasting 
 
 👉🏾 Question፦ Should you accept something offered to you during great fasting that is not permitted or at a time before you should break your fast? On work or in a family gathering with others who are not fasting?
 

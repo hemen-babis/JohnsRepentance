@@ -6,8 +6,7 @@ title: "Happy New Year! #2025 Beloved in Christ, As the sun rises on this new ye
 date: "2025-01-01T20:33:35"
 tags: ["2025"]
 isSaint: false
----
-Happy New Year! #2025
+---Happy New Year! #2025
 
 Beloved in Christ,
 

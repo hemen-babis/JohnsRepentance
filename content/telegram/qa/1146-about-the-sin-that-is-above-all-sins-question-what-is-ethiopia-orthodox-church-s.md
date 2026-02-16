@@ -6,8 +6,7 @@ title: "About the #sin that is above all sins Question፦ What is Ethiopia Ortho
 date: "2023-05-13T21:35:57"
 tags: ["sin"]
 isSaint: false
----
-About the #sin that is above all sins 
+---About the #sin that is above all sins 
 
 Question፦ What is Ethiopia Orthodox church stand about suicide?
 

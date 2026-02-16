@@ -6,8 +6,7 @@ title: "The Mercy of #Nineveh: A Call to Repentance for the Faithful Dear brethr
 date: "2024-02-28T01:33:01"
 tags: ["nineveh"]
 isSaint: false
----
-The Mercy of #Nineveh: A Call to Repentance for the Faithful
+---The Mercy of #Nineveh: A Call to Repentance for the Faithful
 
 Dear brethren in Christ, in the sacred season before the penitential journey of Great Lent, the Holy Church calls us to a profound three-day fast, a commemoration of the great mercy unveiled at Nineveh. Just as the prophet Jonah emerged from the belly of the whale, so too may we arise from the depths of sin through this fast, embracing repentance and God's boundless forgiveness.
 

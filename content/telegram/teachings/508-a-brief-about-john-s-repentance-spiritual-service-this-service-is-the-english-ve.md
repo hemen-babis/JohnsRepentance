@@ -6,8 +6,7 @@ title: "A brief about #John's #Repentance spiritual service This service is the 
 date: "2023-02-03T20:30:24"
 tags: ["john", "repentance", "marriage", "fornication"]
 isSaint: false
----
-A brief about #John's #Repentance spiritual service
+---A brief about #John's #Repentance spiritual service
 
 This service is the English version of our Amharic service የዮሐንስ ንስሐ፦ https://t.me/+ReLdpifiso4Sz04q
 

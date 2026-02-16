@@ -6,8 +6,7 @@ title: "Lesson about St. #Steven the first Martyr. Dear members of John's Repent
 date: "2023-07-24T21:40:38"
 tags: ["steven"]
 isSaint: false
----
-Lesson about St. #Steven the first Martyr. 
+---Lesson about St. #Steven the first Martyr. 
 
 Dear members of John's Repentance page, today July 24th, we commemorate the memory of our holy forefather in faith, St. Stephen, the Protomartyr. His tale has been preserved in the pages of ecclesiastical history and given to us as a beacon of unwavering faith, fearless proclamation, and ultimately, martyrdom.
 

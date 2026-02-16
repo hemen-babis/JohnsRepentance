@@ -6,8 +6,7 @@ title: "Question፦ I am a #muslim in Pakistan. I want to convert to Christianit
 date: "2023-11-25T21:00:55"
 tags: ["muslim"]
 isSaint: false
----
-Question፦ I am a #muslim in Pakistan. I want to convert to Christianity but if I change my religion, the muslims here will kill me. What should I do?
+---Question፦ I am a #muslim in Pakistan. I want to convert to Christianity but if I change my religion, the muslims here will kill me. What should I do?
 
 Answer፦ My dear child in faith, your situation is indeed a challenging and heart-wrenching one. The courage you show in seeking the truth is a testament to the stirring of the Holy Spirit within you. Remember the words of our Lord Jesus Christ in the Gospel of Matthew, "Blessed are those who are persecuted for righteousness' sake, for theirs is the kingdom of heaven." (Matthew 5:10). This is a profound truth to hold close to your heart.
 

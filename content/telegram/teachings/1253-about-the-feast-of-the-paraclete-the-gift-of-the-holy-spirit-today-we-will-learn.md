@@ -4,10 +4,10 @@ from: "ዮሐንስ ንስሐ"
 type: "lesson"
 title: "About the Feast of the #Paraclete: The Gift of the #Holy_Spirit Today, we will learn about"
 date: "2023-06-03T21:46:57"
-tags: ["paraclete", "holy_spirit"]
+tags: ["paraclete", "holy_spirit", "announcement"]
 isSaint: true
----
-About the Feast of the #Paraclete: The Gift of the #Holy_Spirit
+mergedFrom: [1253, 1257]
+---About the Feast of the #Paraclete: The Gift of the #Holy_Spirit
 
 Today, we will learn about the significance of the Feast of the Paraclete, a day of great rejoicing and blessing in our Orthodox faith. The term "Paraclete" carries deep meaning, representing the spirit, righteousness, spiritual life, natural breath, physical life, and physical breath. It is within this feast that we celebrate the third person of the Holy Trinity, the Holy Spirit of God, who is worshipped alongside the Father and the Son.
 
@@ -23,4 +23,12 @@ In response to the people's inquiry about what they should do, Saint Peter instr
 
 Notably, among those who were present were individuals from Ethiopia who, upon hearing Saint Peter's sermon, believed in the Lord Jesus Christ and were baptized. Thus, this day is referred to as the Church's Nativity, a momentous occasion commemorated as one of the nine principal festivals of our Lord Jesus Christ. Moreover, it is fittingly called "the lady of all festivals," for on this day, the Holy Spirit blessed the apostles with seventy-one languages, enabling them to carry the Gospel to the ends of the earth.
 
-(Continues)👇🏾
+#Announcement 
+
+Dear members of John's Repentance service, as you may be aware of, our telegram page is primarily for people older than 16 years of age. However, this is big limitation because kids usually have the most and the best questions. On a different note, it is much easier to plant a tree correctly than to try straighting it after it has grown. Hence starting this week, we will be hosting live Q&A sessions for kids. This will be at 6pm EST every Sunday and it will mainly be lead by volunteer deacons that are capable of answering children's questions and discussing various Church topics with them. And so we ask you to spread the word so many people can take advantage of this program. It will be via Google meet and the link will be the same for every meeting: https://meet.google.com/qeu-moqk-jux
+
+May the name of the Holy God be praised forever and ever in every tongue that He has created, today and always. 
+
+May the blessings of God's mother, the virgin, and the cross be upon us. Amen.
+
+Reach out to us on our social media platforms and share it with your friends: https://linktr.ee/johnsrepentance

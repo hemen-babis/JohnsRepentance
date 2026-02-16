@@ -6,8 +6,7 @@ title: "👉🏾 About the #Tabot In the hallowed traditions of the Ethiopian Or
 date: "2024-02-13T21:46:01"
 tags: ["tabot"]
 isSaint: true
----
-👉🏾 About the #Tabot
+---👉🏾 About the #Tabot
 
 In the hallowed traditions of the Ethiopian Orthodox Tewahedo Church, the concept of the Tabot holds a place of profound spiritual significance, echoing the eternal covenant between the Divine and His people. This sacred object, often a consecrated replica or tablet made of wood or stone, represents the Ark of the Covenant itself, a testament to the indwelling presence of God among His faithful. 
 

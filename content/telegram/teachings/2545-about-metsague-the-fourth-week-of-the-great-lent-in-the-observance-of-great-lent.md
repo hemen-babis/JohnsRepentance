@@ -6,8 +6,7 @@ title: "About #Metsague; the fourth week of the great #lent In the observance of
 date: "2024-04-02T21:32:01"
 tags: ["metsague", "lent"]
 isSaint: false
----
-About #Metsague; the fourth week of the great #lent
+---About #Metsague; the fourth week of the great #lent
 
 In the observance of Great Lent, the Church invites us to reflect on the profound narrative of the healing at Bethesda during its fourth week. This week, known as Metsague, derives its name from the story of a man who had been afflicted with illness for thirty-eight years, as recounted in the Gospel of John, chapter 5, verses 1 through 9. This narrative, rich in symbolism and divine truth, serves as a beacon of hope and a call to spiritual awakening, inviting us to delve deeper into the mysteries of faith, healing, and the boundless mercy of God.
 

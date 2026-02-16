@@ -6,8 +6,7 @@ title: "About the book of #Psalms Question፦ What is God trying to tell his dis
 date: "2024-03-23T21:49:29"
 tags: ["psalms"]
 isSaint: false
----
-About the book of #Psalms 
+---About the book of #Psalms 
 
 Question፦ What is God trying to tell his disciples through this psalm. Also, what is the deep significance behind the reading psalms?
 

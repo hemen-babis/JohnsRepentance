@@ -6,8 +6,7 @@ title: "About the annual feast of the Holy #Trinity Beloved members of John's Re
 date: "2024-01-16T20:36:30"
 tags: ["trinity"]
 isSaint: false
----
-About the annual feast of the Holy #Trinity 
+---About the annual feast of the Holy #Trinity 
 
 Beloved members of John's Repentance spiritual service, today we celebrate the annual feats of the Holy Trinity and so we send you the following lesson so you may read and partake from the blessings of the day. 
 

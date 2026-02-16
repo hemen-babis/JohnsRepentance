@@ -6,8 +6,7 @@ title: "About #blood #donation and use of #contraceptives 👉 Question፦ Bless
 date: "2023-09-06T23:30:04"
 tags: ["blood", "donation", "contraceptives"]
 isSaint: true
----
-About #blood #donation and use of #contraceptives 
+---About #blood #donation and use of #contraceptives 
 
 👉 Question፦ Bless me my father and peace from Kenya... please enlighten me on the our church's view on the use of contraceptives and blood donation
 

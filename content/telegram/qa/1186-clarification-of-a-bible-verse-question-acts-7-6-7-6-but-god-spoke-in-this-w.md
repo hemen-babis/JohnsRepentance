@@ -6,8 +6,7 @@ title: "Clarification of a #bible #verse 👉 Question:\" [Acts 7 : 6 - 7] 6. Bu
 date: "2023-05-20T22:16:02"
 tags: ["bible", "verse"]
 isSaint: false
----
-Clarification of a #bible #verse 
+---Clarification of a #bible #verse 
 
 👉 Question:" [Acts 7 : 6 - 7]
 

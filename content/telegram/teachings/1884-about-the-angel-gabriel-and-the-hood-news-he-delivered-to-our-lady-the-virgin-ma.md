@@ -6,8 +6,7 @@ title: "About the angel #Gabriel and the hood news he delivered to our Lady the 
 date: "2023-10-29T22:02:01"
 tags: ["gabriel", "mary"]
 isSaint: true
----
-About the angel #Gabriel and the hood news he delivered to our Lady the Virgin #Mary. 
+---About the angel #Gabriel and the hood news he delivered to our Lady the Virgin #Mary. 
 
 Beloved members, as we commemorate this great angel today, let us delve into the depths of the mystery of the Annunciation, wherein the Archangel Gabriel, the herald of good tidings, was sent unto the Virgin Mary to proclaim unto her the ineffable conception of our Lord and Saviour, Jesus Christ.
 

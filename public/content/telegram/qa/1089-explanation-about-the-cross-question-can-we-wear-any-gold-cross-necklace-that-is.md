@@ -6,8 +6,7 @@ title: "Explanation about the #Cross 👉 Question: Can we wear any gold cross n
 date: "2023-05-05T22:11:53"
 tags: ["cross"]
 isSaint: false
----
-Explanation about the #Cross
+---Explanation about the #Cross
 
 👉 Question: Can we wear any gold cross necklace that is sold at the shop work or does it need to be bought at the church? 
 

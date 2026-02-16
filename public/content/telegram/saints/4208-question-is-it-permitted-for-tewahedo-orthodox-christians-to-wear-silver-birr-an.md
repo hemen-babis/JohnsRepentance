@@ -6,8 +6,7 @@ title: "Question፦ Is it permitted for Tewahedo Orthodox Christians to wear sil
 date: "2025-05-04T21:43:56"
 tags: []
 isSaint: true
----
-Question፦ Is it permitted for Tewahedo Orthodox Christians to wear silver(birr)?
+---Question፦ Is it permitted for Tewahedo Orthodox Christians to wear silver(birr)?
 
 Answer፦ Peace be upon you, my child.  Your question regarding the wearing of silver, or ብር (birr), is a good one, demonstrating a thoughtful approach to your faith.  There is no explicit prohibition against wearing silver within the Tewahedo Orthodox tradition.  The Scriptures speak of silver being used for adornment, even in sacred contexts.  Think, for example, of the silver used in the construction of the Tabernacle (Exodus chapters 25-27).
 

@@ -6,8 +6,7 @@ title: "About the Archangel St. #Michael Beloved members of John's Repentance se
 date: "2023-09-22T22:33:02"
 tags: ["michael"]
 isSaint: true
----
-About the Archangel St. #Michael 
+---About the Archangel St. #Michael 
 
 Beloved members of John's Repentance service, today is the annual feast the St. Michael. Hence we send you this writing so you may read and partake form the Archangel's blessings. 
 

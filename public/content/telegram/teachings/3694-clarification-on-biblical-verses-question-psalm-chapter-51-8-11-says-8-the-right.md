@@ -6,8 +6,7 @@ title: "Clarification on biblical verses. Question፦ Psalm chapter 51, 8-11 say
 date: "2025-01-11T20:34:12"
 tags: []
 isSaint: false
----
-Clarification on biblical verses. 
+---Clarification on biblical verses. 
 
 Question፦ Psalm chapter 51, 8-11 says 
 
@@ -26,7 +25,6 @@ Forever and unto ages of ages.
 I will give thanks to You forever for what You did, 
 And I will wait on Your name; 
 For it is good in the sight of Your holy ones.”
-
 
 What is the meaning of this section? Thank you 🙏🏾
 

@@ -6,8 +6,7 @@ title: "About preparation needed for #marriage Question፦ How should a woman wo
 date: "2024-12-23T20:51:01"
 tags: ["marriage"]
 isSaint: false
----
-About preparation needed for #marriage 
+---About preparation needed for #marriage 
 
 Question፦ How should a woman work on herself to prepare to be a godly wife for someone.
 

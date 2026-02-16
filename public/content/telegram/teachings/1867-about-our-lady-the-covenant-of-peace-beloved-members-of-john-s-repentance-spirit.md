@@ -6,8 +6,7 @@ title: "About Our #Lady, the #covenant of #peace Beloved members of John's Repen
 date: "2023-10-26T22:09:39"
 tags: ["lady", "covenant", "peace"]
 isSaint: false
----
-About Our #Lady, the #covenant of #peace 
+---About Our #Lady, the #covenant of #peace 
 
 Beloved members of John's Repentance spiritual service, as we commemorate the monthly feast of our lady, the covenant of peace, let us delve into the profound mysteries and sublime truths concerning our Lady from the venerable tradition of the Orthodox Church, drawing inspiration from the revered "June Golgotha” (ሰኔ ጎልጎታ) prayer.
 

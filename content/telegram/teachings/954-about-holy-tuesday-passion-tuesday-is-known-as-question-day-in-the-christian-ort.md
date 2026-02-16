@@ -6,8 +6,7 @@ title: "About Holy #Tuesday Passion Tuesday is known as Question Day in the Chri
 date: "2023-04-10T22:22:44"
 tags: ["tuesday"]
 isSaint: false
----
-About Holy #Tuesday 
+---About Holy #Tuesday 
 
 Passion Tuesday is known as Question Day in the Christian Orthodox faith. 
 

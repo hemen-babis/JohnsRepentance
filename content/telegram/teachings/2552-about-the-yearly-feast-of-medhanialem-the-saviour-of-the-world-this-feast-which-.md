@@ -6,8 +6,7 @@ title: "About the yearly feast of #Medhanialem; the saviour of the world This fe
 date: "2024-04-05T21:32:01"
 tags: ["medhanialem"]
 isSaint: false
----
-About the yearly feast of #Medhanialem; the saviour of the world 
+---About the yearly feast of #Medhanialem; the saviour of the world 
 
 This feast, which we celebrate today, is rooted deeply in the ethos of our faith, and beckons us to a profound reflection on the Crucifixion, a pivotal moment where divinity intersects with humanity in an act of unparalleled love and redemption.
 

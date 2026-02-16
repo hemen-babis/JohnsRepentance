@@ -6,8 +6,7 @@ title: "About the #Praise of #Mary 👉 Question፦ What is the significance of 
 date: "2024-03-26T22:21:35"
 tags: ["praise", "mary"]
 isSaint: true
----
-About the #Praise of #Mary
+---About the #Praise of #Mary
 
 👉 Question፦ What is the significance of the Tefisihee Mariam that the Deacons say in our church? For example: Antee Wi’itu mesobe werq qeyih ante wisteta mena biruh? I’ve said it myself, but I just don’t know what the importantance of it is in our faith?
 

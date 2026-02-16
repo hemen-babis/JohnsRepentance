@@ -6,8 +6,7 @@ title: "Understanding our #Calling Question፦ Thank you father! :) well since y
 date: "2024-03-16T21:30:46"
 tags: ["calling"]
 isSaint: false
----
-Understanding our #Calling 
+---Understanding our #Calling 
 
 Question፦ Thank you father! :) well since you brought up the topic of one’s calling I’ll go ahead & ask one of my questions related to that which was about discovering ones life calling / discovering our God given gift. 
 

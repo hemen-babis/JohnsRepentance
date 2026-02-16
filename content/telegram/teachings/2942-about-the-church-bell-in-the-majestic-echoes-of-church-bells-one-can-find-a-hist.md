@@ -6,8 +6,7 @@ title: "About the #church #bell In the majestic echoes of church bells, one can 
 date: "2024-06-17T23:15:36"
 tags: ["church", "bell"]
 isSaint: false
----
-About the #church #bell
+---About the #church #bell
 
 In the majestic echoes of church bells, one can find a history rich in spiritual significance, transcending mere material composition. Let us now delve deeply into the profound symbolism and pivotal role of the bell in the liturgical life of the church, an instrument not of iron or brass alone, but of divine calling.
 

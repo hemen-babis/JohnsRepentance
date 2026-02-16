@@ -6,8 +6,7 @@ title: "About the Sacrament of the #Eucharist Introduction The Holy Eucharist, t
 date: "2024-03-14T21:23:34"
 tags: ["eucharist"]
 isSaint: false
----
-About the Sacrament of the #Eucharist
+---About the Sacrament of the #Eucharist
 
 Introduction 
 

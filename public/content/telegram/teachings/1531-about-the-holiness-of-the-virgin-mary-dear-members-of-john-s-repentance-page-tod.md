@@ -6,8 +6,7 @@ title: "About the holiness of the Virgin #Mary Dear members of John's Repentance
 date: "2023-07-27T22:02:01"
 tags: ["mary"]
 isSaint: false
----
-About the holiness of the Virgin #Mary 
+---About the holiness of the Virgin #Mary 
 
 Dear members of John's Repentance page, today is the monthly feast if our Lady the Virgin Mary. Hence we send you a lesson about her purity sanctity and holiness so you may read partake from the day's blessings. We hence entrust you to read it and see how you can apply the learnings to your life.  
 

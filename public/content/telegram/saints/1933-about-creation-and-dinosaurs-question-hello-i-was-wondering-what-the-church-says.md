@@ -6,8 +6,7 @@ title: "About #creation and #dinosaurs 👉 Question፦ Hello, I was wondering w
 date: "2023-11-09T21:05:56"
 tags: ["creation", "dinosaurs"]
 isSaint: true
----
-About #creation and #dinosaurs 
+---About #creation and #dinosaurs 
 
 👉 Question፦ Hello, I was wondering what the church says about dinosaurs and tectonic plates in relation to the timeline of the earth/universe according to science and the events that occurred compared to biblical timeline of the universe. Did dinosaurs exist & if so, when did they actually exist if the world hasn't been existing for millions of years according to the bible. How long has the universe been existing? is it in thousands or in millions?  Someone asked me this questions & i am not sure how to respond. Thank you!
 

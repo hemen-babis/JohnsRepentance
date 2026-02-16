@@ -6,8 +6,7 @@ title: "About #anger issues Question፦ Do you have any suggestions for someone 
 date: "2023-09-09T23:00:38"
 tags: ["anger"]
 isSaint: false
----
-About #anger issues 
+---About #anger issues 
 
 Question፦ Do you have any suggestions for someone struggling with anger issues?
 

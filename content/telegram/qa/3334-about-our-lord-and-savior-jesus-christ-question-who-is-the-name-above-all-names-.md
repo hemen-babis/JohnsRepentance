@@ -6,8 +6,7 @@ title: "About our Lord and Savior #Jesus #Christ Question፦ Who is the name abo
 date: "2024-09-09T23:31:04"
 tags: ["jesus", "christ"]
 isSaint: false
----
-About our Lord and Savior #Jesus #Christ 
+---About our Lord and Savior #Jesus #Christ 
 
 Question፦ Who is the name above all names?
 

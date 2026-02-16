@@ -6,8 +6,7 @@ title: "About #confession and remittance of sins 👉🏾 Question፦ If we just
 date: "2023-12-08T23:30:59"
 tags: ["confession"]
 isSaint: false
----
-About #confession and remittance of sins 
+---About #confession and remittance of sins 
 
 👉🏾 Question፦ If we just tell God directly without confessing our sins to the priest, won't he forgive us? 
 

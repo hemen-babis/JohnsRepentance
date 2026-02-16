@@ -6,8 +6,7 @@ title: "The first #Wednesday of #Pascha In Orthodox Christianity, the fourth day
 date: "2023-04-20T09:32:01"
 tags: ["wednesday", "pascha"]
 isSaint: false
----
-The first #Wednesday of #Pascha 
+---The first #Wednesday of #Pascha 
 
 In Orthodox Christianity, the fourth day after the resurrection of Jesus Christ is known as "Lazarus" Wednesday.
 

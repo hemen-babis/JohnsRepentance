@@ -6,8 +6,8 @@ title: "The Sacrament of the Holy #Communion as an Offering To our cherished and
 date: "2023-09-30T21:33:01"
 tags: ["communion"]
 isSaint: false
----
-The Sacrament of the Holy #Communion as an Offering
+mergedFrom: [1775, 1777]
+---The Sacrament of the Holy #Communion as an Offering
 
 To our cherished and devout followers of the teachings of the Holy Orthodox Church, as promulgated through the teachings and commentaries of our beloved father, John Chrysostom, I offer this profound exploration of the Holy Communion as an offering.
 
@@ -33,6 +33,31 @@ The notion of the Eucharist being outside of time, a concept referred to as "kai
 
 It is with this understanding that we affirm the Eucharist as a sacrifice. Each time we participate in the Holy Communion, we are partaking in the very same sacrifice that Christ made on Calvary. This is not a repetition but a divine participation in that one eternal event. As our Lord declared, "Do this in remembrance of me."
 
-The Apostle Paul’s declaration, "We have an altar" (Heb. 13:10), is not a mere historical reference. It is a testament to the continued presence and efficacy of Christ’s sacrifice within our midst, through the Holy Eucharist.
+About John's Repentance spiritual service 
 
-(Continues)👇🏾
+👉 Question፦ How can you help me in my spiritual life? 
+
+Answer፦ Beloved in Christ,
+
+Thank you for asking us  about the different services we provide. Our Lord Jesus Christ once said, "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you." (Matthew 7:7).
+
+Orthodoxy, the ancient Christian faith, has been a balm for countless souls throughout the millennia. It is a journey towards knowing the Creator, towards understanding oneself, and towards eternal communion with the Divine. How can we serve you on this blessed journey?
+
+1. Answering your questions: No question is too small or too big. In the tradition of the Church Fathers, we address doubts, inquiries, and guide souls towards the Truth.
+ 
+2. Engaging through Social Media: Just as the Apostle Paul traveled to spread the word of Christ, we use modern tools, like our numerous social media sites, to reach out to contemporary souls. They offer insights, teachings, and practices deeply rooted in the Orthodox tradition.
+
+3. Spiritual Partnerships: The Christian journey is one seldom walked alone. Our spiritual partners, drawing from the Orthodox monastic tradition of spiritual fatherhood and guidance, will walk alongside you, supporting you in every step, ensuring that you are not alone in this pilgrimage.
+
+4. Introducing Orthodoxy: America, like many parts of the world, thirsts for spiritual depth. Orthodoxy, with its sacraments, teachings, and traditions, offers a fountain of living water to quench this thirst.
+
+Note that there is no concept of payment or anything for any of our services. 
+
+May your heart be guided towards the everlasting Light of Christ. What step, dear seeker, do you feel called to take next in this sacred journey towards Him?
+
+May the name of the Holy God be praised forever and ever in every language that He has created, today and always.
+
+May the blessings of the Holy Mother of God, the Virgin, and the Cross be upon us. Amen.
+
+© John's Repentance
+Reach out to us on our social media platforms and share it with your friends: https://linktr.ee/johnsrepentance

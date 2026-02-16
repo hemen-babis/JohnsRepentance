@@ -6,8 +6,7 @@ title: "About #Repentance Question፦ What preparation is needed for repentance?
 date: "2023-04-28T22:13:45"
 tags: ["repentance"]
 isSaint: false
----
-About #Repentance 
+---About #Repentance 
 
 Question፦ What preparation is needed for repentance? What do we say when we repent?? What should we do after we repent?
 

@@ -6,8 +6,7 @@ title: "\"Beloved people of God, we greet you with the greetings of God, who are
 date: "2023-02-04T21:19:12"
 tags: []
 isSaint: false
----
-"Beloved people of God, we greet you with the greetings of God, who are following the orthodox education transmitted by John's Repentance telegram website. We have sent you below to read the decision of the Holy Synod of the Ethiopian Orthodox Tewahedo Church today, February 4, 2023 (Tir 27, 2015 E.C.)"
+---"Beloved people of God, we greet you with the greetings of God, who are following the orthodox education transmitted by John's Repentance telegram website. We have sent you below to read the decision of the Holy Synod of the Ethiopian Orthodox Tewahedo Church today, February 4, 2023 (Tir 27, 2015 E.C.)"
 
 The Ethiopian Orthodox Tewahedo Church passed the following resolutions in an emergency meeting called by the Holy Synod.
 

@@ -6,8 +6,7 @@ title: "About the #Holy #Trinity Beloved members of John's Repentance service, t
 date: "2023-10-17T21:33:02"
 tags: ["holy", "trinity"]
 isSaint: true
----
-About the #Holy #Trinity 
+---About the #Holy #Trinity 
 
 Beloved members of John's Repentance service, today is the monthly feast the Holy Trinity. It is a very celebted day in our Church and so we send you this writing so that you may read and partake form the Holy Trinity's blessings. 
 

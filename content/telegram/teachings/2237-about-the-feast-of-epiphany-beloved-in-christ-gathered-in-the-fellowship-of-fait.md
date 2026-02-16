@@ -6,8 +6,7 @@ title: "About the Feast of #Epiphany Beloved in Christ, gathered in the fellowsh
 date: "2024-01-18T21:32:01"
 tags: ["epiphany"]
 isSaint: false
----
-About the Feast of #Epiphany
+---About the Feast of #Epiphany
 
 Beloved in Christ, gathered in the fellowship of faith, let us immerse ourselves in the profound mysteries of the Epiphany, a feast of paramount significance in our Orthodox tradition. This holy day, rich in spiritual depth, unveils to us the radiant face of our Savior, Jesus Christ, in His baptism in the Jordan River.
 

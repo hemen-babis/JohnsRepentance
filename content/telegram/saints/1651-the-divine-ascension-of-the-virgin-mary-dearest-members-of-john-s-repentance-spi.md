@@ -6,8 +6,7 @@ title: "The Divine #Ascension of the Virgin #Mary Dearest members of John's Repe
 date: "2023-08-21T22:03:01"
 tags: ["ascension", "mary"]
 isSaint: true
----
-The Divine #Ascension of the Virgin #Mary
+---The Divine #Ascension of the Virgin #Mary
 
 Dearest members of John's Repentance spiritual service, as we gather today, the 22nd day of August, our hearts are filled with awe and reverence. We celebrate the divine ascent of the Blessed Virgin Mary, Theotokos – the Mother of God.
 

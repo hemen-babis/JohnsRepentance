@@ -6,8 +6,7 @@ title: "Question: I am #depressed and #lonely most of the time. Life has no mean
 date: "2022-12-21T21:40:18"
 tags: ["depressed", "lonely", "happiness", "advice"]
 isSaint: true
----
-Question: I am #depressed and #lonely most of the time. Life has no meaning to me. I just want to die and live with Jesus. I have been looking for #happiness all my life but I have never found it. I feel like my mind is about to explode. Please pray for me. I need your prayers. What do you #advice me??
+---Question: I am #depressed and #lonely most of the time. Life has no meaning to me. I just want to die and live with Jesus. I have been looking for #happiness all my life but I have never found it. I feel like my mind is about to explode. Please pray for me. I need your prayers. What do you #advice me??
 
 Answer: I wish that God's peace stays with you. The only way that a human gets peace and happiness is to believe that Our Lord Jesus Christ, who was born in Bethlehem from our mother Saint Virgin Mary, is the Almighty God. The creator of the visible and invisible in this world. The one the prophets spoke that He came to save us from satan, evil things, and sins. The one who the disciples preached that He was crucified to give us everlasting life by His flesh and death. He is the one who rose after 3 days from the tomb and revealed himself to Madgelon Mariam/Mary and all his disciples at different times. He, the one who ascended to heaven, will come again with graciousness to judge the people (Isaiah 3:13).
 

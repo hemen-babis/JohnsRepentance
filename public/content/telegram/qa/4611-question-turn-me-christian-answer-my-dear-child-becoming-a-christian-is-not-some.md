@@ -6,8 +6,7 @@ title: "Question፦ Turn me #Christian Answer፦ My dear child, becoming a Chris
 date: "2025-07-18T08:31:45"
 tags: ["christian"]
 isSaint: false
----
-Question፦ Turn me #Christian
+---Question፦ Turn me #Christian
 
 Answer፦ My dear child, becoming a Christian is not something that is done to you, but rather a journey of the heart, a turning towards God. It is a calling, a gift freely offered by our Lord and Savior Jesus Christ, and one that we must freely accept.  Think of the parable of the sower in the Gospel of Matthew (13:1-23). The seed of faith must fall on fertile ground and be nurtured to grow.
 

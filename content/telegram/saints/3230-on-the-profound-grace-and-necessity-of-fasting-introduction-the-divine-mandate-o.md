@@ -6,8 +6,7 @@ title: "On the Profound Grace and Necessity of #Fasting Introduction: The Divine
 date: "2024-08-10T23:37:02"
 tags: ["fasting"]
 isSaint: true
----
-On the Profound Grace and Necessity of #Fasting
+---On the Profound Grace and Necessity of #Fasting
 
 Introduction: The Divine Mandate of Fasting
 

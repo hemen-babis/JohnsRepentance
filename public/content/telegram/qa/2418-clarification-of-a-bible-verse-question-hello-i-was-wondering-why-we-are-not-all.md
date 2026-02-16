@@ -6,8 +6,7 @@ title: "Clarification of a #Bible verse 👉 Question፦ Hello, I was wondering 
 date: "2024-02-23T21:00:01"
 tags: ["bible", "pork"]
 isSaint: true
----
-Clarification of a #Bible verse
+---Clarification of a #Bible verse
 
 👉 Question፦ Hello, I was wondering why we are not allowed to eat #pork anything related to it. Like I’m reading acts right now and it says 
 ”“The voice spoke from heaven a second time, ‘Do not call anything impure that God has made clean.’“

@@ -6,8 +6,7 @@ title: "About St. #George Dear members of John's Repentance page, today is the m
 date: "2023-07-29T21:32:02"
 tags: ["george"]
 isSaint: true
----
-About St. #George 
+---About St. #George 
 
 Dear members of John's Repentance page, today is the monthly feast of St. George in the EOTC and so we send you this short writing for you to learn about the life of this great saint and martyr. As you read to partake from the blessing of the day, think about how you can incorporate your learnings to your personal life. 
 

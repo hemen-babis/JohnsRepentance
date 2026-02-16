@@ -6,8 +6,7 @@ title: "How do I prepare to confess sin? (Part 2) The great holy father, Mar Isa
 date: "2023-03-23T21:39:03"
 tags: []
 isSaint: true
----
-How do I prepare to confess sin?
+---How do I prepare to confess sin?
 
 (Part 2)
 

@@ -6,8 +6,7 @@ title: "About the #translation of the Ethiopian Orthodox #bible 👉 Question፦
 date: "2023-10-12T22:04:26"
 tags: ["translation", "bible"]
 isSaint: true
----
-About the #translation of the Ethiopian Orthodox #bible
+---About the #translation of the Ethiopian Orthodox #bible
 
 👉 Question፦ Good evening, is it correct that the first ethiopian bible was translated from greek into ge'ez by the 9 saints who came to Ethiopia around 450 a.d ??
 

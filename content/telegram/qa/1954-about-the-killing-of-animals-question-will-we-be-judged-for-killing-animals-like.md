@@ -6,8 +6,7 @@ title: "About the #killing of #animals 👉 Question፦ Will we be judged for ki
 date: "2023-11-15T20:30:06"
 tags: ["killing", "animals"]
 isSaint: false
----
-About the #killing of #animals 
+---About the #killing of #animals 
 
 👉 Question፦ Will we be judged for killing animals like Rodents?
 

@@ -6,8 +6,7 @@ title: "About #repentance, #confessin, #giving #up and #hope How to overcome rep
 date: "2023-05-21T23:06:09"
 tags: ["repentance", "confessin", "giving", "up", "hope"]
 isSaint: true
----
-About #repentance, #confessin, #giving #up and #hope 
+---About #repentance, #confessin, #giving #up and #hope 
 
 How to overcome repeated sin and discouragement?
 

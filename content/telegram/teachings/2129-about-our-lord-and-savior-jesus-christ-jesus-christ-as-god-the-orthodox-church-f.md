@@ -6,8 +6,7 @@ title: "About Our Lord and Savior #Jesus #Christ Jesus Christ as God The Orthodo
 date: "2023-12-23T01:12:01"
 tags: ["jesus", "christ"]
 isSaint: false
----
-About Our Lord and Savior #Jesus #Christ 
+---About Our Lord and Savior #Jesus #Christ 
 
 Jesus Christ as God
 

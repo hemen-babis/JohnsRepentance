@@ -6,8 +6,7 @@ title: "About the benefits of regularly partaking from the #Eucharist. The Eucha
 date: "2023-06-24T22:32:01"
 tags: ["eucharist"]
 isSaint: false
----
-About the benefits of regularly partaking from the #Eucharist. 
+---About the benefits of regularly partaking from the #Eucharist. 
 
 The Eucharist, the most sacred of sacraments, as the divine banquet; whereon the Lord’s table is adorned with the Manna from Heaven, the Holy Body, and the Precious Blood of our Saviour. In regularly partaking of this divine sustenance, we are called to a renewal of faith, the forging of an ineffable bond with the Divine, and the fortification of our spirit.
 

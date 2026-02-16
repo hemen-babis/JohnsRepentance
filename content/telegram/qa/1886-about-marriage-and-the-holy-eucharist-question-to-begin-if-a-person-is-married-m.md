@@ -6,8 +6,7 @@ title: "About #marriage and the #Holy #Eucharist Question፦ To begin, if a pers
 date: "2023-10-30T22:31:25"
 tags: ["marriage", "holy", "eucharist"]
 isSaint: false
----
-About #marriage and the #Holy #Eucharist
+---About #marriage and the #Holy #Eucharist
 
 Question፦ To begin, if a person is married, must they constantly attend Holy Communion with their spouse?  Because my mother really wants to partake in holy communion and has already confessed her sins when we went to Ethiopia and she did timket, but my father doesn't go to church and only follows church services from home, is it possible for my mother to take Kurban without my father or do they have to do it together because she really wants to partake in holy communion (they are married)?  
 

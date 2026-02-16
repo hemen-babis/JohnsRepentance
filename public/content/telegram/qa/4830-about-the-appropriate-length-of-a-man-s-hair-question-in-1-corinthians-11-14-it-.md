@@ -6,8 +6,7 @@ title: "About the appropriate length of a man's #Hair 👉 Question፦ In 1 Cori
 date: "2025-08-04T17:10:00"
 tags: ["hair"]
 isSaint: false
----
-About the appropriate length of a man's #Hair 
+---About the appropriate length of a man's #Hair 
 
 👉 Question፦ In 1 Corinthians 11:14 it says"14 Doth not even nature itself teach you, that, if a man have long hair, it is a shame unto him?"  Does this mean that it is a sin for men to have long hair?
 

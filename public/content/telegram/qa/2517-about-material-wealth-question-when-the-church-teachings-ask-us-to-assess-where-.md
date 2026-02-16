@@ -6,8 +6,7 @@ title: "About #Material #Wealth 👉 Question፦ When the church teachings ask u
 date: "2024-03-26T22:02:33"
 tags: ["material", "wealth"]
 isSaint: false
----
-About #Material #Wealth 
+---About #Material #Wealth 
 
 👉 Question፦ When the church teachings ask us to assess where our treasure is. Does that mean we should prioritize God and have him at the center of our life. 
 

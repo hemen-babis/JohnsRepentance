@@ -6,8 +6,7 @@ title: "About Holy #Wednesday On the solemn observance of the Wednesday of Holy 
 date: "2024-04-30T21:45:01"
 tags: ["wednesday"]
 isSaint: true
----
-About Holy #Wednesday 
+---About Holy #Wednesday 
 
 On the solemn observance of the Wednesday of Holy Week, known traditionally among the devout as Spy Wednesday, we are called to delve into the profound narrative that unfolds on this day—a narrative rich with betrayal, contemplation, and redemption. Let us endeavor to illuminate these events with a depth and reverence befitting their sacredness, drawing from the wisdom of the early Church Fathers and the Gospels themselves.
 

@@ -6,8 +6,7 @@ title: "About #betrothment Question፦ Is it a tradition in our Church to give a
 date: "2025-05-01T23:15:01"
 tags: ["betrothment"]
 isSaint: false
----
-About #betrothment 
+---About #betrothment 
 
 Question፦ Is it a tradition in our Church to give a woman we are betrothed to a ring? Or only at the wedding?
 

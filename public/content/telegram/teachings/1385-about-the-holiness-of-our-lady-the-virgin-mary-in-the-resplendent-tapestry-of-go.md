@@ -6,8 +6,7 @@ title: "About the holiness of our #Lady the #Virgin #Mary. In the resplendent ta
 date: "2023-06-27T22:43:01"
 tags: ["lady", "virgin", "mary"]
 isSaint: false
----
-About the holiness of our #Lady the #Virgin #Mary. 
+---About the holiness of our #Lady the #Virgin #Mary. 
 
 In the resplendent tapestry of God’s Creation, there exists a luminary surpassing all luminaries, a blessed vessel more sacrosanct than the Cherubim and Seraphim - this, my brethren, is none other than Our Lady, the Theotokos, the Holy Virgin Mary, whom the Creator Himself has chosen as His most hallowed tabernacle. In her, grace, humility, and obedience converge to compose a symphony of Divine Love, where her voice tenderly whispers, “Behold the handmaid of the Lord; be it unto me according to thy word.” (Luke 1:38).
 

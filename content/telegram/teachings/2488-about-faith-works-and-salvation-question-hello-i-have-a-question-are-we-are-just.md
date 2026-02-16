@@ -6,8 +6,7 @@ title: "About #faith, #works and #salvation Question፦ Hello,I have a question?
 date: "2024-03-17T22:15:35"
 tags: ["faith", "works", "salvation"]
 isSaint: false
----
-About #faith, #works and #salvation 
+---About #faith, #works and #salvation 
 
 Question፦ Hello,I have a question? 
 
@@ -15,7 +14,6 @@ Are we are justified by our faith or by our works in the Kingdom of God?
 
 Or is it both?
 As faith without works is dead.
-
 
 Thanks
 

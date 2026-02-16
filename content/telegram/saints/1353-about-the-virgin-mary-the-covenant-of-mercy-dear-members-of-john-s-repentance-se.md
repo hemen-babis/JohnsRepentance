@@ -6,8 +6,7 @@ title: "About the Virgin #Mary; the Covenant of Mercy Dear members of John's Rep
 date: "2023-06-23T00:09:49"
 tags: ["mary"]
 isSaint: true
----
-About the Virgin #Mary; the Covenant of Mercy 
+---About the Virgin #Mary; the Covenant of Mercy 
 
 Dear members of John's Repentance service, today is the monthly feast of our Lady the Virgin Mary, which is named Covenant of Mercy (ኪዳነ ምህረት). Today we celebrate the Theotokos, who formed an ineffable Covenant of Mercy with the Almighty. We hence send you a lesson on the Theotokos so you can read and participate in the blessings of this day. 
 

@@ -6,8 +6,7 @@ title: "About King St. #Lalibela The Sacred Vision of Saint Lalibela In the hear
 date: "2023-11-14T21:03:01"
 tags: ["lalibela"]
 isSaint: true
----
-About King St. #Lalibela 
+---About King St. #Lalibela 
 
 The Sacred Vision of Saint Lalibela
 

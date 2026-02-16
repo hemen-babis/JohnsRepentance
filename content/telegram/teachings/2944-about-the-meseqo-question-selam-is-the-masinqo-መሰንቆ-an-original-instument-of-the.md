@@ -6,8 +6,7 @@ title: "About the #Meseqo Question፦ Selam, is the masinqo መሰንቆ an orig
 date: "2024-06-19T22:01:14"
 tags: ["meseqo"]
 isSaint: false
----
-About the #Meseqo
+---About the #Meseqo
 
 Question፦ Selam, is the masinqo መሰንቆ an original instument of the ethiopian orthodox church ? 
 Was is always a part of the mezmurs?? Or was the masinqo added recently to the mezmur ???

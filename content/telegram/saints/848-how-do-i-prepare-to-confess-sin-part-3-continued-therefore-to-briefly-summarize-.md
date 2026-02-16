@@ -6,8 +6,7 @@ title: "How do I prepare to confess sin? (Part 3) (Continued) 👆 Therefore, to
 date: "2023-03-24T21:30:38"
 tags: []
 isSaint: true
----
-How do I prepare to confess sin?
+---How do I prepare to confess sin?
 
 (Part 3)
 

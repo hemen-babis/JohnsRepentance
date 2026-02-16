@@ -6,8 +6,7 @@ title: "About the #sacrement of #Eucharist and #Baptism 👉Question: Someone as
 date: "2023-01-23T20:30:28"
 tags: ["sacrement", "eucharist", "baptism", "1", "2"]
 isSaint: false
----
-About the #sacrement of #Eucharist and #Baptism
+---About the #sacrement of #Eucharist and #Baptism
 
 👉Question: Someone asked the question can the Holy Body be given without the precious blood? Must Holy Communion happen after Holy Baptism?
  

@@ -6,8 +6,7 @@ title: "Question፦ What is a #baptismal name? Answer፦ Beloved in Christ, grac
 date: "2024-02-16T21:15:01"
 tags: ["baptismal"]
 isSaint: true
----
-Question፦ What is a #baptismal name?
+---Question፦ What is a #baptismal name?
 
 Answer፦ Beloved in Christ, grace and peace to you. A baptismal name, in the of Orthodox tradition, is a name given to one during the sacred rite of Baptism. This is not merely a name, but a spiritual seal, a divine whisper calling one into a life of sanctity and devotion. 
 

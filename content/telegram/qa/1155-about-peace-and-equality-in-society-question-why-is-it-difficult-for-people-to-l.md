@@ -6,8 +6,7 @@ title: "About #peace and equality in #society 👉 Question፦ Why is it difficu
 date: "2023-05-15T21:55:38"
 tags: ["peace", "society"]
 isSaint: false
----
-About #peace and equality in #society 
+---About #peace and equality in #society 
 
 👉 Question፦ Why is it difficult for people to live together in peace and see each other as equals? 
 

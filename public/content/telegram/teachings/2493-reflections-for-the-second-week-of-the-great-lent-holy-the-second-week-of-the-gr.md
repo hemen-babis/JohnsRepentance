@@ -6,8 +6,7 @@ title: "Reflections for the Second Week of the #Great #Lent; '#Holy' The second 
 date: "2024-03-18T23:15:21"
 tags: ["great", "lent", "holy"]
 isSaint: true
----
-Reflections for the Second Week of the #Great #Lent; '#Holy'
+---Reflections for the Second Week of the #Great #Lent; '#Holy'
 
 The second week of the Great Lent, termed as "Holy," beckons us deeper into the heart of spiritual introspection and communion with the Divine.
 

@@ -6,8 +6,7 @@ title: "About #marriage and the holy #Eucharist 👉Question: Does marital statu
 date: "2023-02-24T20:31:03"
 tags: ["marriage", "eucharist"]
 isSaint: false
----
-About #marriage and the holy #Eucharist 
+---About #marriage and the holy #Eucharist 
 
 👉Question: Does marital status determine whether to receive Holy Communion? For example, if we are single, married, what if our partner is not willing? Or what should I do if my fiance refuses to marry me in the sacrament?
 

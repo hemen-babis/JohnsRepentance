@@ -6,8 +6,7 @@ title: "About #confession and #repentance 👉 Question፦ How often are we supp
 date: "2024-02-28T23:03:01"
 tags: ["confession", "repentance"]
 isSaint: true
----
-About #confession and #repentance 
+---About #confession and #repentance 
 
 👉 Question፦ How often are we supposed to confess? I always assumed we must confess to a priest the day before we take the Eucharist every single time. But I heard from a great Coptic priest that the recommended amount is at least 4x a year while focusing on personal repentance daily.
 

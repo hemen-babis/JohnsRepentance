@@ -6,8 +6,7 @@ title: "About out Lady the Virgin #Mary Question፦ Bless me Father. I am a conv
 date: "2023-11-07T21:46:01"
 tags: ["mary"]
 isSaint: false
----
-About out Lady the Virgin #Mary 
+---About out Lady the Virgin #Mary 
 
 Question፦ Bless me Father. I am a convert. I have a profound love for Our Lady Dingil Maryam. I heard it said that She is the gate to Zion. How should we properly approach Our Lady Maryam? How should we understand her?
 

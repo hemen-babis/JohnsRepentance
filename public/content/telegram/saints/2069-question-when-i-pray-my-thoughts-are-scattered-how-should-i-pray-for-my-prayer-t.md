@@ -6,8 +6,7 @@ title: "Question፦ When I #pray, my thoughts are scattered, how should I pray f
 date: "2023-12-09T21:16:52"
 tags: ["pray", "prayer"]
 isSaint: true
----
-Question፦ When I #pray, my thoughts are scattered, how should I pray for my #prayer to be heard?
+---Question፦ When I #pray, my thoughts are scattered, how should I pray for my #prayer to be heard?
 
 Answer፦ Behoved in Christ, let us delve into the profound and mystical realm of prayer, a sacred dialogue with the Divine. Prayer, in its truest essence, is not a mere utterance of words but a celestial journey of the soul, transcending the mundane to commune with the Almighty.
 

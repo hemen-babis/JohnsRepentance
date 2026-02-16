@@ -6,8 +6,7 @@ title: "About a life with #God Question፦ What’s a better way of thinking if 
 date: "2025-01-04T01:54:01"
 tags: ["god"]
 isSaint: true
----
-About a life with #God
+---About a life with #God
 
 Question፦ What’s a better way of thinking if someone is afraid to commit their life to God because of fear of losing freedom or feeling like it will be a life with a lot of rigid rules and tribulations/spiritual warfare. Or if it seems like a life of being very serious and no fun. 
 

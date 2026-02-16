@@ -6,8 +6,7 @@ title: "How can I be in a #relationship and be strong in my #spiritual life? �
 date: "2023-06-16T22:30:01"
 tags: ["relationship", "spiritual"]
 isSaint: false
----
-How can I be in a #relationship and be strong in my #spiritual life? 
+---How can I be in a #relationship and be strong in my #spiritual life? 
 
 👉 Question፦ Hello my fathers, how should spiritual courtship be? I am very hesitant on having a girlfriend because if I do, I'll spend a lot of time on the phone and this will affect my spiritual life. And I become ashamed of going to church, my prayers aren't even very authentic. Please advise me?
 

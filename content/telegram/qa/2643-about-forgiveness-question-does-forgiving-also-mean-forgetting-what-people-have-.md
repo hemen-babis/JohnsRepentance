@@ -6,8 +6,7 @@ title: "About #Forgiveness 👉🏾 Question፦ Does forgiving also mean forgett
 date: "2024-04-26T22:03:01"
 tags: ["forgiveness"]
 isSaint: false
----
-About #Forgiveness
+---About #Forgiveness
 
 👉🏾 Question፦ Does forgiving also mean forgetting what people have done or is it still considered fully forgiving if we remember and use that information to set boundaries. For example, if someone is consistently behaving in certain ways that’s hurtful. Would forgiving the person and loving the person mean we forget it and continue the relationship in the same way. Or would it still be considered forgiving and still maintaining love if i forgive the person, but create some distance and set boundaries to protect myself? (while making sure that i have love in my heart for the person). 
 

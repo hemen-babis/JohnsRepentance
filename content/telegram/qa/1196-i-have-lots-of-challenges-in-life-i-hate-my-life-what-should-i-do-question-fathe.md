@@ -6,8 +6,7 @@ title: "I have lots of challenges in #life. I hate my life, what should I do? Qu
 date: "2023-05-22T21:46:01"
 tags: ["life"]
 isSaint: false
----
-I have lots of challenges in #life. I hate my life, what should I do?
+---I have lots of challenges in #life. I hate my life, what should I do?
 
 Question፦ Fathers, I am suffering a lot on this earth, what should I do? I pray every day so lack of prayer is not the reason.  3 days ago, I tried to commit suicide but couldn't. And even today, I'm not happy. The problem is:
 

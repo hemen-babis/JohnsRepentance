@@ -6,8 +6,7 @@ title: "What is the basic purpose of #marriage? Is there a difference between se
 date: "2023-05-30T23:47:25"
 tags: ["marriage"]
 isSaint: false
----
-What is the basic purpose of #marriage? Is there a difference between secular marriage and a marriage conducted in church?
+---What is the basic purpose of #marriage? Is there a difference between secular marriage and a marriage conducted in church?
 
 ✍️Answer፦ The institution of marriage holds a deep significance in the Orthodox Church, reflecting the union of the bridegroom and the bride. It is regarded as a sacred mystery that is celebrated through a ceremony conducted in the church, accompanied by a sacrament that symbolizes the joining and oneness of the couple. In the words of Scripture, "A man shall leave his father and mother and be joined to his wife, and the two shall become one flesh" (Matthew 19:5). Thus, marriage is a profound mystery in which the couple commits to love and cherish each other exclusively, with the intention of starting a family, sharing their lives and possessions, and living together as long as God permits.
 

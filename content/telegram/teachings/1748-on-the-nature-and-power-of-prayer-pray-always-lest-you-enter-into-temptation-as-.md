@@ -6,8 +6,7 @@ title: "On the Nature and Power of #Prayer _\"Pray always, lest you enter into t
 date: "2023-09-20T22:43:40"
 tags: ["prayer"]
 isSaint: false
----
-On the Nature and Power of #Prayer
+---On the Nature and Power of #Prayer
 
 _"Pray always, lest you enter into temptation,"_ as the Holy Gospel of Matthew, in its 26th chapter and 41st verse, wisely counsels. In these simple words, lies a profound truth: Prayer is our discourse with the Most High.
 

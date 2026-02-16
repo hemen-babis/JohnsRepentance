@@ -6,8 +6,7 @@ title: "About #Christian #living and #spirituality Question፦ Philippians 2:1-1
 date: "2024-05-06T22:16:02"
 tags: ["christian", "living", "spirituality"]
 isSaint: true
----
-About #Christian #living and #spirituality
+---About #Christian #living and #spirituality
 
 Question፦ Philippians 2:1-11 “do nothing from selfish ambition or conceit, but in humility regard others as better than yourself. Let each of you look not to your own interests, but to the interest of others” 
 

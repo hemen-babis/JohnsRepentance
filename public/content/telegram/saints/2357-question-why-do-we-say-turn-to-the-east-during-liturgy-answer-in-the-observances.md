@@ -6,8 +6,7 @@ title: "Question፦ Why do we say \"turn to the east\" during #Liturgy? Answer�
 date: "2024-02-03T21:33:01"
 tags: ["liturgy"]
 isSaint: true
----
-Question፦ Why do we say "turn to the east" during #Liturgy? 
+---Question፦ Why do we say "turn to the east" during #Liturgy? 
 
 Answer፦ In the observances of our Orthodox liturgy, the act of turning towards the east transcends mere ritualistic formality, embodying instead a profound theological and spiritual orientation that unites us, in both memory and hope, to the very essence of our faith. Let us delve deeply into this sacred tradition, that its significance might illuminate our hearts as the rising sun illuminates the world.
 

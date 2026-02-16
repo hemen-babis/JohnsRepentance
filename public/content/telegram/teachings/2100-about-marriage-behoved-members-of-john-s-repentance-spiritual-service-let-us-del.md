@@ -6,8 +6,7 @@ title: "About #marriage Behoved members of John's Repentance spiritual service, 
 date: "2023-12-15T21:16:01"
 tags: ["marriage"]
 isSaint: false
----
-About #marriage 
+---About #marriage 
 
 Behoved members of John's Repentance spiritual service, let us delve into a comprehensive lesson about marriage. This exploration aims to imbue the reader with deep understanding and reverence for the sacred institution of marriage as seen through the Orthodox Christian perspective.
 

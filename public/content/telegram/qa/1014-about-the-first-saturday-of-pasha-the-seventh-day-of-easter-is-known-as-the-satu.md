@@ -6,8 +6,7 @@ title: "About the first #Saturday of #Pasha The seventh day of Easter is known a
 date: "2023-04-22T10:32:53"
 tags: ["saturday", "pasha", "women"]
 isSaint: true
----
-About the first #Saturday of #Pasha 
+---About the first #Saturday of #Pasha 
 
 The seventh day of Easter is known as the Saturday of Holy #Women.
 

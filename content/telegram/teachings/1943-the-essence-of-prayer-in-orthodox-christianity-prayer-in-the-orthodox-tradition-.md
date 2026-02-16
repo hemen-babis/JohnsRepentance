@@ -6,8 +6,7 @@ title: "The Essence of #Prayer in Orthodox Christianity Prayer, in the Orthodox 
 date: "2023-11-12T21:03:01"
 tags: ["prayer"]
 isSaint: false
----
-The Essence of #Prayer in Orthodox Christianity
+---The Essence of #Prayer in Orthodox Christianity
 
 Prayer, in the Orthodox tradition, is not merely a ritual or a set of words recited mechanically. It is the breath of the soul, a dialogue with the Divine. It transcends mere spoken language, reaching into the depths of the heart where the spirit communes with God. This communion is akin to a mystical union, where the soul, stripped of worldly distractions, stands naked and humbled before its Creator.
 

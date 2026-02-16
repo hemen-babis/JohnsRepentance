@@ -6,8 +6,7 @@ title: "About #marriage 👉 Question: When looking for a partner to be in a rel
 date: "2023-03-09T20:37:13"
 tags: ["marriage"]
 isSaint: false
----
-About #marriage 
+---About #marriage 
 
 👉 Question:  When looking for a partner to be in a relationship with, is physical attraction another important factor to consider in addition to the person being a Godly man? Or are we supposed to not give it a lot of weight? 
 

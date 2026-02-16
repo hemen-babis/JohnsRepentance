@@ -6,8 +6,7 @@ title: "About reading from #Eastern and #Oriental #Orthodox fathers 👉 Questio
 date: "2023-11-06T22:08:28"
 tags: ["eastern", "oriental", "orthodox"]
 isSaint: true
----
-About reading from #Eastern and #Oriental #Orthodox fathers
+---About reading from #Eastern and #Oriental #Orthodox fathers
 
 👉 Question፦ Greetings in the Lord, I have a question about something that has been on my mind lately! I read books written by Eastern Orthodox authors and their saints. They have been a great source of spiritual support in my journey, however I wonder if this will cause issues for me as Oriental Orthodox! Does our church have any sort of rules about reading or using resources from churches we aren't in Communion with? Are their saints, specifically modern saints that lived after the schism considered saints in our church?
 

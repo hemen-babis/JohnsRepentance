@@ -6,8 +6,7 @@ title: "About the victory of #Adwa (128th celebration) In an era where the shado
 date: "2024-03-02T08:12:00"
 tags: ["adwa"]
 isSaint: false
----
-About the victory of #Adwa (128th celebration)
+---About the victory of #Adwa (128th celebration)
 
 In an era where the shadows of colonization loomed large over Africa, a beacon of resistance and autonomy shone brightly from the heart of Ethiopia. This beacon was none other than Emperor Menelik II, a sovereign whose reign became synonymous with the celebrated Victory of Adwa, an event that not only marked a significant chapter in Ethiopian history but also served as a testament to the indomitable spirit of an entire continent.
 

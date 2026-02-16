@@ -6,8 +6,7 @@ title: "A Divine Invitation to the Heavenly Banquet 👉🏾 The Unfathomable My
 date: "2023-08-09T22:03:01"
 tags: ["eucharist"]
 isSaint: false
----
-A Divine Invitation to the Heavenly Banquet
+---A Divine Invitation to the Heavenly Banquet
 
 👉🏾 The Unfathomable Mystery of the Holy #Eucharist and the Grace therein
 

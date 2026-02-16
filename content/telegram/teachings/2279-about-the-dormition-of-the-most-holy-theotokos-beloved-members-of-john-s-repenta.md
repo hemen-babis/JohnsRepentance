@@ -6,10 +6,9 @@ title: "About the #Dormition of the Most Holy #Theotokos Beloved members of John
 date: "2024-01-29T23:02:42"
 tags: ["dormition", "theotokos"]
 isSaint: false
----
-About the #Dormition of the Most Holy #Theotokos
+---About the #Dormition of the Most Holy #Theotokos
 
-Beloved members of John's Repentanc Spiritual service, let us delve deeply into the profound mystery and celestial celebration of the Dormition of the Most Holy Theotokos, the Virgin Mary, whose repose not only marks an event of sacred transition but also a testament to the ineffable workings of Divine Grace and Love in the Christian narrative.
+Beloved members of John's Repentance Spiritual service, let us delve deeply into the profound mystery and celestial celebration of the Dormition of the Most Holy Theotokos, the Virgin Mary, whose repose not only marks an event of sacred transition but also a testament to the ineffable workings of Divine Grace and Love in the Christian narrative.
 
 The Prophetic Revelation of the Repose: The narrative of Mary’s Dormition commences with a divine revelation, much like the annunciation of her bearing the Christ Child. The Holy Spirit, ever-present and guiding, reveals to Mary her imminent departure from this mortal realm. This moment is profoundly significant, not just in its foretelling of an event, but in its affirmation of Mary's deep and unceasing communion with God. It is a testament to her sanctity and her pivotal role in the salvific history of mankind.
 

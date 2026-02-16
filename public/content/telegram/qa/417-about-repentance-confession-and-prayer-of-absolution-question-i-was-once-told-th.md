@@ -6,8 +6,7 @@ title: "About #repentance, #confession and prayer of #absolution 👉Question፦
 date: "2023-01-15T20:30:51"
 tags: ["repentance", "confession", "absolution"]
 isSaint: false
----
-About #repentance, #confession and prayer of  #absolution 
+---About #repentance, #confession and prayer of  #absolution 
 
 👉Question፦ I was once told that the prayer of absolution at the beginning of the Divine Liturgy Service can be considered as forgiveness of sin before partaking in the Sacrament of Holy Communion is this Orthodox practice? Can this be considered a substitute for confession of you didn't have time to meet with your priest before?
 

@@ -6,8 +6,7 @@ title: "About Spiritual #Goal Setting Question: Any advice on Spiritual goal set
 date: "2025-07-05T00:23:13"
 tags: ["goal"]
 isSaint: false
----
-About Spiritual #Goal Setting
+---About Spiritual #Goal Setting
 
 Question: Any advice on Spiritual goal setting? It's easy to fall into decision paralysis in figuring out where to start. There's many facets from spiritual, intellectual, physical, etc that one can choose from
 

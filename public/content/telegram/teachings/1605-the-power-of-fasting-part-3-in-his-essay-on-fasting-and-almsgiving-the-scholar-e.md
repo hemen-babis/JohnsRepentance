@@ -6,8 +6,7 @@ title: "The Power of #Fasting (Part 3) In his essay on Fasting and Almsgiving, t
 date: "2023-08-10T22:53:46"
 tags: ["fasting"]
 isSaint: false
----
-The Power of #Fasting
+---The Power of #Fasting
 
 (Part 3)
 

@@ -6,8 +6,7 @@ title: "About #Service and #carrier choice 👉Question፦ What does the church 
 date: "2024-04-04T21:09:01"
 tags: ["service", "carrier"]
 isSaint: true
----
-About #Service and #carrier choice 
+---About #Service and #carrier choice 
 
 👉Question፦ What does the church advise about careers that consume a lot of your time & potentially limit the amount of time you can spend in church service & activities ? 
 

@@ -6,8 +6,7 @@ title: "About the #Peace that #Christ offers us The peace that Christ offers is 
 date: "2024-02-16T21:19:01"
 tags: ["peace", "christ"]
 isSaint: true
----
-About the #Peace that  #Christ offers us
+---About the #Peace that  #Christ offers us
 
 The peace that Christ offers is not merely an absence of conflict or a transient state of calm. It is a profound, abiding tranquility that penetrates the soul, a gift of the Holy Spirit who Himself is the bond of peace. This divine peace is a hallmark of the Kingdom of God, a foretaste of the eschatological harmony promised to all who are united in Christ.
 

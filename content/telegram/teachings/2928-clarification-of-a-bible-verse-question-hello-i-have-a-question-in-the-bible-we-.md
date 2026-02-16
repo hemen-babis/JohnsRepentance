@@ -6,8 +6,7 @@ title: "#Clarification of a #bible verse Question፦ Hello, I have a question: I
 date: "2024-06-13T22:39:01"
 tags: ["clarification", "bible"]
 isSaint: false
----
-#Clarification of a #bible verse 
+---#Clarification of a #bible verse 
 
 Question፦ Hello, 
 
@@ -21,10 +20,7 @@ When we practice self love, some things we learn about are putting ourselves fir
 
 Therefore, knowing how important it is to have self love and prioritizing ourselves / putting ourselves first.How does one balance their own mental well-being and happiness with the biblical teaching of serving others and taking care of their needs?
 
-
 - Is it biblical to put ourselves first or is this a secular teaching? Or is this something that is supported by the bible and we are supposed to put ourselves first, etc while also making sure we are serving others. Meaning, they don’t go against each other? 
-
-
 
 Philippians 2:4  ESV/ 260
 

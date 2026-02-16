@@ -6,8 +6,7 @@ title: "About the grace of a life of #repentance Through the sacred act of repen
 date: "2023-08-04T22:03:01"
 tags: ["repentance"]
 isSaint: false
----
-About the grace of a life of #repentance 
+---About the grace of a life of #repentance 
 
 Through the sacred act of repentance, we unearth the glorious grace of God, which is not simply a removal of punishment but a grand elevation of our very being. It is as if one were plucked from the darkest pit and set amongst the stars. What is repentance but a return to the Father, an awakening of the soul, a casting off of the heavy garments of sin, and a putting on of the radiant robe of righteousness?
 

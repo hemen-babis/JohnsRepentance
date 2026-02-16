@@ -6,8 +6,7 @@ title: "About responsibilities of a #spiritual #father 👉 Question፦ My confe
 date: "2023-07-12T22:30:44"
 tags: ["spiritual", "father"]
 isSaint: true
----
-About responsibilities of a #spiritual #father 
+---About responsibilities of a #spiritual #father 
 
 👉 Question፦ My confession father does not answer my calls or my text anymore. They have left us in a country without any priest. They expect us to establish a church without any guidance or help. I am tired and frustrated. 
 

@@ -6,8 +6,7 @@ title: "About #Anxiety Question፦ My question is about fear & anxiety. I have s
 date: "2024-03-23T21:37:37"
 tags: ["anxiety"]
 isSaint: true
----
-About #Anxiety
+---About #Anxiety
 
 Question፦ My question is about fear & anxiety. I have struggled with social anxiety for a long time now, and it affects different areas of my life, like work, church, and social events. It affects how I function and interact with others in these different situations. I want to be free and not a prisoner of my mind. I really wanna find the confidence and courage to be able to walk over to someone at work and strike up a conversation, to join in on conversations with my team, to ask questions when I feel stuck or need help, to approach others at church and build that community, to speak up in meetings/groups..etc. I do pray during these situations for God to help me but sometimes I just feel stuck like there is no way for me to become a better version of myself because I can't break out of this cycle. Please help.
 

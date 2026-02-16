@@ -6,8 +6,7 @@ title: "About the feast of the #Transfiguration 👉 Question፦ Why does God ca
 date: "2023-08-17T22:03:01"
 tags: ["transfiguration"]
 isSaint: true
----
-About the feast of the #Transfiguration 
+---About the feast of the #Transfiguration 
 
 👉 Question፦ Why does God call Moses and Elijah apart from the prophets for his transfiguration on Mt. Tabor?
 

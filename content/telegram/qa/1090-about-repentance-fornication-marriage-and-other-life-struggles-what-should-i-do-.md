@@ -6,8 +6,7 @@ title: "About #repentance, #fornication, #marriage and other life struggles What
 date: "2023-05-06T00:20:23"
 tags: ["repentance", "fornication", "marriage"]
 isSaint: false
----
-About #repentance, #fornication, #marriage and other life struggles 
+---About #repentance, #fornication, #marriage and other life struggles 
 
 What should I do if I still love my Muslim ex-boyfriend even after confessing to a Bishop and trying to follow religious teachings?
 

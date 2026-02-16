@@ -6,8 +6,7 @@ title: "About the location of #heaven Question፦ Someone asked today if heaven 
 date: "2024-07-30T00:59:01"
 tags: ["heaven"]
 isSaint: false
----
-About the location of #heaven
+---About the location of #heaven
 
 Question፦ Someone asked today if heaven is on earth or in the sky?
 

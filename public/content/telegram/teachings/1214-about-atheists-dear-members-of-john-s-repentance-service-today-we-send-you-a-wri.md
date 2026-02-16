@@ -6,8 +6,7 @@ title: "About #Atheists Dear members of John's Repentance service, today we send
 date: "2023-05-26T22:13:01"
 tags: ["atheists"]
 isSaint: false
----
-About #Atheists
+---About #Atheists
 
 Dear members of John's Repentance service, today we send you a writing about Atheism from a great Russian Orthodox father as this is a major problem the western world is dealing with today. 
 

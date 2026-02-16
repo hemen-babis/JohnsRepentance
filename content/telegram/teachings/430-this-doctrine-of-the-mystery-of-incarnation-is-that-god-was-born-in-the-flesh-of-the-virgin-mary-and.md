@@ -1,0 +1,18 @@
+---
+id: 430
+from: "ዮሐንስ ንስሐ"
+type: "lesson"
+title: "This doctrine of the mystery of incarnation is that God was born in the flesh of the Virgin Mary and"
+date: "2023-01-17T20:44:58"
+tags: []
+isSaint: false
+---
+This doctrine of the mystery of incarnation is that God was born in the flesh of the Virgin Mary and the Holy Virgin Mary was called the Mother of God (Theotokos) because she gave birth to God in the flesh (Luke 1:35).
+
+In Orthodox Tewahedo, religion is given the highest priority. "Without religion it is impossible to please God" Heb 11:6, as the apostle revealed, religion is the basis of our existence. (Mathew 16:18) God's kingdom is inherited through religion. Orthodox Tewahedo begins its religious education by teaching the existence of God. In Orthodox Tewahedo's teaching, God's existence is the pre-world, the after-world in unity and the unique trinity in unity, who is alive before the ages and after the ages (Alpha and Omega). He who is praised for his existence for countless ages, whose name is God in unity, whose name is Father, Son and Holy Spirit in trinity, who brought the living worlds from non-existence to existence, the law of the universe, the creator of the worlds, the perfect infallible, holy, kind, true judge, all The Orthodox Tewahedo religion believes and teaches that the All-Knowing and All-Powerful One, Who preserves and nourishes the worlds, is the source of holiness, whose name is God.
+
+Therefore, when we say Orthodox Tewahedo religion, we believe in the unity and trinity of God, and the belief that there is a God (creator) that we cannot see with our physical eyes, touch with our hands, and cannot reach by research. Through the laws of nature, He created heaven and earth, darkness and light, day and night, man and angels, wild animals and animals, crops and vegetables, creatures that move on land and sea, crawl on their chests, and fly on their wings, a total of 22 creatures. 'Orthodox Tewahedo Religion' is the direct way to acknowledge the creator who feeds and guides all creatures. This is the main secret that makes it different from other types of faith. Because not all faith is religion. For example: those who believe in Satan, those who believe in idols, those who believe in the spirit of kings, those who worship fire, river, tree, stone, various spirits, we do not call all the beliefs that people believe a 'religion'. The true and direct religion is the wealth of the Holy Spirit given to believe in God alone as God, Creator, and Sustainer. 
+
+  Morality: Morality is taught in Orthodox Tewahedo and given the highest place after religion. Morality is inseparable from faith. People who don't understand the teachings of the Bible say, "Only believe and you will be saved," interpreting the teachings of the apostles to their own will and carelessly changing the hearts and virtues of gentle people. The apostle Saint James said, "What doth it profit, my brethren, though a man say he hath faith, and have not works? can faith save him? If a brother or sister be naked, and destitute of daily food; And one of you say unto them, Depart in peace, be ye warmed and filled; notwithstanding ye give them not those things which are needful to the body; what doth it profit? Even so faith, if it hath not works, is dead, being alone." Jah 2:14-17 explains. Just as a fruitless tree is cut down, we have faith that is not manifested in works, if we do not do good, we are worthless. He said, "For I say unto you, That except your righteousness shall exceed the righteousness of the scribes and Pharisees, ye shall in no case enter into the kingdom of heaven." Matthew 5.20
+
+(continues)👇

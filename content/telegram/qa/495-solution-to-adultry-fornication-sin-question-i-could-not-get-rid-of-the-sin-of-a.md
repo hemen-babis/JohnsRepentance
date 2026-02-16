@@ -6,8 +6,7 @@ title: "#solution to #adultry #fornication #sin 👉Question: I could not get ri
 date: "2023-01-31T20:42:02"
 tags: ["solution", "adultry", "fornication", "sin"]
 isSaint: false
----
-#solution to #adultry #fornication #sin
+---#solution to #adultry #fornication #sin
 
 👉Question: I could not get rid of the sin of adultery, what should I do? (What is the cause and solution?)
 

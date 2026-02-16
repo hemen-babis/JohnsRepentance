@@ -6,8 +6,7 @@ title: "About the use of #Iconography in the #EOTC 👉 Question፦ Why are thes
 date: "2024-05-25T22:04:54"
 tags: ["iconography", "eotc"]
 isSaint: true
----
-About the use of #Iconography in the #EOTC 
+---About the use of #Iconography in the #EOTC 
 
 👉 Question፦ Why are these colonial images  of Jesus from Italy, Rome allowed in our church and in our prayer books?? 
 

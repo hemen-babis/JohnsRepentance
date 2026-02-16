@@ -6,8 +6,7 @@ title: "Question፦ What is the difference in beliefs about Christ between #Atha
 date: "2023-11-22T21:15:36"
 tags: ["athanasius", "arius", "muslim", "family"]
 isSaint: true
----
-Question፦ What is the difference in beliefs about Christ between #Athanasius and #Arius? Could you explain the term 'Tax Christ' and 'Common Christ' if they have any significance in Orthodox Christianity? If a person in a #Muslim #family converts to Christianity, what should be their approach in terms of living arrangements and family relationships?
+---Question፦ What is the difference in beliefs about Christ between #Athanasius and #Arius? Could you explain the term 'Tax Christ' and 'Common Christ' if they have any significance in Orthodox Christianity? If a person in a #Muslim #family converts to Christianity, what should be their approach in terms of living arrangements and family relationships?
 
 Answer፦ In the grace and peace of our Lord Jesus Christ, I greet you, dear questioner, seeking to illuminate the path of faith for you.
 

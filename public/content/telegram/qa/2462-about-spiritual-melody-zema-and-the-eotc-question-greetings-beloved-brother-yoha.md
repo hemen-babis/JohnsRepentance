@@ -6,8 +6,7 @@ title: "About Spiritual #Melody, #Zema and the #EOTC 👉 Question፦ Greetings 
 date: "2024-03-07T21:01:09"
 tags: ["melody", "zema", "eotc"]
 isSaint: true
----
-About Spiritual #Melody, #Zema and the #EOTC
+---About Spiritual #Melody, #Zema and the #EOTC
 
 👉 Question፦ Greetings beloved brother Yohannes Neseha. I am Dcn. Zefre Birhan and I serve at Holy Trinity located in Bronx Ny. I have a question.
 

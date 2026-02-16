@@ -6,8 +6,7 @@ title: "The Radiance of #Saint #George: Martyrdom and Light Though delayed by a 
 date: "2025-05-07T21:52:02"
 tags: ["saint", "george"]
 isSaint: true
----
-The Radiance of #Saint #George: Martyrdom and Light
+---The Radiance of #Saint #George: Martyrdom and Light
 
 Though delayed by a technical issue, we share this now so you may still partake in St. George’s blessings. His radiant faith and courage remain ever-relevant and deeply inspiring.
 

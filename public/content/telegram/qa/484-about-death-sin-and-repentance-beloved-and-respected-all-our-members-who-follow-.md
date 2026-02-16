@@ -6,8 +6,7 @@ title: "About #death, #sin and #repentance Beloved and respected, all our member
 date: "2023-01-28T20:30:57"
 tags: ["death", "sin", "repentance"]
 isSaint: true
----
-About #death, #sin and #repentance 
+---About #death, #sin and #repentance 
 
 Beloved and respected, all our members who follow the orthodox education that we convey on John's Repentance page, we encourage you to ask questions on this page. The following is a question that was sent to us privately, which you can do on Telegram by sending a message to the admin 'ዮሐንስ ንስሐ' or by sending us an email at yohannes.neseha@gmail.com. Since we all face similar struggles in life, we can all learn from one another. Hence we entrust you all to read and learn from the answers we give. 
 

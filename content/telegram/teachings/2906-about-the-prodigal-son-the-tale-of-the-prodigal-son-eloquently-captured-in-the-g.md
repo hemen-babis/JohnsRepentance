@@ -6,8 +6,7 @@ title: "About the #Prodigal #Son The tale of the prodigal son, eloquently captur
 date: "2024-06-02T22:07:01"
 tags: ["prodigal", "son"]
 isSaint: false
----
-About the #Prodigal #Son 
+---About the #Prodigal #Son 
 
 The tale of the prodigal son, eloquently captured in the Gospel of Luke, serves not merely as a narrative of familial relations but as a profound theological allegory, reflecting the inexhaustible mercy of God and the human condition of sin, repentance, and redemption.
 

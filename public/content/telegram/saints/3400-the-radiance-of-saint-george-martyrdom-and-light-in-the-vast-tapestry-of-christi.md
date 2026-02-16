@@ -6,8 +6,7 @@ title: "The Radiance of #Saint #George: Martyrdom and Light In the vast tapestry
 date: "2024-10-04T03:27:07"
 tags: ["saint", "george"]
 isSaint: true
----
-The Radiance of #Saint #George: Martyrdom and Light
+---The Radiance of #Saint #George: Martyrdom and Light
 
 In the vast tapestry of Christian saints and martyrs, St. George stands as an emblem of unwavering faith, luminous courage, and an ethereal embodiment of Christ's light. His tale, while ancient, brings forth lessons that are eternally valuable, ever relevant, and strikingly profound.
 

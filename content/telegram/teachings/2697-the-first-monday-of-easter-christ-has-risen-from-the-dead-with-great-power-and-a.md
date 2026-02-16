@@ -6,8 +6,7 @@ title: "The first Monday of #Easter \"Christ has risen from the dead, with great
 date: "2024-05-06T22:20:35"
 tags: ["easter"]
 isSaint: false
----
-The first Monday of #Easter 
+---The first Monday of #Easter 
 
 "Christ has risen from the dead, 
 with great power and authority, 

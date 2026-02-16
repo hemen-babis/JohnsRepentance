@@ -6,8 +6,7 @@ title: "About #repentance #confession 👉🏾 Question: How do I prepare to con
 date: "2023-03-23T21:30:44"
 tags: ["repentance", "confession"]
 isSaint: false
----
-About #repentance #confession 
+---About #repentance #confession 
 
 👉🏾 Question: How do I prepare to confess sin? 
  

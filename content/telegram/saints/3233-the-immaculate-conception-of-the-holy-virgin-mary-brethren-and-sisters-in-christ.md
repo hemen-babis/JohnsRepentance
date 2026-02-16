@@ -6,8 +6,7 @@ title: "The #immaculate Conception of the Holy Virgin #Mary Brethren and sisters
 date: "2024-08-14T00:03:02"
 tags: ["immaculate", "mary"]
 isSaint: true
----
-The #immaculate Conception of the Holy Virgin #Mary
+---The #immaculate Conception of the Holy Virgin #Mary
 
 Brethren and sisters in Christ, I bid you welcome on this splendid occasion, our gathering at Our Lady of the Holy Virgin Mary, to partake in the divine joy of the annual feast of her Immaculate Conception. This day, revered and hallowed by the faithful, is heralded by our forebears in faith as "Ancient medicine, the starting day of salvation." Let us delve into the profound mystery and blessing of this day, as we reflect on the sanctity bestowed upon all of creation through the conception of the Mother of God.
 

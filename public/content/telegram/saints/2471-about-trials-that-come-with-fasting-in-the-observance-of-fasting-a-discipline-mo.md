@@ -6,8 +6,7 @@ title: "About #trials that come with #fasting In the observance of fasting, a di
 date: "2024-03-12T01:33:24"
 tags: ["trials", "fasting"]
 isSaint: true
----
-About #trials that come with #fasting
+---About #trials that come with #fasting
 
 In the observance of fasting, a discipline most venerable and ancient, we find ourselves embarking upon a journey that is both deeply personal and universally profound, much akin to the transformative passages detailed in the lives of the saints and the righteous. As we enter this solemn period, particularly marked by the commencement of the Great Lent, it is incumbent upon us to contemplate the manifold trials that accompany this spiritual endeavor, discerning their purpose and the divine wisdom they impart.
 

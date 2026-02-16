@@ -6,8 +6,7 @@ title: "About the #fast of the #Prophets Beloved members of John's Repentance sp
 date: "2023-11-24T21:04:01"
 tags: ["fast", "prophets"]
 isSaint: false
----
-About the #fast of the #Prophets
+---About the #fast of the #Prophets
 
 Beloved members of John's Repentance spiritual service, today we send you a lesson on the fast of the Prophets which starts on November 24th and ends January 6th so you can read and understand more about this fast. 
 

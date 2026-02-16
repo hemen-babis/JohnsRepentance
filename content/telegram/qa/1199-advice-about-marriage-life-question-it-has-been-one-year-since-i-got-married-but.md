@@ -6,8 +6,7 @@ title: "Advice about #marriage life Question: It has been one year since I got m
 date: "2023-05-23T21:33:56"
 tags: ["marriage"]
 isSaint: false
----
-Advice about #marriage life
+---Advice about #marriage life
 
 Question: It has been one year since I got married but I couldn't have physical intimacy with my wife, because she has no feelings at all, she feels great pain, we tried different solutions, advice, treatment, prayers, but we couldn't find a solution, what solution do you give us?
 

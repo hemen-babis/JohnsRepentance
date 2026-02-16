@@ -6,8 +6,7 @@ title: "The Annual Feast of Saint #Joseph the Elder: A Reflection on His Life an
 date: "2024-08-02T02:46:01"
 tags: ["joseph"]
 isSaint: true
----
-The Annual Feast of Saint #Joseph the Elder: A Reflection on His Life and Legacy
+---The Annual Feast of Saint #Joseph the Elder: A Reflection on His Life and Legacy
 
 Dear faithful adherents of the teachings preserved through the ages, let us gather in the spirit of humility and reverence to reflect upon the venerable Saint Joseph the Elder, whose life offers us profound lessons in piety and devotion. We mark his annual feast with a solemnity that befits his holy standing, honoring his memory on Hamle 26 (August 1, 2024), a day sanctified by the angels themselves.
 

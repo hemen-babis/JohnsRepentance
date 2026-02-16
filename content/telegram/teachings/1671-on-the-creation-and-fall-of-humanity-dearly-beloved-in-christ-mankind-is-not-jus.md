@@ -6,8 +6,7 @@ title: "On the #Creation and Fall of #Humanity Dearly beloved in Christ, mankind
 date: "2023-08-27T22:42:01"
 tags: ["creation", "humanity"]
 isSaint: false
----
-On the #Creation and Fall of #Humanity
+---On the #Creation and Fall of #Humanity
 
 Dearly beloved in Christ, mankind is not just another creature in the great tapestry of existence, but the masterpiece of the Divine Artist.
 

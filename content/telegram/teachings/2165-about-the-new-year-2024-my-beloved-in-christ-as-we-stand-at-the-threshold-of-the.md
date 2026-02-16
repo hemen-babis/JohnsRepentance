@@ -6,8 +6,7 @@ title: "About the #New_Year #2024 My Beloved in Christ, As we stand at the thres
 date: "2023-12-31T21:03:44"
 tags: ["new_year", "2024"]
 isSaint: false
----
-About the #New_Year #2024
+---About the #New_Year #2024
 
 My Beloved in Christ,
 

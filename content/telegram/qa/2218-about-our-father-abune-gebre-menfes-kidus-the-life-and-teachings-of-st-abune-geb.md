@@ -6,8 +6,7 @@ title: "About our father #Abune #Gebre_Menfes_Kidus The life and teachings of St
 date: "2024-01-13T21:07:01"
 tags: ["abune", "gebre_menfes_kidus"]
 isSaint: true
----
-About our father #Abune #Gebre_Menfes_Kidus
+---About our father #Abune #Gebre_Menfes_Kidus
 
 The life and teachings of St. Abune Gebre Menfes Kidus, a revered figure in Orthodox Christianity, offer a profound testament to the power of faith, asceticism, and divine intervention. His story begins in the land of Egypt, where his parents, Simeon and Aklesia, longed for a child for thirty years. In a miraculous occurrence, akin to the biblical stories of old, a divine voice promised them a son whose glory would surpass the heavens. This prophecy was fulfilled with the birth of Abune Gebre Menfes Kidus.
 

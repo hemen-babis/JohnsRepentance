@@ -6,8 +6,7 @@ title: "About #Iconography The genesis of sacred imagery is deeply rooted in the
 date: "2024-02-02T21:34:01"
 tags: ["iconography"]
 isSaint: true
----
-About #Iconography
+---About #Iconography
 
 The genesis of sacred imagery is deeply rooted in the divine commandments and the holy scriptures, where the Most High God instructed the prophet Moses to fashion cherubs on the Ark of the Covenant. These cherubs, with wings outstretched, gazing upon the mercy seat, signify not only the presence of God but also the reverence and awe due to Him. This commandment underscores the sanctity and significance of images as conduits of divine reality, a tradition that the Church has meticulously preserved and revered through the ages.
 

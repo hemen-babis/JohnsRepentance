@@ -6,8 +6,7 @@ title: "About #Ecclesiastical Order Question፦ On 1 Tim 3:2 it says :\"A bishop
 date: "2023-06-09T21:55:01"
 tags: ["ecclesiastical"]
 isSaint: true
----
-About #Ecclesiastical Order
+---About #Ecclesiastical Order
 
 Question፦ On 1 Tim 3:2 it says :"A bishop then must be blameless, the husband of one wife, vigilant, sober, of good behavior, given to hospitality, apt to teach" who are metropolitan bishops in Orthodox Church? Can they get married or can a bishop be a married person?
 

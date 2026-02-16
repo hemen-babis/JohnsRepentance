@@ -6,8 +6,7 @@ title: "About the Holy family's return to the Holy land. Beloved members of John
 date: "2023-11-15T20:33:01"
 tags: []
 isSaint: false
----
-About the Holy family's return to the Holy land. 
+---About the Holy family's return to the Holy land. 
 
 Beloved members of John's Repentance spiritual service, today we celebrate the Holy family's return from Egypt to Israel. We call this feast 'Debre Kuskwam' or Mount of Kuskwam. Let us learn about this Holy day and partake from it's blessings. 
 

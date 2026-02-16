@@ -6,8 +6,7 @@ title: "About #sin, #fornication, #confession, #fear, #repentance 👉Question: 
 date: "2023-01-15T20:37:02"
 tags: ["sin", "fornication", "confession", "fear", "repentance"]
 isSaint: true
----
-About #sin, #fornication, #confession, #fear, #repentance 
+---About #sin, #fornication, #confession, #fear, #repentance 
 
 👉Question: I have issues sleeping becauseI have so many thoughts inside that I am not at peace. I was touched by your recent post which makes me long for my father's house (God), I miss my childhood, I am in my late twenties, I have no peace at all, I am stuck in the pit of sin and I have no way out. I am in the sin of which I have repeatedly repented; I've repented a couple of times but I'm still back there. My current boyfriend (not marriage) is a Muslim, I had a repentant father but I lost the ability to talk about my work in front of my father. Repentance. Even if I see my father on the street, I hide because I am afraid. If I pass them, I stay away from the church. I've been thinking about breaking up with this friend for a year now, but I can't. I do not have the courage to ask God for forgiveness for the sins that I have committed and that I do not hate. I feel afraid when I think about repenting. I have no peace in my house, no comfort except weeping and tears. But now, the abyss of sin that I have sunk into has made me feel numb and my tears have dried up. I have no peace in my heart. I have moved away from the house of my God. What is better for me? I miss the day when I can go back to my father's house.
 

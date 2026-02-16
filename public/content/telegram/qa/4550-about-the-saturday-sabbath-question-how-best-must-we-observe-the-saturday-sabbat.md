@@ -6,8 +6,7 @@ title: "About The #Saturday #Sabbath Question፦ How best must we observe the Sa
 date: "2025-07-08T21:09:15"
 tags: ["saturday", "sabbath"]
 isSaint: false
----
-About The #Saturday #Sabbath 
+---About The #Saturday #Sabbath 
 
 Question፦ How best must we observe the Saturday sabbath? Are we to observe it in the old testament way or not? I'm not asking about the Sunday sabbath. I think this is much more clear to understand. My question is directly addressing the Saturday sabbath since there are many grey areas about what one should be doing on that day
 

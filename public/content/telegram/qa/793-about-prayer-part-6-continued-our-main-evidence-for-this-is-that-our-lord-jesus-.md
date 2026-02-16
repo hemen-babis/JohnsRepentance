@@ -6,8 +6,7 @@ title: "About Prayer (Part 6) (Continued) 👆 Our main evidence for this is tha
 date: "2023-03-13T21:44:17"
 tags: []
 isSaint: true
----
-About Prayer (Part 6)
+---About Prayer (Part 6)
 
 (Continued) 👆
 

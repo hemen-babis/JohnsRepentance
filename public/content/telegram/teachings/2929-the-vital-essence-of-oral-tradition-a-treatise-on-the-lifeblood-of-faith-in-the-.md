@@ -4,10 +4,10 @@ from: "ዮሐንስ ንስሐ"
 type: "lesson"
 title: "The Vital Essence of #Oral #Tradition: A Treatise on the Lifeblood of Faith In the richnes"
 date: "2024-06-13T23:02:23"
-tags: ["oral", "tradition"]
-isSaint: false
----
-The Vital Essence of #Oral #Tradition: A Treatise on the Lifeblood of Faith
+tags: ["oral", "tradition", "ascension"]
+isSaint: true
+mergedFrom: [2929, 2934]
+---The Vital Essence of #Oral #Tradition: A Treatise on the Lifeblood of Faith
 
 In the richness of Christian heritage, oral tradition stands as a living conduit through which the wisdom of the ages flows into the present, nurturing the faithful and guiding them towards spiritual maturity. This profound legacy, passed down through generations, embodies the very essence of Christian life, education, and order as witnessed within the sacred bounds of the Church.
 
@@ -45,4 +45,16 @@ As guardians of this sacred heritage, it is incumbent upon us to preserve, defen
 
 In this endeavor, let us be ever mindful of the exhortation of the Proverbs: "Do not move the ancient landmark that your fathers have set" (Proverbs 22:28), recognizing in this charge a divine mandate to cherish and uphold the rich tradition that is our Christian heritage.
 
-Continues 👇🏾
+About the #Ascension of our Lord 
+
+Dear members of John's Repentance service, today is the day we celebrate the ascension of our Lord. The Ascension of our Lord Jesus Christ is a profound and glorious event that holds immense significance for our faith and salvation. As we delve into this topic, let us explore the teachings of the early Church Fathers and contemplate the deep theological truths revealed through the Scriptures.
+
+Our Lord Jesus Christ, the divine Son, who became incarnate and took on our human nature, ascended to the right hand of the Father, as prophesied by King David. In Psalm 110:1, David declared, "God said to my Lord, 'Sit at my right hand until I make your enemies a footstool for your feet.'" This prophecy finds fulfillment in Jesus Christ, as the Epistle to the Hebrews affirms, "But when this priest [Jesus] had offered for all time one sacrifice for sins, he sat down at the right hand of God" (Hebrews 10:12).
+
+By sitting at the right hand of the Father, our Lord Jesus Christ demonstrates His divine nature and equality with the Father. It is crucial to understand that this exaltation does not imply any temporal or hierarchical subordination within the Trinity. Rather, it speaks to the profound mystery of the Incarnation, wherein the Son, while on Earth, willingly submitted Himself to the limitations of our human nature. Consequently, when Scripture speaks of Christ sitting at the right hand of the Father, it emphasizes His return to His former glory, without any separation from His divinity.
+
+The Incarnation of Christ signifies that the Word, without diminishing His fullness, assumed a human body and soul from the Holy Virgin Mary for the sake of our salvation. Likewise, His Ascension proclaims that, without separating from the fully united body and soul, Christ ascended in glory for our benefit. In the 24th chapter of Luke's Gospel, the venerable Saint Cyril of Alexandria, a steadfast pillar of our faith, elucidates this truth: "After blessing his disciples, he ascended into heaven and sat in his Father's house, not only in His divinity but also in His unified body." Through His Incarnation and Ascension, Christ united our fallen nature with His divine glory, granting us the possibility of sharing in His heavenly kingdom.
+
+The Ascension of our Lord Jesus Christ should not be viewed as a mere physical act of sitting and rising, as befitting our human experience. Instead, it symbolizes the glorification of our human nature, once marred by sin and distanced from God's grace. Our Lord, by uniting our nature with His divinity, bestowed incomprehensible honor upon us. Ephesians 2:6 captures this beautifully, declaring, "And God raised us up with Christ and seated us with him in the heavenly realms in Christ Jesus."
+
+In the death and resurrection of our Lord, He conquered the power of death, wiping away the consequences of sin. Through His Ascension, our human nature, which was judged and condemned, is now elevated to sit in the presence of the Father. As Saint John the Baptist expounded, Christ offered His body as a sacrifice, serving as our High Priest, presenting Himself to the Father with His body and blood. The Father, in admiration, declared, "Sit at my right hand." The earth that we once were, destined to return to dust, now finds itself exalted beyond measure. Christ surpassed the ranks of angels, ascended above the cherubim, and attained a throne higher than the archangels. His ascent extended beyond mere elevation; it led Him to the throne of His eternal kingdom, where He reigns in glory.

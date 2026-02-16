@@ -6,8 +6,7 @@ title: "About St. #John the #Baptist. (Lesson given for his annual feast which t
 date: "2024-07-08T22:10:27"
 tags: ["john", "baptist"]
 isSaint: true
----
-About St. #John the #Baptist. (Lesson given for his annual feast which took place yesterday)
+---About St. #John the #Baptist. (Lesson given for his annual feast which took place yesterday)
 
 Beloved in Christ, let us turn our hearts and minds to the profound narrative and celestial teachings of Saint John the Baptist, whose life and deeds are illuminated by divine grace, revealing the embodiment of ascetic virtue and prophetic truth. I offer this discourse, as one unworthy, on the sanctity and significance of this great forerunner of our Lord, Jesus Christ.
 

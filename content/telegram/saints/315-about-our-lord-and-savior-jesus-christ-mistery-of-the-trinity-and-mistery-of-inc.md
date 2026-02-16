@@ -6,8 +6,7 @@ title: "About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mi
 date: "2023-01-04T20:33:01"
 tags: ["jesus", "christ", "trinity", "incarnation"]
 isSaint: true
----
-About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mistery of #incarnation 
+---About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mistery of #incarnation 
 
 👉🏾 Question: I, as an Orthodox believe that Jesus Christ is God. There are also Bible verses that prove this. However, many have difficulty accepting that Jesus is God, and that he is one of the Holy Trinity, due to there still are other verses that say, "Hear my Father" when Jesus speaks. Therefore, how can we explain to those who do not believe in simple language? Becauseb this is difficult to understand it.
 

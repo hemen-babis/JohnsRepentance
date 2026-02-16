@@ -6,8 +6,7 @@ title: "The Nature of #Stress in a Fallen World In the Orthodox understanding, s
 date: "2023-12-27T23:02:01"
 tags: ["stress"]
 isSaint: true
----
-The Nature of #Stress in a Fallen World
+---The Nature of #Stress in a Fallen World
 
 In the Orthodox understanding, stress is seen as a consequence of living in a fallen world. It is a manifestation of the brokenness that pervades human existence since the Fall. Stress arises from our daily struggles, whether they be physical, emotional, or spiritual. However, the Orthodox perspective does not view stress as merely a psychological or physical phenomenon but as a deeply spiritual one.
 

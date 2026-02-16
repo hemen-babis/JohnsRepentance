@@ -6,8 +6,7 @@ title: "About #choosing God over the world Question፦ How does a person commitm
 date: "2024-04-08T23:03:01"
 tags: ["choosing"]
 isSaint: false
----
-About #choosing God over the world
+---About #choosing God over the world
 
 Question፦ How does a person commitment their life to God & choose Him over the world? 
 

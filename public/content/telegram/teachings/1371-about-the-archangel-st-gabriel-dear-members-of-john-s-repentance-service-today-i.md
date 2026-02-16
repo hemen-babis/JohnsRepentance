@@ -6,8 +6,7 @@ title: "About the Archangel St. #Gabriel Dear members of John's Repentance servi
 date: "2023-06-25T22:11:01"
 tags: ["gabriel"]
 isSaint: false
----
-About the Archangel St. #Gabriel 
+---About the Archangel St. #Gabriel 
 
 Dear members of John's Repentance service, today is the monthly feast if St. Gabriel and so we send you the bellow writing so you can partake of this day's blessings. 
 

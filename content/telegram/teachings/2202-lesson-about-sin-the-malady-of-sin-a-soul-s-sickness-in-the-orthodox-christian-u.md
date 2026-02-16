@@ -6,8 +6,7 @@ title: "Lesson about #Sin The Malady of Sin: A Soul's Sickness In the Orthodox C
 date: "2024-01-08T21:06:18"
 tags: ["sin"]
 isSaint: false
----
-Lesson about #Sin 
+---Lesson about #Sin 
 
 The Malady of Sin: A Soul's Sickness
 

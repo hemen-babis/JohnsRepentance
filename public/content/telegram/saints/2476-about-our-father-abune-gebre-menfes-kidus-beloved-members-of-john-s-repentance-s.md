@@ -6,8 +6,7 @@ title: "About our father #Abune #Gebre_Menfes_Kidus Beloved members of John's Re
 date: "2024-03-14T21:33:01"
 tags: ["abune", "gebre_menfes_kidus"]
 isSaint: true
----
-About our father #Abune #Gebre_Menfes_Kidus
+---About our father #Abune #Gebre_Menfes_Kidus
 
 Beloved members of John's Repentance spiritual service, today was the annual feast of Abune Gebre Menfes Kidus where we commemorate his departure from the earth to the heavens. Hence we send you the following lesson so you can read and partake from the day's blessings. 
 

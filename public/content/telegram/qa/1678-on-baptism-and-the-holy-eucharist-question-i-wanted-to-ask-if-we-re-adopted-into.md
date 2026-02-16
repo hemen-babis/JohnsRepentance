@@ -6,8 +6,7 @@ title: "On #Baptism and the Holy #Eucharist Question፦ I wanted to ask, if we'r
 date: "2023-08-29T22:31:07"
 tags: ["baptism", "eucharist"]
 isSaint: false
----
-On #Baptism and the Holy #Eucharist
+---On #Baptism and the Holy #Eucharist
 
 Question፦ I wanted to ask, if we're adopted into the body of Christ during baptism, how are we still of the body if the members of Christ don't sin, but we as human sin? Is it because of God's mercy we are still considered members, making it a mystery?
 And why do we take Holy Communion multiple times in our life? What separated the remission of sin in the Eucharist from that of baptism? Does it have any connection to healing the sick members of Christs' body (aka sinful humans)

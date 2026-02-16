@@ -6,8 +6,7 @@ title: "About #thoughts, #sin, and #confession When does a thought become a sin?
 date: "2023-01-30T20:30:27"
 tags: ["thoughts", "sin", "confession"]
 isSaint: false
----
-About #thoughts, #sin, and #confession 
+---About #thoughts, #sin, and #confession 
 
 When does a thought become a sin? Which thoughts should we confess and should we confess all bad thoughts?
 

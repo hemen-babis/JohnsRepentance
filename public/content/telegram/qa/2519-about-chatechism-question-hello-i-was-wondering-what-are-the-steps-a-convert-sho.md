@@ -6,8 +6,7 @@ title: "About #Chatechism Question፦ Hello I was wondering what are the steps a
 date: "2024-03-26T22:06:01"
 tags: ["chatechism"]
 isSaint: false
----
-About #Chatechism 
+---About #Chatechism 
 
 Question፦ Hello I was wondering what are the steps a convert should take when still being new to the faith before and after baptism besides understanding the sacraments and the 5 pillars ?
 

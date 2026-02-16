@@ -6,8 +6,7 @@ title: "Question፦ Hello, I was wondering if wearing #makeup is considered a si
 date: "2023-11-27T21:02:26"
 tags: ["makeup"]
 isSaint: true
----
-Question፦ Hello, I was wondering if wearing #makeup is considered a sin?
+---Question፦ Hello, I was wondering if wearing #makeup is considered a sin?
 
 Answer፦ Beloved in Christ,
 

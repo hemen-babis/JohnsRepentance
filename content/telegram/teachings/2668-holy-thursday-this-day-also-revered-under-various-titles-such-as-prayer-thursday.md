@@ -6,8 +6,7 @@ title: "Holy #Thursday This day, also revered under various titles such as Praye
 date: "2024-05-02T22:18:36"
 tags: ["thursday"]
 isSaint: false
----
-Holy #Thursday
+---Holy #Thursday
 
 This day, also revered under various titles such as Prayer Thursday, Mystery Day, and Covenant Thursday, marks a pivotal moment in the liturgical year, where the depth of Christ's teachings and His sacrificial love are vividly brought to the forefront of our contemplation.
 

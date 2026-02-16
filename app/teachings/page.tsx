@@ -6,7 +6,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
@@ -14,6 +14,8 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { GeezHeading } from "@/components/geez-heading"
 import { Book, Video, FileText, Bookmark, Search, Filter, Clock, Play, Download, Share2, Calendar } from "lucide-react"
 import telegramPosts from "@/content/telegram/index.json"
+import { groupImportedPosts } from "@/lib/imported-post-groups"
+import { stripTeachingFiller, toNaturalTeachingTitle, toStandardShortTitle } from "@/lib/teaching-title"
 
 type TelegramPost = {
   id: number
@@ -28,6 +30,7 @@ type TelegramPost = {
 type TeachingItem = {
   id: number
   title: string
+  subtitle?: string
   description: string
   category: string
   format: "Article" | "Video" | "Audio" | "PDF Guide"
@@ -36,10 +39,12 @@ type TeachingItem = {
   featured?: boolean
   popular?: boolean
   link: string
+  searchTerms?: string
 }
 
 const categories = [
   "All",
+  "Great Lent",
   "Feasts & Liturgical Year",
   "Christian Living",
   "Theotokos (Virgin Mary)",
@@ -64,7 +69,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Liturgy",
     format: "Article",
     duration: "15 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     featured: true,
     popular: true,
     link: "/teachings/1",
@@ -76,7 +81,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Tradition & Culture",
     format: "Video",
     duration: "22 min",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     featured: true,
     link: "/teachings/2",
   },
@@ -87,7 +92,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Sacraments",
     format: "PDF Guide",
     duration: "12 pages",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     popular: true,
     link: "/teachings/3",
   },
@@ -98,7 +103,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Bible Study",
     format: "Audio",
     duration: "45 min",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     link: "/teachings/4",
   },
   {
@@ -108,7 +113,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Saints",
     format: "Article",
     duration: "10 min read",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     link: "/teachings/5",
   },
   {
@@ -118,7 +123,7 @@ const baseTeachings: TeachingItem[] = [
     category: "Fasting",
     format: "Video",
     duration: "18 min",
-    image: "/placeholder.svg?height=200&width=300",
+    image: "/orthodox-card-bg.svg",
     link: "/teachings/6",
   },
 ]
@@ -139,119 +144,311 @@ export default function TeachingsPage() {
   const allTeachings = useMemo(() => {
     const saintPattern = /(saint|saints|kidus|ቅዱስ|ቅዱሳን)/i
     const theotokosPattern = /(mary|virgin|theotokos|kidane meheret|zion|assumption)/i
+    const greatLentPattern = /(great lent|abiy tsom|suba'?e|zewerede|metsague|mekurab|guebre|holy lent)/i
     const feastsPattern = /(epiphany|timkat|nativity|genna|meskel|hosanna|palm sunday|holy week|pascha|easter|feast|lent|season)/i
     const christianLivingPattern = /(marriage|family|parenting|youth|depression|anxiety|optimism|peace|virtue|ai|technology|work|daily life)/i
     const traditionPattern = /(kebero|bell|icon|iconography|adwa|tradition|culture|church custom|hymn)/i
     const monasticPattern = /(monastic|ascetic|monk|desert|abune aregawi|tekle haymanot|gebre menfes kidus)/i
+    const prayerPattern = /(prayer|pray|supplication|intercession|psalm 50|our father|kneeling|prostration)/i
+    const churchHistoryPattern =
+      /(church history|history of the church|fathers|patriarch|synod|council|axum|aksum|ethiopian orthodox tewahedo church|apostolic era|martyrdom)/i
     const theologyCorePattern = /(trinity|incarnation|tewahedo|christology|dogma|creed|nature of christ|core pillar|divinity)/i
     const liturgyPattern = /(liturgy|kidassie|qurbana|worship service|vespers)/i
     const biblePattern = /(scripture|gospel|bible|john|apostle|psalm)/i
     const fastingPattern = /(fasting|abiye tsom|nineveh|wednesday|friday fast)/i
+    const isAnnouncementLike = (post: TelegramPost) => {
+      const tags = post.tags.map((tag) => tag.toLowerCase())
+      const normalizeSignalText = (value: string) =>
+        value
+          .toLowerCase()
+          .replace(/[^\p{L}\p{N}\s]/gu, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+      const title = normalizeSignalText(post.title)
+      const text = normalizeSignalText(`${post.title} ${post.excerpt} ${post.tags.join(" ")}`)
+
+      if (tags.includes("announcement")) return true
+      if (title === "imported post" || title === "announcement") return true
+
+      const hardSignals = [
+        "gentle reminder",
+        "live q&a",
+        "q&a session",
+        "session is starting",
+        "starting now",
+        "scheduled to begin",
+        "postponement",
+        "postponed",
+        "rescheduled",
+        "admin team",
+        "join us live",
+        "happy new year",
+        "new year (2026)",
+        "we sincerely apologize",
+        "hour has come for us to gather",
+        "weekly live",
+        "may the name of the holy god be praised forever and ever",
+        "may the blessings of gods mother",
+        "reach out to us on our social media platforms",
+        "share it with your friends",
+        "linktr ee",
+        "we are pleased to share the new",
+        "new tiktok account",
+        "tiktok account",
+        "please follow the page",
+        "follow the page",
+        "like the content",
+        "theological college",
+      ]
+      if (hardSignals.some((signal) => text.includes(signal))) return true
+
+      const promoPattern =
+        /\b(tiktok|telegram|youtube|instagram|facebook)\b.*\b(account|channel|page)\b|\bplease\s+follow\b|\bfollow\s+the\s+page\b|\blike\s+the\s+content\b/i
+      if (promoPattern.test(`${post.title} ${post.excerpt}`)) return true
+
+      const greetingStarts = [
+        "peace be with you",
+        "beloved brothers and sisters in christ",
+        "it is with deep joy that we share",
+        "saint brothers and sisters",
+        "may the name of the holy god be praised forever and ever",
+        "may the blessings of gods mother",
+        "may the blessings of the holy mother of god",
+      ]
+      if (greetingStarts.some((prefix) => title.startsWith(prefix))) return true
+
+      return false
+    }
     const isQuestionLike = (post: TelegramPost) =>
       /question\s*[:፦]|answer\s*[:፦]/i.test(`${post.title} ${post.excerpt}`)
-    const toTitleCase = (value: string) =>
+    const cleanForTitle = (value: string) =>
       value
-        .split(/[-_ ]+/)
-        .filter(Boolean)
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-
-    const shortTitle = (post: TelegramPost) => {
-      const lowerTags = post.tags.map((tag) => tag.toLowerCase())
-      const genericTags = new Set([
-        "announcement",
-        "holy",
-        "great",
-        "orthodox",
-        "church",
-        "christ",
-        "jesus",
-        "faith",
-        "religion",
-      ])
-
-      if (/holy\s+#?eucharist/i.test(`${post.title} ${post.excerpt}`) || lowerTags.includes("eucharist")) {
-        return "The Holy Eucharist"
-      }
-
-      const hashtagMatch = `${post.title} ${post.excerpt}`.match(/#([^\s#]+)/u)
-      if (hashtagMatch?.[1]) {
-        const rawTag = hashtagMatch[1].replace(/[.,:;!?]+$/g, "")
-        if (rawTag.length > 1) {
-          return rawTag
-            .split(/[-_ ]+/)
-            .filter(Boolean)
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")
-        }
-      }
-
-      if (lowerTags.includes("saint")) {
-        const saintSpecific = lowerTags.find((tag) => tag !== "saint" && !genericTags.has(tag) && !/^\d+$/.test(tag))
-        if (saintSpecific) return `Saint ${toTitleCase(saintSpecific)}`
-      }
-
-      const firstSpecificTag = lowerTags.find((tag) => !genericTags.has(tag) && tag !== "saint" && !/^\d+$/.test(tag))
-      if (firstSpecificTag) return toTitleCase(firstSpecificTag)
-
-      const candidate = post.title
         .replace(/[#*_`]/g, "")
-        .split(/✍️|Question\s*[:፦]|Answer\s*[:፦]|\n|\.|:| - /i)[0]
-        .replace(/^The use of\s+/i, "")
-        .replace(/^About\s+/i, "")
+        .replace(/[👉👇☝️🏾🏽🏿]+/gu, " ")
+        .replace(/\s+/g, " ")
         .trim()
+    const stripLeadPhrases = (value: string) =>
+      value
+        .replace(/^(continued|continuation|cont(?:'|’)?d|\(continued\)|\(cont(?:'|’)?d\)|part\s*\d+)\s*/i, "")
+        .replace(/^(about|lesson(?:\s+on)?|reflection(?:\s+on)?|a\s+homily\s+on|on)\s+/i, "")
+        .replace(/^(the\s+annual\s+feast\s+of|the\s+feast\s+of|feast\s+of)\s+/i, "")
+        .trim()
+    const firstSentence = (value: string) => cleanForTitle(value).split(/\n|(?<=[.!?])\s+/)[0].trim()
+    const sanitizeDisplayTitle = (value: string) => {
+      let title = value.trim()
+      if (!title) return title
 
-      return candidate.slice(0, 60) || "Orthodox Teaching"
+      if (/\bbeloved\b/i.test(title)) title = title.split(/\bbeloved\b/i)[0].trim()
+      title = title.replace(/[,\-–—]\s*$/g, "").trim()
+      if (/^beloved\b/i.test(title)) return ""
+
+      return title
     }
+    const normalizeForDedupe = (value: string) =>
+      value
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^\w\s]/g, " ")
+        .replace(/\b(part\s*\d+|continued|continuation|contd|cont)\b/g, " ")
+        .replace(/\b(the|about|lesson|reflection|of|on|and|for|with|a|an)\b/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+    const topicStopWords = new Set([
+      "about",
+      "annual",
+      "beloved",
+      "blessed",
+      "christ",
+      "church",
+      "continued",
+      "faith",
+      "holy",
+      "lesson",
+      "lord",
+      "orthodox",
+      "part",
+      "reflection",
+      "saint",
+      "service",
+      "teaching",
+      "the",
+      "week",
+    ])
+    const canonicalTopicKey = (title: string, searchTerms?: string) => {
+      const normalizeText = (value: string) =>
+        value
+          .normalize("NFKD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(/[#*_`]/g, " ")
+          .replace(/[^\w\s]/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+
+      const normalizedTitle = normalizeText(title)
+      const normalizedFallback = normalizeText(searchTerms ?? "")
+
+      if (/holy\s+communion/.test(normalizedTitle)) return "holy-communion"
+      if (/holy\s+eucharist/.test(normalizedTitle)) return "holy-eucharist"
+      if (/great\s+lent|abiy\s+tsom/.test(normalizedTitle)) return "great-lent"
+      if (/metsague|metsagu/.test(normalizedTitle)) return "metsague"
+      if (/nineveh/.test(normalizedTitle)) return "nineveh"
+      if (/saint\s+george|st\s+george/.test(normalizedTitle)) return "saint-george"
+      if (/saint\s+gabriel|st\s+gabriel|archangel\s+gabriel/.test(normalizedTitle)) return "saint-gabriel"
+
+      const extractTokens = (value: string) =>
+        value
+          .split(" ")
+          .filter((token) => token.length >= 3)
+          .filter((token) => !topicStopWords.has(token))
+          .filter((token) => !/^\d+$/.test(token))
+
+      let tokens = extractTokens(normalizedTitle)
+      if (tokens.length < 2 && normalizedFallback) tokens = extractTokens(normalizedFallback)
+
+      const unique = Array.from(new Set(tokens)).sort()
+      return unique.slice(0, 6).join("-")
+    }
+    const buildDisplayTitle = (post: TelegramPost) => {
+      let candidate = sanitizeDisplayTitle(stripLeadPhrases(cleanForTitle(post.title)))
+      if (!candidate || candidate.split(/\s+/).length < 5) {
+        candidate = sanitizeDisplayTitle(stripLeadPhrases(firstSentence(post.excerpt)))
+      }
+      if (!candidate || candidate.split(/\s+/).length < 5) {
+        return "Orthodox Spiritual Teaching for Faithful Christian Life"
+      }
+      return candidate.split(/\s+/).slice(0, 12).join(" ").trim()
+    }
+    const genericPartTitlePattern = /^(continued|continuation|cont(?:'|’)?d|part\s*\d+)/i
+    const urlOnlyPattern = /^(https?:\/\/|www\.)/i
+    const isUrlOnlyPost = (post: TelegramPost) =>
+      urlOnlyPattern.test(post.title.trim()) && urlOnlyPattern.test(post.excerpt.trim())
 
     const byDate = [...(telegramPosts as TelegramPost[])]
-      .filter((post) => post.type === "lesson" && !isQuestionLike(post))
+      .filter((post) => post.type === "lesson" && !isQuestionLike(post) && !isAnnouncementLike(post))
       .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    const imported = byDate.map((post, idx): TeachingItem => {
-      const tagSet = new Set(post.tags.map((t) => t.toLowerCase()))
-      const title = tagSet.has("saint") && tagSet.has("george") ? "Saint George" : shortTitle(post)
-      const haystack = `${post.title} ${post.excerpt} ${post.tags.join(" ")}`
-      let category = "Theology"
-      if (theotokosPattern.test(haystack)) category = "Theotokos (Virgin Mary)"
-      else if (feastsPattern.test(haystack)) category = "Feasts & Liturgical Year"
-      else if (christianLivingPattern.test(haystack)) category = "Christian Living"
-      else if (traditionPattern.test(haystack)) category = "Tradition & Culture"
-      else if (monasticPattern.test(haystack)) category = "Monastics & Asceticism"
-      else if (post.tags.some((t) => /(eucharist|communion|confession|repentance|sin|sacrament|mysteries)/i.test(t)))
-        category = "Sacraments"
-      else if (liturgyPattern.test(haystack)) category = "Liturgy"
-      else if (biblePattern.test(haystack)) category = "Bible Study"
-      else if (fastingPattern.test(haystack)) category = "Fasting"
-      else if (theologyCorePattern.test(haystack)) category = "Theology"
-      else if (saintPattern.test(haystack)) category = "Saints"
-      return {
-        id: 100000 + post.id,
-        title,
-        description: post.excerpt,
-        category,
-        format: "Article",
-        duration: "Imported post",
-        image: "/placeholder.svg?height=200&width=300",
-        featured: idx < 12,
-        popular: idx < 18,
-        link: `/teachings/imported/${post.id}`,
-      }
-    })
-    return [...imported, ...baseTeachings]
+    const groupedLessons = groupImportedPosts(byDate)
+    const importedWithKeys = groupedLessons
+      .map((group, idx): (TeachingItem & { dedupeKey: string }) | null => {
+        const postsForDisplay = group.posts.filter((entry) => !isUrlOnlyPost(entry))
+        if (postsForDisplay.length === 0) return null
+
+        const representative =
+          postsForDisplay.find((entry) => !genericPartTitlePattern.test(entry.title.trim())) ?? postsForDisplay[0]
+        if (genericPartTitlePattern.test(representative.title.trim()) && postsForDisplay.length === 1) return null
+
+        const post = representative
+        const allTags = Array.from(new Set(postsForDisplay.flatMap((entry) => entry.tags)))
+        const haystack = postsForDisplay.map((entry) => `${entry.title} ${entry.excerpt} ${entry.tags.join(" ")}`).join(" ")
+        const totalPosts = postsForDisplay.length
+        const builtTitle = buildDisplayTitle(post)
+        let title = toNaturalTeachingTitle(builtTitle)
+        let category = "Theology"
+        if (saintPattern.test(haystack)) category = "Saints"
+        else if (theotokosPattern.test(haystack)) category = "Theotokos (Virgin Mary)"
+        else if (greatLentPattern.test(haystack)) category = "Great Lent"
+        else if (feastsPattern.test(haystack)) category = "Feasts & Liturgical Year"
+        else if (christianLivingPattern.test(haystack)) category = "Christian Living"
+        else if (traditionPattern.test(haystack)) category = "Tradition & Culture"
+        else if (monasticPattern.test(haystack)) category = "Monastics & Asceticism"
+        else if (prayerPattern.test(haystack)) category = "Prayer"
+        else if (churchHistoryPattern.test(haystack)) category = "Church History"
+        else if (postsForDisplay.some((entry) => entry.tags.some((tag) => /(eucharist|communion|confession|repentance|sin|sacrament|mysteries)/i.test(tag))))
+          category = "Sacraments"
+        else if (liturgyPattern.test(haystack)) category = "Liturgy"
+        else if (biblePattern.test(haystack)) category = "Bible Study"
+        else if (fastingPattern.test(haystack)) category = "Fasting"
+        else if (theologyCorePattern.test(haystack)) category = "Theology"
+
+        if (category === "Saints" && !/\b(saint|st\.?|archangel|virgin)\b/i.test(title)) title = `Saint ${title}`
+
+        title = toStandardShortTitle(toNaturalTeachingTitle(title), 7)
+
+        const dedupeKey = `${normalizeForDedupe(builtTitle)}|${normalizeForDedupe(post.excerpt).slice(0, 90)}`
+        return {
+          dedupeKey,
+          id: 100000 + post.id,
+          title,
+          subtitle: undefined,
+          description: stripTeachingFiller(post.excerpt),
+          category,
+          format: "Article",
+          duration: totalPosts > 1 ? `${totalPosts} posts` : "1 post",
+          image: "/orthodox-card-bg.svg",
+          featured: idx < 12,
+          popular: idx < 18,
+          link: `/teachings/imported/${group.leadId}`,
+          searchTerms: postsForDisplay.map((entry) => `${entry.title} ${entry.excerpt} ${entry.tags.join(" ")}`).join(" "),
+        }
+      })
+      .filter((teaching): teaching is TeachingItem & { dedupeKey: string } => teaching !== null)
+
+    const seenDedupeKeys = new Set<string>()
+    const seenTitleKeys = new Set<string>()
+    const seenTopicKeys = new Set<string>()
+    const imported: TeachingItem[] = []
+    for (const teaching of importedWithKeys) {
+      const titleKey = normalizeForDedupe(teaching.title)
+      const topicKey = canonicalTopicKey(teaching.title, teaching.searchTerms)
+      if (seenDedupeKeys.has(teaching.dedupeKey)) continue
+      if (titleKey && seenTitleKeys.has(titleKey)) continue
+      if (topicKey && topicKey.split("-").length >= 3 && seenTopicKeys.has(topicKey)) continue
+      seenDedupeKeys.add(teaching.dedupeKey)
+      if (titleKey) seenTitleKeys.add(titleKey)
+      if (topicKey && topicKey.split("-").length >= 3) seenTopicKeys.add(topicKey)
+      imported.push({
+        id: teaching.id,
+        title: teaching.title,
+        subtitle: teaching.subtitle,
+        description: teaching.description,
+        category: teaching.category,
+        format: teaching.format,
+        duration: teaching.duration,
+        image: teaching.image,
+        featured: teaching.featured,
+        popular: teaching.popular,
+        link: teaching.link,
+        searchTerms: teaching.searchTerms,
+      })
+    }
+    const baseWithSearch = baseTeachings.map((teaching) => ({
+      ...teaching,
+      searchTerms: `${teaching.title} ${teaching.description} ${teaching.category}`,
+    }))
+    return [...imported, ...baseWithSearch]
   }, [])
 
-  const filteredTeachings = allTeachings.filter((teaching) => {
-    const categoryMatch = activeCategory === "All" || teaching.category === activeCategory
-    const q = searchQuery.toLowerCase()
-    const searchMatch =
-      teaching.title.toLowerCase().includes(q) ||
-      teaching.description.toLowerCase().includes(q) ||
-      teaching.category.toLowerCase().includes(q)
-    const formatMatch = formatFilter.length === 0 || formatFilter.includes(teaching.format)
-    return categoryMatch && searchMatch && formatMatch
-  })
+  const normalize = (value: string) =>
+    value
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim()
+
+  const normalizedQuery = useMemo(() => normalize(searchQuery), [searchQuery])
+  const indexedTeachings = useMemo(
+    () =>
+      allTeachings.map((teaching) => ({
+        ...teaching,
+        _searchText: normalize(`${teaching.title} ${teaching.description} ${teaching.category} ${teaching.searchTerms ?? ""}`),
+      })),
+    [allTeachings],
+  )
+  const filteredTeachings = useMemo(
+    () =>
+      indexedTeachings.filter((teaching) => {
+        const hasQuery = normalizedQuery.length > 0
+        const categoryMatch = hasQuery ? true : activeCategory === "All" || teaching.category === activeCategory
+        const searchMatch = normalizedQuery === "" || teaching._searchText.includes(normalizedQuery)
+        const formatMatch = hasQuery ? true : formatFilter.length === 0 || formatFilter.includes(teaching.format)
+        return categoryMatch && searchMatch && formatMatch
+      }),
+    [indexedTeachings, activeCategory, normalizedQuery, formatFilter],
+  )
 
   const categoryBadgeClass = (category: string) => {
+    if (category === "Great Lent") return "bg-lime-700"
     if (category === "Liturgy") return "bg-blue-600"
     if (category === "Theology") return "bg-purple-600"
     if (category === "Sacraments") return "bg-green-600"
@@ -298,8 +495,9 @@ export default function TeachingsPage() {
             className="text-center mb-16"
           >
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ትምህርቶች</GeezHeading>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Ethiopian Orthodox <AnimatedGradientText text="Teachings" />
+            <h1 className="mx-auto mb-6 max-w-[16ch] px-2 text-center text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:max-w-none md:text-6xl [text-wrap:balance]">
+              <span className="block">Ethiopian Orthodox</span>
+              <AnimatedGradientText text="Teachings" className="mt-1 block" />
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Explore the rich spiritual heritage and teachings of the Ethiopian Orthodox Tewahedo Church
@@ -313,14 +511,6 @@ export default function TeachingsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="browse" className="w-full">
-              <div className="flex justify-center mb-8">
-                <TabsList className="grid grid-cols-3 w-full max-w-md">
-                  <TabsTrigger value="browse">Browse</TabsTrigger>
-                  <TabsTrigger value="featured">Featured</TabsTrigger>
-                  <TabsTrigger value="popular">Popular</TabsTrigger>
-                </TabsList>
-              </div>
-
               <TabsContent value="browse">
                 <div className="grid md:grid-cols-4 gap-8">
                   {/* Sidebar */}
@@ -344,6 +534,19 @@ export default function TeachingsPage() {
                                 className="pl-10 border-gray-300 dark:border-gray-700"
                               />
                             </div>
+                            {(searchQuery.trim() || activeCategory !== "All" || formatFilter.length > 0) && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                  setSearchQuery("")
+                                  setActiveCategory("All")
+                                  setFormatFilter([])
+                                }}
+                              >
+                                Clear search & filters
+                              </Button>
+                            )}
                           </div>
                         </CardContent>
                       </Card>
@@ -405,15 +608,10 @@ export default function TeachingsPage() {
 
                   {/* Main Content */}
                   <div className="md:col-span-3">
-                    <motion.div
-                      className="grid md:grid-cols-2 gap-6"
-                      initial="hidden"
-                      animate="visible"
-                      variants={staggerContainer}
-                    >
+                    <div className="grid md:grid-cols-2 gap-6">
                       {filteredTeachings.length > 0 ? (
                         filteredTeachings.map((teaching) => (
-                          <motion.div key={teaching.id} variants={fadeInUp}>
+                          <div key={teaching.id}>
                             <Card className="border-none shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 group">
                               <div className="relative h-48">
                                 <Image
@@ -424,9 +622,7 @@ export default function TeachingsPage() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                                 <div className="absolute bottom-0 left-0 right-0 p-4">
-                                  <Badge
-                                    className={`mb-2 ${categoryBadgeClass(teaching.category)}`}
-                                  >
+                                  <Badge className={`mb-2 text-[11px] ${categoryBadgeClass(teaching.category)}`}>
                                     {teaching.category}
                                   </Badge>
                                   <div className="flex items-center text-white text-xs">
@@ -442,27 +638,30 @@ export default function TeachingsPage() {
                                       )}
                                       {teaching.format}
                                     </span>
-                                    <span className="mx-2">•</span>
-                                    <span className="flex items-center">
-                                      <Clock className="h-3 w-3 mr-1" />
-                                      {teaching.duration}
-                                    </span>
+                                    {teaching.duration !== "1 post" && (
+                                      <>
+                                        <span className="mx-2">•</span>
+                                        <span className="flex items-center">
+                                          <Clock className="h-3 w-3 mr-1" />
+                                          {teaching.duration}
+                                        </span>
+                                      </>
+                                    )}
                                   </div>
                                 </div>
                               </div>
                               <CardContent className="p-4">
-                                <h3 className="font-bold text-lg mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                                <h3 className="font-extrabold text-lg leading-[1.4] [hyphens:none] mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
                                   {teaching.title}
                                 </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{teaching.description}</p>
+                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">{teaching.description}</p>
                                 <div className="flex justify-between items-center">
-                                  <Button
-                                    asChild
-                                    variant="default"
-                                    className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
+                                  <Link
+                                    href={teaching.link}
+                                    className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
                                   >
-                                    <Link href={teaching.link}>Read More</Link>
-                                  </Button>
+                                    Read More →
+                                  </Link>
                                   <div className="flex gap-2">
                                     <Button
                                       variant="ghost"
@@ -482,7 +681,7 @@ export default function TeachingsPage() {
                                 </div>
                               </CardContent>
                             </Card>
-                          </motion.div>
+                          </div>
                         ))
                       ) : (
                         <div className="col-span-2 text-center py-12">
@@ -503,7 +702,7 @@ export default function TeachingsPage() {
                           </Button>
                         </div>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
               </TabsContent>
@@ -532,9 +731,7 @@ export default function TeachingsPage() {
                               <Badge className="bg-amber-600">Featured</Badge>
                             </div>
                             <div className="absolute bottom-0 left-0 right-0 p-4">
-                              <Badge
-                                className={`mb-2 ${categoryBadgeClass(teaching.category)}`}
-                              >
+                              <Badge className={`mb-2 text-[11px] ${categoryBadgeClass(teaching.category)}`}>
                                 {teaching.category}
                               </Badge>
                               <div className="flex items-center text-white text-xs">
@@ -548,27 +745,30 @@ export default function TeachingsPage() {
                                   )}
                                   {teaching.format}
                                 </span>
-                                <span className="mx-2">•</span>
-                                <span className="flex items-center">
-                                  <Clock className="h-3 w-3 mr-1" />
-                                  {teaching.duration}
-                                </span>
+                                {teaching.duration !== "1 post" && (
+                                  <>
+                                    <span className="mx-2">•</span>
+                                    <span className="flex items-center">
+                                      <Clock className="h-3 w-3 mr-1" />
+                                      {teaching.duration}
+                                    </span>
+                                  </>
+                                )}
                               </div>
                             </div>
                           </div>
                           <CardContent className="p-6">
-                            <h3 className="font-bold text-xl mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                            <h3 className="font-extrabold text-xl leading-[1.4] [hyphens:none] mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
                               {teaching.title}
                             </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4">{teaching.description}</p>
+                            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{teaching.description}</p>
                             <div className="flex justify-between items-center">
-                              <Button
-                                asChild
-                                variant="default"
-                                className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
+                              <Link
+                                href={teaching.link}
+                                className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
                               >
-                                <Link href={teaching.link}>Read More</Link>
-                              </Button>
+                                Read More →
+                              </Link>
                               <div className="flex gap-2">
                                 <Button
                                   variant="ghost"
@@ -628,28 +828,31 @@ export default function TeachingsPage() {
                                   )}
                                   {teaching.format}
                                 </span>
-                                <span className="mx-2">•</span>
-                                <span className="flex items-center">
-                                  <Clock className="h-3 w-3 mr-1" />
-                                  {teaching.duration}
-                                </span>
+                                {teaching.duration !== "1 post" && (
+                                  <>
+                                    <span className="mx-2">•</span>
+                                    <span className="flex items-center">
+                                      <Clock className="h-3 w-3 mr-1" />
+                                      {teaching.duration}
+                                    </span>
+                                  </>
+                                )}
                               </div>
                             </div>
                           </div>
                           <CardContent className="p-4">
-                            <h3 className="font-bold text-lg mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                            <h3 className="font-extrabold text-lg leading-[1.4] [hyphens:none] mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
                               {teaching.title}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
                               {teaching.description}
                             </p>
-                            <Button
-                              asChild
-                              variant="default"
-                              className="w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
+                            <Link
+                              href={teaching.link}
+                              className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
                             >
-                              <Link href={teaching.link}>Read More</Link>
-                            </Button>
+                              Read More →
+                            </Link>
                           </CardContent>
                         </Card>
                       </motion.div>

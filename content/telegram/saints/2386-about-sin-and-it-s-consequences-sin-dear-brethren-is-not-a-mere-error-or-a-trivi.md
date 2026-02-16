@@ -6,8 +6,7 @@ title: "About #Sin and it's #Consequences Sin, dear brethren, is not a mere erro
 date: "2024-02-12T21:07:21"
 tags: ["sin", "consequences"]
 isSaint: true
----
-About #Sin and it's #Consequences 
+---About #Sin and it's #Consequences 
 
 Sin, dear brethren, is not a mere error or a trivial misstep in our daily wanderings. It is, as the apostle Saint Paul solemnly declares, the death of the mind and spirit (Romans 6:23). This death is not of the body but a far more dreadful demise; it is the severance of the sacred bond between the Creator and His creation. To sin is to turn one's back on the Divine, to walk away from the eternal banquet prepared for us in the heavenly kingdom.
 

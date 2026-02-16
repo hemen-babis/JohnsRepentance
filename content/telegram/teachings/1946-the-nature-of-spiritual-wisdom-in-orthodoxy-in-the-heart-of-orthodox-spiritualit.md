@@ -6,8 +6,7 @@ title: "The Nature of #Spiritual #Wisdom in Orthodoxy In the heart of Orthodox s
 date: "2023-11-13T20:33:01"
 tags: ["spiritual", "wisdom"]
 isSaint: false
----
-The Nature of #Spiritual #Wisdom in Orthodoxy
+---The Nature of #Spiritual #Wisdom in Orthodoxy
 
 In the heart of Orthodox spirituality lies the pursuit of a deep, personal relationship with God. This relationship is nurtured not just through intellectual understanding but through a life lived in accordance with God's will. Spiritual wisdom, therefore, is more than knowledge; it is the lived experience of God's presence in our lives.
 

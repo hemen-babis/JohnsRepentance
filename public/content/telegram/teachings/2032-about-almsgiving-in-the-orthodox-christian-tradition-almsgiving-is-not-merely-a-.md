@@ -6,8 +6,7 @@ title: "About #Almsgiving In the Orthodox Christian tradition, almsgiving is not
 date: "2023-12-02T21:02:01"
 tags: ["almsgiving"]
 isSaint: false
----
-About #Almsgiving
+---About #Almsgiving
 
 In the Orthodox Christian tradition, almsgiving is not merely a charitable act, but a profound spiritual discipline deeply intertwined with the very essence of Christian life and faith. This practice offers a path to draw closer to God, manifest faith, and partake in the transformative journey of Christian living.
 

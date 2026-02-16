@@ -6,8 +6,7 @@ title: "About the practice of #Confession Question: My coworker was arguing with
 date: "2025-01-12T22:33:01"
 tags: ["confession"]
 isSaint: false
----
-About the practice of #Confession 
+---About the practice of #Confession 
 
 Question: My coworker was arguing with me about this belief that she had yesterday and I didn’t know the answer so I just listened and I said “I disagree”. The question was “why do you Orthodox confess your sin to a priest? They are just as sinful as we are. We should just confess our sin to God because he is the one who forgives our sin not them.”
 

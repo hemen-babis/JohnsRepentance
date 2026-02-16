@@ -6,8 +6,7 @@ title: "About #spiritual life 👉 Question፦ What is a spiritual life? I’ve 
 date: "2023-09-25T21:34:20"
 tags: ["spiritual"]
 isSaint: true
----
-About #spiritual life 
+---About #spiritual life 
 
 👉 Question፦ What is a spiritual life?
 I’ve been a Christian my whole life and I’m lost I don’t know what path to take I feel like I don’t hear god calling me

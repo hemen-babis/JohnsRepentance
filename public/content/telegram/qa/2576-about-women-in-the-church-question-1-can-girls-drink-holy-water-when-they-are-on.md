@@ -6,8 +6,7 @@ title: "About #Women in the Church 👉🏾 Question፦ 1) Can girls drink Holy 
 date: "2024-04-14T22:39:01"
 tags: ["women"]
 isSaint: false
----
-About #Women in the Church 
+---About #Women in the Church 
 
 👉🏾 Question፦ 1) Can girls drink Holy water when they are on their period? & why are they not allowed to go inside the church? 
 

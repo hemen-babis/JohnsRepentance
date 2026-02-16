@@ -6,8 +6,7 @@ title: "About Fasting (part 3) Fasting is reconciliation with God Adam was recon
 date: "2023-03-06T20:45:09"
 tags: []
 isSaint: true
----
-About Fasting (part 3)
+---About Fasting (part 3)
 
 Fasting is reconciliation with God
  

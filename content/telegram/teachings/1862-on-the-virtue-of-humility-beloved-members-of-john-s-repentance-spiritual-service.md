@@ -6,8 +6,7 @@ title: "On the Virtue of #Humility Beloved members of John's Repentance spiritua
 date: "2023-10-25T22:03:01"
 tags: ["humility"]
 isSaint: false
----
-On the Virtue of #Humility
+---On the Virtue of #Humility
 
 Beloved members of John's Repentance spiritual service, today we shall delve into the profound depths of this divine quality, which stands as a pillar of Christian life, drawing inspiration from a dialogue between a novice monk and an experienced ascetic, whose wisdom has transcended the bounds of language and culture, originating from the venerable Amharic tradition.
 

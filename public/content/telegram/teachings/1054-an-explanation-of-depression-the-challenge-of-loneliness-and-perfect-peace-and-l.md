@@ -4,10 +4,10 @@ from: "ዮሐንስ ንስሐ"
 type: "lesson"
 title: "An explanation of #depression, the challenge of #loneliness and perfect #peace and #light "
 date: "2023-04-29T21:30:52"
-tags: ["depression", "loneliness", "peace", "light"]
+tags: ["depression", "loneliness", "peace", "light", "soul", "healing"]
 isSaint: false
----
-An explanation of #depression, the challenge of #loneliness and perfect #peace and #light
+mergedFrom: [1054, 1080]
+---An explanation of #depression, the challenge of #loneliness and perfect #peace and #light
 
 👉🏾 Question from member: I often feel depressed and lonely. Life has no meaning to me, I just want to die and live with Jesus, I've been looking for happiness all my life but I can't find it, I feel like my mind is going to explode, please pray for me, I need prayer, what do you recommend?
 
@@ -23,6 +23,25 @@ As the owner himself told us, John Gospel chapter 15 verse 5 said "without me yo
 
 Also, when Adam lived peacefully in paradise for seven years and did what he was told not to do, he lost peace from God who is life, and found it difficult to live. but then we remember that he found peace when he returned to God, when he reconciled with God, so there is no peace without God.
  
-Our questioner said that they want to die and live with Jesus Christ. So, those of us who do not have peace on earth, those who have fallen into sin on earth, those who have not tried to repent to find Jesus Christ, how can we find peace if we die? What qualifies us for the kingdom of heaven is the work we have done on earth to live with Jesus Christ and enable us to live in heaven. If we die on earth covered in sin, without repentance, confession, and reconciliation with God, we will not be able to live with Jesus. Therefore, it means that we cannot live with our Lord and Savior Jesus Christ before we repent. 
+Our questioner said that they want to die and live with Jesus Christ. So, those of us who do not have peace on earth, those who have fallen into sin on earth, those who have not tried to repent to find Jesus Christ, how can we find peace if we die? What qualifies us for the kingdom of heaven is the work we have done on earth to live with Jesus Christ and enable us to live in heaven. If we die on earth covered in sin, without repentance, confession, and reconciliation with God, we will not be able to live with Jesus. Therefore, it means that we cannot live with our Lord and Savior Jesus Christ before we repent.
 
-(to be continued)👇
+The ER For The #Soul
+Seeking out #Healing in the Life of the Church
+
+Orthodoxy offers a very precise way in which to enter into communion with God. It is a way that must be learned, for simply "becoming Orthodox" will not lead the seeker into an inner life that will transform, and enlighten. Membership in the Church is simply not enough, for the Church is not about beautiful services, icons, or mystical theology. As a hospital for the soul, the Church is a place wherein we can receive healing for that which ails us. It is the place where we can be cured, and made whole.
+
+Like the emergency room of a local hospital, a patient can't simply walk in, and expect to be healed. They have to submit themselves to examination by the ER staff, who will ask them to describe what is going on, where they are hurting, run tests, and, finally, prescribe the necessary medication that will bring about healing.
+
+Within the hospital of the soul, that is the Church, her priests act in the same capacity as the ER personnel. They interview the patient (parishioner), and examine the heart to find the sickness, and recommend the cure. The priest becomes the therapeutic guide, recommending what the patient (seeker) can do in order to be made whole.
+
+A prayer rule, the daily reading of the Holy Scriptures, frequent confession and reception of the Holy Mysteries, are all part of the Church's medicine that will bring about the cure. Just as the doctor will prescribe the proper dosage, after getting to know his patient, so too, does the priest prescribe that which will help his spiritual son or daughter.
+
+The spiritual life is something that needs to be learned, perhaps more so now, than at any time in the history of our world. As godlessness increases, so do the obstacles to spiritual progress. The degradation of the whole of our society, and the depths of depravity that have become a normal part of our age, have made this a dangerous time. Going it alone spirituality can leave one vulnerable to spiritual delusion. We all need a trusted and experienced guide who can help us avoid the pitfalls of the pride and self-will that would lead us down to perdition.
+
+Source: Abbot Tryphon from the Russian Orthodox Church 
+
+May the name of the Holy God be praised forever and ever in every tongue that He has created, today and always. 
+
+May the blessings of God's mother, the virgin, and the cross be upon us. Amen.
+
+Please follow our Telegram group every day and share it with your friends: https://t.me/orthodoxQnAs

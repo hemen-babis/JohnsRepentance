@@ -6,8 +6,7 @@ title: "About #sin #confession and #age Beloved and respected, all our members w
 date: "2023-01-03T08:31:10"
 tags: ["sin", "confession", "age"]
 isSaint: false
----
-About #sin #confession and #age 
+---About #sin #confession and #age 
 
 Beloved and respected, all our members who follow the orthodox education that we convey on John's Repentance page, we encourage to ask questions on this page or send it to us privately. The following is a question that was sent to us privately, which you can do on Telegram by sending a message to the admin 'ዮሐንስ ንስሐ' or by sending us an email at yohannes.neseha@gmail.com. Since we all face similar struggles in life, we can all learn from one another. Hence we entrust you all to read and learn from the answers we give. 
 

@@ -6,8 +6,7 @@ title: "About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mi
 date: "2023-01-04T20:39:01"
 tags: ["jesus", "christ", "trinity", "incarnation"]
 isSaint: false
----
-About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mistery of #incarnation 
+---About our Lord and Savior #Jesus #Christ, mistery of the #Trinity and mistery of #incarnation 
 
 (Continued part) 
 

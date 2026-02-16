@@ -6,8 +6,7 @@ title: "About #Intercession Question፦ Hello again , John 11:25-26 says “Thos
 date: "2024-03-04T22:30:57"
 tags: ["intercession"]
 isSaint: true
----
-About #Intercession 
+---About #Intercession 
 
 Question፦ Hello again , John 11:25-26  says “Those who believe in me, even though they die, will live, and everyone who lives and believes in me will never die. “ isn’t this referencing us as we were once dead but  now we are  alive in Christ?
 

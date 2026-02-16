@@ -6,8 +6,7 @@ title: "On the Holiness of #Saints Dear members of John's Repentance spiritual s
 date: "2023-09-14T23:02:01"
 tags: ["saints"]
 isSaint: true
----
-On the Holiness of #Saints
+---On the Holiness of #Saints
 
 Dear members of John's Repentance spiritual service, we send you this lesson on the holiness of Saints so that you may be able to read, understand and apply to your own lives. Hence we entrust you to use this for yourself and to share it with your friends. 
 

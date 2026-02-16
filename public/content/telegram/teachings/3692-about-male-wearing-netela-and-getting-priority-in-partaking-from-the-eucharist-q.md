@@ -6,8 +6,7 @@ title: "About #male wearing #netela and getting priority in partaking from the #
 date: "2025-01-10T22:30:59"
 tags: ["male", "netela", "eucharist"]
 isSaint: false
----
-About #male wearing #netela and getting priority in partaking from the #Eucharist 
+---About #male wearing #netela and getting priority in partaking from the #Eucharist 
 
 Question፦ Selam,
 

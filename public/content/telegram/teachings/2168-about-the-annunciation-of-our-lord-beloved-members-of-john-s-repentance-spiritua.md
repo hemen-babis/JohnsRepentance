@@ -6,8 +6,7 @@ title: "About the #annunciation of our Lord. Beloved members of John's Repentanc
 date: "2024-01-01T21:47:16"
 tags: ["annunciation"]
 isSaint: false
----
-About the #annunciation of our Lord. 
+---About the #annunciation of our Lord. 
 
 Beloved members of John's Repentance spiritual service, yesterday we celebrated the feast of the annunciation in the Ethiopian Orthodox church, hence we send you the following lesson so you can read and partake from the blessings of this wonderful event. 
 

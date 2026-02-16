@@ -6,8 +6,7 @@ title: "There is no #fornication #sin that I have not committed. But I am #afrai
 date: "2022-12-31T15:33:11"
 tags: ["fornication", "sin", "afraid", "fearful"]
 isSaint: false
----
-There is no #fornication #sin that I have not committed. But I am #afraid and #fearful to confess before a priest. 
+---There is no #fornication #sin that I have not committed. But I am #afraid and #fearful to confess before a priest. 
 
 (Continued part) 👆
 

@@ -6,8 +6,7 @@ title: "Answer to the last question regarding our Lady the virgin #Mary My child
 date: "2024-07-17T01:22:21"
 tags: ["mary"]
 isSaint: true
----
-Answer to the last question regarding our Lady the virgin #Mary
+---Answer to the last question regarding our Lady the virgin #Mary
 
 My child, thank you for your thoughtful inquiry. It brings joy to my heart that you and your friend are wrestling with these important questions.  The Blessed Virgin Mary holds a special place in the hearts of Orthodox Christians, but it's important to understand it all comes from our deep reverence for God.
 

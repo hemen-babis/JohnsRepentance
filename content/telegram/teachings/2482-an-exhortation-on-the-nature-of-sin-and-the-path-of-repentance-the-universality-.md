@@ -6,8 +6,7 @@ title: "An Exhortation on the Nature of #Sin and the Path of #Repentance. The Un
 date: "2024-03-15T22:02:02"
 tags: ["sin", "repentance"]
 isSaint: false
----
-An Exhortation on the Nature of #Sin and the Path of #Repentance.
+---An Exhortation on the Nature of #Sin and the Path of #Repentance.
 
 The Universality of Sin
 

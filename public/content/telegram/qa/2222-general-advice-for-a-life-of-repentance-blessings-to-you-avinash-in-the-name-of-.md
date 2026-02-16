@@ -6,8 +6,7 @@ title: "General advice for a life of #repentance Blessings to you, Avinash, in t
 date: "2024-01-14T23:50:42"
 tags: ["repentance"]
 isSaint: false
----
-General advice for a life of #repentance 
+---General advice for a life of #repentance 
 
 Blessings to you, Avinash, in the name of our Lord Jesus Christ.
 

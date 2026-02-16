@@ -6,8 +6,7 @@ title: "About #prayer 👉 Question: How to develop a deep prayer life and stren
 date: "2023-05-11T22:03:54"
 tags: ["prayer"]
 isSaint: false
----
-About #prayer 
+---About #prayer 
 
 👉 Question: How to develop a deep prayer life and strengthen my spiritual life every day; How can I get closer to God?
 

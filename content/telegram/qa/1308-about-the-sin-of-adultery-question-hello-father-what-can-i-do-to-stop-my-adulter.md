@@ -6,8 +6,7 @@ title: "About the #sin of #adultery 👉 Question፦ Hello father, what can I do
 date: "2023-06-15T21:33:07"
 tags: ["sin", "adultery"]
 isSaint: false
----
-About the #sin of #adultery
+---About the #sin of #adultery
 
 👉 Question፦ Hello father, what can I do to stop my adultery with women?
 

@@ -6,8 +6,7 @@ title: "About #Prayer 👉 Question፦ When we pray to ask God for something. Ar
 date: "2024-03-03T20:45:01"
 tags: ["prayer"]
 isSaint: true
----
-About #Prayer
+---About #Prayer
 
 👉 Question፦ When we pray to ask God for something. Are we supposed to pray about it once and understand he knows what we are asking for and stop there. Or do we keep praying about it continuously? I know that people do subye and dedicate a certain time period where they pray about something. After that, are they supposed to keep praying about the same thing untill they get what they prayed for / understand Gods will about what they prayed about —-  or are we supposed  to stop after praying about it once / a certain period, knowing that we have already communicated it to God and instead focus on other prayers like praising God and etc? 
 

@@ -6,8 +6,7 @@ title: "About #Pregnancy and #pennance Question፦ Can a pregnant women confess/
 date: "2023-06-17T22:18:25"
 tags: ["pregnancy", "pennance"]
 isSaint: false
----
-About #Pregnancy and #pennance 
+---About #Pregnancy and #pennance 
 
 Question፦ Can a pregnant women confess/repent? I ask that because it may be hard for her to do the prostrations that the priests usually ask us to do.
 

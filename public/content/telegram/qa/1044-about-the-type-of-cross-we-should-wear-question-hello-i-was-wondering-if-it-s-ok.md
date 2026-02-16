@@ -6,8 +6,7 @@ title: "About the type of #cross we should wear Question፦ Hello, I was wonderi
 date: "2023-04-27T22:08:09"
 tags: ["cross"]
 isSaint: false
----
-About the type of #cross we should wear
+---About the type of #cross we should wear
 
 Question፦ Hello, I was wondering if it's okay to wear other kinds of cross necklaces (gold, silverm etc) or does it have to be the type that is shaped in wood? If so, I was wondering what the meaning is. Thank you!
 

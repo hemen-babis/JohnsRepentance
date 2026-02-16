@@ -6,8 +6,7 @@ title: "On the Virtue of #Almsgiving To bestow alms is not merely an act of huma
 date: "2023-09-19T22:32:01"
 tags: ["almsgiving"]
 isSaint: true
----
-On the Virtue of #Almsgiving
+---On the Virtue of #Almsgiving
 
 To bestow alms is not merely an act of human kindness but a testament to one's communion with the divine. The very fabric of our Christian faith rests on the love of God for His creation, and in almsgiving, we mirror that boundless love. As John Chrysostom might have opined, it is a silent sermon we preach, not with our lips, but with our deeds.
 

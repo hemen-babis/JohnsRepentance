@@ -6,8 +6,7 @@ title: "About #Tsomë_Tsigée Beloved brethren in Christ, in this sacred season 
 date: "2024-10-08T06:22:46"
 tags: ["tsomë_tsigée"]
 isSaint: false
----
-About #Tsomë_Tsigée 
+---About #Tsomë_Tsigée 
 
 Beloved brethren in Christ, in this sacred season known to us as Wereha Tsigée in the Ethiopian Orthodox Tewahedo Church, we commemorate the migration of the Holy Family—the Blessed Virgin Mary, our Lord and Savior Jesus Christ, and the righteous Joseph—into Egypt and Ethiopia. This event, memorialized in the fast of Tsomë Tsigée, is a journey marked by divine guidance, trials, and heavenly interventions, all culminating in the profound revelation of God’s care for His chosen vessels. Let us now embark on a spiritual reflection of this journey, rich in meaning and deep in mystery, a story that resonates through time as a testament to God’s enduring love for humanity.
 

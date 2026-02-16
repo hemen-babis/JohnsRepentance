@@ -6,8 +6,7 @@ title: "#Clarification of a #Bible #Verse 👉 Question፦ Hello Father, I had a
 date: "2023-06-05T22:01:22"
 tags: ["clarification", "bible", "verse"]
 isSaint: false
----
-#Clarification of a #Bible #Verse
+---#Clarification of a #Bible #Verse
 
 👉 Question፦ Hello Father, I had a question. It is about the verse of the bible that says "love your enemy". How can we love people who are trying to destroy us? 
 

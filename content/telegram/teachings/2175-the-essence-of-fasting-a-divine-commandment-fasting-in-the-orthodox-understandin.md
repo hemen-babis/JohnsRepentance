@@ -6,8 +6,7 @@ title: "The Essence of #Fasting: A Divine Commandment Fasting, in the Orthodox u
 date: "2024-01-03T21:12:01"
 tags: ["fasting"]
 isSaint: false
----
-The Essence of #Fasting: A Divine Commandment
+---The Essence of #Fasting: A Divine Commandment
 
 Fasting, in the Orthodox understanding, transcends mere abstention from food. It is an act of obedience to God's command, a testament to the discipline of the soul over bodily desires. This practice traces its roots to the very beginning of human existence, as seen in the command given to Adam in the Garden of Eden. The abstention from certain foods was not merely a physical act but a spiritual exercise, teaching obedience, self-control, and dependence on God's wisdom and provision.
 

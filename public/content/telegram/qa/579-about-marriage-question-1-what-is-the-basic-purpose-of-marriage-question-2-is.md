@@ -6,8 +6,7 @@ title: "About #marriage 👉 Question #1: What is the basic purpose of marriage?
 date: "2023-02-12T20:31:04"
 tags: ["marriage", "1", "2"]
 isSaint: false
----
-About #marriage
+---About #marriage
 
 👉 Question #1: What is the basic purpose of marriage?
 

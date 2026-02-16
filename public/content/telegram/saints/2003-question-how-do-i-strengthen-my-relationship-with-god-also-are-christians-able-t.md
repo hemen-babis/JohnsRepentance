@@ -6,8 +6,7 @@ title: "Question፦ How do I strengthen my relationship with God? Also, are chri
 date: "2023-11-28T21:06:01"
 tags: ["music"]
 isSaint: true
----
-Question፦ How do I strengthen my relationship with God? Also, are christians able to listen to any #music at all? Like ones with any swear words or some that don’t promote christianity
+---Question፦ How do I strengthen my relationship with God? Also, are christians able to listen to any #music at all? Like ones with any swear words or some that don’t promote christianity
 
 Answer፦ Blessings to you on your journey seeking closeness with our Lord. The path to a deeper relationship with God is through prayer, fasting, and immersing oneself in the Holy Scriptures. As Saint John Chrysostom beautifully said, “Prayer is the light of the soul.” Therefore, to strengthen your relationship with God, dedicate time each day for prayer, reading the Bible, and reflecting on its teachings.
 

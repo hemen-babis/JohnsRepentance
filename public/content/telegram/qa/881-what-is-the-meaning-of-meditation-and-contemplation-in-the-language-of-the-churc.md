@@ -6,8 +6,7 @@ title: "What is the meaning of #meditation and #contemplation in the language of
 date: "2023-03-30T21:37:20"
 tags: ["meditation", "contemplation"]
 isSaint: true
----
-What is the meaning of #meditation and #contemplation in the language of the Church?
+---What is the meaning of #meditation and #contemplation in the language of the Church?
 
 👉 Question: Could you teach us what meditation means in the Church? What does it mean to meditate on Scriptures or other spiritual and educational readings? How can we follow the example of King David, who meditated on God's Word day and night, as he wrote in Psalm 1:2-3: "But his delight is in the law of the Lord, and on his law he meditates day and night. He is like a tree planted by streams of water, which yields its fruit in season and whose leaf does not wither. Whatever he does prospers."
 

@@ -6,8 +6,7 @@ title: "About one of the #miracles performed by the Virgin #Mary on this day. Be
 date: "2023-10-31T22:04:02"
 tags: ["miracles", "mary"]
 isSaint: true
----
-About one of the #miracles performed by the Virgin #Mary on this day. 
+---About one of the #miracles performed by the Virgin #Mary on this day. 
 
 Beloved members of John's Repentance spiritual service, on this most hallowed day, we gather in holy reverence to celebrate the feats and miracles of the Blessed Virgin Mary, Our Lady, the Theotokos, and we turn our gaze towards the narrative of the Apostle Matthias, as well as the commemoration of other venerable saints.
 

@@ -6,8 +6,7 @@ title: "Question፦ I have a very hard time forgiving people, what do you advice
 date: "2023-11-28T21:09:21"
 tags: ["forgiveness"]
 isSaint: true
----
-Question፦ I have a very hard time forgiving people, what do you advice me? #forgiveness
+---Question፦ I have a very hard time forgiving people, what do you advice me? #forgiveness
 
 Answer፦ Beloved in Christ,
 

@@ -6,8 +6,7 @@ title: "I was molested by a priest when I was young, I now doubt the truthfulnes
 date: "2023-04-12T21:31:19"
 tags: ["church"]
 isSaint: true
----
-I was molested by a priest when I was young, I now doubt the truthfulness of the #Church, what do you advice me? 
+---I was molested by a priest when I was young, I now doubt the truthfulness of the #Church, what do you advice me? 
 
 👉Question: Hello, 
 

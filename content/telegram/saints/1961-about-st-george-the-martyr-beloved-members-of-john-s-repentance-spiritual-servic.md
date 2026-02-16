@@ -6,8 +6,7 @@ title: "About St. #George the #martyr Beloved members of John's Repentance spiri
 date: "2023-11-16T20:36:01"
 tags: ["george", "martyr"]
 isSaint: true
----
-About St. #George the #martyr 
+---About St. #George the #martyr 
 
 Beloved members of John's Repentance spiritual service, today is the yearly feast if St. George the great martyr. Hence we send you this lesson so you can read and partake from the day's blessings. 
 

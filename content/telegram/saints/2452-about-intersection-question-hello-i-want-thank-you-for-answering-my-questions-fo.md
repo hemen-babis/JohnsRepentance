@@ -6,8 +6,7 @@ title: "About #Intersection 👉 Question፦ Hello,I want thank you for answerin
 date: "2024-03-03T20:42:01"
 tags: ["intersection"]
 isSaint: true
----
-About #Intersection 
+---About #Intersection 
 
 👉 Question፦ Hello,I want thank you for answering my questions for the past few weeks.Any ways  I have another question.
 

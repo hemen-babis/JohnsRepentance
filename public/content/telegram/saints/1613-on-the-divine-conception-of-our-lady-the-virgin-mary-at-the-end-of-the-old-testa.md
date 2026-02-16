@@ -6,8 +6,7 @@ title: "On the Divine Conception of Our Lady, the #Virgin #Mary At the end of th
 date: "2023-08-12T21:34:31"
 tags: ["virgin", "mary"]
 isSaint: true
----
-On the Divine Conception of Our Lady, the #Virgin #Mary
+---On the Divine Conception of Our Lady, the #Virgin #Mary
 
 At the end of the Old Testament and the beginning of the New, a significant event transpired, not detailed in the scriptures but deeply revered in the traditions of our Holy Orthodox Church: the conception of Our Lady, the Virgin Mary, on August 13th, sixteen years prior to the Nativity of our Lord Jesus Christ.
 

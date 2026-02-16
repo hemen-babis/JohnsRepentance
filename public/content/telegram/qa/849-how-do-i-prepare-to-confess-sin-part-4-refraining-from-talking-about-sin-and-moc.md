@@ -6,8 +6,7 @@ title: "How do I prepare to confess sin? (Part 4) - Refraining from talking abou
 date: "2023-03-24T21:33:02"
 tags: []
 isSaint: false
----
-How do I prepare to confess sin?
+---How do I prepare to confess sin?
 
 (Part 4)
 

@@ -6,8 +6,7 @@ title: "About #fasting: how we should #fast 👉 Question: In the bible it says 
 date: "2024-05-13T21:41:01"
 tags: ["fasting", "fast"]
 isSaint: false
----
-About #fasting: how we should #fast
+---About #fasting: how we should #fast
 
 👉 Question: In the bible it says do not appear to be fasting. If people invite you over and ask you to eat but they aren’t christians, is it okay to say your fasting and ask for vegan meals or are we supposed to hide the fact we’re fasting. Also, if let’s say you want to fast untill 3:00 pm but family members want you to eat with them at 12:00, is saying you want to wait until 3:00 the wrong approach and should i just be eating with them at 12 or what’s the best approach. Another example is how my grandmother wants me to drink coffee with her around 12:00/1:00. Should i be saying okay and doing that or politely mention how i want to wait a little longer.
 

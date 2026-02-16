@@ -6,8 +6,7 @@ title: "#Announcement Dear members of John's Repentance page, as some of you may
 date: "2023-02-01T21:31:47"
 tags: ["announcement"]
 isSaint: false
----
-#Announcement 
+---#Announcement 
 
 Dear members of John's Repentance page, as some of you may be aware, the Ethiopian Orthodox Church is in the midst of a persecution by the Ethiopian government. Even though this has been going on for a long time, it has now reached a level where we either lose the integrity and sovereignty of the Church or we fight back their efforts.
 

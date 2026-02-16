@@ -6,8 +6,7 @@ title: "About #God listening to #prayers Question: Does God listen to prayers? W
 date: "2023-06-23T22:32:02"
 tags: ["god", "prayers"]
 isSaint: false
----
-About #God listening to #prayers
+---About #God listening to #prayers
 
 Question: Does God listen to prayers? Why are some so successful and other not? Why is it that no matter how much they cry/pray, they're not successful?  
 

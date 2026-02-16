@@ -6,8 +6,7 @@ title: "The Entry of the Most Holy #Theotokos, the Virgin #Mary, into the Temple
 date: "2023-12-12T21:03:01"
 tags: ["theotokos", "mary"]
 isSaint: false
----
-The Entry of the Most Holy #Theotokos, the Virgin #Mary, into the Temple
+---The Entry of the Most Holy #Theotokos, the Virgin #Mary, into the Temple
 
 In the Orthodox Christian tradition, the Entry of the Most Holy Theotokos into the Temple stands as a beacon of divine grace and a testament to unwavering faith. This significant event, celebrated with reverence on December 3rd, encapsulates not only a historical moment but also profound theological truths that offer guidance and inspiration to the faithful.
 

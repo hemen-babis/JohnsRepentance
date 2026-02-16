@@ -6,8 +6,7 @@ title: "About #Honoring God Question፦ What does it mean to honor the Lord prac
 date: "2024-12-21T20:31:44"
 tags: ["honoring"]
 isSaint: true
----
-About #Honoring God
+---About #Honoring God
 
 Question፦ What does it mean to honor the Lord practically
 

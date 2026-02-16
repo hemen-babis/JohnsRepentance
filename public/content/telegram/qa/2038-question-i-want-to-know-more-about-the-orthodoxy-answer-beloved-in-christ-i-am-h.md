@@ -6,8 +6,7 @@ title: "Question፦ I want to know more about the #Orthodoxy. Answer ፦ Beloved
 date: "2023-12-03T21:30:56"
 tags: ["orthodoxy"]
 isSaint: false
----
-Question፦ I want to know more about the #Orthodoxy. 
+---Question፦ I want to know more about the #Orthodoxy. 
 
 Answer ፦ Beloved in Christ,
 

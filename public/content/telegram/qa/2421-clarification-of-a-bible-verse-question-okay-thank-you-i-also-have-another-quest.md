@@ -6,8 +6,7 @@ title: "Clarification of a #Bible verse 👉 Question፦ Okay,Thank you … I al
 date: "2024-02-25T20:31:11"
 tags: ["bible"]
 isSaint: false
----
-Clarification of a #Bible verse
+---Clarification of a #Bible verse
  
 👉 Question፦ Okay,Thank you …
 I also have another question.It says in Acts  summarized Ananias died and also his wife after lying to  God but than later on as we read more of Acts it’s says God came to Ananias to go heal Saul or Paul of his blindness but Ananias is dead ???

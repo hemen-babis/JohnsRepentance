@@ -6,8 +6,7 @@ title: "About the #Holy #Eucharist (Part 7) Additional Explanation About the Hol
 date: "2023-03-05T20:30:29"
 tags: ["holy", "eucharist"]
 isSaint: false
----
-About the #Holy #Eucharist  
+---About the #Holy #Eucharist  
  
 (Part 7)
 

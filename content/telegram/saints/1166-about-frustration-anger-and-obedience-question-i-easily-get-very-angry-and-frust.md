@@ -6,8 +6,7 @@ title: "About #frustration, #anger and #obedience Question፦ I easily get very 
 date: "2023-05-17T21:40:08"
 tags: ["frustration", "anger", "obedience"]
 isSaint: true
----
-About #frustration, #anger and #obedience 
+---About #frustration, #anger and #obedience 
 
 Question፦ I easily get very angry and frustrated, especially when someone gives me orders, and I really want to get rid of this behavior but I can't. What should I do?
 

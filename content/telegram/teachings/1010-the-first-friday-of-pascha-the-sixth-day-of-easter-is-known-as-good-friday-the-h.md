@@ -6,8 +6,7 @@ title: "The first #Friday of #Pascha The sixth day of Easter is known as Good Fr
 date: "2023-04-20T21:46:32"
 tags: ["friday", "pascha"]
 isSaint: false
----
-The first #Friday of #Pascha
+---The first #Friday of #Pascha
 
 The sixth day of Easter is known as Good Friday.
 

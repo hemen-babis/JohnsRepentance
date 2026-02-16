@@ -6,8 +6,7 @@ title: "About our approach to #Faith 👉 Question፦ Thank you! If I may ask on
 date: "2024-03-01T23:51:18"
 tags: ["faith"]
 isSaint: false
----
-About our approach to #Faith 
+---About our approach to #Faith 
 
 👉 Question፦ Thank you! If I may ask one more question, I want to know if Christianity is true instead of just believing it because my parents were Orthodox. However, im worried as I try to study the proof for Christianity and studying other religions, I may face times of doubt and confusion. Especially if unbelievers ask me questions that I don't know the answer too. During those time, does that mean I'm not a faithful Christian since I am experiencing time of uncertainty of whether Christianity is true? Would I be forbidden from the Eucharist or the Orthodox life since I don't yet believe everything wholeheartedly to be true? Or is it that uncertainty is part of the journey, and I would only be forbidden if I believed with conviction that they were false?
 

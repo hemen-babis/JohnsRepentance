@@ -6,8 +6,7 @@ title: "Question፦ Hi does the Orthodox tewahedo church believe in #cremation? 
 date: "2023-11-24T21:01:10"
 tags: ["cremation"]
 isSaint: false
----
-Question፦ Hi does the Orthodox tewahedo church believe in #cremation?
+---Question፦ Hi does the Orthodox tewahedo church believe in #cremation?
 
 Answer፦ Beloved in Christ,
 

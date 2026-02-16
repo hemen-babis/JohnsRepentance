@@ -6,8 +6,7 @@ title: "There is no #fornication #sin that I have not committed. But I am #afrai
 date: "2022-12-31T15:30:31"
 tags: ["fornication", "sin", "afraid", "fearful"]
 isSaint: false
----
-There is no #fornication #sin that I have not committed. But I am #afraid and #fearful to confess before a priest. 
+---There is no #fornication #sin that I have not committed. But I am #afraid and #fearful to confess before a priest. 
 
 Beloved and respected, all our members who follow the orthodox education that we convey on John's Repentance page, we encourage to ask questions on this page or send it to us privately. The following is a question that was sent to us privately, which you can do on Telegram by sending a message to the admin 'ዮሐንስ ንስሐ' or by sending us an email at yohannes.neseha@gmail.com. Since we all face similar struggles in life, we can all learn from one another. Hence we entrust you all to read and learn from the answers we give. 
 

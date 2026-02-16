@@ -6,8 +6,7 @@ title: "A Discourse on the Mystery of the Holy #Trinity Beloved in Christ, I gre
 date: "2024-07-15T00:11:26"
 tags: ["trinity"]
 isSaint: false
----
-A Discourse on the Mystery of the Holy #Trinity
+---A Discourse on the Mystery of the Holy #Trinity
 
 Beloved in Christ, I greet you with the joy and peace of our Lord. Today, let us delve into the profound mystery of the Holy Trinity, a cornerstone of our faith, revealed through scripture and tradition, reflecting the unity and distinction within the Godhead.
 

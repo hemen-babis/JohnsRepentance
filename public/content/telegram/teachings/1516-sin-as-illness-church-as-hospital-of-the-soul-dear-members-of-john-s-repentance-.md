@@ -6,8 +6,7 @@ title: "#Sin As illness፤ Church As Hospital Of The #Soul Dear members of John'
 date: "2023-07-24T22:00:01"
 tags: ["sin", "soul"]
 isSaint: false
----
-#Sin As illness፤ Church As Hospital Of The #Soul
+---#Sin As illness፤ Church As Hospital Of The #Soul
 
 Dear members of John's Repentance service, today we send you a writing about Atheism from a great Russian Orthodox father as this is a major problem the western world is dealing with today. 
 

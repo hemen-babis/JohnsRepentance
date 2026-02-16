@@ -109,36 +109,8 @@ const qaData: QAItem[] = [
 
 export default function QAPage() {
   const extractQuestionTitle = (post: TelegramPost) => {
-    const normalize = (value: string) => value.replace(/\s+/g, " ").replace(/[#*_`]/g, "").trim()
-    const firstQuestionLine = (value: string) => {
-      const oneLine = normalize(value).split("\n")[0].trim()
-      if (!oneLine) return ""
-      const qIndex = oneLine.indexOf("?")
-      if (qIndex >= 0) return oneLine.slice(0, qIndex + 1).trim()
-      return oneLine
-    }
-
-    const fromTitle = normalize(post.title)
-    const fromExcerpt = normalize(post.excerpt)
-
-    const pickFrom = (source: string) => {
-      const questionMatch = source.match(/question\s*[:፦]\s*([\s\S]+)/i)
-      if (questionMatch?.[1]) {
-        const beforeAnswer = questionMatch[1].split(/answer\s*[:፦]/i)[0]
-        return firstQuestionLine(beforeAnswer)
-      }
-      return ""
-    }
-
-    let question = pickFrom(fromTitle) || pickFrom(fromExcerpt)
-
-    if (!question) {
-      // Fallback: use first line from title only to avoid title+excerpt repetition.
-      question = firstQuestionLine(fromTitle.replace(/^about\s+/i, ""))
-    }
-
-    if (!question) return "Orthodox Q&A"
-    return question.endsWith("?") ? question : `${question}?`
+    const title = post.title.replace(/\s+/g, " ").trim()
+    return title || "Orthodox Q&A for Faith and Spiritual Guidance"
   }
 
   const isQuestionLike = (post: TelegramPost) => /question\s*[:፦]|answer\s*[:፦]/i.test(`${post.title} ${post.excerpt}`)

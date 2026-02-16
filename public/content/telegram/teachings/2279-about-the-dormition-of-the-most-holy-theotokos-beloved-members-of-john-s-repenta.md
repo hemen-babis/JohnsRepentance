@@ -6,8 +6,7 @@ title: "About the #Dormition of the Most Holy #Theotokos Beloved members of John
 date: "2024-01-29T23:02:42"
 tags: ["dormition", "theotokos"]
 isSaint: false
----
-About the #Dormition of the Most Holy #Theotokos
+---About the #Dormition of the Most Holy #Theotokos
 
 Beloved members of John's Repentanc Spiritual service, let us delve deeply into the profound mystery and celestial celebration of the Dormition of the Most Holy Theotokos, the Virgin Mary, whose repose not only marks an event of sacred transition but also a testament to the ineffable workings of Divine Grace and Love in the Christian narrative.
 

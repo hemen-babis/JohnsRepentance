@@ -6,8 +6,7 @@ title: "The first #Tuesday of #Easter The First Tuesday of Easter is called #Tho
 date: "2024-05-07T21:33:02"
 tags: ["tuesday", "easter", "thomas"]
 isSaint: false
----
-The first #Tuesday of #Easter
+---The first #Tuesday of #Easter
 
 The First Tuesday of Easter is called #Thomas. Why is that? 
 

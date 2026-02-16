@@ -6,8 +6,7 @@ title: "About #control of #mind and #throughts How to stop recurring bad thought
 date: "2023-01-29T20:30:15"
 tags: ["control", "mind", "throughts"]
 isSaint: true
----
-About #control of #mind and #throughts 
+---About #control of #mind and #throughts 
 
 How to stop recurring bad thoughts in the mind permanently?
 

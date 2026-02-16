@@ -6,8 +6,7 @@ title: "The first day of #Holy #Week: Holy Monday This day is the day of cleansi
 date: "2023-04-09T22:04:01"
 tags: ["holy", "week"]
 isSaint: false
----
-The first day of #Holy #Week: Holy Monday 
+---The first day of #Holy #Week: Holy Monday 
 
 This day is the day of cleansing the temple and cursing the fig tree. "In the morning, when He returned to the city, He was hungry. He saw a fig tree by the road and approached it. He found no fruit on it, except leaves. And He said to it, "May you never bear fruit again!" The fig tree then withered." Matthew 21:18-22, Mark 11:11. The evangelist Luke said, "A man had a fig tree planted in his vineyard and came looking for fruit on it but found none." Luke 13:6-9. By using the fig tree as a metaphor for human life, our Savior Christ urges us to turn away from sin and to repent and live a life of worshiping God and bearing good fruit. 
 

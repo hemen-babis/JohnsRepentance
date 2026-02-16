@@ -6,8 +6,7 @@ title: "About #Repentance Repentance is an integral part of the Christian faith,
 date: "2023-06-19T21:49:02"
 tags: ["repentance"]
 isSaint: false
----
-About #Repentance 
+---About #Repentance 
 
 Repentance is an integral part of the Christian faith, and it is a necessary step for individuals seeking to reconcile with God. The concept of repentance is not limited to the New Testament but is also present in the Old Testament, where the prophets called on the Israelites to repent and turn away from their wicked ways.
 

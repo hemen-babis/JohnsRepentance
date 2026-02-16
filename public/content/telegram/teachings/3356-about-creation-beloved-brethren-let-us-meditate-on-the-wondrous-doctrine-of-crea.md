@@ -4,10 +4,10 @@ from: "ዮሐንስ ንስሐ"
 type: "lesson"
 title: "About #Creation Beloved brethren, let us meditate on the wondrous doctrine of creation, a "
 date: "2024-09-17T00:32:01"
-tags: ["creation"]
-isSaint: false
----
-About #Creation 
+tags: ["creation", "eucharist"]
+isSaint: true
+mergedFrom: [3356, 3365]
+---About #Creation 
 
 Beloved brethren, let us meditate on the wondrous doctrine of creation, a doctrine that reveals to us not only the beginning of all things but also the wisdom, power, and goodness of our Almighty God. Creation, as taught by the holy fathers, is the very act by which God, in His infinite authority, brought into existence all things seen and unseen, tangible and intangible. It is a testimony not only to His power but to His love and purpose for His creatures. Let us, therefore, consider deeply what it means for God to create, and how this truth calls us to contemplate His majesty and our own place within His creation.
 
@@ -29,4 +29,30 @@ Why did God create the heavens and the earth? What was His purpose? It was not f
 
 God created the world so that His name might be praised and His glory might be known. All creation, in its beauty and order, reflects the glory of God, and it is our duty as His creatures to acknowledge this glory and give Him thanks. Creation also serves as food for both body and soul. Just as God has provided for our physical nourishment through the fruits of the earth—meat, vegetables, and fruits—He has also prepared spiritual food for us. The wheat that becomes bread, the wine that becomes His sacred blood, these are but signs of the greater sustenance He offers to our souls.
 
-Continues 👇🏾
+About the Holy #Eucharist 
+
+Brethren in the Lord, who stand steadfast in the unwavering Orthodox faith, grace unto you, and peace, from God our Father, and the Lord Jesus Christ. Today we will be learning about the holy Eucharist, which stands as the pinnacle of our redemption and the very lifeblood of the Church.
+
+✍ The Incarnation: The Prologue to the Eucharist
+
+Before we venture into the holy of holies, let us lay a foundation by reflecting upon the Incarnation, which is the cornerstone of all Christian doctrine. In the fullness of time, God, in His inscrutable wisdom, willed to be united with man. "The Word became flesh and dwelt among us" (John 1:14). This is not a mere visitation but an abiding union. The Godhead was pleased to dwell bodily (Colossians 2:9), and in this union, the natures of divinity and humanity are neither confounded nor separated but are united without mixture or change.
+
+In this mystical union, Christ fully assumed our nature, bearing our griefs, carrying our sorrows, yet without sin. As Saint Cyril rightly proclaimed, the nature that needed salvation was not passed over. Thus, the unblemished Lamb, perfect God and perfect Man, presented Himself as the only sacrifice capable of redeeming our fallen state.
+
+✍ The Eucharist: The Continuation of Incarnation
+
+The Eucharist, dear faithful, is not separate from this grand narrative; it is the perpetuation of the Incarnation. Just as the divine nature did not obliterate the human in Christ, so the essence of bread and wine is not destroyed when consecrated as the Body and Blood. Here, the Church in her wisdom teaches us that in this Holy Sacrament, there is a mystical but real transformation, akin to the Incarnation itself.
+
+As the Lord Jesus, at His Last Supper, did not speak in parables when He said, "This is my body... This is my blood" (Matthew 26:26-28), we take Him at His divine word, acknowledging a mystery that cannot be fathomed by the human mind but is apprehended by faith.
+
+✍ The Eucharist: The Apex of Theology
+
+In the Eucharist, we find the sum and summit of all theological truth. It is the tangible expression of God's love, the assurance of His promise, the fulfillment of the covenant. The Eucharist stands as a foretaste of the eschatological feast, where the Church militant and the Church triumphant are united in the worship of the Lamb.
+
+This Sacrament is not a mere remembrance but an anamnesis, a making present of the one sacrifice of Calvary. In the Divine Liturgy, we are lifted above time and space, and the events of our redemption are made present to us, that we might partake of the fruits of the Tree of Life which is Christ Himself.
+
+✍ The Eucharist: The Medicine of Immortality
+
+Saint Ignatius of Antioch called the Eucharist the "medicine of immortality," and rightly so. For as much as the body requires bread for sustenance, so too does the soul require the Body of Christ for eternal life. In this Holy Communion, we are united to Christ and through Him to one another, forming one body, of which He is the head.
+
+To partake of the Eucharist unworthily is to eat and drink judgment upon oneself (1 Corinthians 11:29). Hence, the Church, as a loving mother, calls her children to approach with a pure heart, having confessed and repented, that they might be made partakers of divine nature (2 Peter 1:4).

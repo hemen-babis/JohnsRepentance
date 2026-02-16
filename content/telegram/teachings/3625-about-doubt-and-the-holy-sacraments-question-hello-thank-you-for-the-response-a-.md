@@ -6,8 +6,7 @@ title: "About #Doubt and the Holy #Sacraments Question፦ Hello, thank you for t
 date: "2024-12-30T20:42:01"
 tags: ["doubt", "sacraments"]
 isSaint: false
----
-About #Doubt and the Holy #Sacraments
+---About #Doubt and the Holy #Sacraments
 
 Question፦ Hello, thank you for the response. A follow up question, can one take part in the sacraments while having doubts or should I focus on praying and making sure I don’t have any doubts before participating in any sacraments?
 

@@ -6,8 +6,7 @@ title: "About the first #Church building; Holy Temple of Saint #Mary Dear member
 date: "2023-06-28T22:31:35"
 tags: ["church", "mary"]
 isSaint: true
----
-About the first #Church building; Holy Temple of Saint #Mary
+---About the first #Church building; Holy Temple of Saint #Mary
 
 Dear members of John's Repentance spiritual service, today we celebrate the building of the first church - let us venture into the divine tapestry of the first church built in honor of the Holy Mother Saint Mary in Caesarea, Chalcedon. Saint Paul and Saint Barnabas, those stalwart Apostles, were the heralds who sowed the seeds of faith amongst the gentiles. With their hearts aflame, they fervently preached the Good Word. Yet, the believers yearned for a sanctuary to partake in the Holy Communion. The Apostles, led by an unyielding devotion, sought the divine intervention of our Lord and Savior, Jesus Christ.
 

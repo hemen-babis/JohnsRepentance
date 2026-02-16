@@ -6,8 +6,7 @@ title: "Question፦ Absolutely 💯 please #pray that The Lord moves the Angels 
 date: "2023-11-29T21:30:01"
 tags: ["pray"]
 isSaint: true
----
-Question፦ Absolutely 💯 please #pray that The Lord moves the Angels of The Lord to give me direction and guidance for my destiny 🙏 Thank you so much 💓
+---Question፦ Absolutely 💯 please #pray that The Lord moves the Angels of The Lord to give me direction and guidance for my destiny 🙏 Thank you so much 💓
 
 Answer፦ Beloved in Christ,
 

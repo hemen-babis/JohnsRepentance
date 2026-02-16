@@ -6,8 +6,7 @@ title: "About holy #Liturgy in the #EOTC 👉Question: When the other three East
 date: "2023-05-03T04:06:40"
 tags: ["liturgy", "eotc"]
 isSaint: true
----
-About holy #Liturgy in the #EOTC
+---About holy #Liturgy in the #EOTC
 
 👉Question: When the other three Eastern Orthodox churches have three liturgies, why do we have fourteen liturgies?
 

@@ -6,8 +6,7 @@ title: "About #patience, #pride and #greed Dear members of John's Repentance spi
 date: "2023-08-08T22:03:01"
 tags: ["patience", "pride", "greed"]
 isSaint: true
----
-About #patience, #pride and #greed 
+---About #patience, #pride and #greed 
 
 Dear members of John's Repentance spiritual service, today we send you a lesson on patience pride and greed so that you may learn about these major topics in our Church and apply the learnings in your life, especially during this fasting season. 
 

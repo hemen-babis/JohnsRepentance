@@ -6,8 +6,7 @@ title: "On the Gravity of the Unpardonable #Sin Our Blessed Savior has proclaime
 date: "2023-10-18T21:30:01"
 tags: ["sin"]
 isSaint: false
----
-On the Gravity of the Unpardonable #Sin
+---On the Gravity of the Unpardonable #Sin
 
 Our Blessed Savior has proclaimed, "Whosoever shall speak against the Son of Man, it shall be forgiven him; but whosoever shall speak against the Holy Spirit, it shall not be forgiven him, neither in this world, nor in that which is to come" (Matthew 12:32). Ponder, dear brethren, the profundity of these words. When Our Lord came among the Jews, many reviled Him, yet even these He was willing to absolve. Yet, there lies a transgression so severe that it eludes even the merciful embrace of Christ's redemptive love — blasphemy against the Holy Spirit.
 

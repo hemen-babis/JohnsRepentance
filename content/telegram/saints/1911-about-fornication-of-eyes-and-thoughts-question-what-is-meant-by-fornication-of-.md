@@ -6,8 +6,7 @@ title: "About #fornication of eyes and thoughts 👉 Question፦ What is meant b
 date: "2023-11-04T22:45:26"
 tags: ["fornication"]
 isSaint: true
----
-About #fornication of eyes and thoughts
+---About #fornication of eyes and thoughts
 
 👉 Question፦ What is meant by fornication of thought and eyes?
 

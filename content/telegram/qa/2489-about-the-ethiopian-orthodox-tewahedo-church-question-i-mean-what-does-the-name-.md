@@ -6,8 +6,7 @@ title: "About the #Ethiopian #Orthodox #Tewahedo Church Question፦ I mean what 
 date: "2024-03-17T22:18:01"
 tags: ["ethiopian", "orthodox", "tewahedo"]
 isSaint: false
----
-About the #Ethiopian #Orthodox #Tewahedo Church 
+---About the #Ethiopian #Orthodox #Tewahedo Church 
 
 Question፦ I mean what does the name Orthodox represent in our faith. Henceforth, why do we call our church the Ethiopian Orthodox Tewahedo Church?
 

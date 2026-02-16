@@ -6,8 +6,7 @@ title: "About how our Lord and Savior #Jesus #Christ defeated the devil. \"To de
 date: "2023-04-25T22:12:45"
 tags: ["jesus", "christ"]
 isSaint: false
----
-About how our Lord and Savior #Jesus #Christ defeated the devil. 
+---About how our Lord and Savior #Jesus #Christ defeated the devil. 
 
 "To destroy the works of the devil, the Son of God has been revealed" (1 John 3:8).
 

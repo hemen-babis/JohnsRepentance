@@ -6,8 +6,7 @@ title: "About the #legitimacy of books found online Question: Hello, Should our 
 date: "2025-01-12T22:39:47"
 tags: ["legitimacy"]
 isSaint: false
----
-About the #legitimacy of books found online
+---About the #legitimacy of books found online
 
 Question: Hello,
 Should our kids use this book?

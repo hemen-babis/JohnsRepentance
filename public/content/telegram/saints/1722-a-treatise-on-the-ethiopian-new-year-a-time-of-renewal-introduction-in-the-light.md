@@ -6,8 +6,7 @@ title: "A Treatise on the Ethiopian New Year: A Time of Renewal Introduction In 
 date: "2023-09-11T23:11:01"
 tags: []
 isSaint: true
----
-A Treatise on the Ethiopian New Year: A Time of Renewal
+---A Treatise on the Ethiopian New Year: A Time of Renewal
 
 Introduction
 

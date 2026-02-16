@@ -6,8 +6,7 @@ title: "#Tears of #repentance Dear Orthodox friends of John's Repentance website
 date: "2023-01-05T20:32:02"
 tags: ["tears", "repentance"]
 isSaint: true
----
-#Tears of #repentance 
+---#Tears of #repentance 
 
 Dear Orthodox friends of John's Repentance website spiritual program series; We have sent you the following educational message regarding the subject mentioned in the title, so we entrust you to read and understand it.
 

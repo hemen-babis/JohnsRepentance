@@ -6,8 +6,7 @@ title: "About what is from #God. Question፦ Hey I had one question, how do we k
 date: "2024-12-29T20:31:10"
 tags: ["god"]
 isSaint: true
----
-About what is from #God. 
+---About what is from #God. 
 
 Question፦ Hey I had one question, how do we know if something is from God or not?
 

@@ -6,8 +6,7 @@ title: "About the Divine Mystery of the Wedding at #Cana of #Galilee In the hall
 date: "2024-01-21T21:43:01"
 tags: ["cana", "galilee"]
 isSaint: true
----
-About the Divine Mystery of the Wedding at #Cana of #Galilee 
+---About the Divine Mystery of the Wedding at #Cana of #Galilee 
 
 In the hallowed shadow of our forefathers in faith, let us delve into the profound mystery of the Wedding at Cana, where our Lord Jesus Christ, in His divine wisdom and grace, performed His first miracle. This event, gloriously recounted in the Gospel of Saint John (John 2:1-11), is not merely a narrative of a miraculous transformation of water into wine, but a profound theological revelation, unveiling the depths of Christ's divinity, the sanctity of marriage, and the intercessory role of the Blessed Virgin Mary.
 
