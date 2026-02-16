@@ -17,19 +17,19 @@ export default function YouthCornerPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-  
+      transition: { duration: 0.6 },
+    },
+  }
+
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+        staggerChildren: 0.2,
+      },
+    },
+  }
 
   return (
     <div className="bg-gradient-to-b from-amber-50/50 to-orange-50/30 dark:from-stone-950 dark:to-orange-950/20">
