@@ -25,7 +25,6 @@ import {
   Bell,
   MessageCircle,
   Heart,
-  PenTool,
   ChevronDown,
   ChevronRight,
   CheckCircle,
@@ -57,6 +56,11 @@ export default function DeaconsCornerPage() {
   const [expandedItem, setExpandedItem] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [isPlaying, setIsPlaying] = useState(false)
+  const [showMisbakEmbed, setShowMisbakEmbed] = useState(true)
+  const [misbakQuery, setMisbakQuery] = useState("")
+  const [misbakLoading, setMisbakLoading] = useState(false)
+  const [selectedVideoId, setSelectedVideoId] = useState("GfBL_vM8eSM")
+  const [misbakResults, setMisbakResults] = useState<Array<{ id: string; title: string; thumb: string }>>([])
 
   const toggleExpand = (id: string) => {
     setExpandedItem(expandedItem === id ? null : id)
@@ -65,6 +69,24 @@ export default function DeaconsCornerPage() {
   const toggleAudioPlay = () => {
     setIsPlaying(!isPlaying)
     // In a real implementation, this would play/pause an audio file
+  }
+
+  const searchMisbak = async () => {
+    setMisbakLoading(true)
+    try {
+      const res = await fetch(`/api/youtube/playlist-search?q=${encodeURIComponent(misbakQuery)}`)
+      const data = (await res.json()) as { items?: Array<{ id: string; title: string; thumb: string }> }
+      const items = data.items ?? []
+      setMisbakResults(items)
+      if (items.length > 0) {
+        setSelectedVideoId(items[0].id)
+        setShowMisbakEmbed(true)
+      }
+    } catch {
+      setMisbakResults([])
+    } finally {
+      setMisbakLoading(false)
+    }
   }
 
   return (
@@ -96,7 +118,7 @@ export default function DeaconsCornerPage() {
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="misbak" className="w-full">
               <div className="flex justify-center mb-8 overflow-x-auto pb-2 scrollbar-hide">
-                <TabsList className="grid grid-cols-4 lg:grid-cols-8 w-full max-w-4xl gap-1">
+                <TabsList className="grid grid-cols-4 lg:grid-cols-7 w-full max-w-4xl gap-1">
                   <TabsTrigger value="misbak" className="whitespace-nowrap">
                     <BookOpen className="h-4 w-4 mr-1 inline-block" />
                     Misbak
@@ -108,10 +130,6 @@ export default function DeaconsCornerPage() {
                   <TabsTrigger value="abinet" className="whitespace-nowrap">
                     <GraduationCap className="h-4 w-4 mr-1 inline-block" />
                     Abinet
-                  </TabsTrigger>
-                  <TabsTrigger value="vestments" className="whitespace-nowrap">
-                    <PenTool className="h-4 w-4 mr-1 inline-block" />
-                    Vestments
                   </TabsTrigger>
                   <TabsTrigger value="prayers" className="whitespace-nowrap">
                     <Heart className="h-4 w-4 mr-1 inline-block" />
@@ -138,237 +156,102 @@ export default function DeaconsCornerPage() {
                   <motion.div variants={fadeInUp}>
                     <div className="text-center mb-8">
                       <h2 className="text-2xl font-bold text-white mb-2">Misbak Resource Center</h2>
-                      <p className="text-gray-400">
-                        Access comprehensive Misbak texts, audio recordings, and practice materials
-                      </p>
+                      <p className="text-gray-400">Use this direct YouTube playlist for weekly Misbak practice.</p>
                     </div>
                   </motion.div>
 
-                  {/* Search and Filter */}
-                  <motion.div variants={fadeInUp} className="mb-8">
-                    <Card className="border-none shadow-lg overflow-hidden bg-gray-900 mb-8">
-                      <CardContent className="p-6">
-                        <div className="flex flex-col md:flex-row gap-4">
-                          <div className="relative flex-grow">
-                            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                            <Input
-                              placeholder="Search Misbak texts by name, feast, or content..."
-                              className="pl-10 bg-gray-800 border-gray-700 text-white"
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                          </div>
-                          <Button className="bg-amber-600 hover:bg-amber-700 text-black">
-                            <Filter className="mr-2 h-4 w-4" /> Filter
-                          </Button>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          <Badge variant="outline" className="bg-gray-800 text-white hover:bg-gray-700 cursor-pointer">
-                            Season: Lent
-                          </Badge>
-                          <Badge variant="outline" className="bg-gray-800 text-white hover:bg-gray-700 cursor-pointer">
-                            Format: Audio
-                          </Badge>
-                          <Badge variant="outline" className="bg-gray-800 text-white hover:bg-gray-700 cursor-pointer">
-                            Language: Ge'ez
-                          </Badge>
-                          <Badge variant="outline" className="bg-gray-800 text-white hover:bg-gray-700 cursor-pointer">
-                            Tone: First
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* Misbak Texts Section */}
-                    <motion.div variants={fadeInUp}>
-                      <Card className="border-none shadow-lg overflow-hidden bg-gray-900 h-full">
-                        <CardHeader>
-                          <CardTitle className="text-white">
-                            <FileText className="h-5 w-5 inline-block mr-2 text-amber-500" />
-                            Misbak Texts
-                          </CardTitle>
-                          <CardDescription>Digital PDFs in Ge'ez and transliterations</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Tsome Digua</h3>
-                              <p className="text-gray-400 text-sm">Lenten Misbak (PDF + Transliteration)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Kedassie (St. Basil)</h3>
-                              <p className="text-gray-400 text-sm">Divine Liturgy Responses (PDF)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Feast of Cross</h3>
-                              <p className="text-gray-400 text-sm">Meskel Celebration (PDF)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/50"
-                          >
-                            <Link href="/deacons/misbak/archive">
-                              View Complete Archive
-                              <ChevronRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-
-                    {/* Audio Recordings */}
-                    <motion.div variants={fadeInUp}>
-                      <Card className="border-none shadow-lg overflow-hidden bg-gray-900 h-full">
-                        <CardHeader>
-                          <CardTitle className="text-white">
-                            <Music className="h-5 w-5 inline-block mr-2 text-amber-500" />
-                            Audio Recordings
-                          </CardTitle>
-                          <CardDescription>Listen and learn from master chanters</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <div className="bg-gray-800 p-4 rounded-lg">
-                            <div className="flex items-center justify-between mb-3">
-                              <h3 className="font-medium text-white">Zema Mahlet - First Tone</h3>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="text-amber-500 hover:bg-amber-950/50"
-                                onClick={toggleAudioPlay}
-                              >
-                                {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
-                              </Button>
-                            </div>
-                            <p className="text-gray-400 text-sm">By Memher Tewodros (8:42)</p>
-                            <div className="mt-3 h-1 bg-gray-700 rounded-full overflow-hidden">
-                              <div className="h-full bg-amber-500 rounded-full" style={{ width: "30%" }}></div>
-                            </div>
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
-                            <div>
-                              <h3 className="font-medium text-white">Anqets' Berhan</h3>
-                              <p className="text-gray-400 text-sm">By Deacon Damtew (5:16)</p>
-                            </div>
-                            <Play className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between">
-                            <div>
-                              <h3 className="font-medium text-white">Kidase Ze'Yohannes</h3>
-                              <p className="text-gray-400 text-sm">By St. Yared School Choir (14:30)</p>
-                            </div>
-                            <Play className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/50"
-                          >
-                            <Link href="/deacons/audio-archive">
-                              Browse All Recordings
-                              <ChevronRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </div>
-
-                  {/* Practice Videos with Breakdown */}
-                  <motion.div variants={fadeInUp} className="mt-8">
+                  <motion.div variants={fadeInUp}>
                     <Card className="border-none shadow-lg overflow-hidden bg-gray-900">
                       <div className="h-2 bg-gradient-to-r from-amber-500 to-amber-700" />
-                      <CardHeader>
-                        <CardTitle className="text-white">
-                          <Video className="h-5 w-5 inline-block mr-2 text-amber-500" />
-                          Practice Videos with Chant Breakdowns
-                        </CardTitle>
-                      </CardHeader>
                       <CardContent>
-                        <div className="grid md:grid-cols-3 gap-4">
-                          <div className="bg-gray-800 rounded-lg overflow-hidden">
-                            <div className="relative aspect-video">
-                              <Image
-                                src="/placeholder.svg?height=200&width=300"
-                                alt="Mezmur Practice"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
-                                  <Play className="h-5 w-5 text-black" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="p-4">
-                              <h3 className="font-medium text-white">Mezmur Practice</h3>
-                              <p className="text-gray-400 text-sm">Beginner's Guide (8:15)</p>
-                            </div>
-                          </div>
-
-                          <div className="bg-gray-800 rounded-lg overflow-hidden">
-                            <div className="relative aspect-video">
-                              <Image
-                                src="/placeholder.svg?height=200&width=300"
-                                alt="Qidassie Responses"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
-                                  <Play className="h-5 w-5 text-black" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="p-4">
-                              <h3 className="font-medium text-white">Qidassie Responses</h3>
-                              <p className="text-gray-400 text-sm">Proper Intonation (10:42)</p>
-                            </div>
-                          </div>
-
-                          <div className="bg-gray-800 rounded-lg overflow-hidden">
-                            <div className="relative aspect-video">
-                              <Image
-                                src="/placeholder.svg?height=200&width=300"
-                                alt="Seasonal Chants"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center">
-                                  <Play className="h-5 w-5 text-black" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="p-4">
-                              <h3 className="font-medium text-white">Seasonal Chants</h3>
-                              <p className="text-gray-400 text-sm">Easter Special (15:30)</p>
-                            </div>
-                          </div>
+                        <div className="mb-4 rounded-xl border border-amber-300 bg-amber-100 p-3">
+                          <p className="text-sm font-semibold text-amber-900">Announcement</p>
+                          <p className="text-sm text-amber-800 mt-1">
+                            Misbak of the Week is shared on Tuesdays and also 3 days before a feast.
+                          </p>
                         </div>
 
-                        <div className="mt-6 flex justify-center">
-                          <Button className="bg-amber-500 hover:bg-amber-600 text-black">
-                            View All Practice Videos
+                        <div className="mb-5 rounded-xl border border-gray-700 bg-gray-800/60 p-3">
+                          <p className="text-sm text-stone-800 mb-2">
+                            Search in English (for example, <span className="font-semibold">&quot;tekeneyu&quot;</span>) or in Amharic to quickly find the Misbak you need.
+                          </p>
+                          <div className="flex flex-col md:flex-row gap-2">
+                            <div className="relative flex-1">
+                              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                              <Input
+                                value={misbakQuery}
+                                onChange={(e) => setMisbakQuery(e.target.value)}
+                                onKeyDown={(e) => e.key === "Enter" && searchMisbak()}
+                                placeholder="Search Misbak in this playlist..."
+                                className="pl-10 bg-gray-900 border-gray-700 text-white"
+                              />
+                            </div>
+                            <Button onClick={searchMisbak} className="bg-amber-500 hover:bg-amber-600 text-black">
+                              Search
+                            </Button>
+                          </div>
+                          {misbakLoading && <p className="text-xs text-gray-400 mt-2">Searching playlist...</p>}
+                        </div>
+
+                        <div className="mb-4 flex flex-wrap items-center gap-2">
+                          <Button
+                            onClick={() => setShowMisbakEmbed(true)}
+                            className={showMisbakEmbed ? "bg-amber-500 hover:bg-amber-600 text-black" : "bg-gray-800 hover:bg-gray-700 text-white"}
+                          >
+                            In-page Player
+                          </Button>
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="border-amber-500 text-amber-500 hover:bg-amber-950/50"
+                          >
+                            <a
+                              href="https://www.youtube.com/watch?v=GfBL_vM8eSM&list=PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1"
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              Open on YouTube
+                              <ExternalLink className="ml-2 h-4 w-4" />
+                            </a>
                           </Button>
                         </div>
+
+                        {showMisbakEmbed && (
+                          <div className="overflow-hidden rounded-xl border border-gray-700">
+                            <div className="aspect-video w-full">
+                              <iframe
+                                className="h-full w-full"
+                                src={`https://www.youtube.com/embed/${selectedVideoId}?list=PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1`}
+                                title="Misbak Playlist"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                              />
+                            </div>
+                          </div>
+                        )}
+
+                        {misbakResults.length > 0 && (
+                          <div className="mt-4 grid md:grid-cols-2 gap-3">
+                            {misbakResults.map((item) => (
+                              <button
+                                key={item.id}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedVideoId(item.id)
+                                  setShowMisbakEmbed(true)
+                                }}
+                                className="text-left rounded-lg border border-gray-700 bg-gray-800 p-3 hover:bg-gray-750"
+                              >
+                                <div className="flex items-center gap-3">
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img src={item.thumb} alt={item.title} className="h-14 w-20 rounded object-cover" />
+                                  <p className="text-sm text-white line-clamp-2">{item.title}</p>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -711,319 +594,59 @@ export default function DeaconsCornerPage() {
                 </motion.div>
               </TabsContent>
 
-              {/* Abinet School Section */}
+              {/* Abinet Scholarship Section (eathebook only) */}
               <TabsContent value="abinet">
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
                   <motion.div variants={fadeInUp}>
                     <div className="text-center mb-8">
-                      <h2 className="text-2xl font-bold text-white mb-2">Abinet School</h2>
-                      <p className="text-gray-400">
-                        Resources for formal training in Ge'ez, liturgical studies, and ecclesiastical ranks
-                      </p>
+                      <h2 className="text-2xl font-bold text-white mb-2">Abinet Scholarship Hub</h2>
+                      <p className="text-gray-400">Study directly from eathebook.org in a color style that matches this site.</p>
                     </div>
                   </motion.div>
 
-                  {/* Curriculum Outlines */}
-                  <motion.div variants={fadeInUp} className="mb-8">
+                  <motion.div variants={fadeInUp}>
                     <Card className="border-none shadow-lg overflow-hidden bg-gray-900">
+                      <div className="h-2 bg-gradient-to-r from-amber-500 to-orange-600" />
                       <CardHeader>
                         <CardTitle className="text-white flex items-center">
                           <GraduationCap className="h-5 w-5 mr-2 text-amber-500" />
-                          Curriculum Outlines
+                          eathebook.org Study Integration
                         </CardTitle>
-                        <CardDescription>Structured learning paths for deacons at all levels</CardDescription>
+                        <CardDescription>Embedded for in-page study. If embedding is blocked by their server, open in a new tab.</CardDescription>
                       </CardHeader>
-                      <CardContent>
-                        <div className="space-y-4">
-                          <div
-                            className="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-750"
-                            onClick={() => toggleExpand("curriculum1")}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h3 className="font-medium text-white">Beginner: Deacon Preparation</h3>
-                                <p className="text-gray-400 text-sm">3-month foundational course</p>
-                              </div>
-                              <ChevronDown
-                                className={`h-5 w-5 text-amber-500 transition-transform ${
-                                  expandedItem === "curriculum1" ? "transform rotate-180" : ""
-                                }`}
-                              />
-                            </div>
+                      <CardContent className="space-y-4">
+                        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-sm text-amber-100">
+                          eathebook.org remains their platform. This section provides a seamless study view with your
+                          site&apos;s color system.
+                        </div>
 
-                            {expandedItem === "curriculum1" && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 pt-4 border-t border-gray-700"
-                              >
-                                <div className="space-y-3">
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Introduction to Liturgical Service</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Basics of Ge'ez Alphabet and Reading</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Simple Chants and Responses</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Vestment Care and Handling</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Altar Assistance Fundamentals</p>
-                                  </div>
-                                </div>
-                                <div className="mt-4 flex justify-end">
-                                  <Button variant="outline" size="sm" className="border-amber-500 text-amber-500">
-                                    <Download className="mr-2 h-4 w-4" />
-                                    Download Full Syllabus
-                                  </Button>
-                                </div>
-                              </motion.div>
-                            )}
+                        <div className="overflow-hidden rounded-xl border border-gray-700">
+                          <div className="aspect-[16/10] w-full bg-gray-950">
+                            <iframe
+                              className="h-full w-full"
+                              src="https://www.eathebook.org"
+                              title="eathebook.org Abinet Study"
+                              loading="lazy"
+                              referrerPolicy="strict-origin-when-cross-origin"
+                            />
                           </div>
+                        </div>
 
-                          <div
-                            className="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-750"
-                            onClick={() => toggleExpand("curriculum2")}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h3 className="font-medium text-white">Intermediate: Qidassie Mastery</h3>
-                                <p className="text-gray-400 text-sm">6-month comprehensive liturgy course</p>
-                              </div>
-                              <ChevronDown
-                                className={`h-5 w-5 text-amber-500 transition-transform ${
-                                  expandedItem === "curriculum2" ? "transform rotate-180" : ""
-                                }`}
-                              />
-                            </div>
-
-                            {expandedItem === "curriculum2" && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 pt-4 border-t border-gray-700"
-                              >
-                                <div className="space-y-3">
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Advanced Ge'ez Reading and Translation</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Complete Divine Liturgy Services</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Complex Chanting Techniques (Zema)</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Holy Week Services and Responses</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Liturgical Theology and Symbolism</p>
-                                  </div>
-                                </div>
-                                <div className="mt-4 flex justify-end">
-                                  <Button variant="outline" size="sm" className="border-amber-500 text-amber-500">
-                                    <Download className="mr-2 h-4 w-4" />
-                                    Download Full Syllabus
-                                  </Button>
-                                </div>
-                              </motion.div>
-                            )}
-                          </div>
-
-                          <div
-                            className="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-750"
-                            onClick={() => toggleExpand("curriculum3")}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h3 className="font-medium text-white">Advanced: Archdeacon Studies</h3>
-                                <p className="text-gray-400 text-sm">1-year intensive program</p>
-                              </div>
-                              <ChevronDown
-                                className={`h-5 w-5 text-amber-500 transition-transform ${
-                                  expandedItem === "curriculum3" ? "transform rotate-180" : ""
-                                }`}
-                              />
-                            </div>
-
-                            {expandedItem === "curriculum3" && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 pt-4 border-t border-gray-700"
-                              >
-                                <div className="space-y-3">
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Mastery of All Liturgical Texts</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Teaching and Leadership Training</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Andimta (Biblical Commentary) Study</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Ecclesiastical Administration</p>
-                                  </div>
-                                  <div className="flex items-center">
-                                    <CheckCircle className="h-4 w-4 text-amber-500 mr-2 flex-shrink-0" />
-                                    <p className="text-gray-300">Advanced Church History and Canon Law</p>
-                                  </div>
-                                </div>
-                                <div className="mt-4 flex justify-end">
-                                  <Button variant="outline" size="sm" className="border-amber-500 text-amber-500">
-                                    <Download className="mr-2 h-4 w-4" />
-                                    Download Full Syllabus
-                                  </Button>
-                                </div>
-                              </motion.div>
-                            )}
-                          </div>
+                        <div className="flex flex-wrap gap-2">
+                          <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
+                            <a href="https://www.eathebook.org" target="_blank" rel="noreferrer">
+                              Open eathebook.org
+                              <ExternalLink className="ml-2 h-4 w-4" />
+                            </a>
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>
                   </motion.div>
-
-                  {/* Class Resources */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <motion.div variants={fadeInUp}>
-                      <Card className="border-none shadow-lg overflow-hidden bg-gray-900 h-full">
-                        <CardHeader>
-                          <CardTitle className="text-white flex items-center">
-                            <FileText className="h-5 w-5 mr-2 text-amber-500" />
-                            Class Materials
-                          </CardTitle>
-                          <CardDescription>Study materials and notes for Abinet students</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Ge'ez Alphabet Workbook</h3>
-                              <p className="text-gray-400 text-sm">Beginner Level (PDF)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Divine Liturgy Handbook</h3>
-                              <p className="text-gray-400 text-sm">Intermediate Level (PDF)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg flex items-center justify-between hover:bg-gray-750 cursor-pointer">
-                            <div>
-                              <h3 className="font-medium text-white">Misbak Notation Guide</h3>
-                              <p className="text-gray-400 text-sm">Advanced Level (PDF)</p>
-                            </div>
-                            <Download className="h-5 w-5 text-amber-500" />
-                          </div>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/50"
-                          >
-                            <Link href="/deacons/course-materials">
-                              Access All Materials
-                              <ChevronRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-
-                    {/* Class Registration */}
-                    <motion.div variants={fadeInUp}>
-                      <Card className="border-none shadow-lg overflow-hidden bg-gray-900 h-full">
-                        <CardHeader>
-                          <CardTitle className="text-white flex items-center">
-                            <Users className="h-5 w-5 mr-2 text-amber-500" />
-                            Class Registration
-                          </CardTitle>
-                          <CardDescription>Sign up for upcoming Abinet classes and exams</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <div className="bg-gray-800 p-4 rounded-lg">
-                            <div className="flex items-center justify-between mb-3">
-                              <h3 className="font-medium text-white">Summer Intensive Course</h3>
-                              <Badge className="bg-green-500 text-white">Enrolling</Badge>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-3">
-                              June 15-August 30 • Online and In-Person Options
-                            </p>
-                            <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">Register Now</Button>
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg">
-                            <div className="flex items-center justify-between mb-3">
-                              <h3 className="font-medium text-white">Archdeacon Examination</h3>
-                              <Badge className="bg-amber-500 text-white">Applications Open</Badge>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-3">September 10 • Requires Recommendations</p>
-                            <Button className="w-full bg-amber-500 hover:bg-amber-600 text-black">
-                              Apply for Exam
-                            </Button>
-                          </div>
-
-                          <div className="bg-gray-800 p-4 rounded-lg">
-                            <div className="flex items-center justify-between mb-3">
-                              <h3 className="font-medium text-white">Winter Ge'ez Course</h3>
-                              <Badge className="bg-gray-500 text-white">Coming Soon</Badge>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-3">December 1-February 28 • Online Only</p>
-                            <Button disabled className="w-full bg-gray-700 text-gray-400 cursor-not-allowed">
-                              Registration Opens October 1
-                            </Button>
-                          </div>
-
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="w-full border-amber-500 text-amber-500 hover:bg-amber-950/50"
-                          >
-                            <Link href="/deacons/class-schedule">
-                              View Complete Schedule
-                              <ChevronRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  </div>
                 </motion.div>
               </TabsContent>
 
               {/* Remaining tabs would be implemented similarly */}
-              <TabsContent value="vestments">
-                <div className="text-center py-16">
-                  <h2 className="text-2xl font-bold text-white mb-4">Vestment & Protocol Guide</h2>
-                  <p className="text-gray-400 mb-8">Visual guides to wearing priestly garments and proper protocols</p>
-                  <Button className="bg-amber-500 hover:bg-amber-600 text-black">Coming Soon</Button>
-                </div>
-              </TabsContent>
-
               <TabsContent value="prayers">
                 <div className="text-center py-16">
                   <h2 className="text-2xl font-bold text-white mb-4">Prayer & Spiritual Growth</h2>

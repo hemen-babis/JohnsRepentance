@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowLeft, Heart, Plus, ShoppingCart, Trash2, ChefHat, Search, Sparkles, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useAuthProgress } from "@/components/providers/auth-progress-provider"
 
 type Tradition = "Coptic" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
 type DisplayTradition = "Mediterranean" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
@@ -158,10 +159,10 @@ const suggestRecipeMessage = encodeURIComponent(
 )
 
 export default function FastingRecipesPage() {
+  const { progress, toggleRecipeBookmark } = useAuthProgress()
   const [name, setName] = useState("")
   const [preferredTradition, setPreferredTradition] = useState<"All" | DisplayTradition>("All")
   const [query, setQuery] = useState("")
-  const [favorites, setFavorites] = useState<string[]>([])
   const [servings, setServings] = useState(4)
   const [selectedRecipeId, setSelectedRecipeId] = useState(recipes[0].id)
   const [activeStepIndex, setActiveStepIndex] = useState(0)
@@ -175,7 +176,6 @@ export default function FastingRecipesPage() {
       const parsed = JSON.parse(raw)
       setName(parsed.name ?? "")
       setPreferredTradition(parsed.preferredTradition ?? "All")
-      setFavorites(parsed.favorites ?? [])
       setShoppingList(parsed.shoppingList ?? [])
       setNotes(parsed.notes ?? "")
     } catch {
@@ -186,9 +186,9 @@ export default function FastingRecipesPage() {
   useEffect(() => {
     localStorage.setItem(
       "fasting-recipes-profile",
-      JSON.stringify({ name, preferredTradition, favorites, shoppingList, notes }),
+      JSON.stringify({ name, preferredTradition, shoppingList, notes }),
     )
-  }, [name, preferredTradition, favorites, shoppingList, notes])
+  }, [name, preferredTradition, shoppingList, notes])
 
   const visibleRecipes = useMemo(() => {
     return recipes.filter((recipe) => {
@@ -209,10 +209,6 @@ export default function FastingRecipesPage() {
   useEffect(() => {
     setActiveStepIndex(0)
   }, [selectedRecipeId])
-
-  const toggleFavorite = (id: string) => {
-    setFavorites((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
-  }
 
   const addIngredient = (ingredient: { name: string; qty: number; unit: string }) => {
     const id = ingredient.name.toLowerCase()
@@ -299,8 +295,8 @@ export default function FastingRecipesPage() {
                         <p className="text-base font-bold leading-tight">{recipe.name}</p>
                         <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{toDisplayTradition(recipe.tradition)}</p>
                       </div>
-                      <Button size="icon" variant="ghost" onClick={(e) => { e.stopPropagation(); toggleFavorite(recipe.id) }}>
-                        <Heart className={`h-4 w-4 ${favorites.includes(recipe.id) ? "fill-red-500 text-red-500" : ""}`} />
+                      <Button size="icon" variant="ghost" onClick={(e) => { e.stopPropagation(); toggleRecipeBookmark(recipe.id) }}>
+                        <Heart className={`h-4 w-4 ${progress.recipeBookmarks.includes(recipe.id) ? "fill-red-500 text-red-500" : ""}`} />
                       </Button>
                     </div>
                   </button>

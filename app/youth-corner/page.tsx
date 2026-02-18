@@ -13,6 +13,7 @@ import { AnimatedGradientText } from "@/components/animated-gradient-text"
 import { GeezHeading } from "@/components/geez-heading"
 import { OrthodoxChallenges } from "@/components/orthodox-challenges"
 import { OrthodoxBadges } from "@/components/orthodox-badges"
+import { useAuthProgress } from "@/components/providers/auth-progress-provider"
 import {
   Users,
   Calendar,
@@ -82,15 +83,11 @@ const tiktokLessons = [
 ]
 
 export default function YouthCornerPage() {
-  const [completedChallenges, setCompletedChallenges] = useState<string[]>([])
+  const { progress, toggleChallenge, addPrayerNote, addMentorHistory } = useAuthProgress()
   const [mentorQuestion, setMentorQuestion] = useState("")
   const [mentorSent, setMentorSent] = useState(false)
   const [rsvpEvents, setRsvpEvents] = useState<string[]>([])
   const [prayerInput, setPrayerInput] = useState("")
-  const [prayerRequests, setPrayerRequests] = useState<string[]>([
-    "Please pray for my exams and focus.",
-    "Prayers for my family's peace.",
-  ])
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -111,16 +108,11 @@ export default function YouthCornerPage() {
     },
   }
 
-  const toggleChallenge = (id: string) => {
-    setCompletedChallenges((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    )
-  }
-
   const submitMentorQuestion = () => {
     const message = mentorQuestion.trim() || "Hi, I need private mentoring guidance on faith and life."
     const telegramUrl = `https://t.me/YohannesNeseha?text=${encodeURIComponent(message)}`
     window.open(telegramUrl, "_blank", "noopener,noreferrer")
+    addMentorHistory(message)
     setMentorSent(true)
     setMentorQuestion("")
   }
@@ -131,7 +123,7 @@ export default function YouthCornerPage() {
 
   const submitPrayerRequest = () => {
     if (!prayerInput.trim()) return
-    setPrayerRequests((prev) => [prayerInput.trim(), ...prev].slice(0, 5))
+    addPrayerNote(prayerInput.trim())
     setPrayerInput("")
   }
 
@@ -569,7 +561,7 @@ export default function YouthCornerPage() {
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {weeklyChallengeSeed.map((challenge) => {
-                          const done = completedChallenges.includes(challenge.id)
+                          const done = progress.challengeCompletions.includes(challenge.id)
                           return (
                             <button
                               key={challenge.id}
@@ -607,6 +599,18 @@ export default function YouthCornerPage() {
                           <p className="text-sm text-green-700 dark:text-green-400">
                             Question sent. A youth mentor will respond soon.
                           </p>
+                        )}
+                        {progress.mentorHistory.length > 0 && (
+                          <div className="rounded-lg border border-gray-200 dark:border-gray-800 p-3">
+                            <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">Recent Private History</p>
+                            <div className="space-y-2 max-h-28 overflow-auto">
+                              {progress.mentorHistory.slice(0, 3).map((entry, index) => (
+                                <p key={`${entry.createdAt}-${index}`} className="text-xs text-gray-600 dark:text-gray-300">
+                                  {entry.text}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
                         )}
                       </CardContent>
                     </Card>
@@ -679,7 +683,7 @@ export default function YouthCornerPage() {
                           Submit Intention
                         </Button>
                         <div className="space-y-2">
-                          {prayerRequests.map((request, index) => (
+                          {progress.prayerNotes.map((request, index) => (
                             <div key={`${request}-${index}`} className="text-sm rounded-md bg-amber-50 dark:bg-amber-950/30 p-2">
                               {request}
                             </div>

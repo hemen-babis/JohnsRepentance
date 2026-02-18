@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X, Moon, Sun, ChevronRight, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTheme } from "next-themes"
+import { AccountMenu } from "@/components/account-menu"
 
 const routes = [
   { href: "/", label: "Home" },
@@ -124,6 +125,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden xl:flex items-center gap-3">
+          <AccountMenu />
           <Link href="/contact">
             <Button className="whitespace-nowrap bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:-translate-y-0.5">
               Contact Us
@@ -217,6 +219,9 @@ export function Navbar() {
                 )
               })}
               <div className="mt-4 pt-4 border-t border-orange-100 dark:border-orange-900/30">
+                <div className="mb-3">
+                  <AccountMenu />
+                </div>
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white shadow-md shadow-orange-500/20">
                     Contact Us

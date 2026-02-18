@@ -238,7 +238,11 @@ function chipStyle(type: EventCatalogItem["type"]) {
 }
 
 export default function CalendarEventsPage() {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date("2026-02-17T12:00:00"))
+  const [selectedDate, setSelectedDate] = useState<Date>(() => {
+    const now = new Date()
+    now.setHours(12, 0, 0, 0)
+    return now
+  })
   const [addedIds, setAddedIds] = useState<string[]>([])
 
   const selectedKey = dateKey(selectedDate)

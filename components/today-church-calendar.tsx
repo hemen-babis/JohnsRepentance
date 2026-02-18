@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CalendarDays, BellRing } from "lucide-react"
+import { CalendarDays } from "lucide-react"
 
 const ethiopicEnFormatter = new Intl.DateTimeFormat("en-ET-u-ca-ethiopic", {
   day: "numeric",
@@ -17,15 +17,36 @@ const ethiopicAmFormatter = new Intl.DateTimeFormat("am-ET-u-ca-ethiopic", {
 })
 
 const saintDaysBilingual: Record<number, { am: string; en: string }> = {
-  1: { am: "ልደታ እና ኤልያስ", en: "Lideta and Elias" },
+  1: { am: "ልደታ (ቅድስት ማርያም) እና ኤልያስ", en: "Lideta (Birth of St. Mary) and Elias" },
+  2: { am: "ታድዮስ", en: "Thaddius" },
+  3: { am: "ባእታ (ማርያም ማቅረቢያ)", en: "Ba'eta (Presentation of Mary)" },
+  4: { am: "ዮሐንስ ወልደ ነግድክዋድ", en: "Yohannis Wolde Negedquad" },
+  5: { am: "ጴጥሮስ እና ጳውሎስ እና ገብረ መንፈስ ቅዱስ", en: "Petros and Paulos, Gebre Menfes Kidus" },
+  6: { am: "እመቤታችን ቁስቋም", en: "Our Lady of Qusquam" },
   7: { am: "ቅድስት ሥላሴ", en: "Holy Trinity" },
-  12: { am: "ሚካኤል", en: "Saint Michael" },
-  16: { am: "ኪዳነ ምህረት", en: "Kidane Meheret" },
+  8: { am: "ኪሮስ እና አባ ባኑዳ", en: "Kiros and Abba Banuda" },
+  9: { am: "ቶማስ", en: "Thomas (not the Apostle)" },
+  10: { am: "ቅዱስ መስቀል", en: "Kidus Meskel (Holy Cross)" },
+  11: { am: "ሐና እና ኢያከም", en: "Hanna and Iyachem" },
+  12: { am: "ሚካኤል አርእስት መላእክት", en: "Michael, Chief of Angels" },
+  13: { am: "እግዚአብሔር አብ እና ሩፋኤል", en: "God the Father and Ruphael" },
+  14: { am: "አባ አረጋዊ እና ገብረ ክርስቶስ", en: "Abba Aregawi and Gebre Kristos" },
+  15: { am: "ቅዱስ ኪርቆስ እና እናቱ ኢያሎታ", en: "Kirkos and his mother Iyalota" },
+  16: { am: "ኪዳነ ምህረት", en: "Kidane Meheret (Covenant of Mercy)" },
+  17: { am: "እስጢፋኖስ እና አባ ገሪማ", en: "Estifanos and Abba Gerima" },
+  18: { am: "እውስጣጥዎስ", en: "Ewstatewos" },
   19: { am: "ቅዱስ ገብርኤል", en: "Saint Gabriel" },
+  20: { am: "ህንሳታ", en: "Hnstata" },
   21: { am: "ቅድስት ማርያም", en: "Saint Mary" },
+  22: { am: "ደቅስዮስ", en: "Deqsius" },
   23: { am: "ቅዱስ ጊዮርጊስ", en: "Saint George" },
+  24: { am: "አባ ተክለ ሃይማኖት እና አራት አሰናት", en: "Abba Tekle Haimanot and Four Heavenly Orders" },
+  25: { am: "መርቆርዮስ", en: "Merkorios" },
+  26: { am: "ቶማስ ሐዋርያ", en: "Thomas the Apostle" },
   27: { am: "መድኃኔ ዓለም", en: "Medhane Alem" },
-  29: { am: "በዓለ ወልድ", en: "Bale Wold" },
+  28: { am: "ኢማኑኤል", en: "Emmanuel" },
+  29: { am: "በእልደውልድ (እግዚአብሔር ልጅ)", en: "Bale Wold (God the Son)" },
+  30: { am: "ማርቆስ", en: "Markos (St. Mark)" },
 }
 
 type FastStatus = {
@@ -33,97 +54,117 @@ type FastStatus = {
   am: string
 }
 
-function getFastStatus(date: Date): FastStatus {
+function getFastItems(date: Date): FastStatus[] {
   const dateStr = date.toISOString().split("T")[0]
   const day = date.getDay()
+  const results: FastStatus[] = []
 
   if (dateStr >= "2026-02-16" && dateStr <= "2026-04-10") {
-    return { label: "Great Lent", am: "ዐቢይ ጾም" }
+    results.push({ label: "Great Lent", am: "ዐቢይ ጾም" })
   }
   if (dateStr >= "2026-04-06" && dateStr <= "2026-04-08") {
-    return { label: "Semune Himamat", am: "ሰሙነ ሕማማት" }
+    results.push({ label: "Semune Himamat", am: "ሰሙነ ሕማማት" })
   }
   if (dateStr === "2026-04-09") {
-    return { label: "Tselote Hamus", am: "ጸሎተ ሐሙስ" }
+    results.push({ label: "Tselote Hamus", am: "ጸሎተ ሐሙስ" })
   }
   if (dateStr === "2026-04-10") {
-    return { label: "Siklet", am: "ስቅለት" }
-  }
-  if (dateStr >= "2026-04-12" && dateStr < "2026-06-01") {
-    return { label: "No fast period", am: "ፆም የለም" }
+    results.push({ label: "Siklet", am: "ስቅለት" })
   }
   if (dateStr >= "2026-06-01" && dateStr <= "2026-07-11") {
-    return { label: "Fast of the Apostles", am: "ጾመ ሐዋርያት" }
-  }
-  if (dateStr >= "2026-06-01" && (day === 3 || day === 5)) {
-    return { label: day === 3 ? "Wednesday Fast" : "Friday Fast", am: day === 3 ? "የረቡዕ ፆም" : "የአርብ ፆም" }
+    results.push({ label: "Fast of the Apostles", am: "ጾመ ሐዋርያት" })
   }
 
-  return { label: "No fast today", am: "ፆም የለም" }
-}
+  const weeklyAllowed = dateStr < "2026-04-12" || dateStr >= "2026-06-01"
+  if (weeklyAllowed && day === 3) {
+    results.push({ label: "Wednesday Fast", am: "የረቡዕ ፆም" })
+  }
+  if (weeklyAllowed && day === 5) {
+    results.push({ label: "Friday Fast", am: "የአርብ ፆም" })
+  }
 
-function getNextObservance(date: Date) {
-  const dateStr = date.toISOString().split("T")[0]
-  const observances = [
-    { date: "2026-04-12", label: "Tinśae (Fasika)", am: "ትንሣኤ" },
-    { date: "2026-06-01", label: "Weekly Fast Resume", am: "ሳምንታዊ ጾም ይጀምራል" },
-    { date: "2026-06-01", label: "Fast of the Apostles", am: "ጾመ ሐዋርያት" },
-    { date: "2026-08-01", label: "Filseta Fast Begins", am: "ፍልሰታ ጾም ይጀምራል" },
-    { date: "2026-11-25", label: "Advent Fast Begins", am: "ገና ጾም ይጀምራል" },
-  ]
-  return observances.find((item) => item.date >= dateStr) ?? observances[observances.length - 1]
+  const unique = Array.from(new Map(results.map((item) => [item.label, item])).values())
+  return unique
 }
 
 export function TodayChurchCalendar() {
   const today = new Date()
+  const gregorianDate = today.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  })
   const amParts = ethiopicAmFormatter.formatToParts(today)
   const ethDay = Number.parseInt(amParts.find((p) => p.type === "day")?.value ?? "1", 10)
   const ethMonth = amParts.find((p) => p.type === "month")?.value ?? "መስከረም"
   const saint = saintDaysBilingual[ethDay] ?? { am: "ቅዱሳን መታሰቢያ", en: "Commemoration of saints" }
-  const fast = getFastStatus(today)
-  const next = getNextObservance(today)
+  const fastItems = getFastItems(today)
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-indigo-50 to-sky-50 dark:from-slate-900 dark:to-indigo-950">
-      <div className="h-2 bg-gradient-to-r from-indigo-500 to-sky-500" />
+    <Card className="border-none shadow-lg overflow-hidden bg-[#2c2d30] text-white">
+      <div className="h-1.5 bg-gradient-to-r from-amber-400 to-orange-500" />
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-indigo-800 dark:text-indigo-300">
+        <CardTitle className="flex items-center gap-2 text-amber-300">
           <CalendarDays className="h-5 w-5" />
           Today in the Church Calendar
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="rounded-lg bg-white/85 dark:bg-slate-900/70 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Today</p>
-          <p className="font-semibold">{ethiopicEnFormatter.format(today)} (E.C.)</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{ethMonth} {ethDay}</p>
-        </div>
-
-        <div className="rounded-lg bg-white/85 dark:bg-slate-900/70 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Feast</p>
-          <p className="font-semibold">{saint.en}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{saint.am}</p>
-        </div>
-
-        <div className="rounded-lg bg-white/85 dark:bg-slate-900/70 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">Fasting Alert</p>
-          <p className="font-semibold">{fast.label}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{fast.am}</p>
-        </div>
-
-        <div className="rounded-lg bg-white/85 dark:bg-slate-900/70 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400 inline-flex items-center gap-2">
-            <BellRing className="h-4 w-4" /> Next Major Observance
+      <CardContent className="space-y-5">
+        <div>
+          <p className="text-lg font-semibold text-amber-300">{gregorianDate}</p>
+          <p className="text-lg font-semibold text-orange-300">
+            {ethMonth} {ethDay}
           </p>
-          <p className="font-semibold">{next.label}</p>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{next.am}</p>
+          <p className="text-lg font-semibold text-amber-200">{ethiopicEnFormatter.format(today)} (E.C.)</p>
         </div>
 
-        <Button asChild className="w-full bg-indigo-600 hover:bg-indigo-500">
+        <div>
+          <p className="text-sm text-gray-300">
+            2026 fast timeline: Great Lent (Feb 16 - Apr 10), Semune Himamat (Apr 6 - Apr 8), Tselote Hamus (Apr 9),
+            Siklet (Apr 10), Hawaryat Tsom (Jun 1 - Jul 11).
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2 text-center text-sm">
+          <div className="rounded-md bg-white/5 p-2">
+            <p className="text-amber-300 font-semibold">Feast Day</p>
+            <p className="text-gray-200">1</p>
+          </div>
+          <div className="rounded-md bg-white/5 p-2">
+            <p className="text-amber-300 font-semibold">Fast Item</p>
+            <p className="text-gray-200">{fastItems.length}</p>
+          </div>
+          <div className="rounded-md bg-white/5 p-2">
+            <p className="text-amber-300 font-semibold">Added Events</p>
+            <p className="text-gray-200">0</p>
+          </div>
+        </div>
+
+        <div className="rounded-md bg-white/5 p-3">
+          <p className="text-sm text-amber-300 font-semibold">Feast</p>
+          <p className="text-xs text-gray-300 mb-1">All Day</p>
+          <p className="text-base text-orange-300 font-semibold">{saint.en}</p>
+          <p className="text-base text-orange-300">{saint.am}</p>
+        </div>
+
+        <div className="rounded-md bg-white/5 p-3">
+          <p className="text-sm text-amber-300 font-semibold">Fast / ጾም</p>
+          <p className="text-xs text-gray-300 mb-1">All Day</p>
+          {fastItems.length === 0 ? (
+            <p className="text-base text-orange-300 font-semibold">ፆም የለም / No fast today</p>
+          ) : (
+            fastItems.map((fast) => (
+              <p key={fast.label} className="text-base text-orange-300 font-semibold">
+                {fast.am} / {fast.label}
+              </p>
+            ))
+          )}
+        </div>
+
+        <Button asChild className="w-full bg-orange-600 hover:bg-orange-500 text-white">
           <Link href="/calendar-events">Open Calendar + Events</Link>
         </Button>
       </CardContent>
     </Card>
   )
 }
-

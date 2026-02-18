@@ -12,6 +12,7 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { GeezHeading } from "@/components/geez-heading"
 import { SocialShare } from "@/components/social-share"
 import { Calendar, Clock, Utensils, CheckCircle, HelpCircle, BookOpen, Download } from "lucide-react"
+import { useAuthProgress } from "@/components/providers/auth-progress-provider"
 
 // Fasting calendar data
 const fastingCalendar = [
@@ -99,7 +100,10 @@ const fastingCalendar = [
 ]
 
 export default function FastingGuidePage() {
+  const { progress, addFastingCheckinToday } = useAuthProgress()
   const [selectedFast, setSelectedFast] = useState(fastingCalendar[0])
+  const today = new Date().toISOString().split("T")[0]
+  const checkedToday = progress.fastingCheckins.includes(today)
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -148,6 +152,29 @@ export default function FastingGuidePage() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
+            <Card className="mb-6 border-none shadow-lg overflow-hidden">
+              <div className="h-2 bg-gradient-to-r from-emerald-500 to-emerald-700" />
+              <CardContent className="p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">Fasting Progress</p>
+                  <p className="text-lg font-semibold">
+                    {progress.fastingCheckins.length} check-ins saved
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {checkedToday ? "You already checked in today." : "Mark today once you complete your fasting discipline."}
+                  </p>
+                </div>
+                <Button
+                  onClick={addFastingCheckinToday}
+                  disabled={checkedToday}
+                  className="bg-emerald-600 hover:bg-emerald-500"
+                >
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  {checkedToday ? "Checked In Today" : "Mark Today Complete"}
+                </Button>
+              </CardContent>
+            </Card>
+
             <Tabs defaultValue="calendar" className="w-full">
               <div className="flex justify-center mb-8">
                 <TabsList className="grid grid-cols-3 w-full max-w-md">
