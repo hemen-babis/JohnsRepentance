@@ -78,24 +78,24 @@ type DateOverride = {
 
 const eventCatalog: EventCatalogItem[] = [
   {
-    id: "kidase-2026-02-22",
-    titleEn: "Sunday Kidase",
-    titleAm: "የእሁድ ቅዳሴ",
-    type: "Service",
-    date: "2026-02-22",
-    timeLabel: "6:30 AM",
-    location: "Main Nave",
-    details: "Divine liturgy and confession.",
+    id: "catechumen-class-weekly",
+    titleEn: "Catechumen Class (Open to All)",
+    titleAm: "የካቴኩሜን ትምህርት (ለሁሉም ክፍት)",
+    type: "Teaching",
+    date: "2026-02-20",
+    timeLabel: "Every Friday, 6:00 PM - 8:00 PM",
+    location: "Taught by MT Dn. Kidus Adugna",
+    details: "Recurring weekly class for all.",
   },
   {
-    id: "catechumen-2026-02-25",
-    titleEn: "Catechumen Class",
-    titleAm: "የካቴኩሜን ትምህርት",
+    id: "service-learning-weekly",
+    titleEn: "Learning About Service (Deacons Encouraged)",
+    titleAm: "ስለ አገልግሎት ትምህርት (ዲያቆናት ይበረታታሉ)",
     type: "Teaching",
     date: "2026-02-25",
-    timeLabel: "7:00 PM",
-    location: "Classroom A",
-    details: "Orthodox foundations and sacraments.",
+    timeLabel: "Every Wednesday, 3:00 PM - 4:00 PM",
+    location: "Taught by MT Dn. Kidus Adugna",
+    details: "Recurring weekly class focused on service.",
   },
 ]
 
@@ -286,15 +286,30 @@ export default function CalendarEventsPage() {
                   <CardTitle className="text-lg">Monthly Calendar</CardTitle>
                   <CardDescription>Pick a date to see agenda.</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="px-3 pb-4">
                   <Calendar
                     mode="single"
                     selected={selectedDate}
                     onSelect={(date) => date && setSelectedDate(date)}
                     modifiers={{ hasEvent: calendarMarkedDays }}
                     modifiersClassNames={{ hasEvent: "bg-orange-100 dark:bg-orange-950/50" }}
-                    className="w-full rounded-2xl border border-stone-300/70 bg-stone-50 [--cell-size:2.7rem] md:[--cell-size:3rem] dark:border-stone-700 dark:bg-stone-900"
-                    classNames={{ root: "w-full" }}
+                    className="mx-auto w-full max-w-[320px] rounded-2xl border border-stone-300/70 bg-stone-50 p-2 [--cell-size:2.2rem] md:[--cell-size:2.35rem] dark:border-stone-700 dark:bg-stone-900"
+                    classNames={{
+                      root: "w-full",
+                      months: "w-full",
+                      month: "w-full space-y-3",
+                      month_caption: "flex items-center justify-center pt-1",
+                      caption_label: "text-base font-semibold tracking-tight",
+                      nav: "flex items-center gap-1",
+                      button_previous: "h-8 w-8 rounded-full border border-stone-300 bg-white hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
+                      button_next: "h-8 w-8 rounded-full border border-stone-300 bg-white hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
+                      weekdays: "grid grid-cols-7 gap-1",
+                      weekday: "text-[12px] font-medium text-stone-500",
+                      week: "grid grid-cols-7 gap-1",
+                      day: "h-9 w-9 rounded-xl text-sm font-medium hover:bg-stone-200 dark:hover:bg-stone-800",
+                      today: "ring-1 ring-orange-300",
+                      selected: "bg-orange-500 text-white hover:bg-orange-500",
+                    }}
                   />
                 </CardContent>
               </Card>
@@ -309,61 +324,64 @@ export default function CalendarEventsPage() {
                   <p className="text-xs text-muted-foreground">
                     2026 fast timeline: Great Lent (Feb 16 - Apr 10), Semune Himamat (Apr 6 - Apr 8), Tselote Hamus (Apr 9), Siklet (Apr 10), Hawaryat Tsom (Jun 1 - Jul 11).
                   </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <Badge className="bg-violet-600 text-white">Feast Day</Badge>
+                    <Badge className="bg-rose-600 text-white">{fastsToday.length === 0 ? "No Fast Today" : `${fastsToday.length} Fast Item${fastsToday.length > 1 ? "s" : ""}`}</Badge>
+                    <Badge className="bg-slate-600 text-white">{eventsForSelectedDay.length} Added Event{eventsForSelectedDay.length === 1 ? "" : "s"}</Badge>
+                  </div>
                 </CardHeader>
 
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-[95px_1fr] border-b md:grid-cols-[110px_1fr]">
-                    <div className="border-r bg-violet-50/50 p-4 dark:bg-violet-950/20 md:p-5">
-                      <p className="text-lg font-semibold leading-none text-stone-800 dark:text-stone-100">All Day</p>
-                      <p className="mt-2 text-xs uppercase tracking-wide text-stone-500">Feast</p>
-                    </div>
-                    <div className="space-y-3 p-4 md:p-5">
+                <CardContent className="space-y-4 p-4 md:p-5">
+                  <div className="rounded-2xl border border-violet-200 bg-violet-50/50 p-4 dark:border-violet-900/50 dark:bg-violet-950/20">
+                    <div className="mb-2 flex items-center gap-2">
                       <Badge className="bg-violet-600 text-white">Feast</Badge>
-                      <p className="text-xl font-bold md:text-2xl">{saint.en}</p>
-                      <p className="text-lg text-stone-600 dark:text-stone-300">{saint.am}</p>
+                      <span className="text-xs uppercase tracking-wide text-stone-500">All Day</span>
                     </div>
+                    <p className="text-xl font-bold md:text-2xl">{saint.en}</p>
+                    <p className="mt-1 text-lg text-stone-600 dark:text-stone-300">{saint.am}</p>
                   </div>
 
-                  <div className="grid grid-cols-[95px_1fr] border-b md:grid-cols-[110px_1fr]">
-                    <div className="border-r bg-rose-50/50 p-4 dark:bg-rose-950/20 md:p-5">
-                      <p className="text-lg font-semibold leading-none text-stone-800 dark:text-stone-100">All Day</p>
-                      <p className="mt-2 text-xs uppercase tracking-wide text-stone-500">Fast</p>
+                  <div className="rounded-2xl border border-rose-200 bg-rose-50/40 p-4 dark:border-rose-900/50 dark:bg-rose-950/20">
+                    <div className="mb-2 flex items-center gap-2">
+                      <Badge className="bg-rose-600 text-white">Fast / ጾም</Badge>
+                      <span className="text-xs uppercase tracking-wide text-stone-500">All Day</span>
                     </div>
-                    <div className="space-y-3 p-4 md:p-5">
-                      <Badge className="bg-violet-600 text-white">Fast / ጾም</Badge>
-                      {fastsToday.length === 0 ? (
-                        <p className="text-base text-muted-foreground">ፆም የለም። / No fast today.</p>
-                      ) : (
-                        fastsToday.map((item, index) => (
+                    {fastsToday.length === 0 ? (
+                      <p className="text-base text-muted-foreground">ፆም የለም። / No fast today.</p>
+                    ) : (
+                      <div className="space-y-1">
+                        {fastsToday.map((item, index) => (
                           <p key={`${item.en}-${index}`} className="text-lg text-stone-700 dark:text-stone-200">
                             {item.am} / {item.en}
                           </p>
-                        ))
-                      )}
-                    </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  {eventsForSelectedDay.length === 0 ? (
-                    <div className="p-6 text-base text-muted-foreground">No added events for this date. Add from the Events tab.</div>
-                  ) : (
-                    eventsForSelectedDay.map((event) => (
-                      <div key={event.id} className="grid grid-cols-[95px_1fr] border-b last:border-b-0 md:grid-cols-[110px_1fr]">
-                        <div className="border-r bg-slate-50 p-4 dark:bg-slate-900/40 md:p-5">
-                          <p className="text-lg font-semibold leading-tight text-stone-800 dark:text-stone-100">{event.timeLabel === "All Day" ? "All Day" : event.timeLabel}</p>
-                          <p className="mt-2 text-xs uppercase tracking-wide text-stone-500">{event.type}</p>
-                        </div>
-                        <div className="space-y-3 p-4 md:p-5">
-                          <Badge className={chipStyle(event.type)}>{event.type}</Badge>
-                          <p className="text-xl font-bold md:text-2xl">{event.titleEn}</p>
-                          <p className="text-lg text-stone-600 dark:text-stone-300">{event.titleAm}</p>
-                          <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin className="h-4 w-4" />
-                            {event.location}
-                          </p>
-                        </div>
+                  <div className="rounded-2xl border border-stone-200 bg-stone-50/70 p-4 dark:border-stone-700 dark:bg-stone-900/60">
+                    <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">Added Events</p>
+                    {eventsForSelectedDay.length === 0 ? (
+                      <p className="text-base text-muted-foreground">No added events for this date. Add from the Events tab.</p>
+                    ) : (
+                      <div className="space-y-3">
+                        {eventsForSelectedDay.map((event) => (
+                          <div key={event.id} className="rounded-xl border bg-white p-3 dark:bg-stone-950/70">
+                            <div className="mb-2 flex items-center justify-between gap-2">
+                              <Badge className={chipStyle(event.type)}>{event.type}</Badge>
+                              <span className="text-xs text-muted-foreground">{event.timeLabel}</span>
+                            </div>
+                            <p className="text-lg font-semibold">{event.titleEn}</p>
+                            <p className="text-base text-stone-600 dark:text-stone-300">{event.titleAm}</p>
+                            <p className="mt-1 inline-flex items-center gap-2 text-sm text-muted-foreground">
+                              <MapPin className="h-4 w-4" />
+                              {event.location}
+                            </p>
+                          </div>
+                        ))}
                       </div>
-                    ))
-                  )}
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             </div>

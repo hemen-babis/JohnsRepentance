@@ -77,7 +77,8 @@ export function DailyVerse() {
   }, [])
 
   return (
-    <Card className="border-none bg-gray-900/50 backdrop-blur-sm overflow-hidden">
+    <Card className="border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
+      <div className="h-1.5 bg-gradient-to-r from-orange-500 to-amber-500" />
       <CardContent className="p-6">
         <div className="relative h-[220px] flex items-center justify-center">
           <AnimatePresence mode="wait" custom={direction}>
@@ -90,8 +91,8 @@ export function DailyVerse() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
             >
-              <p className="text-xl italic mb-4 text-white">&quot;{verses[currentVerseIndex].text}&quot;</p>
-              <p className="text-lg font-semibold text-amber-500">{verses[currentVerseIndex].reference}</p>
+              <p className="text-2xl italic mb-4 text-gray-800 leading-relaxed">&quot;{verses[currentVerseIndex].text}&quot;</p>
+              <p className="text-lg font-semibold text-amber-700">{verses[currentVerseIndex].reference}</p>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -102,7 +103,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={prevVerse}
-              className="rounded-full border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -110,7 +111,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={nextVerse}
-              className="rounded-full border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -121,7 +122,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={copyVerse}
-              className="rounded-full border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
             >
               <Copy className="h-4 w-4" />
             </Button>
@@ -129,7 +130,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={shareVerse}
-              className="rounded-full border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
             >
               <Share2 className="h-4 w-4" />
             </Button>

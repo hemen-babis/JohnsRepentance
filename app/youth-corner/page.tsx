@@ -1,17 +1,97 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
 import { GeezHeading } from "@/components/geez-heading"
 import { OrthodoxChallenges } from "@/components/orthodox-challenges"
 import { OrthodoxBadges } from "@/components/orthodox-badges"
-import { Users, Calendar, Video, MessageSquare, Trophy, Music, Play } from "lucide-react"
+import {
+  Users,
+  Calendar,
+  Video,
+  MessageSquare,
+  Trophy,
+  Music,
+  Play,
+  Flame,
+  HandHelping,
+  BookOpen,
+  HeartHandshake,
+  ShieldCheck,
+  ExternalLink,
+} from "lucide-react"
+
+const weeklyChallengeSeed = [
+  { id: "scripture", label: "Read John 15 and write one takeaway", points: 20 },
+  { id: "prayer", label: "Pray morning + evening for 7 days", points: 25 },
+  { id: "service", label: "Serve one person quietly this week", points: 15 },
+]
+
+const studyTracks = [
+  { title: "Foundations", level: "Beginner", progress: 35, focus: "Creed, prayer rule, liturgy basics" },
+  { title: "Spiritual Discipline", level: "Intermediate", progress: 58, focus: "Fasting rhythm, confession prep, Psalms" },
+  { title: "Theology & Tradition", level: "Advanced", progress: 22, focus: "Christology, Church Fathers, canon life" },
+]
+
+const youthEvents = [
+  { id: "e1", title: "Catechumen Class (Open to All)", when: "Every Friday, 6:00 PM - 8:00 PM", where: "Taught by MT Dn. Kidus Adugna" },
+  {
+    id: "e2",
+    title: "Learning About Service (Deacons Encouraged)",
+    when: "Every Wednesday, 3:00 PM - 4:00 PM",
+    where: "Taught by MT Dn. Kidus Adugna",
+  },
+]
+
+const volunteerRoles = [
+  { city: "Portland, OR", role: "Youth Media Team", time: "2 hrs/week" },
+  { city: "Seattle, WA", role: "Welcome & Hospitality", time: "Sundays" },
+  { city: "Dallas, TX", role: "Choir Support", time: "Wed + Sun" },
+]
+
+const discussionRooms = [
+  { name: "Faith & School", members: 82, status: "Moderated" },
+  { name: "Prayer Accountability", members: 64, status: "Mentor-led" },
+  { name: "Orthodox Q&A", members: 115, status: "Moderated" },
+]
+
+const tiktokLessons = [
+  {
+    title: "Why Do We Fast?",
+    subtitle: "@orthodoxqnas",
+    href: "https://www.tiktok.com/@orthodoxqnas",
+  },
+  {
+    title: "The Meaning of the Cross",
+    subtitle: "@orthodoxqnas",
+    href: "https://www.tiktok.com/@orthodoxqnas",
+  },
+  {
+    title: "Saints in 60 Seconds",
+    subtitle: "@orthodoxqnas",
+    href: "https://www.tiktok.com/@orthodoxqnas",
+  },
+]
 
 export default function YouthCornerPage() {
+  const [completedChallenges, setCompletedChallenges] = useState<string[]>([])
+  const [mentorQuestion, setMentorQuestion] = useState("")
+  const [mentorSent, setMentorSent] = useState(false)
+  const [rsvpEvents, setRsvpEvents] = useState<string[]>([])
+  const [prayerInput, setPrayerInput] = useState("")
+  const [prayerRequests, setPrayerRequests] = useState<string[]>([
+    "Please pray for my exams and focus.",
+    "Prayers for my family's peace.",
+  ])
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -29,6 +109,30 @@ export default function YouthCornerPage() {
         staggerChildren: 0.2,
       },
     },
+  }
+
+  const toggleChallenge = (id: string) => {
+    setCompletedChallenges((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    )
+  }
+
+  const submitMentorQuestion = () => {
+    const message = mentorQuestion.trim() || "Hi, I need private mentoring guidance on faith and life."
+    const telegramUrl = `https://t.me/YohannesNeseha?text=${encodeURIComponent(message)}`
+    window.open(telegramUrl, "_blank", "noopener,noreferrer")
+    setMentorSent(true)
+    setMentorQuestion("")
+  }
+
+  const toggleRsvp = (id: string) => {
+    setRsvpEvents((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
+  }
+
+  const submitPrayerRequest = () => {
+    if (!prayerInput.trim()) return
+    setPrayerRequests((prev) => [prayerInput.trim(), ...prev].slice(0, 5))
+    setPrayerInput("")
   }
 
   return (
@@ -61,11 +165,12 @@ export default function YouthCornerPage() {
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="challenges" className="w-full">
               <div className="flex justify-center mb-8">
-                <TabsList className="grid grid-cols-4 w-full max-w-xl">
+                <TabsList className="grid grid-cols-5 w-full max-w-3xl">
                   <TabsTrigger value="challenges">Challenges</TabsTrigger>
                   <TabsTrigger value="events">Events</TabsTrigger>
                   <TabsTrigger value="media">Media</TabsTrigger>
                   <TabsTrigger value="community">Community</TabsTrigger>
+                  <TabsTrigger value="hub">Youth Hub</TabsTrigger>
                 </TabsList>
               </div>
 
@@ -172,155 +277,30 @@ export default function YouthCornerPage() {
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <Calendar className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                          Upcoming Youth Events
+                          Recurring Church Classes
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="space-y-6">
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <Card className="border border-gray-100 dark:border-gray-800">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-3 py-1 rounded-full text-sm">
-                                    This Weekend
-                                  </div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium text-gray-900 dark:text-white">Saturday</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">5-7 PM EST</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Youth Bible Study</h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                  Join us for an interactive Bible study focused on applying Orthodox teachings to modern life challenges.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link href="/events/youth-bible-study">
-                                    <Button
-                                      variant="outline"
-                                      className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 dark:text-orange-400 dark:hover:bg-orange-900/20"
-                                    >
-                                      Details
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Add to Calendar
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <Card className="border border-gray-100 dark:border-gray-800">
+                            <CardContent className="p-6">
+                              <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
+                                Catechumen Class (Open to All)
+                              </h3>
+                              <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Every Friday, 6:00 PM - 8:00 PM</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-300">Taught by MT Dn. Kidus Adugna</p>
+                            </CardContent>
+                          </Card>
 
-                            <Card className="border border-gray-100 dark:border-gray-800">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 px-3 py-1 rounded-full text-sm">
-                                    Next Week
-                                  </div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium text-gray-900 dark:text-white">Friday</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">6-9 PM EST</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Youth Fellowship Night</h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                  An evening of fellowship, games, Ethiopian food, and spiritual discussions for young Orthodox believers.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link href="/events/youth-fellowship">
-                                    <Button
-                                      variant="outline"
-                                      className="text-amber-600 hover:text-amber-700 hover:bg-amber-50 dark:text-amber-500 dark:hover:bg-amber-900/20"
-                                    >
-                                      Details
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Add to Calendar
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-                          </div>
-
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <Card className="border border-gray-100 dark:border-gray-800">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 px-3 py-1 rounded-full text-sm">
-                                    Monthly
-                                  </div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium text-gray-900 dark:text-white">First Sunday</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">12-2 PM EST</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Youth Choir Practice</h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                  Learn traditional Ethiopian Orthodox hymns and participate in the Divine Liturgy.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link href="/events/youth-choir">
-                                    <Button
-                                      variant="outline"
-                                      className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 dark:text-blue-500 dark:hover:bg-blue-900/20"
-                                    >
-                                      Details
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Add to Calendar
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-
-                            <Card className="border border-gray-100 dark:border-gray-800">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-3 py-1 rounded-full text-sm">
-                                    Special Event
-                                  </div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium text-gray-900 dark:text-white">July 15-20</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">All Day</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Youth Summer Retreat</h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                                  A week-long spiritual retreat with workshops, prayer, fellowship, and outdoor activities.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link href="/events/summer-retreat">
-                                    <Button
-                                      variant="outline"
-                                      className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:text-green-500 dark:hover:bg-green-900/20"
-                                    >
-                                      Register
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Learn More
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-                          </div>
-
-                          <div className="text-center">
-                            <Button
-                              asChild
-                              className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
-                            >
-                              <Link href="/events">View All Events</Link>
-                            </Button>
-                          </div>
+                          <Card className="border border-gray-100 dark:border-gray-800">
+                            <CardContent className="p-6">
+                              <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
+                                Learning About Service (Deacons Encouraged)
+                              </h3>
+                              <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Every Wednesday, 3:00 PM - 4:00 PM</p>
+                              <p className="text-sm text-gray-600 dark:text-gray-300">Taught by MT Dn. Kidus Adugna</p>
+                            </CardContent>
+                          </Card>
                         </div>
                       </CardContent>
                     </Card>
@@ -346,77 +326,34 @@ export default function YouthCornerPage() {
                       </CardHeader>
                       <CardContent>
                         <div className="grid md:grid-cols-3 gap-6">
-                          <div className="bg-white dark:bg-stone-800 rounded-lg overflow-hidden shadow-sm">
-                            <div className="relative aspect-[9/16] bg-gray-100 dark:bg-gray-700">
-                              <Image
-                                src="/placeholder.svg?height=400&width=225"
-                                alt="Why Do We Fast?"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white w-12 h-12"
-                                >
-                                  <Play className="h-6 w-6 text-orange-600" />
-                                </Button>
+                          {tiktokLessons.map((lesson) => (
+                            <a
+                              key={lesson.title}
+                              href={lesson.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group bg-white dark:bg-stone-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition"
+                            >
+                              <div className="relative aspect-[9/16] bg-gradient-to-br from-stone-900 via-stone-800 to-black">
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.15),transparent_45%)]" />
+                                <div className="absolute top-3 left-3 rounded-full bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white">
+                                  TikTok • {lesson.subtitle}
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="h-14 w-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-105 transition-transform">
+                                    <Play className="h-6 w-6 text-orange-600" />
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            <div className="p-3">
-                              <h3 className="font-medium text-gray-900 dark:text-white mb-1">Why Do We Fast?</h3>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">2.4M views</p>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-white dark:bg-stone-800 rounded-lg overflow-hidden shadow-sm">
-                            <div className="relative aspect-[9/16] bg-gray-100 dark:bg-gray-700">
-                              <Image
-                                src="/placeholder.svg?height=400&width=225"
-                                alt="The Meaning of the Cross"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white w-12 h-12"
-                                >
-                                  <Play className="h-6 w-6 text-orange-600" />
-                                </Button>
+                              <div className="p-3">
+                                <h3 className="font-medium text-gray-900 dark:text-white mb-1">{lesson.title}</h3>
+                                <p className="text-xs text-gray-500 dark:text-gray-400 inline-flex items-center gap-1">
+                                  Open on TikTok
+                                  <ExternalLink className="h-3 w-3" />
+                                </p>
                               </div>
-                            </div>
-                            <div className="p-3">
-                              <h3 className="font-medium text-gray-900 dark:text-white mb-1">The Meaning of the Cross</h3>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">1.8M views</p>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-white dark:bg-stone-800 rounded-lg overflow-hidden shadow-sm">
-                            <div className="relative aspect-[9/16] bg-gray-100 dark:bg-gray-700">
-                              <Image
-                                src="/placeholder.svg?height=400&width=225"
-                                alt="Saints in 60 Seconds"
-                                fill
-                                className="object-cover"
-                              />
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  className="rounded-full bg-white/80 backdrop-blur-sm hover:bg-white w-12 h-12"
-                                >
-                                  <Play className="h-6 w-6 text-orange-600" />
-                                </Button>
-                              </div>
-                            </div>
-                            <div className="p-3">
-                              <h3 className="font-medium text-gray-900 dark:text-white mb-1">Saints in 60 Seconds</h3>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">3.1M views</p>
-                            </div>
-                          </div>
+                            </a>
+                          ))}
                         </div>
                         
                         <div className="text-center mt-6">
@@ -424,7 +361,7 @@ export default function YouthCornerPage() {
                             asChild
                             className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
                           >
-                            <Link href="/media">View All Videos</Link>
+                            <a href="https://www.tiktok.com/@orthodoxqnas" target="_blank" rel="noreferrer">View All Videos</a>
                           </Button>
                         </div>
                       </CardContent>
@@ -601,15 +538,251 @@ export default function YouthCornerPage() {
                       <CardContent>
                         <div className="space-y-4">
                           <div className="bg-white dark:bg-stone-800 p-4 rounded-lg shadow-sm">
-                            <h3 className="font-medium text-gray-900 dark:text-white mb-1">Youth Retreat 2024</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Join us for a weekend of spiritual growth and fellowship.</p>
-                            <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">March 15-17, 2024</p>
+                            <h3 className="font-medium text-gray-900 dark:text-white mb-1">Catechumen Class (Open to All)</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Every Friday, 6:00 PM - 8:00 PM</p>
+                            <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Taught by MT Dn. Kidus Adugna</p>
                           </div>
                           <div className="bg-white dark:bg-stone-800 p-4 rounded-lg shadow-sm">
-                            <h3 className="font-medium text-gray-900 dark:text-white mb-1">Bible Study Group</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Weekly sessions exploring Scripture together.</p>
-                            <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Every Saturday, 5 PM</p>
+                            <h3 className="font-medium text-gray-900 dark:text-white mb-1">
+                              Learning About Service (Deacons Encouraged)
+                            </h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Every Wednesday, 3:00 PM - 4:00 PM</p>
+                            <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Taught by MT Dn. Kidus Adugna</p>
                           </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              </TabsContent>
+
+              <TabsContent value="hub">
+                <motion.div className="space-y-8" initial="hidden" animate="visible" variants={staggerContainer}>
+                  <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 gap-6">
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <div className="h-2 bg-gradient-to-r from-orange-500 to-amber-500" />
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Flame className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Weekly Challenge
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        {weeklyChallengeSeed.map((challenge) => {
+                          const done = completedChallenges.includes(challenge.id)
+                          return (
+                            <button
+                              key={challenge.id}
+                              type="button"
+                              onClick={() => toggleChallenge(challenge.id)}
+                              className={`w-full text-left rounded-lg border p-3 transition ${
+                                done
+                                  ? "border-green-300 bg-green-50 dark:border-green-800 dark:bg-green-950/30"
+                                  : "border-gray-200 dark:border-gray-800"
+                              }`}
+                            >
+                              <p className="text-sm font-medium text-gray-900 dark:text-white">{challenge.label}</p>
+                              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">+{challenge.points} points</p>
+                            </button>
+                          )
+                        })}
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <HeartHandshake className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Ask a Mentor
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <Textarea
+                          placeholder="Ask privately about faith, school, family, or spiritual struggles..."
+                          value={mentorQuestion}
+                          onChange={(e) => setMentorQuestion(e.target.value)}
+                        />
+                        <Button onClick={submitMentorQuestion}>Send Private Question</Button>
+                        {mentorSent && (
+                          <p className="text-sm text-green-700 dark:text-green-400">
+                            Question sent. A youth mentor will respond soon.
+                          </p>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 gap-6">
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Calendar className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Youth Events Calendar
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        {youthEvents.map((event) => (
+                          <div key={event.id} className="rounded-lg border border-gray-200 dark:border-gray-800 p-3">
+                            <p className="font-medium text-gray-900 dark:text-white">{event.title}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{event.when}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{event.where}</p>
+                            <Button
+                              size="sm"
+                              variant={rsvpEvents.includes(event.id) ? "secondary" : "outline"}
+                              className="mt-2"
+                              onClick={() => toggleRsvp(event.id)}
+                            >
+                              {rsvpEvents.includes(event.id) ? "RSVP'd" : "RSVP"}
+                            </Button>
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <BookOpen className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Study Tracks
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        {studyTracks.map((track) => (
+                          <div key={track.title} className="rounded-lg border border-gray-200 dark:border-gray-800 p-3">
+                            <div className="flex items-center justify-between">
+                              <p className="font-medium text-gray-900 dark:text-white">{track.title}</p>
+                              <span className="text-xs text-orange-700 dark:text-orange-400">{track.level}</span>
+                            </div>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{track.focus}</p>
+                            <Progress value={track.progress} className="mt-3" />
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 gap-6">
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <MessageSquare className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Prayer Circle
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <Input
+                          placeholder="Share a prayer intention (optional anonymous)"
+                          value={prayerInput}
+                          onChange={(e) => setPrayerInput(e.target.value)}
+                        />
+                        <Button variant="outline" onClick={submitPrayerRequest}>
+                          Submit Intention
+                        </Button>
+                        <div className="space-y-2">
+                          {prayerRequests.map((request, index) => (
+                            <div key={`${request}-${index}`} className="text-sm rounded-md bg-amber-50 dark:bg-amber-950/30 p-2">
+                              {request}
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Video className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Media Hub
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2 text-sm">
+                        <p className="text-gray-700 dark:text-gray-300">Short reels: Saints in 60 seconds</p>
+                        <p className="text-gray-700 dark:text-gray-300">Podcast: Orthodox life in college</p>
+                        <p className="text-gray-700 dark:text-gray-300">Audio: Morning and evening prayer tracks</p>
+                        <Button asChild className="mt-2">
+                          <Link href="/media">Open Full Media Library</Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 gap-6">
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <HandHelping className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Volunteer Board
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        {volunteerRoles.map((item) => (
+                          <div key={`${item.city}-${item.role}`} className="rounded-lg border border-gray-200 dark:border-gray-800 p-3">
+                            <p className="font-medium text-gray-900 dark:text-white">{item.role}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{item.city}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{item.time}</p>
+                            <Button size="sm" variant="outline">
+                              Sign Up
+                            </Button>
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <ShieldCheck className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                          Discussion Rooms
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        {discussionRooms.map((room) => (
+                          <div key={room.name} className="rounded-lg border border-gray-200 dark:border-gray-800 p-3">
+                            <div className="flex items-center justify-between">
+                              <p className="font-medium text-gray-900 dark:text-white">{room.name}</p>
+                              <span className="text-xs bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded-full text-orange-700 dark:text-orange-400">
+                                {room.status}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{room.members} members</p>
+                            <Button size="sm" variant="outline" className="mt-2">
+                              Join Room
+                            </Button>
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 gap-6">
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle>New Here? Start Here</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                        <p>1. Learn the basics of Oriental Orthodox faith and worship.</p>
+                        <p>2. Follow a beginner prayer rule for 14 days.</p>
+                        <p>3. Attend Sunday liturgy and one youth group meeting.</p>
+                        <p>4. Connect with a mentor and ask your first questions.</p>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-none shadow-lg overflow-hidden">
+                      <CardHeader>
+                        <CardTitle>Parent & Leader Toolkit</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2 text-sm">
+                        <p className="text-gray-700 dark:text-gray-300">Guides to support youth spiritual growth at home and church.</p>
+                        <div className="flex flex-wrap gap-2">
+                          <Button variant="outline" size="sm">
+                            Family Prayer Guide
+                          </Button>
+                          <Button variant="outline" size="sm">
+                            Mentor Playbook
+                          </Button>
+                          <Button variant="outline" size="sm">
+                            Safe Ministry Checklist
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>
@@ -621,5 +794,5 @@ export default function YouthCornerPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

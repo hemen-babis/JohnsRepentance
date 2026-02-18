@@ -2,11 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, Heart, Plus, ShoppingCart, Trash2, ChefHat } from "lucide-react"
+import { ArrowLeft, Heart, Plus, ShoppingCart, Trash2, ChefHat, Search, Sparkles, Play, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 type Tradition = "Coptic" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
+type DisplayTradition = "Mediterranean" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
 
 type Recipe = {
   id: string
@@ -15,6 +16,11 @@ type Recipe = {
   servingsBase: number
   ingredients: Array<{ name: string; qty: number; unit: string }>
   steps: string[]
+}
+
+function toDisplayTradition(tradition: Tradition): DisplayTradition {
+  if (tradition === "Coptic") return "Mediterranean"
+  return tradition
 }
 
 const detailedStepsById: Partial<Record<string, string[]>> = {
@@ -147,13 +153,18 @@ const recipes: Recipe[] = [
 
 type ShoppingItem = { id: string; name: string; qty: number; unit: string; checked: boolean }
 
+const suggestRecipeMessage = encodeURIComponent(
+  "Hi, I want to recommend a recipe for the fasting recipes page.\n\nRecipe name:\nTradition:\nIngredients:\nStep-by-step instructions:\nNotes:",
+)
+
 export default function FastingRecipesPage() {
   const [name, setName] = useState("")
-  const [preferredTradition, setPreferredTradition] = useState<"All" | Tradition>("All")
+  const [preferredTradition, setPreferredTradition] = useState<"All" | DisplayTradition>("All")
   const [query, setQuery] = useState("")
   const [favorites, setFavorites] = useState<string[]>([])
   const [servings, setServings] = useState(4)
   const [selectedRecipeId, setSelectedRecipeId] = useState(recipes[0].id)
+  const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [shoppingList, setShoppingList] = useState<ShoppingItem[]>([])
   const [notes, setNotes] = useState("")
 
@@ -181,10 +192,10 @@ export default function FastingRecipesPage() {
 
   const visibleRecipes = useMemo(() => {
     return recipes.filter((recipe) => {
-      const byTradition = preferredTradition === "All" || recipe.tradition === preferredTradition
+      const byTradition = preferredTradition === "All" || toDisplayTradition(recipe.tradition) === preferredTradition
       const byQuery =
         query.trim().length === 0 ||
-        `${recipe.name} ${recipe.tradition} ${recipe.ingredients.map((i) => i.name).join(" ")}`
+        `${recipe.name} ${toDisplayTradition(recipe.tradition)} ${recipe.ingredients.map((i) => i.name).join(" ")}`
           .toLowerCase()
           .includes(query.toLowerCase())
       return byTradition && byQuery
@@ -194,6 +205,10 @@ export default function FastingRecipesPage() {
   const selectedRecipe = recipes.find((recipe) => recipe.id === selectedRecipeId) ?? recipes[0]
   const detailedSteps = useMemo(() => buildDetailedSteps(selectedRecipe), [selectedRecipe])
   const servingFactor = servings / selectedRecipe.servingsBase
+
+  useEffect(() => {
+    setActiveStepIndex(0)
+  }, [selectedRecipeId])
 
   const toggleFavorite = (id: string) => {
     setFavorites((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
@@ -220,116 +235,162 @@ export default function FastingRecipesPage() {
 
   const recommended = useMemo(() => {
     if (preferredTradition === "All") return recipes.slice(0, 3)
-    return recipes.filter((r) => r.tradition === preferredTradition).slice(0, 3)
+    return recipes.filter((r) => toDisplayTradition(r.tradition) === preferredTradition).slice(0, 3)
   }, [preferredTradition])
 
   const totalRecipes = recipes.length
 
   return (
-    <div className="bg-gradient-to-b from-orange-50/40 to-amber-50/30 dark:from-stone-950 dark:to-stone-900">
-      <section className="mx-auto max-w-7xl px-4 py-10">
-        <div className="mb-6 flex items-center justify-between gap-3">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold">Fasting Recipes</h1>
-            <p className="text-sm text-muted-foreground mt-1">Personalized kitchen experience for fasting seasons.</p>
-            <p className="text-xs text-amber-700 dark:text-amber-400 mt-1">{totalRecipes} recipes loaded.</p>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#fff1e2_0%,_#fff8f0_30%,_#f8fafc_100%)] dark:bg-[radial-gradient(circle_at_top,_#1f1a15_0%,_#111827_45%,_#020617_100%)]">
+      <section className="mx-auto max-w-[1500px] px-4 py-8 md:py-10">
+        <div className="mb-6 overflow-hidden rounded-3xl border border-orange-200/80 bg-white/85 p-5 shadow-xl backdrop-blur dark:border-orange-900/50 dark:bg-stone-900/80 md:p-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="mb-2 inline-flex items-center gap-2 rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-800 dark:bg-orange-900/40 dark:text-orange-300">
+                <Sparkles className="h-3.5 w-3.5" />
+                Interactive Kitchen
+              </p>
+              <h1 className="text-3xl font-black tracking-tight md:text-5xl">Fasting Recipes</h1>
+              <p className="mt-2 text-sm text-muted-foreground md:text-base">A Tasty-style experience for Orthodox fasting meals.</p>
+              <p className="mt-1 text-xs font-semibold text-orange-700 dark:text-orange-300">{totalRecipes} recipes loaded</p>
+            </div>
+            <Button asChild variant="outline" className="bg-white/80">
+              <Link href="/fasting-guide">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Guide
+              </Link>
+            </Button>
           </div>
-          <Button asChild variant="outline">
-            <Link href="/fasting-guide">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Guide
-            </Link>
-          </Button>
+          <div className="mt-4">
+            <Button asChild className="rounded-full bg-sky-600 hover:bg-sky-500">
+              <a href={`https://t.me/johnsrepentance?text=${suggestRecipeMessage}`} target="_blank" rel="noreferrer">
+                Suggest a Recipe
+              </a>
+            </Button>
+          </div>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2"><ChefHat className="h-5 w-5" />Your Recipe Studio</CardTitle>
-              <CardDescription>Set preferences, explore recipes, and build your list.</CardDescription>
+        <div className="grid gap-5 xl:grid-cols-[320px_1fr_360px]">
+          <Card className="h-fit border-orange-200/70 bg-white/90 shadow-lg dark:border-stone-700 dark:bg-stone-900/85 xl:sticky xl:top-6">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-xl"><ChefHat className="h-5 w-5" />Discover</CardTitle>
+              <CardDescription>Find recipes by tradition and ingredients.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-3">
-                <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" className="rounded-md border px-3 py-2 text-sm bg-background" />
-                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search recipes..." className="rounded-md border px-3 py-2 text-sm bg-background" />
+            <CardContent className="space-y-3">
+              <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" className="w-full rounded-xl border bg-background px-3 py-2.5 text-sm" />
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search recipes..." className="w-full rounded-xl border bg-background py-2.5 pl-9 pr-3 text-sm" />
               </div>
-
               <div className="flex flex-wrap gap-2">
-                {(["All", "Coptic", "Ethiopian", "Levantine", "Armenian", "Syriac"] as const).map((tradition) => (
-                  <Button key={tradition} size="sm" variant={preferredTradition === tradition ? "default" : "outline"} onClick={() => setPreferredTradition(tradition)}>
+                {(["All", "Mediterranean", "Ethiopian", "Levantine", "Armenian", "Syriac"] as const).map((tradition) => (
+                  <Button key={tradition} size="sm" className="rounded-full" variant={preferredTradition === tradition ? "default" : "outline"} onClick={() => setPreferredTradition(tradition)}>
                     {tradition}
                   </Button>
                 ))}
               </div>
+              <p className="text-sm text-muted-foreground">{name ? `Welcome ${name}.` : "Set your profile."} Try: {recommended.map((r) => r.name).join(", ")}.</p>
 
-              <div className="text-sm text-muted-foreground">
-                {name ? `Welcome ${name}.` : "Set your profile."} Recommended today: {recommended.map((r) => r.name).join(", ")}.
-              </div>
-
-              <div className="grid md:grid-cols-[1fr_1fr] gap-4">
-                <div className="rounded-lg border max-h-[340px] overflow-auto">
-                  {visibleRecipes.map((recipe) => (
-                    <button key={recipe.id} onClick={() => setSelectedRecipeId(recipe.id)} className={`w-full text-left p-4 border-b last:border-b-0 ${selectedRecipe.id === recipe.id ? "bg-amber-50 dark:bg-amber-950/20" : "hover:bg-muted/40"}`}>
-                      <div className="flex items-center justify-between gap-2">
-                        <p className="font-semibold text-base md:text-lg leading-snug">{recipe.name}</p>
-                        <Button size="icon" variant="ghost" onClick={(e) => { e.stopPropagation(); toggleFavorite(recipe.id) }}>
-                          <Heart className={`h-4 w-4 ${favorites.includes(recipe.id) ? "fill-red-500 text-red-500" : ""}`} />
-                        </Button>
+              <div className="max-h-[520px] overflow-auto rounded-2xl border">
+                {visibleRecipes.map((recipe) => (
+                  <button key={recipe.id} onClick={() => setSelectedRecipeId(recipe.id)} className={`w-full border-b p-4 text-left last:border-b-0 ${selectedRecipe.id === recipe.id ? "bg-orange-50 dark:bg-orange-950/20" : "hover:bg-muted/40"}`}>
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="text-base font-bold leading-tight">{recipe.name}</p>
+                        <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{toDisplayTradition(recipe.tradition)}</p>
                       </div>
-                      <p className="text-sm text-muted-foreground mt-1">{recipe.tradition}</p>
-                    </button>
-                  ))}
-                </div>
-
-                <div className="rounded-lg border p-4">
-                  <h3 className="font-bold text-2xl leading-tight">{selectedRecipe.name}</h3>
-                  <p className="text-base text-muted-foreground mt-1">{selectedRecipe.tradition}</p>
-
-                  <div className="mt-4 flex items-center gap-2 text-base">
-                    <span>Servings</span>
-                    <input type="range" min={2} max={10} value={servings} onChange={(e) => setServings(Number(e.target.value))} />
-                    <span className="font-semibold text-lg">{servings}</span>
-                  </div>
-
-                  <div className="mt-4 space-y-2 max-h-[240px] overflow-auto pr-1">
-                    {selectedRecipe.ingredients.map((ing) => (
-                      <div key={ing.name} className="flex items-center justify-between rounded-md bg-muted/40 px-3 py-2 text-base">
-                        <span className="leading-snug">{Number((ing.qty * servingFactor).toFixed(2))} {ing.unit} {ing.name}</span>
-                        <Button size="icon" variant="ghost" onClick={() => addIngredient(ing)}><Plus className="h-4 w-4" /></Button>
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="mt-4 text-sm font-semibold text-stone-700 dark:text-stone-200">Detailed Instructions (Step-by-step)</p>
-                  <ol className="mt-2 list-decimal pl-6 space-y-2 text-base text-muted-foreground leading-relaxed">
-                    {detailedSteps.map((s, idx) => <li key={`${selectedRecipe.id}-step-${idx}`}>{s}</li>)}
-                  </ol>
-
-                  <Button className="w-full mt-4 text-base py-6" onClick={addRecipe}><ShoppingCart className="mr-2 h-5 w-5" />Add Full Recipe</Button>
-                </div>
+                      <Button size="icon" variant="ghost" onClick={(e) => { e.stopPropagation(); toggleFavorite(recipe.id) }}>
+                        <Heart className={`h-4 w-4 ${favorites.includes(recipe.id) ? "fill-red-500 text-red-500" : ""}`} />
+                      </Button>
+                    </div>
+                  </button>
+                ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <div className="space-y-5">
+            <Card className="overflow-hidden border-orange-200/70 bg-white/90 shadow-lg dark:border-stone-700 dark:bg-stone-900/85">
+              <CardHeader className="bg-gradient-to-r from-orange-100/70 via-amber-50 to-rose-50 pb-4 dark:from-stone-800 dark:via-stone-800 dark:to-stone-900">
+                <p className="text-xs uppercase tracking-wider text-muted-foreground">{toDisplayTradition(selectedRecipe.tradition)} Recipe</p>
+                <CardTitle className="text-3xl font-black leading-tight md:text-4xl">{selectedRecipe.name}</CardTitle>
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
+                  <span className="rounded-full bg-white/90 px-3 py-1 font-medium shadow-sm dark:bg-stone-800">Servings: {servings}</span>
+                  <input type="range" min={2} max={10} value={servings} onChange={(e) => setServings(Number(e.target.value))} className="w-44 accent-orange-600" />
+                  <Button className="rounded-full" onClick={addRecipe}><ShoppingCart className="mr-2 h-4 w-4" />Add Recipe to List</Button>
+                </div>
+              </CardHeader>
+
+              <CardContent className="grid gap-4 p-4 md:grid-cols-2 md:p-6">
+                <div className="rounded-2xl border bg-white/80 p-4 dark:bg-stone-950/50">
+                  <h3 className="mb-3 text-lg font-bold">Ingredients</h3>
+                  <div className="space-y-2">
+                    {selectedRecipe.ingredients.map((ing) => (
+                      <div key={ing.name} className="flex items-center justify-between rounded-xl border bg-stone-50 p-3 dark:bg-stone-900/70">
+                        <span className="text-base font-medium">{Number((ing.qty * servingFactor).toFixed(2))} {ing.unit} {ing.name}</span>
+                        <Button size="icon" variant="ghost" onClick={() => addIngredient(ing)}><Plus className="h-4 w-4" /></Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border bg-white/80 p-4 dark:bg-stone-950/50">
+                  <div className="mb-3 flex items-center justify-between">
+                    <h3 className="text-lg font-bold">Cook Mode</h3>
+                    <span className="text-sm text-muted-foreground">Step {activeStepIndex + 1} of {detailedSteps.length}</span>
+                  </div>
+                  <div className="rounded-2xl bg-gradient-to-br from-orange-100 to-amber-50 p-4 dark:from-stone-800 dark:to-stone-900">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Current Step</p>
+                    <p className="text-base font-semibold leading-relaxed">{detailedSteps[activeStepIndex]}</p>
+                  </div>
+                  <div className="mt-3 flex gap-2">
+                    <Button variant="outline" onClick={() => setActiveStepIndex((i) => Math.max(0, i - 1))} disabled={activeStepIndex === 0}>
+                      <ChevronLeft className="mr-1 h-4 w-4" />Prev
+                    </Button>
+                    <Button onClick={() => setActiveStepIndex((i) => Math.min(detailedSteps.length - 1, i + 1))} disabled={activeStepIndex === detailedSteps.length - 1}>
+                      Next<ChevronRight className="ml-1 h-4 w-4" />
+                    </Button>
+                    <Button variant="ghost" onClick={() => setActiveStepIndex(0)}><Play className="mr-1 h-4 w-4" />Start Over</Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-orange-200/70 bg-white/90 shadow-lg dark:border-stone-700 dark:bg-stone-900/85">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-2xl font-black">Detailed Instructions</CardTitle>
+                <CardDescription>Full step-by-step workflow, not summaries.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {detailedSteps.map((step, idx) => (
+                  <div key={`${selectedRecipe.id}-step-${idx}`} className={`rounded-2xl border p-4 ${activeStepIndex === idx ? "border-orange-400 bg-orange-50 dark:border-orange-700 dark:bg-orange-950/20" : "bg-stone-50/70 dark:bg-stone-900/70"}`}>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted-foreground">Step {idx + 1}</p>
+                    <p className="text-base leading-relaxed">{step}</p>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="h-fit border-orange-200/70 bg-white/90 shadow-lg dark:border-stone-700 dark:bg-stone-900/85 xl:sticky xl:top-6">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2"><ShoppingCart className="h-5 w-5" />My Shopping List</CardTitle>
-              <CardDescription>Persistent list saved to this browser.</CardDescription>
+              <CardTitle className="flex items-center gap-2 text-xl"><ShoppingCart className="h-5 w-5" />My Shopping List</CardTitle>
+              <CardDescription>Personalized and saved on this browser.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="max-h-[280px] overflow-auto space-y-2">
+              <div className="max-h-[360px] space-y-2 overflow-auto rounded-xl border p-2">
                 {shoppingList.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No items yet.</p>
+                  <p className="p-2 text-sm text-muted-foreground">No items yet.</p>
                 ) : (
                   shoppingList.map((item) => (
-                    <label key={item.id} className="flex items-center gap-2 text-sm rounded-md border p-2">
+                    <label key={item.id} className="flex items-center gap-2 rounded-xl border bg-stone-50 p-2 text-sm dark:bg-stone-900">
                       <input type="checkbox" checked={item.checked} onChange={() => toggleItem(item.id)} />
                       <span className={item.checked ? "line-through text-muted-foreground" : ""}>{item.qty} {item.unit} {item.name}</span>
                     </label>
                   ))
                 )}
               </div>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={4} placeholder="Personal notes: budget, store, substitutions..." className="w-full rounded-md border px-3 py-2 text-sm bg-background" />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={6} placeholder="Notes: stores, substitutions, what to prep first..." className="w-full rounded-xl border bg-background px-3 py-2 text-sm" />
               <Button variant="outline" className="w-full" onClick={clearShopping}><Trash2 className="mr-2 h-4 w-4" />Clear List</Button>
             </CardContent>
           </Card>

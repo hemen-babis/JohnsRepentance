@@ -165,58 +165,41 @@ export default function JoinPage() {
                       <div className="space-y-4">
                         <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                           <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-medium text-gray-900 dark:text-white">New Member Welcome</h3>
+                            <h3 className="font-medium text-gray-900 dark:text-white">Catechumen Class (Open to All)</h3>
                             <span className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 px-2 py-1 rounded-full">
-                              This Sunday
+                              Weekly
                             </span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            Join us after Divine Liturgy for a special welcome session for new members and visitors.
+                            Weekly class for all who want to learn Orthodox foundations.
                           </p>
                           <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
                             <Calendar className="h-3 w-3 mr-1" />
-                            <span>Sunday, 12:30 PM</span>
+                            <span>Every Friday, 6:00 PM - 8:00 PM</span>
                             <span className="mx-2">•</span>
                             <MapPin className="h-3 w-3 mr-1" />
-                            <span>Church Fellowship Hall</span>
+                            <span>Taught by MT Dn. Kidus Adugna</span>
                           </div>
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                           <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-medium text-gray-900 dark:text-white">Introduction to Orthodoxy</h3>
+                            <h3 className="font-medium text-gray-900 dark:text-white">
+                              Learning About Service (Deacons Encouraged)
+                            </h3>
                             <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 px-2 py-1 rounded-full">
-                              Next Week
+                              Weekly
                             </span>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            A four-week course exploring the basics of Ethiopian Orthodox faith and practice.
+                            Practical class focused on church service life, especially for deacons.
                           </p>
                           <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
                             <Calendar className="h-3 w-3 mr-1" />
-                            <span>Wednesdays, 7:00 PM</span>
+                            <span>Every Wednesday, 3:00 PM - 4:00 PM</span>
                             <span className="mx-2">•</span>
                             <MapPin className="h-3 w-3 mr-1" />
-                            <span>Church Education Center</span>
-                          </div>
-                        </div>
-
-                        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-medium text-gray-900 dark:text-white">Youth Fellowship</h3>
-                            <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 px-2 py-1 rounded-full">
-                              Bi-weekly
-                            </span>
-                          </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            For ages 13-25, featuring discussions, activities, and fellowship.
-                          </p>
-                          <div className="flex items-center text-xs text-gray-500 dark:text-gray-500">
-                            <Calendar className="h-3 w-3 mr-1" />
-                            <span>Every other Saturday, 5:00 PM</span>
-                            <span className="mx-2">•</span>
-                            <MapPin className="h-3 w-3 mr-1" />
-                            <span>Youth Center</span>
+                            <span>Taught by MT Dn. Kidus Adugna</span>
                           </div>
                         </div>
                       </div>

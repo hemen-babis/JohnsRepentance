@@ -9,12 +9,12 @@ import { LivePrayerCountdown } from "@/components/live-prayer-countdown"
 import { YouthTestimony } from "@/components/youth-testimony"
 import { SaintOfTheDay } from "@/components/saint-of-the-day"
 import { GeezHeading } from "@/components/geez-heading"
-import { FastingAlert } from "@/components/fasting-alert"
 import { OrthodoxChallenges } from "@/components/orthodox-challenges"
 import { SoundscapeToggle } from "@/components/soundscape-toggle"
-import { VirtualCandle } from "@/components/virtual-candle"
 import { OrthodoxBadges } from "@/components/orthodox-badges"
 import { ChurchLocator } from "@/components/church-locator"
+import { TodayChurchCalendar } from "@/components/today-church-calendar"
+import { FastingMealOfTheDay } from "@/components/fasting-meal-of-the-day"
 
 export default function Home() {
   return (
@@ -24,32 +24,20 @@ export default function Home() {
         <SoundscapeToggle />
       </div>
 
-      {/* Hero Section with Video Background */}
-      <section className="relative h-[90vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-950/80 via-amber-900/70 to-orange-800/60 dark:from-stone-950/90 dark:via-orange-950/70 dark:to-amber-950/60 z-10" />
+      {/* Hero Section */}
+      <section className="relative min-h-[78vh] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-950/70 via-amber-900/55 to-orange-800/45 dark:from-stone-950/85 dark:via-orange-950/65 dark:to-amber-950/50 z-10" />
         <div className="absolute inset-0 z-0">
-          {/* REPLACE: Add your hero background video or image here */}
-          {/* Video: Place your .mp4 file in /public/videos/hero-bg.mp4 and update the src below */}
-          {/* Image: Place your hero image in /public/images/hero-bg.jpg and use the Image component instead */}
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            poster="/placeholder.svg?height=800&width=1200"
-          >
-            <source src="#" type="video/mp4" />
-            <Image
-              src="/placeholder.svg?height=800&width=1200"
-              alt="Ethiopian Orthodox youth in liturgy"
-              fill
-              className="object-cover"
-            />
-          </video>
+          <Image
+            src="/placeholder.svg?height=1200&width=1800"
+            alt="Ethiopian Orthodox youth in liturgy"
+            fill
+            priority
+            className="object-cover"
+          />
         </div>
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-10 z-5" />
-        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_top,rgba(255,255,255,0.18),transparent_60%)] z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_top,rgba(255,255,255,0.14),transparent_60%)] z-10" />
 
         <div className="container mx-auto px-4 relative z-20 h-full flex flex-col justify-center items-center text-white">
           <div className="max-w-4xl text-center">
@@ -64,11 +52,11 @@ export default function Home() {
             <p className="text-lg md:text-xl mb-10 text-center text-white/85 max-w-2xl mx-auto leading-relaxed">
               Your Ethiopian Orthodox Home Online &ndash; Faith. Repentance. Salvation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-700 hover:from-amber-500 hover:via-amber-600 hover:to-amber-800 text-white border border-amber-300/40 shadow-[0_8px_32px_rgba(245,158,11,0.35)] group relative overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.45)]"
+                className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:from-amber-600 hover:via-amber-700 hover:to-orange-700 text-white border border-amber-300/40 shadow-[0_8px_32px_rgba(245,158,11,0.35)] group relative overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.45)]"
               >
                 <Link href="/join">
                   <span className="relative z-10 font-semibold">Join the Faith Vibe</span>
@@ -79,7 +67,7 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
+                className="bg-white/15 backdrop-blur-sm border border-white/40 text-white hover:bg-white/25 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Link href="/teachings">
                   <span className="relative z-10 font-semibold">Explore Teachings</span>
@@ -102,20 +90,23 @@ export default function Home() {
       </section>
 
       {/* Live Features Section */}
-      <section className="py-16 bg-gradient-to-b from-orange-50/50 via-amber-50/60 to-orange-50/40 dark:from-stone-950 dark:via-orange-950/30 dark:to-stone-950 relative overflow-hidden border-y border-amber-200/20 dark:border-orange-900/20">
-        <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.06]" />
+      <section className="py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-stone-950 dark:via-orange-950/20 dark:to-stone-950 relative overflow-hidden border-y border-amber-200/50 dark:border-orange-900/20">
+        <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.04]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white section-divider">Live Spiritual Tools</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Practical tools for prayer rhythm, scripture meditation, fasting, and the church calendar.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             <div className="space-y-8">
               <LivePrayerCountdown />
-              <FastingAlert />
+              <FastingMealOfTheDay />
             </div>
             <div className="space-y-8">
               <DailyVerse />
-              <VirtualCandle />
+              <TodayChurchCalendar />
             </div>
           </div>
         </div>

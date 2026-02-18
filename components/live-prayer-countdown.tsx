@@ -88,17 +88,18 @@ export function LivePrayerCountdown() {
   }, [])
 
   return (
-    <Card className="border-none bg-gray-900/50 backdrop-blur-sm overflow-hidden">
+    <Card className="border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg overflow-hidden">
+      <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="font-medium text-amber-500 flex items-center">
+          <h3 className="font-semibold text-amber-700 flex items-center">
             <Clock className="h-5 w-5 mr-2" />
             Next Prayer
           </h3>
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs border-gray-800 text-gray-400 hover:text-white hover:bg-gray-800"
+            className="h-8 text-xs border-amber-300 text-amber-800 hover:text-amber-900 hover:bg-amber-100"
           >
             <Bell className="h-3 w-3 mr-1" />
             Set Reminder
@@ -108,42 +109,42 @@ export function LivePrayerCountdown() {
         <div className="flex justify-center mb-6">
           <div className="grid grid-cols-3 gap-3 text-center">
             <motion.div
-              className="bg-gray-800/50 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <div className="text-3xl font-bold text-amber-500">{timeLeft.hours.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-400 mt-1">HOURS</div>
+              <div className="text-3xl font-bold text-amber-700">{timeLeft.hours.toString().padStart(2, "0")}</div>
+              <div className="text-xs text-gray-500 mt-1">HOURS</div>
             </motion.div>
             <motion.div
-              className="bg-gray-800/50 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              <div className="text-3xl font-bold text-amber-500">{timeLeft.minutes.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-400 mt-1">MINUTES</div>
+              <div className="text-3xl font-bold text-amber-700">{timeLeft.minutes.toString().padStart(2, "0")}</div>
+              <div className="text-xs text-gray-500 mt-1">MINUTES</div>
             </motion.div>
             <motion.div
-              className="bg-gray-800/50 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
             >
-              <div className="text-3xl font-bold text-amber-500">{timeLeft.seconds.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-400 mt-1">SECONDS</div>
+              <div className="text-3xl font-bold text-amber-700">{timeLeft.seconds.toString().padStart(2, "0")}</div>
+              <div className="text-xs text-gray-500 mt-1">SECONDS</div>
             </motion.div>
           </div>
         </div>
 
-        <p className="text-center text-white mb-6">
-          Until <span className="font-medium text-amber-500">{timeLeft.prayerName}</span>
+        <p className="text-center text-gray-700 mb-6">
+          Until <span className="font-semibold text-amber-700">{timeLeft.prayerName}</span>
         </p>
 
         <Button
           asChild
-          className="w-full bg-amber-500 hover:bg-orange-600 text-black transition-colors duration-300 flex items-center justify-center"
+          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white transition-colors duration-300 flex items-center justify-center"
         >
           <a href="https://t.me/+DCbv9KRTroY0NmJh" target="_blank" rel="noopener noreferrer">
             <Telegram className="mr-2 h-4 w-4" />

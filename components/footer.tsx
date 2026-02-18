@@ -130,6 +130,11 @@ export function Footer() {
                   Fasting Guide
                 </Link>
               </li>
+              <li>
+                <Link href="/volunteers-registration" className="footer-link text-gray-400 inline-block">
+                  Volunteers Registration
+                </Link>
+              </li>
             </ul>
           </div>
 

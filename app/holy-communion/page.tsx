@@ -28,8 +28,6 @@ type PrepStep = {
 }
 
 export default function HolyCommunionPage() {
-  const [hotspotActive, setHotspotActive] = useState<string | null>(null)
-
   // Preparation checklist
   const [checklist, setChecklist] = useState<ChecklistItem[]>([
     { id: "confession", label: "Confession", complete: false },
@@ -128,9 +126,8 @@ export default function HolyCommunionPage() {
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="preparation" className="w-full">
               <div className="flex justify-center mb-8">
-                <TabsList className="grid grid-cols-3 w-full max-w-md">
+                <TabsList className="grid grid-cols-2 w-full max-w-md">
                   <TabsTrigger value="preparation">Preparation</TabsTrigger>
-                  <TabsTrigger value="virtual-tour">Virtual Tour</TabsTrigger>
                   <TabsTrigger value="quick-facts">Quick Facts</TabsTrigger>
                 </TabsList>
               </div>
@@ -254,166 +251,6 @@ export default function HolyCommunionPage() {
                             <source src="#" type="video/mp4" />
                             Your browser does not support the video tag.
                           </video>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </motion.div>
-              </TabsContent>
-
-              {/* Virtual Altar Tour */}
-              <TabsContent value="virtual-tour">
-                <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-                  <motion.div variants={fadeInUp}>
-                    <div className="text-center mb-8">
-                      <h2 className="text-2xl font-bold text-white mb-2">Virtual Altar Tour</h2>
-                      <p className="text-gray-400">Explore the sacred items used in the Divine Liturgy</p>
-                    </div>
-                  </motion.div>
-
-                  <motion.div variants={fadeInUp}>
-                    <Card className="border-none shadow-lg overflow-hidden bg-stone-900">
-                      <CardContent className="p-0">
-                        <div className="relative aspect-[16/9] md:aspect-[21/9]">
-                          <Image
-                            src="/placeholder.svg?height=600&width=1200"
-                            alt="Ethiopian Orthodox Altar"
-                            fill
-                            className="object-cover"
-                          />
-
-                          {/* Hotspots */}
-                          <div className="absolute inset-0">
-                            {/* Tabot Hotspot */}
-                            <button
-                              className="absolute top-[30%] left-[50%] transform -translate-x-1/2 -translate-y-1/2"
-                              onClick={() => setHotspotActive("tabot")}
-                            >
-                              <div className="w-6 h-6 rounded-full bg-amber-500 animate-pulse flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                              </div>
-                            </button>
-
-                            {/* Chalice Hotspot */}
-                            <button
-                              className="absolute top-[50%] left-[30%] transform -translate-x-1/2 -translate-y-1/2"
-                              onClick={() => setHotspotActive("chalice")}
-                            >
-                              <div className="w-6 h-6 rounded-full bg-amber-500 animate-pulse flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                              </div>
-                            </button>
-
-                            {/* Paten Hotspot */}
-                            <button
-                              className="absolute top-[50%] left-[70%] transform -translate-x-1/2 -translate-y-1/2"
-                              onClick={() => setHotspotActive("paten")}
-                            >
-                              <div className="w-6 h-6 rounded-full bg-amber-500 animate-pulse flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                              </div>
-                            </button>
-
-                            {/* Censer Hotspot */}
-                            <button
-                              className="absolute top-[70%] left-[20%] transform -translate-x-1/2 -translate-y-1/2"
-                              onClick={() => setHotspotActive("censer")}
-                            >
-                              <div className="w-6 h-6 rounded-full bg-amber-500 animate-pulse flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                              </div>
-                            </button>
-
-                            {/* Cross Hotspot */}
-                            <button
-                              className="absolute top-[20%] left-[80%] transform -translate-x-1/2 -translate-y-1/2"
-                              onClick={() => setHotspotActive("cross")}
-                            >
-                              <div className="w-6 h-6 rounded-full bg-amber-500 animate-pulse flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                              </div>
-                            </button>
-                          </div>
-
-                          {/* Hotspot Information */}
-                          {hotspotActive && (
-                            <div className="absolute inset-0 bg-black/80 flex items-center justify-center p-4">
-                              <div className="bg-stone-900 p-6 rounded-lg max-w-md">
-                                {hotspotActive === "tabot" && (
-                                  <>
-                                    <h3 className="text-xl font-bold text-amber-500 mb-2">Tabot (Ark)</h3>
-                                    <p className="text-gray-300 mb-4">
-                                      The consecrated altar slab representing the Ark of the Covenant. It contains the
-                                      Ten Commandments and is the most sacred item in the church.
-                                    </p>
-                                  </>
-                                )}
-
-                                {hotspotActive === "chalice" && (
-                                  <>
-                                    <h3 className="text-xl font-bold text-amber-500 mb-2">Chalice</h3>
-                                    <p className="text-gray-300 mb-4">
-                                      The sacred cup that holds the wine, which becomes the Blood of Christ during the
-                                      Divine Liturgy. Often made of precious metals and ornately decorated.
-                                    </p>
-                                  </>
-                                )}
-
-                                {hotspotActive === "paten" && (
-                                  <>
-                                    <h3 className="text-xl font-bold text-amber-500 mb-2">Paten</h3>
-                                    <p className="text-gray-300 mb-4">
-                                      The sacred plate that holds the bread (Qurban), which becomes the Body of Christ
-                                      during the Divine Liturgy. It symbolizes the manger where Christ was born.
-                                    </p>
-                                  </>
-                                )}
-
-                                {hotspotActive === "censer" && (
-                                  <>
-                                    <h3 className="text-xl font-bold text-amber-500 mb-2">Censer</h3>
-                                    <p className="text-gray-300 mb-4">
-                                      Used to burn incense during the service. The rising smoke symbolizes prayers
-                                      ascending to heaven. It represents the Virgin Mary who carried the fire of
-                                      divinity.
-                                    </p>
-                                  </>
-                                )}
-
-                                {hotspotActive === "cross" && (
-                                  <>
-                                    <h3 className="text-xl font-bold text-amber-500 mb-2">Ethiopian Cross</h3>
-                                    <p className="text-gray-300 mb-4">
-                                      The distinctive Ethiopian cross with intricate patterns. Used for blessing and
-                                      represents Christ's sacrifice. Often made of metal with unique designs.
-                                    </p>
-                                  </>
-                                )}
-
-                                <Button
-                                  onClick={() => setHotspotActive(null)}
-                                  className="bg-amber-500 hover:bg-amber-600 text-black"
-                                >
-                                  Close
-                                </Button>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="p-6">
-                          <p className="text-gray-300 text-center">
-                            Click on the highlighted points to learn about each sacred item
-                          </p>
-
-                          <div className="mt-6 flex justify-center">
-                            <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
-                              <Link href="/holy-communion/sacred-items">
-                                View Detailed Explanations
-                                <ChevronRight className="ml-2 h-4 w-4" />
-                              </Link>
-                            </Button>
-                          </div>
                         </div>
                       </CardContent>
                     </Card>

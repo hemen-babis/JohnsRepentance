@@ -25,6 +25,7 @@ const resourceRoutes = [
   { href: "/about", label: "About Us" },
   { href: "/fasting-guide", label: "Fasting Guide" },
   { href: "/calendar-events", label: "Calendar + Events" },
+  { href: "/volunteers-registration", label: "Volunteers Registration" },
 ]
 
 export function Navbar() {
