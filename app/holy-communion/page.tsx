@@ -100,7 +100,7 @@ export default function HolyCommunionPage() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-stone-950 to-orange-950/30 min-h-screen">
+    <div className="light-mode-adaptive-page bg-gradient-to-b from-stone-950 to-orange-950/30 min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-600/5 to-amber-600/5 dark:from-orange-900/20 dark:to-amber-900/20 z-0" />

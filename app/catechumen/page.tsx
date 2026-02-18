@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { GeezHeading } from "@/components/geez-heading"
 import { ChurchLocator } from "@/components/church-locator"
 import {
   BookOpen,
@@ -171,7 +170,7 @@ export default function CatechumenPage() {
         <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-10" />
         <div className="container mx-auto px-4 py-16 md:py-20 relative">
           <div className="max-w-4xl">
-            <GeezHeading className="mb-3 text-orange-700 dark:text-amber-400">መንገድ ወደ ኪዳን</GeezHeading>
+            <p className="mb-3 text-sm uppercase tracking-[0.16em] text-orange-700 dark:text-amber-400">Covenant Path</p>
             <p className="text-sm uppercase tracking-[0.2em] text-orange-600/80 dark:text-amber-300/80">
               🕊️ Catechumen Corner
             </p>
@@ -199,7 +198,7 @@ export default function CatechumenPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-              <GeezHeading className="mb-3 text-orange-700 dark:text-amber-400">መምህራን</GeezHeading>
+              <p className="mb-3 text-sm uppercase tracking-[0.16em] text-orange-700 dark:text-amber-400">Formation</p>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">What Is a Catechumen?</h2>
               <p className="text-gray-600 dark:text-gray-300 mt-3">
                 A catechumen is a seeker who is being formed by the Church for baptism and chrismation, walking with the
@@ -252,7 +251,7 @@ export default function CatechumenPage() {
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-10" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-12">
-            <GeezHeading className="mb-3 text-orange-700 dark:text-amber-400">ኪዳን መግባት</GeezHeading>
+            <p className="mb-3 text-sm uppercase tracking-[0.16em] text-orange-700 dark:text-amber-400">Entering the Covenant</p>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">The Five Steps of Entering the Covenant</h2>
             <p className="text-gray-600 dark:text-gray-300 mt-3 max-w-2xl mx-auto">
               This path is not a module system. It is a formation journey that moves from belief into worship, discipline,
@@ -557,7 +556,7 @@ export default function CatechumenPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <GeezHeading className="mb-3 text-orange-700 dark:text-amber-400">ቤተ ክርስቲያን</GeezHeading>
+              <p className="mb-3 text-sm uppercase tracking-[0.16em] text-orange-700 dark:text-amber-400">Church Life</p>
               <h3 className="text-2xl font-bold text-gray-900">Find a Church Near You</h3>
               <p className="text-gray-700 mt-2">
                 Locate a parish and introduce yourself. The Church is ready to receive your questions with patience.
@@ -803,7 +802,7 @@ export default function CatechumenPage() {
       <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-950 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <GeezHeading className="mb-3 text-amber-300">እርዳታ</GeezHeading>
+            <p className="mb-3 text-sm uppercase tracking-[0.16em] text-amber-300">Help</p>
             <h3 className="text-2xl md:text-3xl font-bold">Request a Catechumen Mentor</h3>
             <p className="text-amber-100 mt-3">
               If you are ready for guidance, we can help you connect with a priest or mentor who will walk with you.

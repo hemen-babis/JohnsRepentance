@@ -6,6 +6,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -62,6 +63,50 @@ const leaderboardData = [
   { name: "Meron A.", score: 75, badge: "Bronze" },
 ]
 
+type YouthEvent = {
+  id: string
+  title: string
+  schedule: string
+  time: string
+  category: "Weekly" | "Monthly" | "Workshop"
+  description: string
+  actionLabel: string
+  actionHref: string
+}
+
+const youthEvents: YouthEvent[] = [
+  {
+    id: "sunday-school",
+    title: "Sunday School",
+    schedule: "Every Sunday",
+    time: "5-7 PM EST",
+    category: "Weekly",
+    description: "Weekly session to learn Ethiopian Orthodox faith in an engaging format.",
+    actionLabel: "Join Now",
+    actionHref: "https://meet.google.com/qeu-moqk-jux",
+  },
+  {
+    id: "youth-gathering",
+    title: "Youth Gathering",
+    schedule: "First Saturday",
+    time: "12-2 PM EST",
+    category: "Monthly",
+    description: "Monthly fellowship, discussion, and spiritual formation.",
+    actionLabel: "Register Here",
+    actionHref: "#",
+  },
+  {
+    id: "mahlet-workshop",
+    title: "Mahlet Workshop",
+    schedule: "Third Saturday",
+    time: "3-5 PM EST",
+    category: "Workshop",
+    description: "Learn youth hymn service and liturgical rhythm with deacon mentors.",
+    actionLabel: "Reserve Spot",
+    actionHref: "#",
+  },
+]
+
 export default function YouthPage() {
   const [showQuiz, setShowQuiz] = useState(false)
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -70,6 +115,10 @@ export default function YouthPage() {
   const [quizCompleted, setQuizCompleted] = useState(false)
   const [username, setUsername] = useState("")
   const [showLeaderboard, setShowLeaderboard] = useState(false)
+  const [eventFilter, setEventFilter] = useState<"All" | "Weekly" | "Monthly" | "Workshop">("All")
+  const [eventSearch, setEventSearch] = useState("")
+  const [savedEvents, setSavedEvents] = useState<string[]>([])
+  const [selectedSaint, setSelectedSaint] = useState<"mary" | "george" | "tekle">("mary")
 
   const handleStartQuiz = () => {
     setShowQuiz(true)
@@ -101,6 +150,23 @@ export default function YouthPage() {
     setSelectedOption(null)
     setScore(0)
     setQuizCompleted(false)
+  }
+
+  const filteredEvents = youthEvents.filter((event) => {
+    const categoryPass = eventFilter === "All" || event.category === eventFilter
+    const searchPass =
+      eventSearch.trim().length === 0 ||
+      `${event.title} ${event.description} ${event.schedule}`.toLowerCase().includes(eventSearch.toLowerCase())
+    return categoryPass && searchPass
+  })
+
+  const toggleSavedEvent = (eventId: string) => {
+    setSavedEvents((prev) => (prev.includes(eventId) ? prev.filter((id) => id !== eventId) : [...prev, eventId]))
+  }
+
+  const openCalendarTemplate = (event: YouthEvent) => {
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.description)}`
+    window.open(url, "_blank")
   }
 
   const fadeInUp = {
@@ -559,6 +625,26 @@ export default function YouthPage() {
                             </div>
                           </div>
                         </div>
+                        <div className="mt-8 p-4 bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl border border-orange-100">
+                          <p className="text-sm font-medium mb-3">Choose a saint story:</p>
+                          <div className="flex flex-wrap gap-2">
+                            <Button size="sm" variant={selectedSaint === "mary" ? "default" : "outline"} onClick={() => setSelectedSaint("mary")}>
+                              Saint Mary
+                            </Button>
+                            <Button size="sm" variant={selectedSaint === "george" ? "default" : "outline"} onClick={() => setSelectedSaint("george")}>
+                              Saint George
+                            </Button>
+                            <Button size="sm" variant={selectedSaint === "tekle" ? "default" : "outline"} onClick={() => setSelectedSaint("tekle")}>
+                              Saint Tekle Haymanot
+                            </Button>
+                          </div>
+                          <p className="mt-3 text-sm text-gray-600">
+                            {selectedSaint === "mary" && "Saint Mary is honored as the Mother of God and model of purity and obedience."}
+                            {selectedSaint === "george" && "Saint George is remembered for courage, confession of faith, and martyrdom."}
+                            {selectedSaint === "tekle" &&
+                              "Saint Tekle Haymanot is one of Ethiopia's great monastic saints, known for prayer and mission."}
+                          </p>
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -656,80 +742,62 @@ export default function YouthPage() {
                       </CardHeader>
                       <CardContent>
                         <div className="space-y-6">
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <Card className="border border-gray-100">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Weekly</div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium">Every Sunday</p>
-                                    <p className="text-xs text-gray-500">5-7 PM EST</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2">Sunday School</h3>
-                                <p className="text-gray-600 text-sm mb-4">
-                                  Join our weekly Sunday School sessions to learn about the Ethiopian Orthodox faith in
-                                  an engaging way.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link
-                                    href="https://meet.google.com/qeu-moqk-jux"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    <Button
-                                      variant="outline"
-                                      className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
-                                    >
-                                      Join Now
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Add to Calendar
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
+                          <div className="grid md:grid-cols-[1fr_auto] gap-3">
+                            <Input
+                              value={eventSearch}
+                              onChange={(e) => setEventSearch(e.target.value)}
+                              placeholder="Search events, schedules, activities..."
+                            />
+                            <div className="flex flex-wrap gap-2">
+                              {(["All", "Weekly", "Monthly", "Workshop"] as const).map((filter) => (
+                                <Button
+                                  key={filter}
+                                  size="sm"
+                                  variant={eventFilter === filter ? "default" : "outline"}
+                                  onClick={() => setEventFilter(filter)}
+                                >
+                                  {filter}
+                                </Button>
+                              ))}
+                            </div>
+                          </div>
 
-                            <Card className="border border-gray-100">
-                              <CardContent className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                  <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm">
-                                    Monthly
-                                  </div>
-                                  <div className="text-right">
-                                    <p className="text-sm font-medium">First Saturday</p>
-                                    <p className="text-xs text-gray-500">12-2 PM EST</p>
-                                  </div>
-                                </div>
-                                <h3 className="text-lg font-bold mb-2">Youth Gathering</h3>
-                                <p className="text-gray-600 text-sm mb-4">
-                                  A monthly gathering for fellowship, discussions, and activities centered around our
-                                  faith.
-                                </p>
-                                <div className="flex justify-between items-center">
-                                  <Link href="#" target="_blank" rel="noopener noreferrer">
-                                    <Button
-                                      variant="outline"
-                                      className="text-orange-600 hover:text-orange-700 hover:bg-orange-50"
-                                    >
-                                      Register Here
-                                    </Button>
-                                  </Link>
-                                  <div className="text-right">
-                                    <Button variant="link" size="sm" className="text-xs">
-                                      Learn More
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            {filteredEvents.map((event) => {
+                              const isSaved = savedEvents.includes(event.id)
+                              return (
+                                <Card key={event.id} className="border border-gray-100">
+                                  <CardContent className="p-6">
+                                    <div className="flex justify-between items-start mb-4">
+                                      <div className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">{event.category}</div>
+                                      <div className="text-right">
+                                        <p className="text-sm font-medium">{event.schedule}</p>
+                                        <p className="text-xs text-gray-500">{event.time}</p>
+                                      </div>
+                                    </div>
+                                    <h3 className="text-lg font-bold mb-2">{event.title}</h3>
+                                    <p className="text-gray-600 text-sm mb-4">{event.description}</p>
+                                    <div className="flex flex-wrap gap-2 items-center">
+                                      <Link href={event.actionHref} target="_blank" rel="noopener noreferrer">
+                                        <Button variant="outline" className="text-orange-600 hover:text-orange-700 hover:bg-orange-50">
+                                          {event.actionLabel}
+                                        </Button>
+                                      </Link>
+                                      <Button variant="outline" size="sm" onClick={() => openCalendarTemplate(event)}>
+                                        Add to Calendar
+                                      </Button>
+                                      <Button variant={isSaved ? "default" : "ghost"} size="sm" onClick={() => toggleSavedEvent(event.id)}>
+                                        {isSaved ? "Saved" : "Save"}
+                                      </Button>
+                                    </div>
+                                  </CardContent>
+                                </Card>
+                              )
+                            })}
                           </div>
 
                           <div className="text-center">
-                            <Button variant="outline">View All Events</Button>
+                            <Button variant="outline">View All Events ({filteredEvents.length})</Button>
                           </div>
                         </div>
                       </CardContent>

@@ -51,11 +51,11 @@ const sections = [
     color: "from-amber-500 to-red-500",
   },
   {
-    title: "Gallery",
-    description: "Photos and videos from our community and events",
+    title: "Fasting Guide",
+    description: "Learn about the spiritual practice of fasting in the Ethiopian Orthodox Tewahedo Church",
     image: "/placeholder.svg?height=300&width=400",
-    link: "/gallery",
-    color: "from-teal-500 to-teal-700",
+    link: "/fasting-guide",
+    color: "from-amber-500 to-amber-700",
   },
   {
     title: "About Us",

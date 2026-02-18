@@ -16,11 +16,11 @@ export function LivePrayerCountdown() {
 
   // Prayer times in 24-hour format (EOTC liturgy times)
   const prayerTimes = [
-    { name: "Morning Prayer (ጸሎተ ንግህ)", time: "05:00" },
-    { name: "Divine Liturgy (ቅዳሴ)", time: "08:00" },
-    { name: "Noon Prayer (ጸሎተ ሰዓት)", time: "12:00" },
-    { name: "Evening Prayer (ጸሎተ ምሴት)", time: "18:00" },
-    { name: "Night Prayer (ጸሎተ ሌሊት)", time: "21:00" },
+    { name: "Morning Prayer", time: "05:00" },
+    { name: "Divine Liturgy", time: "08:00" },
+    { name: "Noon Prayer", time: "12:00" },
+    { name: "Evening Prayer", time: "18:00" },
+    { name: "Night Prayer", time: "21:00" },
   ]
 
   useEffect(() => {

@@ -68,7 +68,7 @@ export default function DeaconsCornerPage() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-gray-950 to-gray-900 min-h-screen">
+    <div className="light-mode-adaptive-page bg-gradient-to-b from-gray-950 to-gray-900 min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-600/5 to-red-600/5 dark:from-amber-900/20 dark:to-red-900/20 z-0" />

@@ -12,27 +12,22 @@ const verses = [
   {
     text: "Praise the Lord in His sanctuary; praise Him in His mighty heavens.",
     reference: "Psalm 150:1",
-    geez: "ሃሌ ሉያ፡ ሃሌ ሉያ፡ ሃሌ ሉያ፡ ሰብሑ ለእግዚአብሔር በቅድሳቲሁ።",
   },
   {
     text: "I am the way, the truth, and the life. No one comes to the Father except through me.",
     reference: "John 14:6",
-    geez: "አነ ውእቱ ፍኖት ወጽድቅ ወሕይወት ወአልቦ ዘይመጽእ ኀበ አብ ዘእንበለ በአነ።",
   },
   {
     text: "Repent, for the kingdom of heaven is near!",
     reference: "Matthew 3:1-2",
-    geez: "ንስሓ ግበሩ፡ ቀሪባ ስለ ሆነች የሰማያት መንግሥት።",
   },
   {
     text: "Have mercy on me, O God, according to Your unfailing love; according to Your great compassion blot out my transgressions.",
     reference: "Psalm 51:1",
-    geez: "ተሣሃለኒ አምላኪየ በአብዝኆ ምሕረትከ፡ ወበብዝኃ ሣህልከ ደምስስ አበሳየ።",
   },
   {
     text: "I am the living bread that came down from heaven. Whoever eats this bread will live forever.",
     reference: "John 6:51",
-    geez: "አነ ውእቱ ኅብስት ዘሕይወት ዘወረደ እምሰማይ፡ ዘበልዐ እምዝንቱ ኅብስት የሐዩ ለዓለም።",
   },
 ]
 
@@ -95,7 +90,6 @@ export function DailyVerse() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
             >
-              <p className="text-sm text-amber-500 mb-4 font-semibold">{verses[currentVerseIndex].geez}</p>
               <p className="text-xl italic mb-4 text-white">&quot;{verses[currentVerseIndex].text}&quot;</p>
               <p className="text-lg font-semibold text-amber-500">{verses[currentVerseIndex].reference}</p>
             </motion.div>

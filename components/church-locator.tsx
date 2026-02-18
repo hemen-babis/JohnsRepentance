@@ -1,171 +1,88 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { MapPin, Search, Navigation, ExternalLink } from "lucide-react"
+import { Search, MapPin } from "lucide-react"
 
-// Sample church data
-const churches = [
-  {
-    id: 1,
-    name: "St. Mary Ethiopian Orthodox Church",
-    address: "123 Main Street, Washington DC",
-    distance: "2.3 miles",
-    services: ["Sunday Divine Liturgy: 8:00 AM", "Saturday Evening Prayer: 6:00 PM"],
-    image: "/placeholder.svg?height=100&width=200",
-  },
-  {
-    id: 2,
-    name: "Debre Selam Kidist Mariam Church",
-    address: "456 Church Avenue, Silver Spring, MD",
-    distance: "5.7 miles",
-    services: ["Sunday Divine Liturgy: 7:30 AM", "Wednesday Prayer: 7:00 PM"],
-    image: "/placeholder.svg?height=100&width=200",
-  },
-  {
-    id: 3,
-    name: "St. Michael Ethiopian Orthodox Church",
-    address: "789 Orthodox Way, Alexandria, VA",
-    distance: "8.2 miles",
-    services: ["Sunday Divine Liturgy: 8:30 AM", "Friday Evening Prayer: 7:00 PM"],
-    image: "/placeholder.svg?height=100&width=200",
-  },
-]
+type SearchType = "ethiopian" | "oriental"
+
+const mapSearchQuery = (type: SearchType, location: string) => {
+  const searchTerm = location.trim() || "near me"
+
+  if (type === "ethiopian") {
+    return `Ethiopian Orthodox Tewahedo Church ${searchTerm}`
+  }
+
+  return `Oriental Orthodox Church ${searchTerm}`
+}
+
+const googleMapsEmbedUrl = (query: string) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
 
 export function ChurchLocator() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [userLocation, setUserLocation] = useState<GeolocationPosition | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [searchType, setSearchType] = useState<SearchType>("ethiopian")
 
-  const getLocation = () => {
-    if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser")
-      return
-    }
-
-    setIsLoading(true)
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setUserLocation(position)
-        setIsLoading(false)
-      },
-      (error) => {
-        console.error("Error getting location:", error)
-        setIsLoading(false)
-        alert("Unable to retrieve your location. Please enter your location manually.")
-      },
-    )
-  }
-
-  const filteredChurches = churches.filter(
-    (church) =>
-      church.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      church.address.toLowerCase().includes(searchQuery.toLowerCase()),
+  const activeQuery = useMemo(
+    () => mapSearchQuery(searchType, searchQuery),
+    [searchType, searchQuery],
   )
 
+  const mapUrl = useMemo(() => googleMapsEmbedUrl(activeQuery), [activeQuery])
+
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900">
+    <Card className="border-none shadow-lg overflow-hidden bg-white/90 dark:bg-gray-900">
       <CardContent className="p-6">
-        <div className="space-y-6">
-          <div className="flex gap-2">
+        <div className="space-y-5">
+          <div className="flex flex-col sm:flex-row gap-2">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
               <Input
-                placeholder="Search by city, zip code, or church name"
+                placeholder="Enter your city, ZIP code, or address..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 border-blue-200 dark:border-blue-800 focus:border-blue-500 dark:focus:border-blue-500"
+                className="pl-10 border-amber-200 dark:border-amber-800 focus:border-amber-500 dark:focus:border-amber-500"
               />
             </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <Button
+              className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white shadow-md"
+              onClick={() => setSearchType("ethiopian")}
+            >
+              Find Ethiopian Orthodox Churches
+            </Button>
             <Button
               variant="outline"
-              onClick={getLocation}
-              disabled={isLoading}
-              className="border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-500"
+              className="border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30"
+              onClick={() => setSearchType("oriental")}
             >
-              <MapPin className="h-4 w-4 mr-2" />
-              {isLoading ? "Locating..." : "Near Me"}
+              Find Oriental Orthodox Churches
             </Button>
           </div>
 
-          <div className="space-y-4">
-            {filteredChurches.length > 0 ? (
-              filteredChurches.map((church) => (
-                <div
-                  key={church.id}
-                  className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden flex flex-col md:flex-row"
-                >
-                  <div className="relative h-40 md:h-auto md:w-1/3">
-                    <img
-                      src={church.image || "/placeholder.svg"}
-                      alt={church.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  <div className="p-4 flex-1">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">{church.name}</h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center mt-1">
-                          <MapPin className="h-3 w-3 mr-1 flex-shrink-0" />
-                          {church.address}
-                        </p>
-                      </div>
-                      <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">
-                        {church.distance}
-                      </span>
-                    </div>
-
-                    <div className="mt-3">
-                      <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">Service Times:</h4>
-                      <ul className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                        {church.services.map((service, index) => (
-                          <li key={index} className="mb-1">
-                            {service}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex gap-2 mt-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="text-xs border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-500"
-                      >
-                        <Navigation className="h-3 w-3 mr-1" />
-                        Directions
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="text-xs border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-500"
-                      >
-                        <ExternalLink className="h-3 w-3 mr-1" />
-                        Website
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="text-center py-8">
-                <MapPin className="h-12 w-12 mx-auto text-gray-400 dark:text-gray-600 mb-3" />
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-1">No churches found</h3>
-                <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or location</p>
-              </div>
-            )}
+          <div className="rounded-lg overflow-hidden border border-amber-200/60 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60">
+            <div className="px-4 py-2 border-b border-amber-200/60 dark:border-gray-800 text-xs text-muted-foreground flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5" />
+              Showing results for: <span className="font-medium text-foreground">{activeQuery}</span>
+            </div>
+            <iframe
+              title="Church locator map"
+              src={mapUrl}
+              className="w-full h-[360px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
 
-          <div className="text-center">
-            <Button className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white">
-              View All Churches
-            </Button>
-          </div>
+          <p className="text-sm font-bold text-foreground text-center">
+            We did our best to help you find Oriental Orthodox churches, but some map labels are controlled by Google
+            Maps and may include non-Oriental entries (for example, Greek Orthodox). Oriental Orthodox churches
+            include traditions such as Coptic (Egyptian), Ethiopian, Eritrean, Armenian, Syriac, and Malankara.
+          </p>
         </div>
       </CardContent>
     </Card>

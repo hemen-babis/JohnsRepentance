@@ -9,11 +9,7 @@ export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
   const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true)
-    } else {
-      setIsVisible(false)
-    }
+    setIsVisible(window.scrollY > 300)
   }
 
   const scrollToTop = () => {
@@ -24,7 +20,7 @@ export function ScrollToTop() {
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility)
+    window.addEventListener("scroll", toggleVisibility, { passive: true })
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
@@ -33,15 +29,15 @@ export function ScrollToTop() {
       {isVisible && (
         <motion.div
           className="fixed bottom-8 right-8 z-50"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         >
           <Button
             onClick={scrollToTop}
             size="icon"
-            className="rounded-full bg-amber-500 hover:bg-orange-600 text-black shadow-lg h-12 w-12 transition-colors duration-300"
+            className="rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-lg shadow-orange-500/25 h-12 w-12 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/35"
           >
             <ArrowUp className="h-5 w-5" />
           </Button>

@@ -16,53 +16,85 @@ import { Calendar, Clock, Utensils, CheckCircle, HelpCircle, BookOpen, Download 
 // Fasting calendar data
 const fastingCalendar = [
   {
-    name: "Fast of the Prophets (Tsome Nebiyat)",
-    startDate: "November 15",
-    endDate: "January 6",
-    duration: "43 days",
-    description:
-      "A fast observed before Christmas (Genna) to commemorate the prophets who foretold the coming of Christ.",
-    rules: "Abstain from animal products. One meal after 3:00 PM on weekdays, two meals on weekends.",
-  },
-  {
     name: "Fast of Nineveh (Tsome Nenewe)",
-    startDate: "February 3",
-    endDate: "February 5",
+    startDate: "February 10, 2026",
+    endDate: "February 12, 2026",
     duration: "3 days",
     description: "Commemorates the repentance of Nineveh following Jonah's preaching.",
     rules: "Strict fast with complete abstinence from food and water until noon or 3:00 PM.",
   },
   {
     name: "Great Lent (Abiy Tsom)",
-    startDate: "February 24",
-    endDate: "April 12",
-    duration: "55 days (including the Fast of Heraclius)",
+    startDate: "February 16, 2026",
+    endDate: "April 10, 2026",
+    duration: "54 days",
     description: "The most important fast, preparing believers for Easter (Fasika).",
     rules: "Abstain from animal products. One meal after 3:00 PM on weekdays, two meals on weekends.",
   },
   {
+    name: "Semune Himamat (Holy Week / Week of Suffering)",
+    startDate: "April 6, 2026",
+    endDate: "April 8, 2026",
+    duration: "3 days",
+    description: "The final suffering week observance before the Triduum services.",
+    rules: "Intensified prayer, repentance, and strict fasting discipline.",
+  },
+  {
+    name: "Tselote Hamus (Maundy Thursday)",
+    startDate: "April 9, 2026",
+    endDate: "April 9, 2026",
+    duration: "1 day",
+    description: "Commemoration of the Mystical Supper and foot-washing service.",
+    rules: "Strict observance with liturgical participation.",
+  },
+  {
+    name: "Siklet (Good Friday)",
+    startDate: "April 10, 2026",
+    endDate: "April 10, 2026",
+    duration: "1 day",
+    description: "Commemoration of the crucifixion of our Lord Jesus Christ.",
+    rules: "One of the strictest fasting days with prolonged prayer and prostrations.",
+  },
+  {
+    name: "Paschal No-Fast Period",
+    startDate: "April 12, 2026",
+    endDate: "May 31, 2026",
+    duration: "50 days season in your current parish schedule",
+    description: "No fasting is observed during this period in your configured 2026 schedule.",
+    rules: "Fasting is suspended until June 1, 2026.",
+  },
+  {
     name: "Fast of the Apostles (Tsome Hawaryat)",
-    startDate: "Variable (after Pentecost)",
-    endDate: "July 12",
-    duration: "Variable (14-44 days)",
+    startDate: "June 1, 2026",
+    endDate: "July 11, 2026",
+    duration: "41 days",
     description: "Honors the apostles and their missionary work.",
     rules: "Abstain from animal products. One meal after 3:00 PM on weekdays, two meals on weekends.",
   },
   {
     name: "Fast of the Assumption (Tsome Filseta)",
-    startDate: "August 1",
-    endDate: "August 15",
-    duration: "15 days",
+    startDate: "August 1, 2026",
+    endDate: "August 16, 2026",
+    duration: "16 days",
     description: "Commemorates the assumption of the Virgin Mary.",
     rules: "Abstain from animal products. One meal after 3:00 PM on weekdays, two meals on weekends.",
   },
   {
+    name: "Fast of the Prophets (Tsome Nebiyat)",
+    startDate: "November 25, 2026",
+    endDate: "January 6, 2027",
+    duration: "43 days",
+    description:
+      "A fast observed before Christmas (Genna) to commemorate the prophets who foretold the coming of Christ.",
+    rules: "Abstain from animal products. One meal after 3:00 PM on weekdays, two meals on weekends.",
+  },
+  {
     name: "Weekly Fasts",
-    startDate: "Every Wednesday and Friday",
-    endDate: "Throughout the year",
+    startDate: "Resumes June 1, 2026",
+    endDate: "Continues every Wednesday and Friday",
     duration: "2 days per week",
     description: "Wednesday commemorates the betrayal of Christ, Friday commemorates His crucifixion.",
-    rules: "Abstain from animal products. One meal after 3:00 PM.",
+    rules: "In your 2026 schedule, weekly fasting is paused during the no-fast Paschal period and resumes on June 1.",
   },
 ]
 
@@ -89,7 +121,7 @@ export default function FastingGuidePage() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-amber-600/5 to-red-600/5 dark:from-amber-900/20 dark:to-red-900/20 z-0" />
@@ -105,7 +137,7 @@ export default function FastingGuidePage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Ethiopian Orthodox <AnimatedGradientText text="Fasting Guide" />
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground dark:text-gray-300 max-w-3xl mx-auto">
               Learn about the spiritual practice of fasting in the Ethiopian Orthodox Tewahedo Church
             </p>
           </motion.div>
@@ -179,7 +211,7 @@ export default function FastingGuidePage() {
                                     <Calendar className="h-4 w-4 text-amber-600 dark:text-amber-500" />
                                     <h3 className="font-medium text-amber-800 dark:text-amber-500">Dates</h3>
                                   </div>
-                                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                                  <p className="text-muted-foreground dark:text-gray-400 text-sm">
                                     {selectedFast.startDate} to {selectedFast.endDate}
                                   </p>
                                 </div>
@@ -189,23 +221,23 @@ export default function FastingGuidePage() {
                                     <Clock className="h-4 w-4 text-amber-600 dark:text-amber-500" />
                                     <h3 className="font-medium text-amber-800 dark:text-amber-500">Duration</h3>
                                   </div>
-                                  <p className="text-gray-600 dark:text-gray-400 text-sm">{selectedFast.duration}</p>
+                                  <p className="text-muted-foreground dark:text-gray-400 text-sm">{selectedFast.duration}</p>
                                 </div>
                               </div>
 
                               <div>
                                 <h3 className="font-medium text-gray-900 dark:text-white mb-2">Description</h3>
-                                <p className="text-gray-600 dark:text-gray-300">{selectedFast.description}</p>
+                                <p className="text-muted-foreground dark:text-gray-300">{selectedFast.description}</p>
                               </div>
 
                               <div className="mt-4">
                                 <h3 className="font-medium text-gray-900 dark:text-white mb-2">Fasting Rules</h3>
-                                <p className="text-gray-600 dark:text-gray-300">{selectedFast.rules}</p>
+                                <p className="text-muted-foreground dark:text-gray-300">{selectedFast.rules}</p>
                               </div>
 
                               <div className="bg-white dark:bg-gray-800 p-4 rounded-lg mt-6 border border-gray-200 dark:border-gray-700">
                                 <h3 className="font-medium text-gray-900 dark:text-white mb-2">Spiritual Focus</h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                                <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                   During {selectedFast.name}, believers are encouraged to increase prayer, almsgiving,
                                   and scripture reading. The physical fast is meant to be accompanied by spiritual
                                   discipline and growth.
@@ -215,7 +247,7 @@ export default function FastingGuidePage() {
                               <div className="flex justify-between items-center mt-6">
                                 <Button
                                   variant="outline"
-                                  className="text-amber-700 dark:text-amber-500 border-amber-300 dark:border-amber-700"
+                                  className="text-amber-700 dark:text-amber-500 border-amber-300 dark:border-amber-700 bg-transparent"
                                 >
                                   Add to Calendar
                                 </Button>
@@ -235,54 +267,19 @@ export default function FastingGuidePage() {
                             </CardTitle>
                           </CardHeader>
                           <CardContent>
-                            <div className="grid md:grid-cols-2 gap-4">
-                              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                                <div className="relative h-40 rounded-lg overflow-hidden mb-3">
-                                  <Image
-                                    src="/placeholder.svg?height=160&width=300"
-                                    alt="Misir Wat (Spiced Red Lentil Stew)"
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-1">
-                                  Misir Wat (Spiced Red Lentil Stew)
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-                                  A protein-rich lentil stew flavored with berbere spice.
-                                </p>
-                                <Button variant="link" className="p-0 h-auto text-amber-700 dark:text-amber-500">
-                                  View Recipe
-                                </Button>
+                            <div className="rounded-xl border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 p-6 dark:border-amber-900/40 dark:from-amber-950/20 dark:to-orange-950/20">
+                              <h3 className="text-xl font-semibold mb-2">New: Personalized Fasting Recipes Experience</h3>
+                              <p className="text-sm text-muted-foreground mb-4">
+                                Explore imported recipes from your PDF in a dedicated page with favorites, tradition filters, personalized suggestions, and an interactive shopping list.
+                              </p>
+                              <div className="flex flex-wrap gap-2 mb-5 text-xs text-amber-800 dark:text-amber-300">
+                                <span className="rounded-full bg-white/80 px-3 py-1 dark:bg-gray-900/40">Personal profile</span>
+                                <span className="rounded-full bg-white/80 px-3 py-1 dark:bg-gray-900/40">Save favorites</span>
+                                <span className="rounded-full bg-white/80 px-3 py-1 dark:bg-gray-900/40">Smart shopping list</span>
+                                <span className="rounded-full bg-white/80 px-3 py-1 dark:bg-gray-900/40">Tradition-based filters</span>
                               </div>
-
-                              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                                <div className="relative h-40 rounded-lg overflow-hidden mb-3">
-                                  <Image
-                                    src="/placeholder.svg?height=160&width=300"
-                                    alt="Shiro (Chickpea Stew)"
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
-                                <h3 className="font-medium text-gray-900 dark:text-white mb-1">
-                                  Shiro (Chickpea Stew)
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-                                  A creamy, flavorful stew made from ground chickpea flour.
-                                </p>
-                                <Button variant="link" className="p-0 h-auto text-amber-700 dark:text-amber-500">
-                                  View Recipe
-                                </Button>
-                              </div>
-                            </div>
-
-                            <div className="text-center mt-6">
-                              <Button
-                                asChild
-                                className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800"
-                              >
-                                <Link href="/fasting-recipes">View All Fasting Recipes</Link>
+                              <Button asChild className="bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800">
+                                <Link href="/fasting-recipes">Open Fasting Recipes</Link>
                               </Button>
                             </div>
                           </CardContent>
@@ -308,7 +305,7 @@ export default function FastingGuidePage() {
                       <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
                         The Spiritual Meaning of Fasting
                       </h3>
-                      <div className="space-y-4 text-gray-600 dark:text-gray-300">
+                      <div className="space-y-4 text-muted-foreground dark:text-gray-300">
                         <p>
                           In the Ethiopian Orthodox Tewahedo Church, fasting is not merely abstaining from certain foods
                           but a holistic spiritual discipline that involves prayer, almsgiving, and self-control. It is
@@ -375,7 +372,7 @@ export default function FastingGuidePage() {
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 dark:text-white">Spiritual Discipline</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Strengthens willpower and self-control, which extends to other areas of spiritual life
                               </p>
                             </div>
@@ -386,7 +383,7 @@ export default function FastingGuidePage() {
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 dark:text-white">Prayer Enhancement</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Creates clarity of mind and heightened spiritual awareness for deeper prayer
                               </p>
                             </div>
@@ -397,7 +394,7 @@ export default function FastingGuidePage() {
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 dark:text-white">Compassion Development</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Builds empathy for those who are hungry and increases charitable giving
                               </p>
                             </div>
@@ -408,7 +405,7 @@ export default function FastingGuidePage() {
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 dark:text-white">Physical Health</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Many studies show health benefits from periodic fasting and plant-based diets
                               </p>
                             </div>
@@ -419,7 +416,7 @@ export default function FastingGuidePage() {
                             </div>
                             <div>
                               <h4 className="font-medium text-gray-900 dark:text-white">Community Unity</h4>
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-muted-foreground dark:text-gray-400">
                                 Creates a shared spiritual experience that strengthens church community
                               </p>
                             </div>
@@ -450,32 +447,32 @@ export default function FastingGuidePage() {
                           <div className="space-y-4">
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Food Restrictions</h4>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                 During fasting periods, Orthodox believers abstain from:
                               </p>
-                              <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                              <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground dark:text-gray-300 space-y-1">
                                 <li>Meat and meat products</li>
                                 <li>Dairy products (milk, cheese, butter)</li>
                                 <li>Eggs</li>
-                                <li>Sometimes fish (depending on the fast)</li>
-                                <li>Sometimes oil and wine (on stricter fast days)</li>
+                                <li>Fish</li>
+                                <li>Oil and wine</li>
                               </ul>
                             </div>
 
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Timing of Meals</h4>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                 On weekdays during major fasts:
                               </p>
-                              <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                              <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground dark:text-gray-300 space-y-1">
                                 <li>No food or drink until 3:00 PM (or after the ninth hour)</li>
                                 <li>One meal per day after 3:00 PM</li>
                                 <li>Water may be permitted throughout the day (consult your spiritual father)</li>
                               </ul>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm mt-2">
                                 On weekends during major fasts:
                               </p>
-                              <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                              <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground dark:text-gray-300 space-y-1">
                                 <li>Two meals permitted</li>
                                 <li>First meal after Divine Liturgy</li>
                                 <li>Second meal in the evening</li>
@@ -491,7 +488,7 @@ export default function FastingGuidePage() {
                           <div className="space-y-4">
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Medical Conditions</h4>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                 Those with medical conditions, pregnant or nursing women, children, and the elderly may
                                 receive dispensation from strict fasting rules. Always consult with your spiritual
                                 father and healthcare provider.
@@ -500,10 +497,10 @@ export default function FastingGuidePage() {
 
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Spiritual Components</h4>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                 Fasting should be accompanied by:
                               </p>
-                              <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                              <ul className="list-disc pl-5 mt-2 text-sm text-muted-foreground dark:text-gray-300 space-y-1">
                                 <li>Increased prayer (morning and evening prayers)</li>
                                 <li>Scripture reading</li>
                                 <li>Almsgiving and acts of charity</li>
@@ -514,7 +511,7 @@ export default function FastingGuidePage() {
 
                             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
                               <h4 className="font-medium text-gray-900 dark:text-white mb-2">Breaking the Fast</h4>
-                              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                              <p className="text-muted-foreground dark:text-gray-300 text-sm">
                                 Fasts are typically broken after Divine Liturgy on the feast day that follows the
                                 fasting period. It's important to break the fast gradually, especially after longer
                                 fasting periods.
@@ -528,10 +525,10 @@ export default function FastingGuidePage() {
                         <h3 className="font-medium text-amber-800 dark:text-amber-500 mb-3">
                           Beginner's Guide to Fasting
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400 mb-4">
+                        <p className="text-muted-foreground dark:text-gray-400 mb-4">
                           If you're new to fasting, start gradually:
                         </p>
-                        <ol className="list-decimal pl-5 text-gray-600 dark:text-gray-400 space-y-2">
+                        <ol className="list-decimal pl-5 text-muted-foreground dark:text-gray-400 space-y-2">
                           <li>Begin by observing Wednesday and Friday fasts</li>
                           <li>Start with abstaining from meat before eliminating all animal products</li>
                           <li>Focus on the spiritual aspects of fasting (prayer, almsgiving)</li>

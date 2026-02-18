@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    /* Light mode - Warm cream/orange tinted theme */
-    --background: 35 40% 98%;
-    --foreground: 25 30% 12%;
-    --card: 38 35% 97%;
+    /* Light mode - Parchment paper theme */
+    --background: 40 45% 90%;
+    --foreground: 28 28% 14%;
+    --card: 40 40% 93%;
     --card-foreground: 25 30% 12%;
     --popover: 38 35% 97%;
     --popover-foreground: 25 30% 12%;
     --primary: 25 90% 48%;
     --primary-foreground: 38 100% 98%;
-    --secondary: 35 25% 93%;
+    --secondary: 38 28% 91%;
     --secondary-foreground: 25 40% 20%;
-    --muted: 35 20% 94%;
-    --muted-foreground: 25 15% 45%;
-    --accent: 38 45% 90%;
+    --muted: 38 22% 92%;
+    --muted-foreground: 28 14% 42%;
+    --accent: 39 42% 88%;
     --accent-foreground: 25 50% 18%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 35 25% 88%;
-    --input: 35 25% 88%;
+    --border: 36 22% 82%;
+    --input: 36 22% 82%;
     --ring: 25 90% 48%;
     --radius: 0.5rem;
   }
@@ -55,11 +55,41 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url('/images/parchment-bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .dark body {
+    background-image: none;
+  }
+
+  /* Smooth selection color */
+  ::selection {
+    background-color: rgba(234, 88, 12, 0.2);
+    color: inherit;
+  }
+
+  .dark ::selection {
+    background-color: rgba(251, 146, 60, 0.3);
   }
 }
+
+/* ========================================
+   KEYFRAME ANIMATIONS
+   ======================================== */
 
 /* Prayer countdown animation */
 @keyframes prayerPulse {
@@ -95,6 +125,110 @@
   animation: flicker 1.5s infinite alternate;
 }
 
+/* Gentle floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Shimmer sweep effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Glow pulse for accents */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(234, 88, 12, 0.3);
+  }
+}
+
+/* Subtle scale breathe */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(8px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(4px) translateX(-50%);
+  }
+}
+
+/* Fade in up for elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Gradient text shift */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Progress bar animation */
+@keyframes progressGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+/* ========================================
+   COMPONENT STYLES
+   ======================================== */
+
 /* Ethiopian cross pattern */
 .ethiopian-cross {
   position: relative;
@@ -112,13 +246,13 @@
   opacity: 0.2;
   border-radius: 50%;
   z-index: -1;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ethiopian-cross:hover::before {
-  width: 80%;
-  height: 80%;
-  opacity: 0.3;
+  width: 85%;
+  height: 85%;
+  opacity: 0.35;
 }
 
 /* Manuscript-style borders */
@@ -140,12 +274,16 @@
   pointer-events: none;
 }
 
-/* Ge'ez typography fallback stack (no custom font file required) */
+/* Ge'ez typography fallback stack */
 .font-geez {
   font-family: "Noto Serif Ethiopic", "Abyssinica SIL", "Times New Roman", serif;
 }
 
-/* Button hover effects */
+/* ========================================
+   INTERACTIVE EFFECTS
+   ======================================== */
+
+/* Button hover sweep effect */
 .btn-hover-effect {
   position: relative;
   overflow: hidden;
@@ -160,7 +298,7 @@
   height: 100%;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
   transform: translateX(-100%);
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-hover-effect:hover::after {
@@ -172,16 +310,277 @@
   box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
 }
 
-/* Progress bar animation */
-@keyframes progressGrow {
-  from {
-    width: 0;
-  }
-  to {
-    width: var(--progress-width);
-  }
-}
-
+/* Progress bar */
 .animate-progress {
   animation: progressGrow 1s ease-out forwards;
+}
+
+/* ========================================
+   CARD & SURFACE EFFECTS
+   ======================================== */
+
+/* Card hover lift with subtle glow */
+.card-hover-lift {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(234, 88, 12, 0.08);
+}
+
+.dark .card-hover-lift:hover {
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(251, 146, 60, 0.15);
+}
+
+/* Glassmorphism surface */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(28, 20, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Subtle inner glow for cards */
+.card-inner-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-inner-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(234, 88, 12, 0.3) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-inner-glow:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   NAVIGATION EFFECTS
+   ======================================== */
+
+/* Animated underline for nav links */
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #ea580c, #d97706);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1px;
+}
+
+.nav-link-underline:hover::after,
+.nav-link-underline.active::after {
+  width: 70%;
+  left: 15%;
+}
+
+/* ========================================
+   SOCIAL ICON EFFECTS
+   ======================================== */
+
+.social-icon-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s ease,
+              filter 0.3s ease;
+}
+
+.social-icon-hover:hover {
+  transform: translateY(-3px) scale(1.15);
+  color: white;
+  filter: drop-shadow(0 4px 8px rgba(234, 88, 12, 0.4));
+}
+
+/* ========================================
+   FOOTER LINK EFFECTS
+   ======================================== */
+
+.footer-link {
+  position: relative;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-link:hover {
+  color: white;
+  padding-left: 4px;
+}
+
+.footer-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, #f59e0b, transparent);
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::before {
+  width: 100%;
+}
+
+/* ========================================
+   SECTION DIVIDERS
+   ======================================== */
+
+.section-divider {
+  position: relative;
+}
+
+.section-divider::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #ea580c, #d97706);
+  border-radius: 2px;
+  margin: 1rem auto 0;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+   ======================================== */
+
+.scroll-indicator {
+  animation: scrollBounce 2s infinite;
+}
+
+/* ========================================
+   SHIMMER TEXT EFFECT
+   ======================================== */
+
+.shimmer-text {
+  background: linear-gradient(
+    110deg,
+    #ea580c 0%,
+    #d97706 25%,
+    #fbbf24 50%,
+    #d97706 75%,
+    #ea580c 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* ========================================
+   IMAGE HOVER EFFECTS
+   ======================================== */
+
+.image-hover-zoom {
+  overflow: hidden;
+}
+
+.image-hover-zoom img,
+.image-hover-zoom > div {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-hover-zoom:hover img,
+.image-hover-zoom:hover > div {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   FOCUS STYLES
+   ======================================== */
+
+*:focus-visible {
+  outline: 2px solid hsl(25, 90%, 48%);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.dark *:focus-visible {
+  outline-color: hsl(30, 95%, 55%);
+}
+
+/* ========================================
+   GRADIENT LINE DECORATIONS
+   ======================================== */
+
+.gradient-line-top {
+  position: relative;
+}
+
+.gradient-line-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #ea580c 20%,
+    #d97706 50%,
+    #ea580c 80%,
+    transparent 100%
+  );
+}
+
+/* ========================================
+   LIGHT MODE ADAPTATIONS
+   ======================================== */
+
+/* Make pages authored with hardcoded dark classes render correctly in light mode */
+html:not(.dark) .light-mode-adaptive-page {
+  background: linear-gradient(to bottom, rgba(254, 251, 245, 1), rgba(255, 247, 237, 0.7)) !important;
+}
+
+html:not(.dark) .light-mode-adaptive-page [class*="text-white"] {
+  color: rgb(31 41 55) !important;
+}
+
+html:not(.dark) .light-mode-adaptive-page [class*="text-gray-300"],
+html:not(.dark) .light-mode-adaptive-page [class*="text-gray-400"] {
+  color: rgb(75 85 99) !important;
+}
+
+html:not(.dark) .light-mode-adaptive-page [class*="bg-gray-950"],
+html:not(.dark) .light-mode-adaptive-page [class*="bg-gray-900"],
+html:not(.dark) .light-mode-adaptive-page [class*="bg-gray-800"],
+html:not(.dark) .light-mode-adaptive-page [class*="bg-stone-900"],
+html:not(.dark) .light-mode-adaptive-page [class*="bg-black"] {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html:not(.dark) .light-mode-adaptive-page [class*="border-gray-700"],
+html:not(.dark) .light-mode-adaptive-page [class*="border-gray-800"] {
+  border-color: rgba(209, 213, 219, 0.9) !important;
 }

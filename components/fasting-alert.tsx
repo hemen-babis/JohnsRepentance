@@ -1,97 +1,115 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Bell, Calendar, AlertTriangle } from "lucide-react"
 import Link from "next/link"
 
-// Ethiopian Orthodox fasting calendar (simplified for example)
-const fastingDays = [
-  {
-    name: "Fast of Nineveh",
-    startDate: "2025-02-03",
-    endDate: "2025-02-05",
-    description: "A three-day fast commemorating the repentance of Nineveh.",
-  },
-  {
-    name: "Great Lent",
-    startDate: "2025-02-24",
-    endDate: "2025-04-12",
-    description: "The 55-day fast before Easter (Fasika).",
-  },
-  {
-    name: "Fast of the Apostles",
-    startDate: "2025-06-01",
-    endDate: "2025-07-12",
-    description: "A variable-length fast honoring the Apostles.",
-  },
-  {
-    name: "Fast of the Assumption",
-    startDate: "2025-08-01",
-    endDate: "2025-08-15",
-    description: "A 15-day fast honoring the Virgin Mary.",
-  },
-  {
-    name: "Fast of the Nativity",
-    startDate: "2025-11-25",
-    endDate: "2025-01-06",
-    description: "A 43-day fast before Christmas.",
-  },
-  { name: "Fast of Wednesdays and Fridays", isWeekly: true, description: "Weekly fasting days throughout the year." },
-]
+type FastItem = {
+  name: string
+  description: string
+  startDate?: string
+  endDate?: string
+  isWeekly?: boolean
+}
+
+const formatYmd = (year: number, month: number, day: number) =>
+  `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`
+
+function buildFastingDays(baseYear: number): FastItem[] {
+  return [
+    {
+      name: "Fast of Nineveh",
+      startDate: formatYmd(baseYear, 2, 10),
+      endDate: formatYmd(baseYear, 2, 12),
+      description: "A three-day fast commemorating the repentance of Nineveh.",
+    },
+    {
+      name: "Great Lent",
+      startDate: formatYmd(baseYear, 2, 16),
+      endDate: formatYmd(baseYear, 4, 10),
+      description: "The major fasting season before Easter (Fasika).",
+    },
+    {
+      name: "Fast of the Apostles",
+      startDate: formatYmd(baseYear, 6, 1),
+      endDate: formatYmd(baseYear, 7, 11),
+      description: "Hawaryat Tsom (Fast of the Apostles).",
+    },
+    {
+      name: "Fast of the Assumption",
+      startDate: formatYmd(baseYear, 8, 1),
+      endDate: formatYmd(baseYear, 8, 16),
+      description: "A 16-day fast honoring the Virgin Mary.",
+    },
+    {
+      name: "Fast of the Nativity",
+      startDate: formatYmd(baseYear, 11, 25),
+      endDate: formatYmd(baseYear + 1, 1, 6),
+      description: "A 43-day fast before Christmas.",
+    },
+    {
+      name: "Fast of Wednesdays and Fridays",
+      isWeekly: true,
+      description: "Weekly fasting days throughout the year.",
+    },
+  ]
+}
 
 export function FastingAlert() {
-  const [currentFast, setCurrentFast] = useState<any>(null)
-  const [upcomingFast, setUpcomingFast] = useState<any>(null)
   const [showDetails, setShowDetails] = useState(false)
 
-  useEffect(() => {
-    // Check for current and upcoming fasts
-    const checkFasts = () => {
-      const today = new Date()
-      const todayStr = today.toISOString().split("T")[0]
+  const today = new Date()
+  const todayStr = today.toISOString().split("T")[0]
+  const baseYear = today.getFullYear()
+  const fastingDays = [...buildFastingDays(baseYear), ...buildFastingDays(baseYear + 1)]
+  const dayOfWeek = today.getDay()
+  const isWednesdayOrFriday = dayOfWeek === 3 || dayOfWeek === 5
+  const inNoFastWindow2026 = todayStr >= "2026-04-12" && todayStr < "2026-06-01"
+  const weeklyResumes2026 = todayStr >= "2026-06-01"
 
-      // Check if today is Wednesday or Friday for weekly fasts
-      const dayOfWeek = today.getDay()
-      const isWednesdayOrFriday = dayOfWeek === 3 || dayOfWeek === 5
+  const activeFixedFast = fastingDays.find(
+    (fast) => !fast.isWeekly && fast.startDate && fast.endDate && todayStr >= fast.startDate && todayStr <= fast.endDate,
+  )
 
-      // Find current fast
-      let current = null
-      let upcoming = null
-
-      // Check for fixed fasts
-      for (const fast of fastingDays) {
-        if (fast.isWeekly && isWednesdayOrFriday) {
-          current = fast
-          break
-        } else if (!fast.isWeekly) {
-          if (todayStr >= fast.startDate && todayStr <= fast.endDate) {
-            current = fast
-            break
-          } else if (todayStr < fast.startDate) {
-            // If we don't have an upcoming fast yet, or this one is sooner
-            if (!upcoming || fast.startDate < upcoming.startDate) {
-              upcoming = fast
-            }
-          }
+  const currentFast: FastItem | null =
+    (inNoFastWindow2026
+      ? null
+      : activeFixedFast) ??
+    (isWednesdayOrFriday && (todayStr < "2026-04-12" || weeklyResumes2026)
+      ? {
+          name: "Fast of Wednesdays and Fridays",
+          isWeekly: true,
+          description: "Weekly fasting days throughout the year.",
         }
-      }
+      : null)
 
-      setCurrentFast(current)
-      setUpcomingFast(upcoming)
-    }
+  const upcomingFixedFast = fastingDays
+    .filter((fast) => !fast.isWeekly && fast.startDate && todayStr < fast.startDate)
+    .sort((a, b) => (a.startDate! < b.startDate! ? -1 : 1))[0]
 
-    checkFasts()
+  const upcomingFast: FastItem | null = currentFast
+    ? null
+    : inNoFastWindow2026
+      ? {
+          name: "Fast of Wednesdays and Fridays",
+          isWeekly: true,
+          startDate: "2026-06-01",
+          description: "Resumes from June 1, 2026 and continues every Wednesday and Friday.",
+        }
+      : upcomingFixedFast ?? {
+          name: "Fast of Wednesdays and Fridays",
+          isWeekly: true,
+          description: "Weekly fasting days throughout the year.",
+        }
 
-    // Check every day at midnight
-    const interval = setInterval(checkFasts, 86400000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const addToCalendar = (fast) => {
+  const addToCalendar = (fast: FastItem) => {
     // Generate calendar file or link
-    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(fast.name)}&dates=${fast.startDate.replace(/-/g, "")}/${fast.endDate.replace(/-/g, "")}&details=${encodeURIComponent(fast.description)}`
+    const today = new Date()
+    const start = fast.startDate ?? today.toISOString().split("T")[0]
+    const end = fast.endDate ?? start
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(fast.name)}&dates=${start.replace(/-/g, "")}/${end.replace(/-/g, "")}&details=${encodeURIComponent(fast.description)}`
     window.open(calendarUrl, "_blank")
   }
 
@@ -160,11 +178,15 @@ export function FastingAlert() {
 
             <div className="bg-white dark:bg-amber-950/50 p-4 rounded-lg">
               <h3 className="font-bold text-lg mb-1">{upcomingFast.name}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Starts in{" "}
-                {Math.ceil((new Date(upcomingFast.startDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))}{" "}
-                days
-              </p>
+              {upcomingFast.startDate ? (
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Starts in{" "}
+                  {Math.ceil((new Date(upcomingFast.startDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))}{" "}
+                  days
+                </p>
+              ) : (
+                <p className="text-sm text-gray-500 dark:text-gray-400">Observed weekly on Wednesday and Friday</p>
+              )}
               {showDetails && <p className="text-gray-600 dark:text-gray-300 mt-2">{upcomingFast.description}</p>}
               <Button
                 variant="link"
