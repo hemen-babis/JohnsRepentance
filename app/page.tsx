@@ -39,9 +39,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-10 z-5" />
         <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_top,rgba(255,255,255,0.14),transparent_60%)] z-10" />
 
-        <div className="container mx-auto px-4 relative z-20 h-full flex flex-col justify-center items-center text-white">
+        <div className="container mx-auto px-4 relative z-20 min-h-[78vh] flex flex-col justify-center items-center text-white">
           <div className="max-w-4xl text-center">
-            <GeezHeading className="mb-4 text-amber-300/90 text-2xl">Repent</GeezHeading>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-center leading-tight tracking-tight">
               &ldquo;Repent, for the Kingdom of
               <span className="block mt-1">Heaven is Near!&rdquo;</span>
