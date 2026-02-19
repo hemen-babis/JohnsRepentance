@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useAuthProgress } from "@/components/providers/auth-progress-provider"
 
 const ethiopicEnFormatter = new Intl.DateTimeFormat("en-ET-u-ca-ethiopic", {
   day: "numeric",
@@ -238,12 +239,13 @@ function chipStyle(type: EventCatalogItem["type"]) {
 }
 
 export default function CalendarEventsPage() {
+  const { progress, setCalendarAddedEventIds } = useAuthProgress()
   const [selectedDate, setSelectedDate] = useState<Date>(() => {
     const now = new Date()
     now.setHours(12, 0, 0, 0)
     return now
   })
-  const [addedIds, setAddedIds] = useState<string[]>([])
+  const addedIds = progress.calendarAddedEventIds
 
   const selectedKey = dateKey(selectedDate)
   const selectedEth = ethiopianParts(selectedDate)
@@ -261,7 +263,7 @@ export default function CalendarEventsPage() {
   )
 
   const toggleAdd = (id: string) => {
-    setAddedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
+    setCalendarAddedEventIds(addedIds.includes(id) ? addedIds.filter((item) => item !== id) : [...addedIds, id])
   }
 
   return (

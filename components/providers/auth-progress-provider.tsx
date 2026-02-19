@@ -26,6 +26,9 @@ type AuthProgressContextType = {
   addPrayerNote: (text: string) => void
   addMentorHistory: (text: string) => void
   addFastingCheckinToday: () => void
+  setCalendarAddedEventIds: (ids: string[]) => void
+  setShoppingState: (payload: { shoppingList: UserProgress["shoppingList"]; shoppingNotes: string }) => void
+  setRecipePreferences: (payload: { recipeDisplayName: string; recipePreferredTradition: string }) => void
   signInWithGoogle: () => Promise<void>
   signInWithEmail: (email: string, password: string) => Promise<void>
   signUpWithEmail: (email: string, password: string) => Promise<void>
@@ -36,6 +39,8 @@ type AuthProgressContextType = {
 const AuthProgressContext = createContext<AuthProgressContextType | null>(null)
 const GUEST_KEY = "guest-user-progress-v1"
 const GUEST_PROFILE_KEY = "guest-user-profile-v1"
+const USER_PROGRESS_KEY_PREFIX = "user-progress-v1:"
+const USER_PROFILE_KEY_PREFIX = "user-profile-v1:"
 
 function todayYmd() {
   return new Date().toISOString().split("T")[0]
@@ -77,26 +82,58 @@ export function AuthProgressProvider({ children }: { children: React.ReactNode }
         return
       }
 
-      const ref = doc(db, "userProgress", nextUser.uid)
-      const snap = await getDoc(ref)
-      if (snap.exists()) {
-        setProgress({ ...defaultUserProgress, ...(snap.data() as UserProgress) })
-      } else {
-        await setDoc(ref, defaultUserProgress)
-        setProgress(defaultUserProgress)
-      }
-      const profileRef = doc(db, "userProfiles", nextUser.uid)
-      const profileSnap = await getDoc(profileRef)
-      if (profileSnap.exists()) {
-        setProfile({ ...defaultUserProfile, ...(profileSnap.data() as UserProfile) })
-      } else {
-        const seedProfile: UserProfile = {
-          ...defaultUserProfile,
-          fullName: nextUser.displayName ?? "",
-          photoDataUrl: nextUser.photoURL ?? "",
+      const userProgressKey = `${USER_PROGRESS_KEY_PREFIX}${nextUser.uid}`
+      const userProfileKey = `${USER_PROFILE_KEY_PREFIX}${nextUser.uid}`
+      const localProgressRaw = localStorage.getItem(userProgressKey)
+      const localProfileRaw = localStorage.getItem(userProfileKey)
+
+      try {
+        const ref = doc(db, "userProgress", nextUser.uid)
+        const snap = await getDoc(ref)
+        if (snap.exists()) {
+          const hydrated = { ...defaultUserProgress, ...(snap.data() as UserProgress) }
+          setProgress(hydrated)
+          localStorage.setItem(userProgressKey, JSON.stringify(hydrated))
+        } else if (localProgressRaw) {
+          const localHydrated = { ...defaultUserProgress, ...JSON.parse(localProgressRaw) }
+          await setDoc(ref, localHydrated)
+          setProgress(localHydrated)
+        } else {
+          await setDoc(ref, defaultUserProgress)
+          setProgress(defaultUserProgress)
+          localStorage.setItem(userProgressKey, JSON.stringify(defaultUserProgress))
         }
-        await setDoc(profileRef, seedProfile)
-        setProfile(seedProfile)
+      } catch {
+        if (localProgressRaw) {
+          setProgress({ ...defaultUserProgress, ...JSON.parse(localProgressRaw) })
+        }
+      }
+
+      try {
+        const profileRef = doc(db, "userProfiles", nextUser.uid)
+        const profileSnap = await getDoc(profileRef)
+        if (profileSnap.exists()) {
+          const hydrated = { ...defaultUserProfile, ...(profileSnap.data() as UserProfile) }
+          setProfile(hydrated)
+          localStorage.setItem(userProfileKey, JSON.stringify(hydrated))
+        } else if (localProfileRaw) {
+          const localHydrated = { ...defaultUserProfile, ...JSON.parse(localProfileRaw) }
+          await setDoc(profileRef, localHydrated)
+          setProfile(localHydrated)
+        } else {
+          const seedProfile: UserProfile = {
+            ...defaultUserProfile,
+            fullName: nextUser.displayName ?? "",
+            photoDataUrl: nextUser.photoURL ?? "",
+          }
+          await setDoc(profileRef, seedProfile)
+          setProfile(seedProfile)
+          localStorage.setItem(userProfileKey, JSON.stringify(seedProfile))
+        }
+      } catch {
+        if (localProfileRaw) {
+          setProfile({ ...defaultUserProfile, ...JSON.parse(localProfileRaw) })
+        }
       }
       setAuthLoading(false)
     })
@@ -107,7 +144,12 @@ export function AuthProgressProvider({ children }: { children: React.ReactNode }
   const persist = async (next: UserProgress) => {
     setProgress(next)
     if (user && db) {
-      await setDoc(doc(db, "userProgress", user.uid), next, { merge: true })
+      localStorage.setItem(`${USER_PROGRESS_KEY_PREFIX}${user.uid}`, JSON.stringify(next))
+      try {
+        await setDoc(doc(db, "userProgress", user.uid), next, { merge: true })
+      } catch {
+        // Keep local mirror so user data is never lost when Firestore is unavailable/rules-blocked.
+      }
       return
     }
     localStorage.setItem(GUEST_KEY, JSON.stringify(next))
@@ -120,7 +162,10 @@ export function AuthProgressProvider({ children }: { children: React.ReactNode }
   const saveProfile = (next: UserProfile) => {
     setProfile(next)
     if (user && db) {
-      void setDoc(doc(db, "userProfiles", user.uid), next, { merge: true })
+      localStorage.setItem(`${USER_PROFILE_KEY_PREFIX}${user.uid}`, JSON.stringify(next))
+      void setDoc(doc(db, "userProfiles", user.uid), next, { merge: true }).catch(() => {
+        // keep local mirror fallback
+      })
       return
     }
     localStorage.setItem(GUEST_PROFILE_KEY, JSON.stringify(next))
@@ -160,6 +205,22 @@ export function AuthProgressProvider({ children }: { children: React.ReactNode }
     void persist({ ...progress, fastingCheckins: [today, ...progress.fastingCheckins] })
   }
 
+  const setCalendarAddedEventIds = (ids: string[]) => {
+    void persist({ ...progress, calendarAddedEventIds: ids })
+  }
+
+  const setShoppingState = (payload: { shoppingList: UserProgress["shoppingList"]; shoppingNotes: string }) => {
+    void persist({ ...progress, shoppingList: payload.shoppingList, shoppingNotes: payload.shoppingNotes })
+  }
+
+  const setRecipePreferences = (payload: { recipeDisplayName: string; recipePreferredTradition: string }) => {
+    void persist({
+      ...progress,
+      recipeDisplayName: payload.recipeDisplayName,
+      recipePreferredTradition: payload.recipePreferredTradition,
+    })
+  }
+
   const signInWithGoogle = async () => {
     if (!auth) return
     await signInWithPopup(auth, googleProvider)
@@ -193,6 +254,9 @@ export function AuthProgressProvider({ children }: { children: React.ReactNode }
       addPrayerNote,
       addMentorHistory,
       addFastingCheckinToday,
+      setCalendarAddedEventIds,
+      setShoppingState,
+      setRecipePreferences,
       signInWithGoogle,
       signInWithEmail,
       signUpWithEmail,

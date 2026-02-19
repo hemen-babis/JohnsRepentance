@@ -6,6 +6,7 @@ import { ArrowLeft, Heart, Plus, ShoppingCart, Trash2, ChefHat, Search, Sparkles
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAuthProgress } from "@/components/providers/auth-progress-provider"
+import type { ShoppingItem } from "@/lib/user-progress"
 
 type Tradition = "Coptic" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
 type DisplayTradition = "Mediterranean" | "Ethiopian" | "Levantine" | "Armenian" | "Syriac"
@@ -152,14 +153,12 @@ const recipes: Recipe[] = [
   { id: "roz-bi-laban-fasting", name: "Roz bi Laban (Fasting)", tradition: "Syriac", servingsBase: 6, ingredients: [{ name: "rice", qty: 0.5, unit: "cup" }, { name: "coconut or almond milk", qty: 3, unit: "cups" }, { name: "sugar", qty: 0.5, unit: "cup" }, { name: "rose water", qty: 1, unit: "tbsp" }], steps: ["Cook rice soft.", "Add plant milk and sugar.", "Thicken and chill."] },
 ]
 
-type ShoppingItem = { id: string; name: string; qty: number; unit: string; checked: boolean }
-
 const suggestRecipeMessage = encodeURIComponent(
   "Hi, I want to recommend a recipe for the fasting recipes page.\n\nRecipe name:\nTradition:\nIngredients:\nStep-by-step instructions:\nNotes:",
 )
 
 export default function FastingRecipesPage() {
-  const { progress, toggleRecipeBookmark } = useAuthProgress()
+  const { progress, toggleRecipeBookmark, setShoppingState, setRecipePreferences } = useAuthProgress()
   const [name, setName] = useState("")
   const [preferredTradition, setPreferredTradition] = useState<"All" | DisplayTradition>("All")
   const [query, setQuery] = useState("")
@@ -170,25 +169,29 @@ export default function FastingRecipesPage() {
   const [notes, setNotes] = useState("")
 
   useEffect(() => {
-    const raw = localStorage.getItem("fasting-recipes-profile")
-    if (!raw) return
-    try {
-      const parsed = JSON.parse(raw)
-      setName(parsed.name ?? "")
-      setPreferredTradition(parsed.preferredTradition ?? "All")
-      setShoppingList(parsed.shoppingList ?? [])
-      setNotes(parsed.notes ?? "")
-    } catch {
-      // ignore bad local data
-    }
-  }, [])
+    setName(progress.recipeDisplayName ?? "")
+    const pref = progress.recipePreferredTradition as DisplayTradition | "All" | undefined
+    setPreferredTradition(pref ?? "All")
+    setShoppingList(progress.shoppingList ?? [])
+    setNotes(progress.shoppingNotes ?? "")
+  }, [progress.recipeDisplayName, progress.recipePreferredTradition, progress.shoppingList, progress.shoppingNotes])
 
   useEffect(() => {
-    localStorage.setItem(
-      "fasting-recipes-profile",
-      JSON.stringify({ name, preferredTradition, shoppingList, notes }),
-    )
-  }, [name, preferredTradition, shoppingList, notes])
+    if (
+      name === (progress.recipeDisplayName ?? "") &&
+      preferredTradition === ((progress.recipePreferredTradition as DisplayTradition | "All" | undefined) ?? "All")
+    ) {
+      return
+    }
+    setRecipePreferences({ recipeDisplayName: name, recipePreferredTradition: preferredTradition })
+  }, [name, preferredTradition, progress.recipeDisplayName, progress.recipePreferredTradition, setRecipePreferences])
+
+  useEffect(() => {
+    const sameList = JSON.stringify(shoppingList) === JSON.stringify(progress.shoppingList ?? [])
+    const sameNotes = notes === (progress.shoppingNotes ?? "")
+    if (sameList && sameNotes) return
+    setShoppingState({ shoppingList, shoppingNotes: notes })
+  }, [shoppingList, notes, progress.shoppingList, progress.shoppingNotes, setShoppingState])
 
   const visibleRecipes = useMemo(() => {
     return recipes.filter((recipe) => {

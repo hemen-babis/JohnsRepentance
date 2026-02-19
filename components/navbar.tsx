@@ -73,9 +73,9 @@ export function Navbar() {
         )}
       />
 
-      <div className="relative flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-10">
-        <Link href="/" className="flex shrink-0 items-center space-x-2 group">
-          <span className="whitespace-nowrap font-bold text-xl bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent transition-all duration-300 group-hover:from-orange-500 group-hover:to-amber-400">
+      <div className="relative flex h-14 sm:h-16 w-full items-center justify-between px-3 sm:px-6 lg:px-10">
+        <Link href="/" className="flex min-w-0 shrink items-center space-x-2 group">
+          <span className="truncate whitespace-nowrap font-bold text-base sm:text-xl bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent transition-all duration-300 group-hover:from-orange-500 group-hover:to-amber-400">
             John&apos;s Repentance
           </span>
         </Link>
@@ -148,15 +148,15 @@ export function Navbar() {
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="xl:hidden">
-            <Button variant="outline" size="icon" className="ml-auto mr-2 hover:border-orange-300 transition-colors duration-300">
+            <Button variant="outline" size="icon" className="ml-2 shrink-0 hover:border-orange-300 transition-colors duration-300">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="pr-0 border-r-orange-200/50 dark:border-r-orange-900/30">
+          <SheetContent side="left" className="w-[88vw] max-w-[420px] pr-0 overflow-y-auto border-r-orange-200/50 dark:border-r-orange-900/30">
             <div className="flex items-center justify-between mb-8">
               <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
-                <span className="font-bold text-xl bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
                   John&apos;s Repentance
                 </span>
               </Link>
@@ -172,7 +172,7 @@ export function Navbar() {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                      "flex items-center justify-between py-3 px-3 rounded-lg transition-all duration-300",
+                      "flex items-center justify-between py-3.5 px-3 rounded-lg transition-all duration-300",
                       "hover:bg-orange-50 dark:hover:bg-orange-950/30 hover:text-orange-600 hover:pl-4",
                       isActive
                         ? "text-orange-600 bg-orange-50/80 dark:bg-orange-950/20 dark:text-orange-400 font-medium"
@@ -181,13 +181,7 @@ export function Navbar() {
                     onClick={() => setIsOpen(false)}
                   >
                     {route.label}
-                    <ChevronRight
-                      className={cn(
-                        "h-4 w-4 transition-all duration-300 opacity-0",
-                        "group-hover:opacity-100",
-                        isActive ? "opacity-60 text-orange-500" : "",
-                      )}
-                    />
+                    <ChevronRight className={cn("h-4 w-4 opacity-60", isActive ? "text-orange-500" : "")} />
                   </Link>
                 )
               })}
@@ -199,7 +193,7 @@ export function Navbar() {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                      "flex items-center justify-between py-3 px-3 rounded-lg transition-all duration-300",
+                      "flex items-center justify-between py-3.5 px-3 rounded-lg transition-all duration-300",
                       "hover:bg-orange-50 dark:hover:bg-orange-950/30 hover:text-orange-600 hover:pl-4",
                       isActive
                         ? "text-orange-600 bg-orange-50/80 dark:bg-orange-950/20 dark:text-orange-400 font-medium"
@@ -208,13 +202,7 @@ export function Navbar() {
                     onClick={() => setIsOpen(false)}
                   >
                     {route.label}
-                    <ChevronRight
-                      className={cn(
-                        "h-4 w-4 transition-all duration-300 opacity-0",
-                        "group-hover:opacity-100",
-                        isActive ? "opacity-60 text-orange-500" : "",
-                      )}
-                    />
+                    <ChevronRight className={cn("h-4 w-4 opacity-60", isActive ? "text-orange-500" : "")} />
                   </Link>
                 )
               })}
