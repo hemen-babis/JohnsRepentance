@@ -77,7 +77,7 @@ export function DailyVerse() {
   }, [])
 
   return (
-    <Card className="border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
+    <Card className="h-full min-h-[320px] border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
       <div className="h-1.5 bg-gradient-to-r from-orange-500 to-amber-500" />
       <CardContent className="p-6">
         <div className="relative h-[220px] flex items-center justify-center">

@@ -101,60 +101,60 @@ export function TodayChurchCalendar() {
   const fastItems = getFastItems(today)
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-[#2c2d30] text-white">
-      <div className="h-1.5 bg-gradient-to-r from-amber-400 to-orange-500" />
+    <Card className="h-full min-h-[320px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50/40 text-gray-900">
+      <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-amber-300">
+        <CardTitle className="flex items-center gap-2 text-amber-700">
           <CalendarDays className="h-5 w-5" />
           Today in the Church Calendar
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-5">
         <div>
-          <p className="text-lg font-semibold text-amber-300">{gregorianDate}</p>
-          <p className="text-lg font-semibold text-orange-300">
+          <p className="text-lg font-semibold text-amber-700">{gregorianDate}</p>
+          <p className="text-lg font-semibold text-orange-700">
             {ethMonth} {ethDay}
           </p>
-          <p className="text-lg font-semibold text-amber-200">{ethiopicEnFormatter.format(today)} (E.C.)</p>
+          <p className="text-lg font-semibold text-amber-700">{ethiopicEnFormatter.format(today)} (E.C.)</p>
         </div>
 
         <div>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm text-gray-600">
             2026 fast timeline: Great Lent (Feb 16 - Apr 10), Semune Himamat (Apr 6 - Apr 8), Tselote Hamus (Apr 9),
             Siklet (Apr 10), Hawaryat Tsom (Jun 1 - Jul 11).
           </p>
         </div>
 
         <div className="grid grid-cols-3 gap-2 text-center text-sm">
-          <div className="rounded-md bg-white/5 p-2">
-            <p className="text-amber-300 font-semibold">Feast Day</p>
-            <p className="text-gray-200">1</p>
+          <div className="rounded-md bg-white border border-amber-200/70 p-2">
+            <p className="text-amber-700 font-semibold">Feast Day</p>
+            <p className="text-gray-700">1</p>
           </div>
-          <div className="rounded-md bg-white/5 p-2">
-            <p className="text-amber-300 font-semibold">Fast Item</p>
-            <p className="text-gray-200">{fastItems.length}</p>
+          <div className="rounded-md bg-white border border-amber-200/70 p-2">
+            <p className="text-amber-700 font-semibold">Fast Item</p>
+            <p className="text-gray-700">{fastItems.length}</p>
           </div>
-          <div className="rounded-md bg-white/5 p-2">
-            <p className="text-amber-300 font-semibold">Added Events</p>
-            <p className="text-gray-200">0</p>
+          <div className="rounded-md bg-white border border-amber-200/70 p-2">
+            <p className="text-amber-700 font-semibold">Added Events</p>
+            <p className="text-gray-700">0</p>
           </div>
         </div>
 
-        <div className="rounded-md bg-white/5 p-3">
-          <p className="text-sm text-amber-300 font-semibold">Feast</p>
-          <p className="text-xs text-gray-300 mb-1">All Day</p>
-          <p className="text-base text-orange-300 font-semibold">{saint.en}</p>
-          <p className="text-base text-orange-300">{saint.am}</p>
+        <div className="rounded-md bg-white border border-amber-200/70 p-3">
+          <p className="text-sm text-amber-700 font-semibold">Feast</p>
+          <p className="text-xs text-gray-500 mb-1">All Day</p>
+          <p className="text-base text-orange-700 font-semibold">{saint.en}</p>
+          <p className="text-base text-orange-700">{saint.am}</p>
         </div>
 
-        <div className="rounded-md bg-white/5 p-3">
-          <p className="text-sm text-amber-300 font-semibold">Fast / ጾም</p>
-          <p className="text-xs text-gray-300 mb-1">All Day</p>
+        <div className="rounded-md bg-white border border-amber-200/70 p-3">
+          <p className="text-sm text-amber-700 font-semibold">Fast / ጾም</p>
+          <p className="text-xs text-gray-500 mb-1">All Day</p>
           {fastItems.length === 0 ? (
-            <p className="text-base text-orange-300 font-semibold">ፆም የለም / No fast today</p>
+            <p className="text-base text-orange-700 font-semibold">ፆም የለም / No fast today</p>
           ) : (
             fastItems.map((fast) => (
-              <p key={fast.label} className="text-base text-orange-300 font-semibold">
+              <p key={fast.label} className="text-base text-orange-700 font-semibold">
                 {fast.am} / {fast.label}
               </p>
             ))

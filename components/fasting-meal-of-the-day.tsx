@@ -28,29 +28,29 @@ export function FastingMealOfTheDay() {
   const meal = getMealOfDay(new Date())
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-emerald-50 to-lime-50 dark:from-emerald-950 dark:to-lime-950">
-      <div className="h-2 bg-gradient-to-r from-emerald-500 to-lime-500" />
+    <Card className="h-full min-h-[320px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-amber-50/40">
+      <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300">
+        <CardTitle className="flex items-center gap-2 text-amber-700">
           <UtensilsCrossed className="h-5 w-5" />
           Fasting Meal of the Day
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="rounded-lg bg-white/85 dark:bg-slate-900/70 p-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">{meal.tradition}</p>
-          <p className="text-xl font-bold">{meal.name}</p>
-          <p className="text-sm mt-2 text-gray-600 dark:text-gray-300">Quick ingredients:</p>
+        <div className="rounded-lg bg-white p-4 border border-amber-200/70">
+          <p className="text-sm text-gray-500">{meal.tradition}</p>
+          <p className="text-xl font-bold text-gray-900">{meal.name}</p>
+          <p className="text-sm mt-2 text-gray-600">Quick ingredients:</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {meal.ingredients.map((ingredient) => (
-              <span key={ingredient} className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300">
+              <span key={ingredient} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
                 {ingredient}
               </span>
             ))}
           </div>
         </div>
 
-        <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-500">
+        <Button asChild className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white">
           <Link href="/fasting-recipes">Cook Now</Link>
         </Button>
       </CardContent>
