@@ -560,7 +560,7 @@
 
 /* Make pages authored with hardcoded dark classes render correctly in light mode */
 html:not(.dark) .light-mode-adaptive-page {
-  background: linear-gradient(to bottom, rgba(254, 251, 245, 1), rgba(255, 247, 237, 0.7)) !important;
+  background: transparent !important;
 }
 
 html:not(.dark) .light-mode-adaptive-page [class*="text-white"] {
@@ -583,4 +583,10 @@ html:not(.dark) .light-mode-adaptive-page [class*="bg-black"] {
 html:not(.dark) .light-mode-adaptive-page [class*="border-gray-700"],
 html:not(.dark) .light-mode-adaptive-page [class*="border-gray-800"] {
   border-color: rgba(209, 213, 219, 0.9) !important;
+}
+
+/* Force parchment to show site-wide in light mode by neutralizing page-level gradient wrappers */
+html:not(.dark) main > div[class*="bg-gradient-to-"],
+html:not(.dark) main > section[class*="bg-gradient-to-"] {
+  background: transparent !important;
 }

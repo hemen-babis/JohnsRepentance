@@ -3,6 +3,12 @@ export type MentorEntry = {
   createdAt: string
 }
 
+export type ReflectionEntry = {
+  id: string
+  text: string
+  createdAt: string
+}
+
 export type ShoppingItem = {
   id: string
   name: string
@@ -22,6 +28,15 @@ export type UserProgress = {
   shoppingNotes: string
   recipeDisplayName: string
   recipePreferredTradition: string
+  dailyQuestLog: string[]
+  serviceHours: number
+  learningWeek: number
+  joinedGroups: string[]
+  reflections: ReflectionEntry[]
+  activityDates: string[]
+  quizCompletions: string[]
+  safetyReportsCount: number
+  youthGoals: string[]
 }
 
 export const defaultUserProgress: UserProgress = {
@@ -35,4 +50,13 @@ export const defaultUserProgress: UserProgress = {
   shoppingNotes: "",
   recipeDisplayName: "",
   recipePreferredTradition: "All",
+  dailyQuestLog: [],
+  serviceHours: 0,
+  learningWeek: 1,
+  joinedGroups: [],
+  reflections: [],
+  activityDates: [],
+  quizCompletions: [],
+  safetyReportsCount: 0,
+  youthGoals: [],
 }

@@ -62,14 +62,14 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-3 sm:px-5 lg:px-8">
-        <Link href="/" className="min-w-0 pr-3">
-          <span className="block truncate text-[15px] sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+      <div className="mx-auto flex h-16 w-full max-w-[1920px] items-center justify-between gap-3 px-3 sm:px-5 lg:px-6">
+        <Link href="/" className="flex-none pr-2">
+          <span className="block whitespace-nowrap text-lg lg:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
             John&apos;s Repentance
           </span>
         </Link>
 
-        <nav className="hidden xl:block">
+        <nav className="hidden lg:flex flex-1 min-w-0 justify-center">
           <div className="flex items-center rounded-full border border-orange-200/70 bg-white/70 px-2 py-1 shadow-[0_12px_30px_rgba(249,115,22,0.12)] dark:border-orange-900/40 dark:bg-stone-900/70">
             {routes.map((route) => {
               const isActive = pathname === route.href
@@ -78,7 +78,7 @@ export function Navbar() {
                   key={route.href}
                   href={route.href}
                   className={cn(
-                    "rounded-full px-3 py-2 text-sm font-medium transition-all",
+                    "rounded-full px-2.5 xl:px-3 py-2 text-sm font-medium transition-all whitespace-nowrap",
                     isActive
                       ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow"
                       : "text-stone-700 hover:bg-orange-50 hover:text-orange-700 dark:text-stone-300 dark:hover:bg-orange-950/30 dark:hover:text-orange-300",
@@ -112,8 +112,10 @@ export function Navbar() {
           </div>
         </nav>
 
-        <div className="hidden xl:flex items-center gap-2">
-          <AccountMenu />
+        <div className="hidden lg:flex flex-none items-center gap-2">
+          <div className="hidden 2xl:block">
+            <AccountMenu />
+          </div>
           <Link href="/contact">
             <Button className="rounded-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white">
               Contact Us
@@ -135,7 +137,7 @@ export function Navbar() {
         </div>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="xl:hidden">
+          <SheetTrigger asChild className="lg:hidden">
             <Button variant="outline" size="icon" className="shrink-0 border-orange-300 hover:bg-orange-50 dark:border-orange-900/40 dark:hover:bg-orange-950/30">
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>

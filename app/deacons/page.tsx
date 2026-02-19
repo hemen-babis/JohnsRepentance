@@ -213,38 +213,17 @@ export default function DeaconsCornerPage() {
               <TabsContent value="abinet">
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
                   <motion.div variants={fadeInUp}>
-                    <div className="text-center mb-8">
-                      <h2 className="text-2xl font-bold text-white mb-2">Abinet Scholarship Hub</h2>
-                      <p className="text-gray-400">Study directly from eathebook.org in a color style that matches this site.</p>
+                    <div className="overflow-hidden rounded-2xl border border-amber-200/70 bg-white/70 shadow-sm">
+                      <div className="aspect-[16/10] w-full">
+                        <iframe
+                          className="h-full w-full"
+                          src="https://www.eathebook.org"
+                          title="eathebook.org Abinet Study"
+                          loading="lazy"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                        />
+                      </div>
                     </div>
-                  </motion.div>
-
-                  <motion.div variants={fadeInUp}>
-                    <Card className="border-none shadow-lg overflow-hidden bg-gray-900">
-                      <div className="h-2 bg-gradient-to-r from-amber-500 to-orange-600" />
-                      <CardContent className="p-6 space-y-4">
-                        <div className="overflow-hidden rounded-xl border border-gray-700">
-                          <div className="aspect-[16/10] w-full bg-gray-950">
-                            <iframe
-                              className="h-full w-full"
-                              src="https://www.eathebook.org"
-                              title="eathebook.org Abinet Study"
-                              loading="lazy"
-                              referrerPolicy="strict-origin-when-cross-origin"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2">
-                          <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
-                            <a href="https://www.eathebook.org" target="_blank" rel="noreferrer">
-                              Open eathebook.org
-                              <ExternalLink className="ml-2 h-4 w-4" />
-                            </a>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
                   </motion.div>
                 </motion.div>
               </TabsContent>
