@@ -101,60 +101,36 @@ export function TodayChurchCalendar() {
   const fastItems = getFastItems(today)
 
   return (
-    <Card className="h-full min-h-[320px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50/40 text-gray-900">
+    <Card className="h-auto md:h-[340px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50/40 text-gray-900">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
-      <CardHeader>
+      <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-amber-700">
           <CalendarDays className="h-5 w-5" />
           Today in the Church Calendar
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-5">
+      <CardContent className="space-y-3 md:overflow-y-auto">
         <div>
-          <p className="text-lg font-semibold text-amber-700">{gregorianDate}</p>
-          <p className="text-lg font-semibold text-orange-700">
+          <p className="text-base font-semibold text-amber-700">{gregorianDate}</p>
+          <p className="text-base font-semibold text-orange-700">
             {ethMonth} {ethDay}
           </p>
-          <p className="text-lg font-semibold text-amber-700">{ethiopicEnFormatter.format(today)} (E.C.)</p>
-        </div>
-
-        <div>
-          <p className="text-sm text-gray-600">
-            2026 fast timeline: Great Lent (Feb 16 - Apr 10), Semune Himamat (Apr 6 - Apr 8), Tselote Hamus (Apr 9),
-            Siklet (Apr 10), Hawaryat Tsom (Jun 1 - Jul 11).
-          </p>
-        </div>
-
-        <div className="grid grid-cols-3 gap-2 text-center text-sm">
-          <div className="rounded-md bg-white border border-amber-200/70 p-2">
-            <p className="text-amber-700 font-semibold">Feast Day</p>
-            <p className="text-gray-700">1</p>
-          </div>
-          <div className="rounded-md bg-white border border-amber-200/70 p-2">
-            <p className="text-amber-700 font-semibold">Fast Item</p>
-            <p className="text-gray-700">{fastItems.length}</p>
-          </div>
-          <div className="rounded-md bg-white border border-amber-200/70 p-2">
-            <p className="text-amber-700 font-semibold">Added Events</p>
-            <p className="text-gray-700">0</p>
-          </div>
+          <p className="text-base font-semibold text-amber-700">{ethiopicEnFormatter.format(today)} (E.C.)</p>
         </div>
 
         <div className="rounded-md bg-white border border-amber-200/70 p-3">
           <p className="text-sm text-amber-700 font-semibold">Feast</p>
-          <p className="text-xs text-gray-500 mb-1">All Day</p>
-          <p className="text-base text-orange-700 font-semibold">{saint.en}</p>
-          <p className="text-base text-orange-700">{saint.am}</p>
+          <p className="text-sm text-orange-700 font-semibold">{saint.en}</p>
+          <p className="text-sm text-orange-700">{saint.am}</p>
         </div>
 
         <div className="rounded-md bg-white border border-amber-200/70 p-3">
           <p className="text-sm text-amber-700 font-semibold">Fast / ጾም</p>
-          <p className="text-xs text-gray-500 mb-1">All Day</p>
           {fastItems.length === 0 ? (
-            <p className="text-base text-orange-700 font-semibold">ፆም የለም / No fast today</p>
+            <p className="text-sm text-orange-700 font-semibold">ፆም የለም / No fast today</p>
           ) : (
             fastItems.map((fast) => (
-              <p key={fast.label} className="text-base text-orange-700 font-semibold">
+              <p key={fast.label} className="text-sm text-orange-700 font-semibold">
                 {fast.am} / {fast.label}
               </p>
             ))

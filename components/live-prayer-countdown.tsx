@@ -88,10 +88,10 @@ export function LivePrayerCountdown() {
   }, [])
 
   return (
-    <Card className="h-full min-h-[320px] border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg overflow-hidden">
+    <Card className="h-auto md:h-[340px] border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg overflow-hidden">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between mb-6">
+      <CardContent className="p-5">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="font-semibold text-amber-700 flex items-center">
             <Clock className="h-5 w-5 mr-2" />
             Next Prayer
@@ -106,10 +106,10 @@ export function LivePrayerCountdown() {
           </Button>
         </div>
 
-        <div className="flex justify-center mb-6">
-          <div className="grid grid-cols-3 gap-3 text-center">
+        <div className="flex justify-center mb-4">
+          <div className="grid grid-cols-3 gap-2 md:gap-3 text-center">
             <motion.div
-              className="bg-white border border-amber-200 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -118,7 +118,7 @@ export function LivePrayerCountdown() {
               <div className="text-xs text-gray-500 mt-1">HOURS</div>
             </motion.div>
             <motion.div
-              className="bg-white border border-amber-200 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
@@ -127,7 +127,7 @@ export function LivePrayerCountdown() {
               <div className="text-xs text-gray-500 mt-1">MINUTES</div>
             </motion.div>
             <motion.div
-              className="bg-white border border-amber-200 p-4 rounded-lg"
+              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
@@ -138,7 +138,7 @@ export function LivePrayerCountdown() {
           </div>
         </div>
 
-        <p className="text-center text-gray-700 mb-6">
+        <p className="text-center text-gray-700 mb-4">
           Until <span className="font-semibold text-amber-700">{timeLeft.prayerName}</span>
         </p>
 

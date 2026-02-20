@@ -3,11 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { Heart, Calendar, BookOpen, MessageCircle, ArrowRight, ChevronDown, Phone, Mail, MessageSquare } from "lucide-react"
+import { Heart, Calendar, BookOpen, MessageCircle, ArrowRight, Phone, Mail, MessageSquare } from "lucide-react"
 import { DailyVerse } from "@/components/daily-verse"
 import { LivePrayerCountdown } from "@/components/live-prayer-countdown"
-import { YouthTestimony } from "@/components/youth-testimony"
-import { SaintOfTheDay } from "@/components/saint-of-the-day"
 import { GeezHeading } from "@/components/geez-heading"
 import { OrthodoxChallenges } from "@/components/orthodox-challenges"
 import { SoundscapeToggle } from "@/components/soundscape-toggle"
@@ -26,29 +24,18 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[78vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-950/70 via-amber-900/55 to-orange-800/45 dark:from-stone-950/85 dark:via-orange-950/65 dark:to-amber-950/50 z-10" />
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/placeholder.svg?height=1200&width=1800"
-            alt="Ethiopian Orthodox youth in liturgy"
-            fill
-            priority
-            className="object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-10 z-5" />
-        <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_top,rgba(255,255,255,0.14),transparent_60%)] z-10" />
+        <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.06]" />
 
-        <div className="container mx-auto px-4 relative z-20 min-h-[78vh] flex flex-col justify-center items-center text-white">
+        <div className="container mx-auto px-4 relative z-10 min-h-[78vh] flex flex-col justify-center items-center">
           <div className="max-w-4xl text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-center leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-center leading-tight tracking-tight bg-gradient-to-r from-stone-900 via-stone-800 to-orange-600 bg-clip-text text-transparent">
               &ldquo;Repent, for the Kingdom of
               <span className="block mt-1">Heaven is Near!&rdquo;</span>
-              <span className="block text-base md:text-lg mt-3 font-normal text-amber-200/80 tracking-wide">
+              <span className="block text-base md:text-lg mt-3 font-normal text-orange-700 tracking-wide">
                 Matthew 3:1-2
               </span>
             </h1>
-            <p className="text-lg md:text-xl mb-10 text-center text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl mb-10 text-center text-stone-700 max-w-2xl mx-auto leading-relaxed">
               Your Ethiopian Orthodox Home Online &ndash; Faith. Repentance. Salvation.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -66,26 +53,16 @@ export default function Home() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-white/15 backdrop-blur-sm border border-white/40 text-white hover:bg-white/25 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
+                className="bg-white/60 backdrop-blur-sm border border-amber-300 text-stone-900 hover:bg-white/80 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Link href="/teachings">
                   <span className="relative z-10 font-semibold">Explore Teachings</span>
-                  <span className="absolute inset-0 bg-white/15 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                  <span className="absolute inset-0 bg-amber-100/70 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
                 </Link>
               </Button>
             </div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 scroll-indicator z-20">
-          <div className="flex flex-col items-center gap-1 text-white/50">
-            <span className="text-xs uppercase tracking-[0.2em] font-light">Scroll</span>
-            <ChevronDown className="h-5 w-5" />
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-amber-50/80 dark:from-stone-950 to-transparent z-20" />
       </section>
 
       {/* Live Features Section */}
@@ -156,34 +133,6 @@ export default function Home() {
                 <span className="absolute inset-0 bg-amber-100 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimony and Saint of the Day */}
-      <section className="py-20 bg-gradient-to-b from-amber-50/50 via-orange-50/30 to-amber-50/40 dark:from-stone-950 dark:via-orange-950/20 dark:to-stone-950 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.06]" />
-        <div className="container mx-auto px-4 relative">
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <div>
-              <h2 className="text-2xl font-bold mb-6 flex items-center text-orange-700 dark:text-orange-400">
-                <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-950/40 mr-3">
-                  <Heart className="h-5 w-5" />
-                </span>
-                Featured Testimony
-              </h2>
-              <YouthTestimony />
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-6 flex items-center text-amber-800 dark:text-amber-500">
-                <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/40 mr-3">
-                  <Calendar className="h-5 w-5" />
-                </span>
-                Saint of the Day
-              </h2>
-              <SaintOfTheDay />
-            </div>
           </div>
         </div>
       </section>

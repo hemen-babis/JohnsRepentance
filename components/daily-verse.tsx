@@ -77,10 +77,10 @@ export function DailyVerse() {
   }, [])
 
   return (
-    <Card className="h-full min-h-[320px] border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
+    <Card className="h-auto md:h-[340px] border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
       <div className="h-1.5 bg-gradient-to-r from-orange-500 to-amber-500" />
-      <CardContent className="p-6">
-        <div className="relative h-[220px] flex items-center justify-center">
+      <CardContent className="p-5">
+        <div className="relative h-[170px] md:h-[190px] flex items-center justify-center">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentVerseIndex}
@@ -91,13 +91,13 @@ export function DailyVerse() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
             >
-              <p className="text-2xl italic mb-4 text-gray-800 leading-relaxed">&quot;{verses[currentVerseIndex].text}&quot;</p>
+              <p className="text-xl md:text-2xl italic mb-4 text-gray-800 leading-relaxed">&quot;{verses[currentVerseIndex].text}&quot;</p>
               <p className="text-lg font-semibold text-amber-700">{verses[currentVerseIndex].reference}</p>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-2">
           <div className="flex space-x-2">
             <Button
               variant="outline"

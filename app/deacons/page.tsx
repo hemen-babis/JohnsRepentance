@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { GeezHeading } from "@/components/geez-heading"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { Search, BookOpen, ExternalLink, Download, GraduationCap, Bell, Heart } from "lucide-react"
+import { Search, BookOpen, Download, GraduationCap, Bell, Heart } from "lucide-react"
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -156,16 +156,6 @@ export default function DeaconsCornerPage() {
                           >
                             In-page Player
                           </Button>
-                          <Button asChild variant="outline" className="border-amber-500 text-amber-500 hover:bg-amber-950/50">
-                            <a
-                              href="https://www.youtube.com/watch?v=GfBL_vM8eSM&list=PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1"
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              Open on YouTube
-                              <ExternalLink className="ml-2 h-4 w-4" />
-                            </a>
-                          </Button>
                         </div>
 
                         {showMisbakEmbed && (
@@ -213,17 +203,14 @@ export default function DeaconsCornerPage() {
               <TabsContent value="abinet">
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
                   <motion.div variants={fadeInUp}>
-                    <div className="overflow-hidden rounded-2xl border border-amber-200/70 bg-white/70 shadow-sm">
-                      <div className="aspect-[16/10] w-full">
-                        <iframe
-                          className="h-full w-full"
-                          src="https://www.eathebook.org"
-                          title="eathebook.org Abinet Study"
-                          loading="lazy"
-                          referrerPolicy="strict-origin-when-cross-origin"
-                        />
-                      </div>
-                    </div>
+                    <iframe
+                      className="block h-[78vh] min-h-[720px] w-full border-0 bg-transparent"
+                      src="https://www.eathebook.org"
+                      title="eathebook.org Abinet Study"
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-same-origin allow-scripts allow-forms"
+                    />
                   </motion.div>
                 </motion.div>
               </TabsContent>

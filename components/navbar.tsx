@@ -64,7 +64,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-16 w-full max-w-[1920px] items-center justify-between gap-3 px-3 sm:px-5 lg:px-6">
         <Link href="/" className="flex-none pr-2">
-          <span className="block whitespace-nowrap text-lg lg:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+          <span className="block whitespace-nowrap text-base sm:text-lg lg:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
             John&apos;s Repentance
           </span>
         </Link>
@@ -138,19 +138,23 @@ export function Navbar() {
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="outline" size="icon" className="shrink-0 border-orange-300 hover:bg-orange-50 dark:border-orange-900/40 dark:hover:bg-orange-950/30">
+            <Button
+              variant="outline"
+              size="icon"
+              className="shrink-0 rounded-xl border-orange-300 bg-white/85 hover:bg-orange-50 dark:border-orange-900/40 dark:bg-stone-900/70 dark:hover:bg-orange-950/30"
+            >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="right" className="w-[90vw] max-w-[390px] border-l-orange-200/60 dark:border-l-orange-900/30 p-0">
-            <div className="h-full flex flex-col bg-gradient-to-b from-white to-orange-50/70 dark:from-stone-950 dark:to-orange-950/20">
+          <SheetContent side="right" className="w-[88vw] max-w-[360px] border-l-orange-200/60 dark:border-l-orange-900/30 p-0">
+            <div className="h-full flex flex-col bg-[linear-gradient(180deg,#fffdf8_0%,#fff4e8_100%)] dark:bg-[linear-gradient(180deg,#120d09_0%,#1a120c_100%)]">
               <div className="flex items-center justify-between px-4 py-4 border-b border-orange-200/60 dark:border-orange-900/30">
                 <span className="font-extrabold tracking-tight bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
                   John&apos;s Repentance
                 </span>
-                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+                <Button variant="ghost" size="icon" className="rounded-lg" onClick={() => setIsOpen(false)}>
                   <X className="h-5 w-5" />
                 </Button>
               </div>
@@ -165,10 +169,10 @@ export function Navbar() {
                         href={route.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors",
+                          "flex items-center justify-between rounded-xl px-3 py-3.5 text-sm font-medium transition-colors",
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
-                            : "text-stone-700 hover:bg-orange-100/70 dark:text-stone-300 dark:hover:bg-orange-950/30",
+                            : "text-stone-800 hover:bg-orange-100/80 dark:text-stone-300 dark:hover:bg-orange-950/30",
                         )}
                       >
                         {route.label}
@@ -186,10 +190,10 @@ export function Navbar() {
                         href={route.href}
                         onClick={() => setIsOpen(false)}
                         className={cn(
-                          "flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-colors",
+                          "flex items-center justify-between rounded-xl px-3 py-3.5 text-sm font-medium transition-colors",
                           isActive
                             ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
-                            : "text-stone-700 hover:bg-orange-100/70 dark:text-stone-300 dark:hover:bg-orange-950/30",
+                            : "text-stone-800 hover:bg-orange-100/80 dark:text-stone-300 dark:hover:bg-orange-950/30",
                         )}
                       >
                         {route.label}
@@ -205,7 +209,7 @@ export function Navbar() {
                   <AccountMenu />
                 </div>
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  <Button className="w-full rounded-xl bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white">
+                  <Button className="w-full h-11 rounded-xl bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white">
                     Contact Us
                   </Button>
                 </Link>

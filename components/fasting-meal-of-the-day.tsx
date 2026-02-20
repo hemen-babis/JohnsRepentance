@@ -28,15 +28,15 @@ export function FastingMealOfTheDay() {
   const meal = getMealOfDay(new Date())
 
   return (
-    <Card className="h-full min-h-[320px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-amber-50/40">
+    <Card className="h-auto md:h-[340px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-amber-50/40">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
-      <CardHeader>
+      <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-amber-700">
           <UtensilsCrossed className="h-5 w-5" />
           Fasting Meal of the Day
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3">
         <div className="rounded-lg bg-white p-4 border border-amber-200/70">
           <p className="text-sm text-gray-500">{meal.tradition}</p>
           <p className="text-xl font-bold text-gray-900">{meal.name}</p>
