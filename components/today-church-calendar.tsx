@@ -11,47 +11,41 @@ const ethiopicEnFormatter = new Intl.DateTimeFormat("en-ET-u-ca-ethiopic", {
   year: "numeric",
 })
 
-const ethiopicAmFormatter = new Intl.DateTimeFormat("am-ET-u-ca-ethiopic", {
-  day: "numeric",
-  month: "long",
-})
-
-const saintDaysBilingual: Record<number, { am: string; en: string }> = {
-  1: { am: "ልደታ (ቅድስት ማርያም) እና ኤልያስ", en: "Lideta (Birth of St. Mary) and Elias" },
-  2: { am: "ታድዮስ", en: "Thaddius" },
-  3: { am: "ባእታ (ማርያም ማቅረቢያ)", en: "Ba'eta (Presentation of Mary)" },
-  4: { am: "ዮሐንስ ወልደ ነግድክዋድ", en: "Yohannis Wolde Negedquad" },
-  5: { am: "ጴጥሮስ እና ጳውሎስ እና ገብረ መንፈስ ቅዱስ", en: "Petros and Paulos, Gebre Menfes Kidus" },
-  6: { am: "እመቤታችን ቁስቋም", en: "Our Lady of Qusquam" },
-  7: { am: "ቅድስት ሥላሴ", en: "Holy Trinity" },
-  8: { am: "ኪሮስ እና አባ ባኑዳ", en: "Kiros and Abba Banuda" },
-  9: { am: "ቶማስ", en: "Thomas (not the Apostle)" },
-  10: { am: "ቅዱስ መስቀል", en: "Kidus Meskel (Holy Cross)" },
-  11: { am: "ሐና እና ኢያከም", en: "Hanna and Iyachem" },
-  12: { am: "ሚካኤል አርእስት መላእክት", en: "Michael, Chief of Angels" },
-  13: { am: "እግዚአብሔር አብ እና ሩፋኤል", en: "God the Father and Ruphael" },
-  14: { am: "አባ አረጋዊ እና ገብረ ክርስቶስ", en: "Abba Aregawi and Gebre Kristos" },
-  15: { am: "ቅዱስ ኪርቆስ እና እናቱ ኢያሎታ", en: "Kirkos and his mother Iyalota" },
-  16: { am: "ኪዳነ ምህረት", en: "Kidane Meheret (Covenant of Mercy)" },
-  17: { am: "እስጢፋኖስ እና አባ ገሪማ", en: "Estifanos and Abba Gerima" },
-  18: { am: "እውስጣጥዎስ", en: "Ewstatewos" },
-  19: { am: "ቅዱስ ገብርኤል", en: "Saint Gabriel" },
-  20: { am: "ህንሳታ", en: "Hnstata" },
-  21: { am: "ቅድስት ማርያም", en: "Saint Mary" },
-  22: { am: "ደቅስዮስ", en: "Deqsius" },
-  23: { am: "ቅዱስ ጊዮርጊስ", en: "Saint George" },
-  24: { am: "አባ ተክለ ሃይማኖት እና አራት አሰናት", en: "Abba Tekle Haimanot and Four Heavenly Orders" },
-  25: { am: "መርቆርዮስ", en: "Merkorios" },
-  26: { am: "ቶማስ ሐዋርያ", en: "Thomas the Apostle" },
-  27: { am: "መድኃኔ ዓለም", en: "Medhane Alem" },
-  28: { am: "ኢማኑኤል", en: "Emmanuel" },
-  29: { am: "በእልደውልድ (እግዚአብሔር ልጅ)", en: "Bale Wold (God the Son)" },
-  30: { am: "ማርቆስ", en: "Markos (St. Mark)" },
-}
+const saintDays = {
+  1: "Lideta (Birth of St. Mary) and Elias",
+  2: "Thaddius",
+  3: "Ba'eta (Presentation of Mary)",
+  4: "Yohannis Wolde Negedquad",
+  5: "Petros and Paulos, Gebre Menfes Kidus",
+  6: "Our Lady of Qusquam",
+  7: "Holy Trinity",
+  8: "Kiros and Abba Banuda",
+  9: "Thomas (not the Apostle)",
+  10: "Kidus Meskel (Holy Cross)",
+  11: "Hanna and Iyachem",
+  12: "Michael, Chief of Angels",
+  13: "God the Father and Ruphael",
+  14: "Abba Aregawi and Gebre Kristos",
+  15: "Kirkos and his mother Iyalota",
+  16: "Kidane Meheret (Covenant of Mercy)",
+  17: "Estifanos and Abba Gerima",
+  18: "Ewstatewos",
+  19: "Saint Gabriel",
+  20: "Hnstata",
+  21: "Saint Mary",
+  22: "Deqsius",
+  23: "Saint George",
+  24: "Abba Tekle Haimanot and Four Heavenly Orders",
+  25: "Merkorios",
+  26: "Thomas the Apostle",
+  27: "Medhane Alem",
+  28: "Emmanuel",
+  29: "Bale Wold (God the Son)",
+  30: "Markos (St. Mark)",
+} satisfies Record<number, string>
 
 type FastStatus = {
   label: string
-  am: string
 }
 
 function getFastItems(date: Date): FastStatus[] {
@@ -60,27 +54,27 @@ function getFastItems(date: Date): FastStatus[] {
   const results: FastStatus[] = []
 
   if (dateStr >= "2026-02-16" && dateStr <= "2026-04-10") {
-    results.push({ label: "Great Lent", am: "ዐቢይ ጾም" })
+    results.push({ label: "Great Lent" })
   }
   if (dateStr >= "2026-04-06" && dateStr <= "2026-04-08") {
-    results.push({ label: "Semune Himamat", am: "ሰሙነ ሕማማት" })
+    results.push({ label: "Semune Himamat" })
   }
   if (dateStr === "2026-04-09") {
-    results.push({ label: "Tselote Hamus", am: "ጸሎተ ሐሙስ" })
+    results.push({ label: "Tselote Hamus" })
   }
   if (dateStr === "2026-04-10") {
-    results.push({ label: "Siklet", am: "ስቅለት" })
+    results.push({ label: "Siklet" })
   }
   if (dateStr >= "2026-06-01" && dateStr <= "2026-07-11") {
-    results.push({ label: "Fast of the Apostles", am: "ጾመ ሐዋርያት" })
+    results.push({ label: "Fast of the Apostles" })
   }
 
   const weeklyAllowed = dateStr < "2026-04-12" || dateStr >= "2026-06-01"
   if (weeklyAllowed && day === 3) {
-    results.push({ label: "Wednesday Fast", am: "የረቡዕ ፆም" })
+    results.push({ label: "Wednesday Fast" })
   }
   if (weeklyAllowed && day === 5) {
-    results.push({ label: "Friday Fast", am: "የአርብ ፆም" })
+    results.push({ label: "Friday Fast" })
   }
 
   const unique = Array.from(new Map(results.map((item) => [item.label, item])).values())
@@ -94,44 +88,43 @@ export function TodayChurchCalendar() {
     month: "long",
     day: "numeric",
   })
-  const amParts = ethiopicAmFormatter.formatToParts(today)
-  const ethDay = Number.parseInt(amParts.find((p) => p.type === "day")?.value ?? "1", 10)
-  const ethMonth = amParts.find((p) => p.type === "month")?.value ?? "መስከረም"
-  const saint = saintDaysBilingual[ethDay] ?? { am: "ቅዱሳን መታሰቢያ", en: "Commemoration of saints" }
+  const enParts = ethiopicEnFormatter.formatToParts(today)
+  const ethDay = Number.parseInt(enParts.find((p) => p.type === "day")?.value ?? "1", 10)
+  const ethMonth = enParts.find((p) => p.type === "month")?.value ?? "Meskerem"
+  const saint = saintDays[ethDay] ?? "Commemoration of saints"
   const fastItems = getFastItems(today)
 
   return (
-    <Card className="h-auto md:h-[340px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50/40 text-gray-900">
+    <Card className="h-auto md:h-[340px] overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 text-gray-900 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(47,29,18,0.92),rgba(26,18,13,0.9))] dark:text-stone-100">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-amber-700">
+        <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-300">
           <CalendarDays className="h-5 w-5" />
           Today in the Church Calendar
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3 md:overflow-y-auto">
         <div>
-          <p className="text-base font-semibold text-amber-700">{gregorianDate}</p>
-          <p className="text-base font-semibold text-orange-700">
+          <p className="text-base font-semibold text-amber-700 dark:text-amber-300">{gregorianDate}</p>
+          <p className="text-base font-semibold text-orange-700 dark:text-orange-300">
             {ethMonth} {ethDay}
           </p>
-          <p className="text-base font-semibold text-amber-700">{ethiopicEnFormatter.format(today)} (E.C.)</p>
+          <p className="text-base font-semibold text-amber-700 dark:text-amber-300">{ethiopicEnFormatter.format(today)} (E.C.)</p>
         </div>
 
-        <div className="rounded-md bg-white border border-amber-200/70 p-3">
-          <p className="text-sm text-amber-700 font-semibold">Feast</p>
-          <p className="text-sm text-orange-700 font-semibold">{saint.en}</p>
-          <p className="text-sm text-orange-700">{saint.am}</p>
+        <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
+          <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Feast</p>
+          <p className="text-sm font-semibold text-orange-700 dark:text-orange-300">{saint}</p>
         </div>
 
-        <div className="rounded-md bg-white border border-amber-200/70 p-3">
-          <p className="text-sm text-amber-700 font-semibold">Fast / ጾም</p>
+        <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
+          <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Fast</p>
           {fastItems.length === 0 ? (
-            <p className="text-sm text-orange-700 font-semibold">ፆም የለም / No fast today</p>
+            <p className="text-sm font-semibold text-orange-700 dark:text-orange-300">No fast today</p>
           ) : (
             fastItems.map((fast) => (
-              <p key={fast.label} className="text-sm text-orange-700 font-semibold">
-                {fast.am} / {fast.label}
+              <p key={fast.label} className="text-sm font-semibold text-orange-700 dark:text-orange-300">
+                {fast.label}
               </p>
             ))
           )}

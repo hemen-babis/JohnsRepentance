@@ -30,7 +30,7 @@ export function SpiritualChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content: "ሰላም! I'm your EOTC spiritual assistant. How can I help you today?",
+      content: "I'm your EOTC spiritual assistant. How can I help you today?",
       sender: "bot",
       timestamp: new Date(),
       category: "general",

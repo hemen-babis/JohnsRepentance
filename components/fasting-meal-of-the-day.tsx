@@ -28,22 +28,22 @@ export function FastingMealOfTheDay() {
   const meal = getMealOfDay(new Date())
 
   return (
-    <Card className="h-auto md:h-[340px] border border-amber-200/70 shadow-lg overflow-hidden bg-gradient-to-br from-white to-amber-50/40">
+    <Card className="h-auto md:h-[340px] overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(47,29,18,0.92),rgba(26,18,13,0.9))]">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-amber-700">
+        <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-300">
           <UtensilsCrossed className="h-5 w-5" />
           Fasting Meal of the Day
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        <div className="rounded-lg bg-white p-4 border border-amber-200/70">
-          <p className="text-sm text-gray-500">{meal.tradition}</p>
-          <p className="text-xl font-bold text-gray-900">{meal.name}</p>
-          <p className="text-sm mt-2 text-gray-600">Quick ingredients:</p>
+        <div className="rounded-lg border border-amber-200/70 bg-white p-4 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
+          <p className="text-sm text-gray-500 dark:text-stone-400">{meal.tradition}</p>
+          <p className="text-xl font-bold text-gray-900 dark:text-stone-100">{meal.name}</p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-stone-300">Quick ingredients:</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {meal.ingredients.map((ingredient) => (
-              <span key={ingredient} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+              <span key={ingredient} className="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800 dark:bg-amber-950/50 dark:text-amber-200">
                 {ingredient}
               </span>
             ))}

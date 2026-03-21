@@ -28,26 +28,26 @@
   }
 
   .dark {
-    /* Dark mode - Deep warm brown/chocolate with orange accents */
-    --background: 25 35% 8%;
-    --foreground: 35 30% 95%;
-    --card: 25 30% 11%;
-    --card-foreground: 35 30% 95%;
-    --popover: 25 30% 11%;
-    --popover-foreground: 35 30% 95%;
-    --primary: 30 95% 55%;
-    --primary-foreground: 25 40% 8%;
-    --secondary: 25 25% 16%;
-    --secondary-foreground: 35 30% 92%;
-    --muted: 25 20% 15%;
-    --muted-foreground: 35 15% 60%;
-    --accent: 30 40% 18%;
-    --accent-foreground: 38 80% 75%;
+    /* Dark mode - richer ember / bronze palette with stronger contrast */
+    --background: 24 28% 7%;
+    --foreground: 36 44% 94%;
+    --card: 23 24% 10%;
+    --card-foreground: 36 38% 93%;
+    --popover: 23 24% 10%;
+    --popover-foreground: 36 38% 93%;
+    --primary: 31 92% 60%;
+    --primary-foreground: 22 38% 9%;
+    --secondary: 24 18% 17%;
+    --secondary-foreground: 35 30% 90%;
+    --muted: 24 16% 14%;
+    --muted-foreground: 34 18% 70%;
+    --accent: 27 34% 19%;
+    --accent-foreground: 38 85% 80%;
     --destructive: 0 65% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 25 20% 18%;
-    --input: 25 20% 18%;
-    --ring: 30 95% 55%;
+    --border: 26 18% 20%;
+    --input: 26 18% 20%;
+    --ring: 31 92% 60%;
   }
 }
 
@@ -65,7 +65,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: url('/images/parchment-bg.png');
+    background-image: url('/images/parchment-bg.png?v=20260321');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -73,7 +73,37 @@
   }
 
   .dark body {
-    background-image: none;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 28%),
+      radial-gradient(circle at 18% 22%, rgba(249, 115, 22, 0.09), transparent 24%),
+      radial-gradient(circle at 82% 18%, rgba(245, 158, 11, 0.06), transparent 22%),
+      linear-gradient(180deg, rgba(14, 10, 8, 0.96) 0%, rgba(24, 16, 12, 0.98) 48%, rgba(13, 9, 7, 1) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .dark main {
+    position: relative;
+  }
+
+  .dark main::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.012)),
+      radial-gradient(circle at center, rgba(255, 190, 92, 0.035), transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0.75;
+    z-index: 0;
+  }
+
+  .dark main > * {
+    position: relative;
+    z-index: 1;
   }
 
   /* Smooth selection color */
@@ -84,6 +114,20 @@
 
   .dark ::selection {
     background-color: rgba(251, 146, 60, 0.3);
+  }
+}
+
+
+@layer components {
+  .dark .card-inner-glow {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 248, 235, 0.05),
+      0 20px 60px -36px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(255, 180, 90, 0.04);
+  }
+
+  .dark .section-divider {
+    text-shadow: 0 0 24px rgba(251, 146, 60, 0.08);
   }
 }
 

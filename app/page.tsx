@@ -16,57 +16,34 @@ import { FastingMealOfTheDay } from "@/components/fasting-meal-of-the-day"
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-amber-50/80 via-orange-50/30 to-amber-50/50 dark:from-stone-950 dark:via-orange-950/20 dark:to-stone-950">
+    <div className="bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat md:bg-gradient-to-b md:from-amber-50/80 md:via-orange-50/30 md:to-amber-50/50 dark:bg-none dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
       {/* Fixed elements */}
       <div className="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
         <SoundscapeToggle />
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-[78vh] overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.06]" />
-
-        <div className="container mx-auto px-4 relative z-10 min-h-[78vh] flex flex-col justify-center items-center">
-          <div className="max-w-4xl text-center">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-center leading-tight tracking-tight bg-gradient-to-r from-stone-900 via-stone-800 to-orange-600 bg-clip-text text-transparent">
-              &ldquo;Repent, for the Kingdom of
-              <span className="block mt-1">Heaven is Near!&rdquo;</span>
-              <span className="block text-base md:text-lg mt-3 font-normal text-orange-700 tracking-wide">
-                Matthew 3:1-2
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl mb-10 text-center text-stone-700 max-w-2xl mx-auto leading-relaxed">
-              Your Ethiopian Orthodox Home Online &ndash; Faith. Repentance. Salvation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 hover:from-amber-600 hover:via-amber-700 hover:to-orange-700 text-white border border-amber-300/40 shadow-[0_8px_32px_rgba(245,158,11,0.35)] group relative overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(245,158,11,0.45)]"
-              >
-                <Link href="/join">
-                  <span className="relative z-10 font-semibold">Join the Faith Vibe</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-amber-300 to-amber-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="bg-white/60 backdrop-blur-sm border border-amber-300 text-stone-900 hover:bg-white/80 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
-              >
-                <Link href="/teachings">
-                  <span className="relative z-10 font-semibold">Explore Teachings</span>
-                  <span className="absolute inset-0 bg-amber-100/70 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
+      <section className="relative h-[clamp(24rem,72vw,calc(100vh-4rem))] min-h-[24rem] sm:h-[clamp(28rem,78vw,calc(100vh-4rem))] md:h-[clamp(34rem,82vw,calc(100vh-4rem))] lg:h-[calc(100vh-4rem)] lg:min-h-[42rem] overflow-hidden">
+        <Image
+          src="/images/mobile-parch.png?v=20260321"
+          alt="Parchment background"
+          fill
+          priority
+          className="object-cover object-center md:hidden"
+          sizes="100vw"
+        />
+        <Image
+          src="/images/home-hero.png"
+          alt="Repent, for the Kingdom of Heaven is Near hero artwork"
+          fill
+          priority
+          className="hidden object-cover object-center md:block"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+        />
       </section>
 
       {/* Live Features Section */}
-      <section className="py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-stone-950 dark:via-orange-950/20 dark:to-stone-950 relative overflow-hidden border-y border-amber-200/50 dark:border-orange-900/20">
+      <section className="py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden border-y border-amber-200/50 dark:border-orange-800/25">
         <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.04]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-10">
@@ -89,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Gamification & Challenges Section */}
-      <section className="py-20 bg-gradient-to-br from-amber-50/80 via-orange-50/60 to-amber-100/50 dark:from-stone-950 dark:via-orange-950/40 dark:to-amber-950/30 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-amber-50/80 via-orange-50/60 to-amber-100/50 dark:from-[#170f0a] dark:via-[#341d14] dark:to-[#2a160e] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.06]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-12">
@@ -138,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* Church Locator Section */}
-      <section className="py-20 bg-gradient-to-b from-amber-50/60 via-orange-50/30 to-amber-50/50 dark:from-stone-950 dark:via-orange-950/30 dark:to-stone-950 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-amber-50/60 via-orange-50/30 to-amber-50/50 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.05]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-12">
@@ -156,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* Catechumen Corner Teaser */}
-      <section className="py-20 bg-gradient-to-b from-orange-50/60 via-amber-50/40 to-orange-50/50 dark:from-stone-950 dark:via-orange-950/30 dark:to-stone-950 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-orange-50/60 via-amber-50/40 to-orange-50/50 dark:from-[#170f0a] dark:via-[#301a12] dark:to-[#1a110c] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.06]" />
         <div className="container mx-auto px-4 relative">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
@@ -180,7 +157,7 @@ export default function Home() {
             </div>
             {/* REPLACE: Add a relevant image for Catechumen Corner */}
             {/* Place image in /public/images/catechumen.jpg */}
-            <div className="bg-white/80 dark:bg-stone-900/70 border border-amber-200/40 dark:border-orange-900/30 rounded-2xl p-8 shadow-lg card-hover-lift card-inner-glow">
+            <div className="bg-white/80 dark:bg-[linear-gradient(135deg,rgba(44,27,18,0.88),rgba(28,18,13,0.84))] border border-amber-200/40 dark:border-amber-700/20 rounded-2xl p-8 shadow-lg card-hover-lift card-inner-glow">
               <p className="text-sm uppercase tracking-[0.2em] text-orange-600/80 dark:text-amber-300/80 mb-4 font-medium">
                 Learning to Live the Covenant
               </p>
@@ -208,7 +185,7 @@ export default function Home() {
       </section>
 
       {/* Quick Links Section */}
-      <section className="py-20 bg-gradient-to-b from-orange-50/50 via-amber-50/40 to-orange-50/30 dark:from-stone-950 dark:via-orange-950/25 dark:to-stone-950 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-orange-50/50 via-amber-50/40 to-orange-50/30 dark:from-[#130d09] dark:via-[#2a1710] dark:to-[#160f0a] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.05]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-12">
@@ -293,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* Inline Footer (kept separate from layout footer since home has its own) */}
-      <footer className="bg-gradient-to-r from-orange-900 via-amber-900 to-orange-950 dark:from-stone-950 dark:via-orange-950 dark:to-stone-950 text-white relative overflow-hidden">
+      <footer className="bg-gradient-to-r from-orange-900 via-amber-900 to-orange-950 dark:from-[#0f0907] dark:via-[#24130d] dark:to-[#140c09] text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.06]" />
         <div className="container mx-auto px-4 py-12 relative">
@@ -304,7 +281,7 @@ export default function Home() {
                 {/* Place in /public/images/logo.png */}
                 <div className="w-12 h-12 mr-3 relative">
                   <Image
-                    src="/placeholder.svg?height=48&width=48"
+                    src="/images/logo.png"
                     alt="Ethiopian Orthodox Cross"
                     width={48}
                     height={48}
@@ -325,7 +302,7 @@ export default function Home() {
               <ul className="space-y-2.5">
                 <li>
                   <a
-                    href="https://t.me/ethiopianorthodox"
+                    href="https://t.me/orthodoxQnAs"
                     className="footer-link text-gray-300 flex items-center gap-2"
                   >
                     <MessageSquare className="h-4 w-4 text-orange-400/70" />
@@ -334,7 +311,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://instagram.com/ethiopianorthodox"
+                    href="https://www.instagram.com/orthodoxqnas/"
                     className="footer-link text-gray-300 flex items-center gap-2"
                   >
                     <svg className="w-4 h-4 text-orange-400/70" viewBox="0 0 24 24" fill="currentColor">
@@ -345,7 +322,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://tiktok.com/@ethiopianorthodox"
+                    href="https://www.tiktok.com/@orthodoxqnas"
                     className="footer-link text-gray-300 flex items-center gap-2"
                   >
                     <svg className="w-4 h-4 text-orange-400/70" viewBox="0 0 24 24" fill="currentColor">
@@ -362,12 +339,12 @@ export default function Home() {
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-gray-300">
                   <Phone className="h-4 w-4 text-orange-400/70" />
-                  (123) 456-7890
+                  (512) 537-1651
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-orange-400/70" />
-                  <a href="mailto:info@ethiopianorthodox.org" className="footer-link text-gray-300">
-                    info@ethiopianorthodox.org
+                  <a href="mailto:yohannes.neseha@gmail.com" className="footer-link text-gray-300">
+                    yohannes.neseha@gmail.com
                   </a>
                 </li>
               </ul>

@@ -77,7 +77,7 @@ export function DailyVerse() {
   }, [])
 
   return (
-    <Card className="h-auto md:h-[340px] border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg overflow-hidden">
+    <Card className="h-auto md:h-[340px] overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(47,29,18,0.92),rgba(26,18,13,0.9))]">
       <div className="h-1.5 bg-gradient-to-r from-orange-500 to-amber-500" />
       <CardContent className="p-5">
         <div className="relative h-[170px] md:h-[190px] flex items-center justify-center">
@@ -91,8 +91,8 @@ export function DailyVerse() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
             >
-              <p className="text-xl md:text-2xl italic mb-4 text-gray-800 leading-relaxed">&quot;{verses[currentVerseIndex].text}&quot;</p>
-              <p className="text-lg font-semibold text-amber-700">{verses[currentVerseIndex].reference}</p>
+              <p className="mb-4 text-xl italic leading-relaxed text-gray-800 dark:text-stone-100 md:text-2xl">&quot;{verses[currentVerseIndex].text}&quot;</p>
+              <p className="text-lg font-semibold text-amber-700 dark:text-amber-300">{verses[currentVerseIndex].reference}</p>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -103,7 +103,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={prevVerse}
-              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:border-amber-700/30 dark:text-amber-200 dark:hover:bg-amber-950/40"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -111,7 +111,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={nextVerse}
-              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:border-amber-700/30 dark:text-amber-200 dark:hover:bg-amber-950/40"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -122,7 +122,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={copyVerse}
-              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:border-amber-700/30 dark:text-amber-200 dark:hover:bg-amber-950/40"
             >
               <Copy className="h-4 w-4" />
             </Button>
@@ -130,7 +130,7 @@ export function DailyVerse() {
               variant="outline"
               size="icon"
               onClick={shareVerse}
-              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100"
+              className="rounded-full border-amber-300 text-amber-700 hover:text-amber-900 hover:bg-amber-100 dark:border-amber-700/30 dark:text-amber-200 dark:hover:bg-amber-950/40"
             >
               <Share2 className="h-4 w-4" />
             </Button>

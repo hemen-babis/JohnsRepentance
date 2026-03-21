@@ -88,18 +88,18 @@ export function LivePrayerCountdown() {
   }, [])
 
   return (
-    <Card className="h-auto md:h-[340px] border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg overflow-hidden">
+    <Card className="h-auto md:h-[340px] overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-amber-50/40 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(45,28,18,0.92),rgba(25,17,13,0.9))]">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardContent className="p-5">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-amber-700 flex items-center">
+          <h3 className="flex items-center font-semibold text-amber-700 dark:text-amber-300">
             <Clock className="h-5 w-5 mr-2" />
             Next Prayer
           </h3>
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs border-amber-300 text-amber-800 hover:text-amber-900 hover:bg-amber-100"
+            className="h-8 text-xs border-amber-300 text-amber-800 hover:text-amber-900 hover:bg-amber-100 dark:border-amber-700/30 dark:text-amber-200 dark:hover:bg-amber-950/40"
           >
             <Bell className="h-3 w-3 mr-1" />
             Set Reminder
@@ -109,37 +109,37 @@ export function LivePrayerCountdown() {
         <div className="flex justify-center mb-4">
           <div className="grid grid-cols-3 gap-2 md:gap-3 text-center">
             <motion.div
-              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
+              className="rounded-lg border border-amber-200 bg-white p-2 md:p-4 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <div className="text-3xl font-bold text-amber-700">{timeLeft.hours.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-500 mt-1">HOURS</div>
+              <div className="text-3xl font-bold text-amber-700 dark:text-amber-300">{timeLeft.hours.toString().padStart(2, "0")}</div>
+              <div className="mt-1 text-xs text-gray-500 dark:text-stone-400">HOURS</div>
             </motion.div>
             <motion.div
-              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
+              className="rounded-lg border border-amber-200 bg-white p-2 md:p-4 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              <div className="text-3xl font-bold text-amber-700">{timeLeft.minutes.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-500 mt-1">MINUTES</div>
+              <div className="text-3xl font-bold text-amber-700 dark:text-amber-300">{timeLeft.minutes.toString().padStart(2, "0")}</div>
+              <div className="mt-1 text-xs text-gray-500 dark:text-stone-400">MINUTES</div>
             </motion.div>
             <motion.div
-              className="bg-white border border-amber-200 p-2 md:p-4 rounded-lg"
+              className="rounded-lg border border-amber-200 bg-white p-2 md:p-4 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
             >
-              <div className="text-3xl font-bold text-amber-700">{timeLeft.seconds.toString().padStart(2, "0")}</div>
-              <div className="text-xs text-gray-500 mt-1">SECONDS</div>
+              <div className="text-3xl font-bold text-amber-700 dark:text-amber-300">{timeLeft.seconds.toString().padStart(2, "0")}</div>
+              <div className="mt-1 text-xs text-gray-500 dark:text-stone-400">SECONDS</div>
             </motion.div>
           </div>
         </div>
 
-        <p className="text-center text-gray-700 mb-4">
-          Until <span className="font-semibold text-amber-700">{timeLeft.prayerName}</span>
+        <p className="mb-4 text-center text-gray-700 dark:text-stone-300">
+          Until <span className="font-semibold text-amber-700 dark:text-amber-300">{timeLeft.prayerName}</span>
         </p>
 
         <Button

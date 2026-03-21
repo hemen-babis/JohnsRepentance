@@ -16,12 +16,6 @@ const ethiopicEnFormatter = new Intl.DateTimeFormat("en-ET-u-ca-ethiopic", {
   year: "numeric",
 })
 
-const ethiopicAmFormatter = new Intl.DateTimeFormat("am-ET-u-ca-ethiopic", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-})
-
 const saintDaysBilingual: Record<number, { am: string; en: string }> = {
   1: { am: "ልደታ (ቅድስት ማርያም) እና ኤልያስ", en: "Lideta (Birth of St. Mary) and Elias" },
   2: { am: "ታድዮስ", en: "Thaddius" },
@@ -105,43 +99,43 @@ function dateKey(date: Date) {
 }
 
 function ethiopianParts(date: Date) {
-  const am = ethiopicAmFormatter.formatToParts(date)
-  const day = Number.parseInt(am.find((p) => p.type === "day")?.value ?? "1", 10)
-  const month = am.find((p) => p.type === "month")?.value ?? "መስከረም"
+  const en = ethiopicEnFormatter.formatToParts(date)
+  const day = Number.parseInt(en.find((p) => p.type === "day")?.value ?? "1", 10)
+  const month = en.find((p) => p.type === "month")?.value ?? "Meskerem"
   return { day, month }
 }
 
-const monthOrder = ["መስከረም", "ጥቅምት", "ኅዳር", "ታኅሣሥ", "ጥር", "የካቲት", "መጋቢት", "ሚያዝያ", "ግንቦት", "ሰኔ", "ሐምሌ", "ነሐሴ", "ጳጉሜን"]
+const monthOrder = ["Meskerem", "Tikimt", "Hidar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miazia", "Ginbot", "Sene", "Hamle", "Nehase", "Pagumen"]
 
 const majorFasts = [
   {
     label: { am: "ሁዳዲ (ትንሣኤ ፆም)", en: "Hudadi (Great Lent)" },
-    start: { month: "የካቲት", day: 14 },
-    end: { month: "ሚያዝያ", day: 5 },
+    start: { month: "Yekatit", day: 14 },
+    end: { month: "Miazia", day: 5 },
   },
   {
     label: { am: "ገና ፆም", en: "Advent Fast (Gena Fast)" },
-    start: { month: "ኅዳር", day: 15 },
-    end: { month: "ታኅሣሥ", day: 28 },
+    start: { month: "Hidar", day: 15 },
+    end: { month: "Tahsas", day: 28 },
   },
   {
     label: { am: "ፍልሰታ ፆም", en: "Filseta Fast" },
-    start: { month: "ነሐሴ", day: 1 },
-    end: { month: "ነሐሴ", day: 16 },
+    start: { month: "Nehase", day: 1 },
+    end: { month: "Nehase", day: 16 },
   },
   {
     label: { am: "የነነዌ ፆም (ሦስት ቀን)", en: "Fast of Nineveh (3 days)" },
-    start: { month: "የካቲት", day: 7 },
-    end: { month: "የካቲት", day: 9 },
+    start: { month: "Yekatit", day: 7 },
+    end: { month: "Yekatit", day: 9 },
   },
 ]
 
 const fixedFastMilestones: Array<{ month: string; day: number; label: BilingualLabel }> = [
-  { month: "የካቲት", day: 14, label: { am: "ሁዳዲ (ትንሣኤ ፆም) መጀመሪያ", en: "Start of Great Lent" } },
-  { month: "ኅዳር", day: 15, label: { am: "ገና ፆም መጀመሪያ", en: "Start of Advent Fast" } },
-  { month: "ታኅሣሥ", day: 28, label: { am: "ገና ፆም መጨረሻ", en: "End of Advent Fast" } },
-  { month: "ነሐሴ", day: 1, label: { am: "ፍልሰታ ፆም መጀመሪያ", en: "Start of Filseta Fast" } },
-  { month: "ነሐሴ", day: 16, label: { am: "ፍልሰታ ፆም መጨረሻ", en: "End of Filseta Fast" } },
+  { month: "Yekatit", day: 14, label: { am: "ሁዳዲ (ትንሣኤ ፆም) መጀመሪያ", en: "Start of Great Lent" } },
+  { month: "Hidar", day: 15, label: { am: "ገና ፆም መጀመሪያ", en: "Start of Advent Fast" } },
+  { month: "Tahsas", day: 28, label: { am: "ገና ፆም መጨረሻ", en: "End of Advent Fast" } },
+  { month: "Nehase", day: 1, label: { am: "ፍልሰታ ፆም መጀመሪያ", en: "Start of Filseta Fast" } },
+  { month: "Nehase", day: 16, label: { am: "ፍልሰታ ፆም መጨረሻ", en: "End of Filseta Fast" } },
 ]
 
 const dateOverrides: DateOverride[] = [
@@ -267,27 +261,27 @@ export default function CalendarEventsPage() {
   }
 
   return (
-    <div className="bg-[radial-gradient(circle_at_top_left,_#fff7ed_0%,_#fafaf9_38%,_#f5f5f4_100%)] dark:bg-[radial-gradient(circle_at_top_left,_#1c1917_0%,_#111827_45%,_#020617_100%)]">
+    <div className="bg-[radial-gradient(circle_at_top_left,_rgba(255,244,220,0.72)_0%,_rgba(247,236,213,0.92)_34%,_rgba(239,227,204,1)_100%)] dark:bg-[radial-gradient(circle_at_top_left,_#1c1917_0%,_#111827_45%,_#020617_100%)]">
       <section className="mx-auto max-w-7xl px-4 py-10 md:py-14">
-        <div className="mb-8 rounded-3xl border border-amber-200/60 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-amber-900/50 dark:bg-stone-900/70">
-          <p className="mb-2 inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+        <div className="mb-8 rounded-3xl border border-amber-300/55 bg-[linear-gradient(135deg,rgba(251,241,216,0.92),rgba(245,231,202,0.82))] p-6 shadow-[0_18px_50px_-30px_rgba(120,53,15,0.18)] backdrop-blur dark:border-amber-900/50 dark:bg-stone-900/70">
+          <p className="mb-2 inline-flex rounded-full bg-amber-200/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-900 dark:bg-amber-900/40 dark:text-amber-300">
             Liturgical Planner
           </p>
           <h1 className="text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100 md:text-5xl">Calendar + Events</h1>
           <p className="mt-2 max-w-2xl text-sm text-stone-600 dark:text-stone-300 md:text-base">
-            Ethiopian Orthodox liturgical calendar with bilingual feast and fasting agenda.
+            Ethiopian Orthodox liturgical calendar with feast and fasting agenda.
           </p>
         </div>
 
         <Tabs defaultValue="calendar" className="space-y-5">
-          <TabsList className="grid w-full max-w-md grid-cols-2 rounded-2xl border border-stone-300/70 bg-white/90 p-1 shadow-sm dark:border-stone-700 dark:bg-stone-800/90">
+          <TabsList className="grid w-full max-w-md grid-cols-2 rounded-2xl border border-amber-300/55 bg-[linear-gradient(135deg,rgba(246,236,215,0.92),rgba(238,226,203,0.82))] p-1 shadow-[0_10px_30px_-20px_rgba(120,53,15,0.18)] dark:border-stone-700 dark:bg-stone-800/90">
             <TabsTrigger value="calendar">Calendar</TabsTrigger>
             <TabsTrigger value="events">Events</TabsTrigger>
           </TabsList>
 
           <TabsContent value="calendar" className="space-y-4">
             <div className="grid gap-4 lg:grid-cols-[360px_1fr]">
-              <Card className="border-stone-300/70 bg-white/95 shadow-md dark:border-stone-700 dark:bg-stone-900/90">
+              <Card className="border-amber-300/50 bg-[linear-gradient(180deg,rgba(250,240,219,0.94),rgba(243,233,212,0.86))] shadow-[0_18px_50px_-28px_rgba(120,53,15,0.16)] dark:border-stone-700 dark:bg-stone-900/90">
                 <CardHeader>
                   <CardTitle className="text-lg">Monthly Calendar</CardTitle>
                   <CardDescription>Pick a date to see agenda.</CardDescription>
@@ -299,7 +293,7 @@ export default function CalendarEventsPage() {
                     onSelect={(date) => date && setSelectedDate(date)}
                     modifiers={{ hasEvent: calendarMarkedDays }}
                     modifiersClassNames={{ hasEvent: "bg-orange-100 dark:bg-orange-950/50" }}
-                    className="mx-auto w-full max-w-[320px] rounded-2xl border border-stone-300/70 bg-stone-50 p-2 [--cell-size:2.2rem] md:[--cell-size:2.35rem] dark:border-stone-700 dark:bg-stone-900"
+                    className="mx-auto w-full max-w-[320px] rounded-2xl border border-amber-300/55 bg-[linear-gradient(180deg,rgba(248,239,220,0.95),rgba(241,232,212,0.88))] p-2 [--cell-size:2.2rem] md:[--cell-size:2.35rem] dark:border-stone-700 dark:bg-stone-900"
                     classNames={{
                       root: "w-full",
                       months: "w-full",
@@ -307,12 +301,12 @@ export default function CalendarEventsPage() {
                       month_caption: "flex items-center justify-center pt-1",
                       caption_label: "text-base font-semibold tracking-tight",
                       nav: "flex items-center gap-1",
-                      button_previous: "h-8 w-8 rounded-full border border-stone-300 bg-white hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
-                      button_next: "h-8 w-8 rounded-full border border-stone-300 bg-white hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
+                      button_previous: "h-8 w-8 rounded-full border border-amber-300/60 bg-amber-50 hover:bg-amber-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
+                      button_next: "h-8 w-8 rounded-full border border-amber-300/60 bg-amber-50 hover:bg-amber-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700",
                       weekdays: "grid grid-cols-7 gap-1",
                       weekday: "text-[12px] font-medium text-stone-500",
                       week: "grid grid-cols-7 gap-1",
-                      day: "h-9 w-9 rounded-xl text-sm font-medium hover:bg-stone-200 dark:hover:bg-stone-800",
+                      day: "h-9 w-9 rounded-xl text-sm font-medium hover:bg-amber-100 dark:hover:bg-stone-800",
                       today: "ring-1 ring-orange-300",
                       selected: "bg-orange-500 text-white hover:bg-orange-500",
                     }}
@@ -320,8 +314,8 @@ export default function CalendarEventsPage() {
                 </CardContent>
               </Card>
 
-              <Card className="overflow-hidden border-stone-300/70 bg-white/95 shadow-md dark:border-stone-700 dark:bg-stone-900/90">
-                <CardHeader className="border-b bg-gradient-to-r from-stone-100 to-amber-50 pb-4 dark:from-stone-800 dark:to-stone-800/80">
+              <Card className="overflow-hidden border-amber-300/50 bg-[linear-gradient(180deg,rgba(250,240,219,0.94),rgba(243,233,212,0.86))] shadow-[0_18px_50px_-28px_rgba(120,53,15,0.16)] dark:border-stone-700 dark:bg-stone-900/90">
+                <CardHeader className="border-b border-amber-200/60 bg-gradient-to-r from-[#f2e6cc] to-[#f6ecd6] pb-4 dark:from-stone-800 dark:to-stone-800/80">
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="text-2xl font-bold text-stone-900 dark:text-stone-100">{format(selectedDate, "EEEE, MMMM d")}</h2>
                     <p className="text-lg font-semibold text-stone-700 dark:text-stone-200">{selectedEth.month} {selectedEth.day}</p>
@@ -338,47 +332,45 @@ export default function CalendarEventsPage() {
                 </CardHeader>
 
                 <CardContent className="space-y-4 p-4 md:p-5">
-                  <div className="rounded-2xl border border-violet-200 bg-violet-50/50 p-4 dark:border-violet-900/50 dark:bg-violet-950/20">
+                  <div className="rounded-2xl border border-violet-200/75 bg-[linear-gradient(135deg,rgba(244,238,255,0.84),rgba(238,230,252,0.7))] p-4 dark:border-violet-900/50 dark:bg-violet-950/20">
                     <div className="mb-2 flex items-center gap-2">
                       <Badge className="bg-violet-600 text-white">Feast</Badge>
                       <span className="text-xs uppercase tracking-wide text-stone-500">All Day</span>
                     </div>
                     <p className="text-xl font-bold md:text-2xl">{saint.en}</p>
-                    <p className="mt-1 text-lg text-stone-600 dark:text-stone-300">{saint.am}</p>
                   </div>
 
-                  <div className="rounded-2xl border border-rose-200 bg-rose-50/40 p-4 dark:border-rose-900/50 dark:bg-rose-950/20">
+                  <div className="rounded-2xl border border-rose-200/75 bg-[linear-gradient(135deg,rgba(255,240,239,0.84),rgba(252,229,226,0.68))] p-4 dark:border-rose-900/50 dark:bg-rose-950/20">
                     <div className="mb-2 flex items-center gap-2">
-                      <Badge className="bg-rose-600 text-white">Fast / ጾም</Badge>
+                      <Badge className="bg-rose-600 text-white">Fast</Badge>
                       <span className="text-xs uppercase tracking-wide text-stone-500">All Day</span>
                     </div>
                     {fastsToday.length === 0 ? (
-                      <p className="text-base text-muted-foreground">ፆም የለም። / No fast today.</p>
+                      <p className="text-base text-muted-foreground">No fast today.</p>
                     ) : (
                       <div className="space-y-1">
                         {fastsToday.map((item, index) => (
                           <p key={`${item.en}-${index}`} className="text-lg text-stone-700 dark:text-stone-200">
-                            {item.am} / {item.en}
+                            {item.en}
                           </p>
                         ))}
                       </div>
                     )}
                   </div>
 
-                  <div className="rounded-2xl border border-stone-200 bg-stone-50/70 p-4 dark:border-stone-700 dark:bg-stone-900/60">
+                  <div className="rounded-2xl border border-amber-300/45 bg-[linear-gradient(135deg,rgba(247,237,217,0.86),rgba(240,228,206,0.72))] p-4 dark:border-stone-700 dark:bg-stone-900/60">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">Added Events</p>
                     {eventsForSelectedDay.length === 0 ? (
                       <p className="text-base text-muted-foreground">No added events for this date. Add from the Events tab.</p>
                     ) : (
                       <div className="space-y-3">
                         {eventsForSelectedDay.map((event) => (
-                          <div key={event.id} className="rounded-xl border bg-white p-3 dark:bg-stone-950/70">
+                          <div key={event.id} className="rounded-xl border border-amber-200/60 bg-[linear-gradient(135deg,rgba(250,242,225,0.9),rgba(243,233,214,0.78))] p-3 dark:bg-stone-950/70">
                             <div className="mb-2 flex items-center justify-between gap-2">
                               <Badge className={chipStyle(event.type)}>{event.type}</Badge>
                               <span className="text-xs text-muted-foreground">{event.timeLabel}</span>
                             </div>
                             <p className="text-lg font-semibold">{event.titleEn}</p>
-                            <p className="text-base text-stone-600 dark:text-stone-300">{event.titleAm}</p>
                             <p className="mt-1 inline-flex items-center gap-2 text-sm text-muted-foreground">
                               <MapPin className="h-4 w-4" />
                               {event.location}
@@ -394,7 +386,7 @@ export default function CalendarEventsPage() {
           </TabsContent>
 
           <TabsContent value="events" className="space-y-4">
-            <Card className="border-stone-300/70 bg-white/95 shadow-md dark:border-stone-700 dark:bg-stone-900/90">
+            <Card className="border-amber-300/50 bg-[linear-gradient(180deg,rgba(250,240,219,0.94),rgba(243,233,212,0.86))] shadow-[0_18px_50px_-28px_rgba(120,53,15,0.16)] dark:border-stone-700 dark:bg-stone-900/90">
               <CardHeader>
                 <CardTitle>Event Library</CardTitle>
                 <CardDescription>Add events to show directly on the calendar and agenda.</CardDescription>
@@ -403,7 +395,7 @@ export default function CalendarEventsPage() {
                 {eventCatalog.map((event) => {
                   const isAdded = addedIds.includes(event.id)
                   return (
-                    <div key={event.id} className="rounded-2xl border border-stone-300/70 bg-stone-50/70 p-4 dark:border-stone-700 dark:bg-stone-950/40">
+                    <div key={event.id} className="rounded-2xl border border-amber-300/50 bg-[linear-gradient(135deg,rgba(247,237,217,0.88),rgba(241,229,206,0.74))] p-4 dark:border-stone-700 dark:bg-stone-950/40">
                       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                         <div>
                           <div className="flex items-center gap-2">
@@ -411,7 +403,6 @@ export default function CalendarEventsPage() {
                             <span className="text-sm text-muted-foreground">{format(new Date(`${event.date}T12:00:00`), "EEEE, MMM d")}</span>
                           </div>
                           <p className="mt-2 text-lg font-semibold">{event.titleEn}</p>
-                          <p className="text-base text-stone-600 dark:text-stone-300">{event.titleAm}</p>
                           <p className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground">
                             <Clock3 className="h-4 w-4" />
                             {event.timeLabel}

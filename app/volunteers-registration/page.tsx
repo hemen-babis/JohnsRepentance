@@ -90,7 +90,7 @@ export default function VolunteersRegistrationPage() {
                   </fieldset>
 
                   <fieldset className="space-y-2">
-                    <legend className="text-sm font-medium">Do you have a Confession Father (የንስሐ አባት)?</legend>
+                    <legend className="text-sm font-medium">Do you have a Confession Father?</legend>
                     <div className="flex gap-6 text-sm">
                       <label className="flex items-center gap-2">
                         <input type="radio" name="confessionFather" value="yes" required />

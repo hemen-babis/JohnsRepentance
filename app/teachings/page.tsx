@@ -482,7 +482,7 @@ export default function TeachingsPage() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-amber-50/50 to-orange-50/30 dark:from-stone-950 dark:to-orange-950/20">
+    <div className="bg-[url('/images/mobile-parch.png?v=20260321')] md:bg-[url('/images/parchment-bg.png?v=20260321')] bg-cover bg-center bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-amber-500/5 dark:from-orange-900/20 dark:to-amber-900/20 z-0" />

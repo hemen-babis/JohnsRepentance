@@ -58,8 +58,8 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-500",
         scrolled
-          ? "backdrop-blur-xl bg-white/80 dark:bg-stone-950/70 border-b border-orange-200/60 dark:border-orange-900/30"
-          : "bg-transparent",
+          ? "backdrop-blur-xl bg-white dark:bg-[rgba(18,12,9,0.72)] border-b border-orange-200/60 dark:border-[rgba(251,146,60,0.14)] shadow-[0_12px_40px_-24px_rgba(249,115,22,0.12)] dark:shadow-[0_18px_40px_-28px_rgba(0,0,0,0.8)]"
+          : "bg-white border-b border-orange-100/80 shadow-[0_8px_28px_-24px_rgba(249,115,22,0.08)] dark:bg-transparent dark:border-transparent dark:shadow-none",
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-[1920px] items-center justify-between gap-3 px-3 sm:px-5 lg:px-6">
@@ -70,7 +70,7 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex flex-1 min-w-0 justify-center">
-          <div className="flex items-center rounded-full border border-orange-200/70 bg-white/70 px-2 py-1 shadow-[0_12px_30px_rgba(249,115,22,0.12)] dark:border-orange-900/40 dark:bg-stone-900/70">
+          <div className="flex items-center rounded-full border border-orange-200/70 bg-white px-2 py-1 shadow-[0_12px_30px_rgba(249,115,22,0.12)] dark:border-[rgba(251,146,60,0.16)] dark:bg-[linear-gradient(135deg,rgba(34,23,17,0.86),rgba(21,15,12,0.72))] dark:shadow-[0_18px_38px_-28px_rgba(0,0,0,0.75)]">
             {routes.map((route) => {
               const isActive = pathname === route.href
               return (
@@ -81,7 +81,7 @@ export function Navbar() {
                     "rounded-full px-2.5 xl:px-3 py-2 text-sm font-medium transition-all whitespace-nowrap",
                     isActive
                       ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow"
-                      : "text-stone-700 hover:bg-orange-50 hover:text-orange-700 dark:text-stone-300 dark:hover:bg-orange-950/30 dark:hover:text-orange-300",
+                      : "text-stone-700 hover:bg-orange-50 hover:text-orange-700 dark:text-stone-300 dark:hover:bg-[rgba(120,53,15,0.34)] dark:hover:text-amber-200",
                   )}
                 >
                   {route.label}
@@ -95,7 +95,7 @@ export function Navbar() {
                   "inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-all",
                   isResourceActive
                     ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow"
-                    : "text-stone-700 hover:bg-orange-50 hover:text-orange-700 dark:text-stone-300 dark:hover:bg-orange-950/30 dark:hover:text-orange-300",
+                    : "text-stone-700 hover:bg-orange-50 hover:text-orange-700 dark:text-stone-300 dark:hover:bg-[rgba(120,53,15,0.34)] dark:hover:text-amber-200",
                 )}
               >
                 Resources
@@ -126,7 +126,7 @@ export function Navbar() {
             size="icon"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="rounded-full hover:bg-orange-100 dark:hover:bg-orange-950/40"
+            className="rounded-full hover:bg-orange-100 dark:hover:bg-[rgba(120,53,15,0.34)]"
           >
             {mounted && currentTheme === "dark" ? (
               <Sun className="h-5 w-5 text-amber-400" />
