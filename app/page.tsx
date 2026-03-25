@@ -23,13 +23,13 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-[clamp(24rem,72vw,calc(100vh-4rem))] min-h-[24rem] sm:h-[clamp(28rem,78vw,calc(100vh-4rem))] md:h-[clamp(34rem,82vw,calc(100vh-4rem))] lg:h-[calc(100vh-4rem)] lg:min-h-[42rem] overflow-hidden">
+      <section className="relative h-[clamp(24rem,86vw,34rem)] min-h-[24rem] sm:h-[clamp(28rem,82vw,38rem)] md:h-[clamp(34rem,82vw,calc(100vh-4rem))] lg:h-[calc(100vh-4rem)] lg:min-h-[42rem] overflow-hidden">
         <Image
           src="/images/mobile-parch.png?v=20260321"
           alt="Parchment background"
           fill
           priority
-          className="object-cover object-center md:hidden"
+          className="object-contain object-top md:hidden"
           sizes="100vw"
         />
         <Image
