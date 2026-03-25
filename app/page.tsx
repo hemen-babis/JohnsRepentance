@@ -23,13 +23,13 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-[clamp(24rem,86vw,34rem)] min-h-[24rem] sm:h-[clamp(28rem,82vw,38rem)] md:h-[clamp(34rem,82vw,calc(100vh-4rem))] lg:h-[calc(100vh-4rem)] lg:min-h-[42rem] overflow-hidden">
+      <section className="relative aspect-[1293/1103] min-h-0 sm:h-[clamp(28rem,82vw,38rem)] sm:min-h-[28rem] md:h-[clamp(34rem,82vw,calc(100vh-4rem))] lg:h-[calc(100vh-4rem)] lg:min-h-[42rem] overflow-hidden">
         <Image
           src="/images/mobile-parch.png?v=20260321"
           alt="Parchment background"
           fill
           priority
-          className="object-contain object-top md:hidden"
+          className="object-cover object-center md:hidden"
           sizes="100vw"
         />
         <Image
@@ -43,21 +43,21 @@ export default function Home() {
       </section>
 
       {/* Live Features Section */}
-      <section className="py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden border-y border-amber-200/50 dark:border-orange-800/25">
+      <section className="py-10 md:py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden border-y border-amber-200/50 dark:border-orange-800/25">
         <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.04]" />
         <div className="container mx-auto px-4 relative">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 md:mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white section-divider">Live Spiritual Tools</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="mt-3 md:mt-4 text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Practical tools for prayer rhythm, scripture meditation, fasting, and the church calendar.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
+            <div className="space-y-6 md:space-y-8">
               <LivePrayerCountdown />
               <FastingMealOfTheDay />
             </div>
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               <DailyVerse />
               <TodayChurchCalendar />
             </div>
