@@ -149,7 +149,7 @@ export function Navbar() {
           </SheetTrigger>
 
           <SheetContent side="right" className="w-[88vw] max-w-[360px] border-l-orange-200/60 dark:border-l-orange-900/30 p-0">
-            <div className="h-full flex flex-col bg-[linear-gradient(180deg,#fffdf8_0%,#fff4e8_100%)] dark:bg-[linear-gradient(180deg,#120d09_0%,#1a120c_100%)]">
+            <div className="flex h-full min-h-0 flex-col bg-[linear-gradient(180deg,#fffdf8_0%,#fff4e8_100%)] dark:bg-[linear-gradient(180deg,#120d09_0%,#1a120c_100%)]">
               <div className="flex items-center justify-between px-4 py-4 border-b border-orange-200/60 dark:border-orange-900/30">
                 <span className="font-extrabold tracking-tight bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
                   John&apos;s Repentance
@@ -159,7 +159,7 @@ export function Navbar() {
                 </Button>
               </div>
 
-              <div className="flex-1 overflow-y-auto px-3 py-3">
+              <div className="flex-1 min-h-0 overflow-y-auto px-3 py-3">
                 <nav className="space-y-1">
                   {routes.map((route) => {
                     const isActive = pathname === route.href
@@ -204,9 +204,9 @@ export function Navbar() {
                 </nav>
               </div>
 
-              <div className="px-4 pb-4 pt-3 border-t border-orange-200/60 dark:border-orange-900/30 space-y-3">
+              <div className="shrink-0 px-4 pb-4 pt-3 border-t border-orange-200/60 dark:border-orange-900/30 space-y-3">
                 <div className="w-full">
-                  <AccountMenu />
+                  <AccountMenu embedded />
                 </div>
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full h-11 rounded-xl bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white">

@@ -16,7 +16,7 @@ import { FastingMealOfTheDay } from "@/components/fasting-meal-of-the-day"
 
 export default function Home() {
   return (
-    <div className="bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat md:bg-gradient-to-b md:from-amber-50/80 md:via-orange-50/30 md:to-amber-50/50 dark:bg-none dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
+    <div className="bg-transparent md:bg-gradient-to-b md:from-amber-50/80 md:via-orange-50/30 md:to-amber-50/50 dark:bg-none dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
       {/* Fixed elements */}
       <div className="fixed bottom-4 left-4 z-50 flex flex-col gap-2">
         <SoundscapeToggle />
@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       {/* Live Features Section */}
-      <section className="py-10 md:py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden border-y border-amber-200/50 dark:border-orange-800/25">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-amber-100/40 via-orange-50/30 to-amber-50/20 dark:from-[#140d09] dark:via-[#2a1710] dark:to-[#170f0a] relative overflow-hidden border-b border-amber-200/50 dark:border-orange-800/25">
         <div className="absolute inset-0 bg-[url('/patterns/manuscript-border.svg')] opacity-[0.04]" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-8 md:mb-10">

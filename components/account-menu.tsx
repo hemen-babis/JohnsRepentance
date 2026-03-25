@@ -6,8 +6,9 @@ import { User, LogOut, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuthProgress } from "@/components/providers/auth-progress-provider"
+import { cn } from "@/lib/utils"
 
-export function AccountMenu() {
+export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   const { user, authEnabled, profile, signInWithGoogle, signInWithEmail, signUpWithEmail, signOutUser } = useAuthProgress()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -46,7 +47,12 @@ export function AccountMenu() {
           )}
         </button>
         {open && (
-          <div className="absolute right-0 mt-2 w-64 rounded-xl border bg-background p-3 shadow-xl z-50">
+          <div
+            className={cn(
+              "rounded-xl border bg-background p-3 shadow-xl z-50",
+              embedded ? "mt-2 w-full" : "absolute right-0 mt-2 w-64",
+            )}
+          >
             <p className="text-sm font-semibold">{profile.fullName || user.displayName || "Your Profile"}</p>
             <p className="text-xs text-muted-foreground">{user.email}</p>
             <div className="mt-3 space-y-2">
@@ -82,7 +88,12 @@ export function AccountMenu() {
         Account
       </Button>
       {open && (
-        <div className="absolute right-0 mt-2 w-72 rounded-xl border bg-background p-3 shadow-xl z-50">
+        <div
+          className={cn(
+            "rounded-xl border bg-background p-3 shadow-xl z-50",
+            embedded ? "mt-2 w-full" : "absolute right-0 mt-2 w-72",
+          )}
+        >
           <p className="mb-2 text-sm font-semibold">Optional account sign-in</p>
           <div className="mb-2 flex gap-2">
             <Button size="sm" variant={mode === "signin" ? "default" : "outline"} onClick={() => setMode("signin")}>Sign in</Button>
