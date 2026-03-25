@@ -53,7 +53,7 @@ export function OrthodoxChallenges() {
   }
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900">
+    <Card className="border-none shadow-lg overflow-hidden bg-white dark:bg-[linear-gradient(180deg,rgba(31,20,14,0.96),rgba(22,15,11,0.98))] dark:border dark:border-orange-900/25">
       <CardContent className="p-6">
         <div className="space-y-6">
           {activeChallenges.map((challenge) => (
@@ -61,8 +61,8 @@ export function OrthodoxChallenges() {
               key={challenge.id}
               className={`p-4 rounded-lg border ${
                 challenge.active
-                  ? "border-amber-200 dark:border-amber-800 bg-gradient-to-r from-amber-50 to-amber-100/30 dark:from-amber-950/50 dark:to-amber-900/30"
-                  : "border-gray-200 dark:border-gray-800"
+                  ? "border-amber-200 dark:border-amber-700/35 bg-gradient-to-r from-amber-50 to-amber-100/30 dark:from-[rgba(64,38,24,0.92)] dark:to-[rgba(48,29,20,0.82)]"
+                  : "border-gray-200 dark:border-orange-900/25 dark:bg-[linear-gradient(180deg,rgba(24,19,16,0.88),rgba(20,16,14,0.82))]"
               }`}
             >
               <div className="flex justify-between items-start mb-2">
@@ -97,10 +97,7 @@ export function OrthodoxChallenges() {
                       {challenge.progress}/{challenge.total}
                     </span>
                   </div>
-                  <Progress
-                    value={(challenge.progress / challenge.total) * 100}
-                    className="h-2 bg-gray-100 dark:bg-gray-800"
-                  />
+                  <Progress value={(challenge.progress / challenge.total) * 100} className="h-2 bg-gray-100 dark:bg-[rgba(255,255,255,0.08)]" />
 
                   <div className="flex justify-between items-center mt-3">
                     <Button variant="outline" size="sm" className="text-xs">

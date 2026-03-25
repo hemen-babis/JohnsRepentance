@@ -22,6 +22,11 @@ import {
   creedExplanationSections,
   eucharistTeachingSections,
   fastingTeachingSections,
+  fivePillarsBaptismSections,
+  fivePillarsCommunionSections,
+  fivePillarsIncarnationSections,
+  fivePillarsResurrectionSections,
+  fivePillarsTrinitySections,
   getLessonBySlug,
   historyLessonConclusion,
   historyTeachingSections,
@@ -77,6 +82,90 @@ function renderRichParagraph(paragraph: string): ReactNode {
   return parts.length > 0 ? parts : paragraph
 }
 
+function renderLessonParagraph(paragraph: string) {
+  const orderedMatch = paragraph.match(/^(\d+\.)\s+(.*)$/)
+  const alphaMatch = paragraph.match(/^([a-z]\))\s+(.*)$/i)
+
+  if (orderedMatch) {
+    return (
+      <div className="flex items-start gap-3">
+        <span className="mt-0.5 inline-flex min-w-[2.1rem] items-center justify-center rounded-full bg-amber-100 px-2 py-1 text-xs font-bold text-orange-800 dark:bg-orange-950/50 dark:text-amber-300">
+          {orderedMatch[1]}
+        </span>
+        <p className="flex-1 text-[1.02rem] leading-8 text-stone-700 dark:text-stone-300">{renderRichParagraph(orderedMatch[2])}</p>
+      </div>
+    )
+  }
+
+  if (alphaMatch) {
+    return (
+      <div className="flex items-start gap-3">
+        <span className="mt-0.5 inline-flex min-w-[2.1rem] items-center justify-center rounded-full border border-amber-200/80 bg-white/80 px-2 py-1 text-xs font-bold uppercase text-orange-700 dark:border-orange-900/40 dark:bg-stone-900/60 dark:text-amber-300">
+          {alphaMatch[1]}
+        </span>
+        <p className="flex-1 text-[1.02rem] leading-8 text-stone-700 dark:text-stone-300">{renderRichParagraph(alphaMatch[2])}</p>
+      </div>
+    )
+  }
+
+  return <p className="text-[1.02rem] leading-8 text-stone-700 dark:text-stone-300">{renderRichParagraph(paragraph)}</p>
+}
+
+function normalizeHeadingText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[“”"'`]/g, "")
+    .replace(/[()]/g, "")
+    .replace(/\b[i,v,x]+\b$/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+}
+
+function LessonSectionCard({
+  title,
+  paragraphs,
+  index,
+}: {
+  title: string
+  paragraphs: string[]
+  index: number
+}) {
+  const visibleParagraphs =
+    paragraphs.length > 0 && normalizeHeadingText(paragraphs[0]) === normalizeHeadingText(title)
+      ? paragraphs.slice(1)
+      : paragraphs
+
+  return (
+    <section
+      id={sectionAnchorId(title)}
+      className="group relative overflow-hidden rounded-[1.75rem] border border-amber-200/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(255,248,237,0.94))] p-6 shadow-[0_20px_55px_-34px_rgba(120,53,15,0.26)] transition-colors dark:border-orange-900/30 dark:bg-[linear-gradient(180deg,rgba(34,24,19,0.96),rgba(26,18,14,0.94))] md:p-7"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600" />
+      <div className="pointer-events-none absolute right-0 top-0 h-32 w-32 rounded-full bg-amber-200/20 blur-3xl dark:bg-orange-500/10" />
+
+      <div className="flex items-start gap-4">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 text-sm font-bold text-white shadow-[0_10px_28px_-16px_rgba(120,53,15,0.55)]">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-orange-700/80 dark:text-amber-400/80">
+            Lesson Section
+          </p>
+          <h3 className="mt-2 text-[1.45rem] font-semibold leading-tight tracking-tight text-stone-900 dark:text-white md:text-[1.6rem]">
+            {title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="mt-5 space-y-4 border-t border-amber-100/80 pt-5 dark:border-orange-900/30">
+        {visibleParagraphs.map((paragraph) => (
+          <div key={paragraph}>{renderLessonParagraph(paragraph)}</div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function sectionAnchorId(title: string) {
   return title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 }
@@ -104,6 +193,11 @@ export default async function CatechumenLessonPage({
   const isChurchLesson = lesson.slug === "ethiopian-orthodox-tewahedo-church"
   const isTrinityLesson = lesson.slug === "trinity-of-god"
   const isChristologyLesson = lesson.slug === "nature-of-our-lord-jesus-christ"
+  const isFivePillarsTrinityLesson = lesson.slug === "five-pillars-trinity"
+  const isFivePillarsIncarnationLesson = lesson.slug === "five-pillars-incarnation"
+  const isFivePillarsBaptismLesson = lesson.slug === "five-pillars-baptism"
+  const isFivePillarsCommunionLesson = lesson.slug === "five-pillars-holy-communion"
+  const isFivePillarsResurrectionLesson = lesson.slug === "five-pillars-resurrection"
   const isSacramentLesson = lesson.slug === "what-is-a-sacrament"
   const isBaptismLesson = lesson.slug === "sacrament-of-baptism"
   const isConfirmationLesson = lesson.slug === "sacrament-of-confirmation"
@@ -142,6 +236,36 @@ export default async function CatechumenLessonPage({
               "See how the Trinity is known by divine revelation",
               "Understand why this mystery matters in worship and faith",
             ]
+          : isFivePillarsTrinityLesson
+            ? [
+                "See why the Trinity is the first pillar of mystery",
+                "Learn how the Church speaks of three Persons and one essence",
+                "Review the main scriptural foundations named in the lesson",
+              ]
+            : isFivePillarsIncarnationLesson
+              ? [
+                  "Understand the Incarnation as the second pillar of mystery",
+                  "See why the Son took flesh for our salvation",
+                  "Learn how the lesson speaks of Christ's one incarnate nature",
+                ]
+              : isFivePillarsBaptismLesson
+                ? [
+                    "Understand baptism as remission, adoption, and new birth",
+                    "See the prophecies and symbols connected to baptism",
+                    "Learn how the Church applies this mystery in practice",
+                  ]
+                : isFivePillarsCommunionLesson
+                  ? [
+                      "Understand Holy Communion as real participation in Christ",
+                      "Review the prophecies and symbols named in the lesson",
+                      "See why the Church teaches the real flesh and blood of Christ",
+                    ]
+                  : isFivePillarsResurrectionLesson
+                    ? [
+                        "Understand resurrection as the fifth pillar of mystery",
+                        "Review the Church's teaching on life after death and judgment",
+                        "See how the resurrection of Christ grounds our own resurrection",
+                      ]
           : isChristologyLesson
           ? [
               "Understand the Tewahedo teaching about Christ",
@@ -242,8 +366,18 @@ export default async function CatechumenLessonPage({
     : isCreedLesson
       ? ["The Orthodox Creed", ...creedExplanationSections.map((section) => section.title)]
       : isTrinityLesson
-        ? ["Catechumen Questions", ...trinityTeachingSections.map((section) => section.title)]
-        : isChristologyLesson
+      ? ["Catechumen Questions", ...trinityTeachingSections.map((section) => section.title)]
+      : isFivePillarsTrinityLesson
+        ? fivePillarsTrinitySections.map((section) => section.title)
+        : isFivePillarsIncarnationLesson
+          ? fivePillarsIncarnationSections.map((section) => section.title)
+          : isFivePillarsBaptismLesson
+            ? fivePillarsBaptismSections.map((section) => section.title)
+            : isFivePillarsCommunionLesson
+              ? fivePillarsCommunionSections.map((section) => section.title)
+              : isFivePillarsResurrectionLesson
+                ? fivePillarsResurrectionSections.map((section) => section.title)
+      : isChristologyLesson
           ? christologyTeachingSections.map((section) => section.title)
           : isSacramentLesson
             ? [...sacramentTeachingSections.map((section) => section.title), "Question and answer"]
@@ -283,6 +417,11 @@ export default async function CatechumenLessonPage({
   const memoryVerse = catechumenMemoryVerses[lesson.slug]
   const genericTeachingSections =
     isHistoryLesson ? historyTeachingSections
+    : isFivePillarsTrinityLesson ? fivePillarsTrinitySections
+    : isFivePillarsIncarnationLesson ? fivePillarsIncarnationSections
+    : isFivePillarsBaptismLesson ? fivePillarsBaptismSections
+    : isFivePillarsCommunionLesson ? fivePillarsCommunionSections
+    : isFivePillarsResurrectionLesson ? fivePillarsResurrectionSections
     : isMatrimonyLesson ? matrimonyTeachingSections
     : isSalvationLesson ? salvationTeachingSections
     : isSaintsLesson ? saintsTeachingSections
@@ -463,11 +602,11 @@ export default async function CatechumenLessonPage({
                 <Card className="overflow-hidden border border-amber-200/60 bg-gradient-to-br from-amber-50/92 via-white/80 to-orange-50/72 shadow-[0_24px_80px_-46px_rgba(120,53,15,0.3)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                   <div className="h-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600" />
                   <CardContent className="p-6 md:p-8">
-                    <p className="text-xs uppercase tracking-[0.18em] text-orange-700 dark:text-amber-400">Lesson verse</p>
-                    <p className="mt-4 text-xl font-semibold leading-relaxed text-orange-900 md:text-2xl dark:text-amber-200">
+                    <p className="text-xs uppercase tracking-[0.24em] text-orange-700 dark:text-amber-400">Lesson Verse</p>
+                    <p className="mt-5 max-w-4xl text-2xl font-semibold leading-[1.35] tracking-tight text-orange-950 md:text-[2.2rem] dark:text-amber-100">
                       “{memoryVerse.text}”
                     </p>
-                    <p className="mt-3 text-sm font-medium uppercase tracking-[0.14em] text-stone-600 dark:text-stone-300">
+                    <p className="mt-4 text-sm font-semibold uppercase tracking-[0.22em] text-stone-500 dark:text-stone-300">
                       {memoryVerse.reference}
                     </p>
                   </CardContent>
@@ -730,18 +869,8 @@ export default async function CatechumenLessonPage({
 
                   <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                     <CardContent className="space-y-5">
-                      {trinityTeachingSections.map((section) => (
-                        <div
-                          key={section.title}
-                          className="rounded-[1.35rem] border border-amber-200/60 bg-gradient-to-br from-white to-amber-50/60 p-5 shadow-[0_12px_30px_-24px_rgba(120,53,15,0.22)] dark:border-orange-900/30 dark:from-stone-900 dark:to-orange-950/20"
-                        >
-                          <h3 className="text-lg font-semibold text-stone-900 dark:text-white">{section.title}</h3>
-                          <div className="mt-3 space-y-3 text-stone-700 dark:text-stone-300 leading-relaxed">
-                            {section.paragraphs.map((paragraph) => (
-                              <p key={paragraph}>{renderRichParagraph(paragraph)}</p>
-                            ))}
-                          </div>
-                        </div>
+                      {trinityTeachingSections.map((section, index) => (
+                        <LessonSectionCard key={section.title} title={section.title} paragraphs={section.paragraphs} index={index} />
                       ))}
                     </CardContent>
                   </Card>
@@ -750,18 +879,8 @@ export default async function CatechumenLessonPage({
                 <>
                   <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                     <CardContent className="space-y-5">
-                      {christologyTeachingSections.map((section) => (
-                        <div
-                          key={section.title}
-                          className="rounded-[1.35rem] border border-amber-200/60 bg-gradient-to-br from-white to-amber-50/60 p-5 shadow-[0_12px_30px_-24px_rgba(120,53,15,0.22)] dark:border-orange-900/30 dark:from-stone-900 dark:to-orange-950/20"
-                        >
-                          <h3 className="text-lg font-semibold text-stone-900 dark:text-white">{section.title}</h3>
-                          <div className="mt-3 space-y-3 text-stone-700 dark:text-stone-300 leading-relaxed">
-                            {section.paragraphs.map((paragraph) => (
-                              <p key={paragraph}>{renderRichParagraph(paragraph)}</p>
-                            ))}
-                          </div>
-                        </div>
+                      {christologyTeachingSections.map((section, index) => (
+                        <LessonSectionCard key={section.title} title={section.title} paragraphs={section.paragraphs} index={index} />
                       ))}
                     </CardContent>
                   </Card>
@@ -886,7 +1005,7 @@ export default async function CatechumenLessonPage({
                 </>
               ) : isPriesthoodLesson ? (
                 <>
-                  <Card className="overflow-hidden border border-amber-300/25 bg-[linear-gradient(135deg,rgba(52,33,24,0.96),rgba(31,21,17,0.94))] shadow-[0_28px_90px_-48px_rgba(120,53,15,0.38)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
+                  <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                     <CardContent className="space-y-5">
                       {priesthoodTeachingSections.map((section) => (
                         <div
@@ -906,7 +1025,7 @@ export default async function CatechumenLessonPage({
                 </>
               ) : isAnointingLesson ? (
                 <>
-                  <Card className="overflow-hidden border border-amber-300/25 bg-[linear-gradient(135deg,rgba(52,33,24,0.96),rgba(31,21,17,0.94))] shadow-[0_28px_90px_-48px_rgba(120,53,15,0.38)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
+                  <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                     <CardContent className="space-y-5">
                       {anointingTeachingSections.map((section) => (
                         <div
@@ -926,7 +1045,7 @@ export default async function CatechumenLessonPage({
                 </>
               ) : genericTeachingSections ? (
                 <>
-                  <Card className="overflow-hidden border border-amber-300/25 bg-[linear-gradient(135deg,rgba(52,33,24,0.96),rgba(31,21,17,0.94))] shadow-[0_28px_90px_-48px_rgba(120,53,15,0.38)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
+                  <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
                     <CardContent className="space-y-5">
                       {genericTeachingSections.map((section) => (
                         <div

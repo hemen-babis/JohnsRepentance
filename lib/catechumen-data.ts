@@ -1,4 +1,4 @@
-export type CatechumenSection = "Foundations" | "Core Beliefs" | "Sacrament" | "Spiritual Life" | "Completion"
+export type CatechumenSection = "Foundations" | "Core Beliefs" | "Five Pillars" | "Sacrament" | "Spiritual Life"
 
 export interface CatechumenLesson {
   id: number
@@ -75,6 +75,51 @@ export const catechumenLessons: CatechumenLesson[] = [
   },
   {
     id: 6,
+    title: "Mystery of the Trinity",
+    slug: "five-pillars-trinity",
+    description: "Learn the first pillar of mystery: the Holy Trinity, one God in three Persons.",
+    section: "Five Pillars",
+    duration: "8 min read",
+    whyItMatters: "The confession of the Trinity stands at the center of the Church's faith.",
+  },
+  {
+    id: 7,
+    title: "Mystery of Incarnation",
+    slug: "five-pillars-incarnation",
+    description: "Learn the second pillar of mystery: the Incarnation of God the Son for our salvation.",
+    section: "Five Pillars",
+    duration: "9 min read",
+    whyItMatters: "The Incarnation explains who Christ is and why salvation is possible.",
+  },
+  {
+    id: 8,
+    title: "Mystery of Baptism",
+    slug: "five-pillars-baptism",
+    description: "Learn the third pillar of mystery: Baptism as new birth, remission of sin, and adoption.",
+    section: "Five Pillars",
+    duration: "7 min read",
+    whyItMatters: "Baptism is the covenant doorway into the life of grace.",
+  },
+  {
+    id: 9,
+    title: "Mystery of the Holy Communion",
+    slug: "five-pillars-holy-communion",
+    description: "Learn the fourth pillar of mystery: Holy Communion as true participation in Christ's Body and Blood.",
+    section: "Five Pillars",
+    duration: "8 min read",
+    whyItMatters: "Holy Communion is the Church's supreme act of life and communion with God.",
+  },
+  {
+    id: 10,
+    title: "Mystery of the Resurrection of the Dead",
+    slug: "five-pillars-resurrection",
+    description: "Learn the fifth pillar of mystery: the resurrection of the dead and the last judgment.",
+    section: "Five Pillars",
+    duration: "8 min read",
+    whyItMatters: "The resurrection frames Christian hope, judgment, and eternal life.",
+  },
+  {
+    id: 11,
     title: "What is a Sacrament",
     slug: "what-is-a-sacrament",
     description: "Begin to see the sacraments as holy mysteries through which grace is received and lived.",
@@ -83,7 +128,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "This lesson prepares the learner for the sacramental path ahead.",
   },
   {
-    id: 7,
+    id: 12,
     title: "The Sacrament of Baptism",
     slug: "sacrament-of-baptism",
     description: "Discover why baptism is the gateway into the life of the Church.",
@@ -92,7 +137,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "Baptism marks rebirth, belonging, and entry into covenant life.",
   },
   {
-    id: 8,
+    id: 13,
     title: "The Sacrament of Confirmation",
     slug: "sacrament-of-confirmation",
     description: "Learn how holy chrism seals the baptized person into the life of the Spirit.",
@@ -101,7 +146,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "Confirmation completes initiation and strengthens the believer in grace.",
   },
   {
-    id: 9,
+    id: 14,
     title: "The Sacrament of Repentance & Confession",
     slug: "sacrament-of-repentance-confession",
     description: "See confession as healing, restoration, and a continuing return to God.",
@@ -110,7 +155,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "Repentance is not punishment; it is the doorway back into communion.",
   },
   {
-    id: 10,
+    id: 15,
     title: "The Sacrament of Eucharist",
     slug: "sacrament-of-eucharist",
     description: "Encounter the Eucharist as the heart of worship and participation in Christ’s life.",
@@ -119,7 +164,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "The Eucharist is the center of Orthodox sacramental life.",
   },
   {
-    id: 11,
+    id: 16,
     title: "The Sacrament of Priesthood",
     slug: "sacrament-of-priesthood",
     description: "Understand spiritual fatherhood, service, and ordained ministry in the Church.",
@@ -128,7 +173,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "It clarifies how the Church shepherds, teaches, and serves the faithful.",
   },
   {
-    id: 12,
+    id: 17,
     title: "The Sacrament of Anointing of the Sick",
     slug: "sacrament-of-anointing-of-the-sick",
     description: "Learn how the Church prays for healing in body and soul through holy anointing.",
@@ -137,7 +182,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "This sacrament reveals the Church’s pastoral care in weakness and suffering.",
   },
   {
-    id: 13,
+    id: 18,
     title: "The Sacrament of Matrimony",
     slug: "sacrament-of-matrimony",
     description: "See Christian marriage as covenant, mutual sanctification, and holy witness.",
@@ -146,7 +191,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "It shows how Orthodox life is lived not only in church, but in the home.",
   },
   {
-    id: 14,
+    id: 19,
     title: "Salvation in the Orthodox Concept",
     slug: "salvation-in-the-orthodox-concept",
     description: "Explore salvation as healing, union with God, and lifelong transformation.",
@@ -155,7 +200,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "It reframes salvation as a living path, not a single slogan.",
   },
   {
-    id: 15,
+    id: 20,
     title: "Saints’ Intercession & Veneration",
     slug: "saints-intercession-veneration",
     description: "Learn why the Church honors the saints and asks for their prayers with confidence.",
@@ -164,7 +209,7 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "It helps newcomers see the communion of saints as family, not distance from Christ.",
   },
   {
-    id: 16,
+    id: 21,
     title: "Fasting",
     slug: "fasting",
     description: "Discover fasting as a school of freedom, prayer, and spiritual discipline.",
@@ -173,31 +218,13 @@ export const catechumenLessons: CatechumenLesson[] = [
     whyItMatters: "Fasting trains the heart to desire God more deeply.",
   },
   {
-    id: 17,
+    id: 22,
     title: "Works and Faith",
     slug: "works-and-faith",
     description: "See how Orthodox life holds belief and lived obedience together.",
     section: "Spiritual Life",
     duration: "8 min read",
     whyItMatters: "This lesson guards against shallow belief and empty performance alike.",
-  },
-  {
-    id: 18,
-    title: "Bibliography",
-    slug: "bibliography",
-    description: "Gather a careful list of further reading for slower, deeper study.",
-    section: "Completion",
-    duration: "5 min read",
-    whyItMatters: "It gives the learner trustworthy next steps without overload.",
-  },
-  {
-    id: 19,
-    title: "Letter from our Lord Jesus Christ",
-    slug: "letter-from-our-lord-jesus-christ",
-    description: "Close the path with a devotional final reading that calls the heart to respond.",
-    section: "Completion",
-    duration: "4 min read",
-    whyItMatters: "The journey ends with invitation, not mere information.",
   },
 ]
 
@@ -213,6 +240,11 @@ export const catechumenSections = [
     description: "Move into the heart of Orthodox teaching about God and our Lord Jesus Christ.",
   },
   {
+    key: "Five Pillars" as const,
+    title: "Five Pillars of Mystery",
+    description: "Pause between core beliefs and sacraments to see the great mysteries that frame the Church's faith.",
+  },
+  {
     key: "Sacrament" as const,
     title: "Sacrament",
     description: "Walk through the holy mysteries that shape worship, repentance, healing, and communion.",
@@ -222,15 +254,10 @@ export const catechumenSections = [
     title: "Spiritual Life",
     description: "Learn the rhythm of salvation, fasting, the saints, and faithful living.",
   },
-  {
-    key: "Completion" as const,
-    title: "Completion",
-    description: "Finish with further reading and a final reflective invitation.",
-  },
 ]
 
 export const catechumenStats = [
-  { label: "Formation path", value: "19 lessons" },
+  { label: "Formation path", value: "22 lessons" },
   { label: "Starting point", value: "Lesson 1" },
   { label: "Designed for", value: "Newcomers" },
 ]
@@ -261,6 +288,31 @@ export const catechumenLessonRecaps: Record<string, string[]> = {
     "Our Lord Jesus Christ is truly God and truly man, the Incarnate Logos.",
     "His divine and human natures are united without mingling, confusion, alteration, or separation.",
     "The Ethiopian Orthodox Tewahedo confession is Miaphysite, meaning one united incarnate nature of the Logos, not a denial of Christ's humanity.",
+  ],
+  "five-pillars-trinity": [
+    "The Ethiopian Orthodox Church teaches the Mystery of the Trinity as one God in three Persons.",
+    "The Father, the Son, and the Holy Spirit are three in name, person, and deed, yet one in essence, divinity, existence, and will.",
+    "This mystery stands as the first pillar supporting the confession of faith.",
+  ],
+  "five-pillars-incarnation": [
+    "The Mystery of Incarnation teaches that God the Son came down from heaven and took flesh and soul from the Holy Virgin Maryam.",
+    "Our Lord Jesus Christ is confessed as one incarnate nature of God the Word without change, confusion, separation, or division.",
+    "The Incarnation reveals the reason for salvation and the union of divinity and humanity in Christ.",
+  ],
+  "five-pillars-baptism": [
+    "Baptism is given for the remission of sin, adoption by the Triune God, and inheritance of the kingdom of God.",
+    "It is called a mystery because the water becomes the water of grace through the prayer of the Church.",
+    "The Ethiopian Orthodox Church teaches that whoever believes and is baptized shall be saved.",
+  ],
+  "five-pillars-holy-communion": [
+    "The Mystery of the Holy Communion is the supreme act of life and intimate communion with God.",
+    "The bread and wine are changed into the real flesh and blood of the Son of God through the liturgical blessing.",
+    "The Church teaches this mystery as real participation in Christ, not a mere symbol.",
+  ],
+  "five-pillars-resurrection": [
+    "The Mystery of the Resurrection of the Dead teaches life after death and the final resurrection of all.",
+    "Both the righteous and the unrighteous will rise when Our Lord comes again in glory to judge the living and the dead.",
+    "The Church's hope in resurrection rests on the resurrection of Our Lord and Savior Eyesus Christos.",
   ],
   "what-is-a-sacrament": [
     "A sacrament is a holy mystery in which visible signs communicate invisible grace.",
@@ -342,6 +394,26 @@ export const catechumenMemoryVerses: Record<string, { reference: string; text: s
   "nature-of-our-lord-jesus-christ": {
     reference: "Matthew 16:15",
     text: "But who do you say that I am?",
+  },
+  "five-pillars-trinity": {
+    reference: "Matthew 28:19",
+    text: "Baptizing them in the name of the Father and of the Son and of the Holy Spirit.",
+  },
+  "five-pillars-incarnation": {
+    reference: "John 1:14",
+    text: "And the Word became flesh and dwelt among us.",
+  },
+  "five-pillars-baptism": {
+    reference: "John 3:5",
+    text: "Unless one is born of water and the Spirit, he cannot enter the kingdom of God.",
+  },
+  "five-pillars-holy-communion": {
+    reference: "John 6:56",
+    text: "He who eats My flesh and drinks My blood abides in Me, and I in him.",
+  },
+  "five-pillars-resurrection": {
+    reference: "John 5:28-29",
+    text: "All who are in the graves will hear His voice and come forth.",
   },
   "what-is-a-sacrament": {
     reference: "Proverbs 9:1",
@@ -1334,97 +1406,294 @@ export const trinityCatechism = [
 
 export const trinityTeachingSections: TeachingSection[] = [
   {
-    title: "Introduction",
+    title: "Opening Verse",
     paragraphs: [
-      "One day St. Augustine was walking on the sandy beach by the sea. There churned in his mind the mystery of the Holy Trinity. He was talking to himself, “One God, but Three Persons. Three Persons, not three gods but One God. What does it mean? How can it be explained? How can my mind take it in?”",
-      "As he was tormenting his mind and beating his brain, he saw a little boy on the beach. The child had dug a small hole in the sand. With his little hands he was carrying water from the sea and dumping it into the little hole. St. Augustine asked, “What are you doing, my child?” The child replied, “I want to put all the water of the sea into this hole.”",
-      "St. Augustine asked again, “But is it possible for all the water of this great sea to be contained in this little hole?” The child answered, “If the water of the finite sea cannot be contained in this little hole, then how can the Infinite Triune God be contained in your mind?” Then the child disappeared; he was actually an angel.",
-      "The doctrine of the Holy Trinity is not merely an article of faith that men are called to believe. It is not simply a dogma that the Church requires her members to accept. Neither is it the invention of scholars or the result of intellectual speculation. The doctrine of the Holy Trinity arises from God’s own revelation about Himself. God is known only as He makes Himself known to us through the revealing and saving agency of His Word and Spirit.",
-      "The lesson places over this teaching the verse, “Let Us make man in Our image, according to Our likeness” (Gen 1:26), using it as the opening scriptural witness that the Church reads in the light of full revelation.",
-    ],
-  },
-  {
-    title: "How God reveals Himself",
-    paragraphs: [
-      "God revealed Himself through Himself, through the incarnation of His Son among us as our Saviour and by the power of His Spirit. The Christian doctrine of God is therefore inescapably and essentially Christocentric, for it pivots upon God’s self-revelation and self-communication in the incarnation.",
-      "This does not mean that all our knowledge of God can be reduced to Christology, but that all authentic knowledge of God is derived and understood in accordance with the incarnate reality of God’s self-revelation in our Lord Jesus Christ.",
-      "It is with the same force that our knowledge and worship of God include the Holy Spirit. The Holy Spirit is no less divine than the Son. How could the Spirit pour the love of God into our hearts, mediate the Lord Jesus Christ to us, and make Christ present to us, if the Spirit were not Himself divine like the Father and the Son and of one and the same Being with them?",
-      "Apart from the communion of the Holy Spirit we could not enjoy the grace of the Lord Jesus Christ and the love of God the Father. God reveals Himself through Himself, and what God communicates to us is not something of Himself but His very Self, true God from true God.",
-      "That is the central truth upon which the Christian conception of God and of His saving activity depends, as the great theologians and councils made clear in the fourth century in their use of the term homoousion: consubstantial, of one substance, of one and the same Being with the Father.",
-      "The Gospel does not merely present God as Father, Son, and Holy Spirit for our sake. God really is Father, Son, and Holy Spirit in Himself, and reveals Himself as such. Therefore, the economic Trinity and the theological Trinity are not to be separated from one another.",
+      "“Let Us make man in Our image, according to Our likeness.” (Gen 1:26)",
     ],
   },
   {
     title: "The Triunity of God",
     paragraphs: [
-      "When we look into the Trinitarian content of this self-revelation of God as Father, Son, and Holy Spirit, One Being and Three Persons, we become aware of its unique and exclusive nature. To believe in God as a Trinity in His eternal Being means renouncing every form of unitarianism as well as every form of polytheism.",
-      "The Holy Trinity is a Unity and the Unity is a Trinity, for God is Triune in Himself and it is in a triune way that God makes Himself known to us. There is no One Being apart from the Three Persons, and there are no Three divine Persons apart from the One Being.",
-      "At the same time, although God reveals Himself truly, He is not comprehended by us fully. Even in His condescension to reveal Himself, God infinitely exceeds what we can grasp or conceive. As St. Paul says, “Now I know in part” (1 Cor. 13:12).",
-      "This means that faithful teaching on the Trinity moves from Unity to Trinity and from Trinity to Unity, because God is only God as He is Father, Son, and Holy Spirit.",
-      "The lesson also keeps St. Paul's words in view: “Now I know in part, but then I shall know just as I also am known” (1 Cor 13:12).",
-      "As St. Gregory Nazianzen said, “No sooner do I place before the mind the One, than I am surrounded by the splendor of the Three. No sooner do I distinguish the Three, than I am brought back to the One.”",
-      "The fathers and theologians of the early Church reflected that the right way to break through into a new realm of truth is the way of faith. Hence the principle widely proclaimed in the Church: unless you believe, you will not understand.",
-      "It must also be said that while the Triune God reveals Himself as a whole and is the object of our knowing as a whole, this does not mean that we can know Him wholly or comprehensively. In His transcendent wholeness God eludes our comprehension. What God allows us to apprehend breaks through the narrow confines of our grasp, so that in apprehending something of Him we know we are incapable of comprehending Him fully.",
+      "Lecture VII: The Triunity of God",
+    ],
+  },
+  {
+    title: "St. Augustine and the Mystery",
+    paragraphs: [
+      "One day St. Augustine was walking on the sandy beach by the sea. There churned in his mind the mystery of the Holy Trinity. He was talking to himself, “One God, but Three Persons. Three Persons—not three gods but One God. What does it mean? How can it be explained? How can my mind take it in",
+      "And so he was tormenting his mind and beating his brain, when he saw a little boy on the beach. He approached him to see what he was doing. The child had dug a small hole in the sand. With his little hands he was carrying water from the sea and was dumping it in the little hole. St. Augustine asked, “What are you doing, my child?” The child replied, “I want to put all the water of the sea into this hole.”",
+      "Once more St. Augustine asked, “But is it possible for all the water of this great sea to be contained in this little hole?” And the child asked him in return, “If the water of the finite sea cannot be contained in this little hole, then how can The Infinite Triune God be contained in your mind?” And the child disappeared; he was actually an angel!",
+    ],
+  },
+  {
+    title: "The Doctrine Comes from Revelation",
+    paragraphs: [
+      "The doctrine of The Holy Trinity is not merely an “article of faith” which men are called to“believe.” It is not simply a dogma, which the Church requires its members to “accept in faith.” Neither is the doctrine of The Holy Trinity the invention of scholars and the result of intellectual speculation or philosophical thinking. The doctrine of the Holy Trinity arises from God’s Own revelation about Himself; God being God, all our knowledge of Him comes by divine revelation, for it is impossible for us to know God without His willingness to be known. God is known only as He makes Himself known to us through the revealing and saving agency of His Word and Spirit.",
+    ],
+  },
+  {
+    title: "Revelation Through the Son",
+    paragraphs: [
+      "God revealed Himself through Himself, through the incarnation of His Son among us as our Saviour and by the power of His Spirit. The Christian doctrine of God is thus inescapably and essentially Chr1'st0centrz'c, for it pivots upon God’s self-revelation and self-communication in the incarnation, in an objective manifestation, an imprint of the divine Hypostasis, which is identical with the very Being of God Himself. This does not mean that all our knowledge of God can be reduced to Christology, but that, as there is only one Mediator between God and man, who is Himself both God and Man, and only one revelation of God in which He Himself is its actual content, all authentic knowledge of God is derived and understood in accordance with the incarnate reality of God’s self-revelation in Lord Jesus Christ, and is formulated in doctrinal coherence with Christology. This is to say that doctrinal statements about God are possible and true only when Christologically grounded, for only in Lord Jesus Christ do we really have to do with an objective personal self-revelation of God which bridges the distance between God and us and which is identical with the very Being of God Himself.",
+    ],
+  },
+  {
+    title: "The Holy Spirit and Divine Self-Revelation",
+    paragraphs: [
+      "It is with the same force that our knowledge and worshipping of God include the Holy Spirit. As He sends through the Son to dwell with us and open our mind toward Himself beyond ourselves, and thus to complete the circle of God's own self revelation and self imparting movement in us whereby He enables us to respond to Him in faith and understanding, the Holy Spirit is no less divine than the Son. How could the Spirit pour the love of God into our Hearts, how could the Spirit mediate Lord Jesus Christ to us, and how could our Lord Jesus be present to us in the Spirit, if the Spirit How could the Spirit pour the love of God into our hearts, how could the Spirit mediate Lord Jesus if the Spirit were not Himself divine like the Father and the Son and of one and the same Being (Homoousios) with them? Like the Son of God the Holy spirit is no mere cosmic power intermediate between God and the world, but is the very Spirit of God who eternally dwells in Him and in whom God knows Himself, so that for us to know God in His Spirit is to know Him in the hidden depths of His Triune Being as Holy Spirit as well as Father and Son.",
+      "Apart from the communion of the Holy Spirit we could not enjoy the Grace of the Lord Jesus Christ and the love of God the Father. Only because God has actually made Himself known to us can we speak of Him in this way. This self-revelation of God to us as Father, Son and Holy Spirit provides for us the immediate ground in human existence and history where God may be known as He is in His Triune Reality. The immediate ground on which we actually know God in His historical self—revelation is one and the same with the ultimate ground that God Himself eternally is, for in Lord Jesus Christ and in the Holy Spirit God is wholly identical with the content of His self-revelation and self-communication.",
+      "God reveals Himself through Himself, and what God communicates to us is not something of Himself but His very Self, true God from true God. In Him the Revealer and the Revealed, the Giver and the Gift are of one and the same Being. In Lord Jesus Christ God has revealed Himself and given Himself to us unreservedly in the fullness of His divine Reality, in such a way that what He reveals and gives us is grounded in His ultimate Being as God.",
+    ],
+  },
+  {
+    title: "The Deity of Christ and Homoousion",
+    paragraphs: [
+      "That is the central truth, the Deity of Lord Jesus Christ, upon which the Christian conception of God and of His saving activity depends, as the great theologians and councils made clear once for all in the fourth century in their formulation of the crucial concept of the homoosion applied to the Son and the Spirit as the key truth they had to maintain against threats to the Gospel from every side. At this point, it is appropriate to introduce the terms ‘immanent or theological Trinity’conomic Trinity’. The first term refers to our conceptions of God in His eternal Being and the second refers to our conceptions of God that arise out of the economy of God’s saving revelation in history.",
+    ],
+  },
+  {
+    title: "Economic and Theological Trinity",
+    paragraphs: [
+      "In the Gospel God does not just appear to us as Father, Son, and Holy Spirit, for He really is Father, Son, and Holy Spirit in Himself, and reveals Himself as such. Therefore, the economic Trinity and theological Trinity are not to be separated from one another for they are locked together in God’s threefold self-revelation and self-communication to us as Father, Son, and Holy Spirit. While for St. Athanasius economy and theology must be clearly distinguished, they are not to be separated from each other. If the economic Trinity and the theological Trinity were disparate, this would bring into question whether God Himself was the actual content of His revelation, and whether God Himself was really Lord Jesus Christ reconciling the world to Himself.",
+      "That is the significance of the term homoousion (‘consubstantial’, of one substance, or of one and the same Being with the Father) formulated by the council of Nicea in 325 AD. If there is no real bond in God between the economic Trinity and the theological Trinity, the saving events proclaimed in the economy of the Gospel would be without any divine validity and the doctrine of the Trinity would be lacking any ultimate divine truth. The Trinitarian message of the Gospel tell us that the very contrary is the case, for in Lord Jesus Christ and in the Holy Spirit we really have to do with the Lord God Himself as our Saviour.",
+    ],
+  },
+  {
+    title: "Unity and Trinity",
+    paragraphs: [
+      "When we look into the Trinitarian content of this self- revelation of God as Father, Son and Holy Spirit, One Being (0usia), Three Persons (Hypostasis) we become even more aware of its intrinsically unique and exclusive nature, for to believe in God as a Trinity in His eternal Being, means renouncing every form of Unitarianism as well as of polytheism. In fact to conceive of God as Unity and Trinity, Trinity and Unity, is the most exclusive of all possible conceptions of God, not only because there is no humanly explicable way of thinking of the Three as One and the One as Three, but because of the unique Nature of God who is Father, Son, and Holy Spirit in His one eternal Being. However, we may and surely must say that the Three Persons are integrated in the One Being and the One Being is integrated in the Three Divine Persons, such that there is no One Being apart from the Three Persons, and there are no Three divine Persons apart from the One Being.",
+      "The Holy Trinity is a Unity and the Unity is a Trinity, for God is Triune in Himself and it is essentially in a triune way that God makes Himself known to us. In our knowing of the Triunity of God, we are engaged in a kind of knowing in which we move from the ‘whole’ to the ‘parts’, and from the ‘parts’ to the ‘whole’, understanding the ‘parts’ in the light of the ‘whole’ and the ‘whole’ in the light of the ‘parts’.",
+      "This way of speaking of the ‘whole’ and ‘parts’, however, is not strictly appropriate to God’s Triune self- revelation as Unity and Trinity and Trinity and Unity, for the three divine Persons may not be thought of as ‘parts’ of the Trinity nor may the Trinity be thought of as a ‘whole’ composed of parts’. Neither is it appropriate to our apprehension of the Holy Trinity, although it may be more appropriate when we are speaking of the ‘doctrine’ of the Trinity as a whole and the distinct doctrines’ of the Father, of the son, and of the Holy Spirit.",
+    ],
+  },
+  {
+    title: "The Limits of Our Understanding",
+    paragraphs: [
+      "It must also be pointed out, however, that while the Triune God reveals Himself as a whole and while it is as a whole that God is the object of our knowing, this does not mean that we can know Him wholly or have a comprehensive knowledge of Him, for in His transcendent wholeness, God eludes our comprehension.",
+      "What God does allow us to apprehend of Himself breaks through the narrow confines of our grasp, so that in the very act of apprehending something of Him we know that we are incapable of comprehending Him. Even in His condescension to reveal Himself to us God infinitely exceeds what we can grasp or conceive, so that our knowledge of the whole God cannot but be ‘in part’ or ‘partial’ as St. Paul said, “Now I know in part, but then I shall know just as I also am known.” (1 Cor 13:12)",
+      "All this means that in a faithfiul account of the doctrine of the Holy Trinity our thoughts cannot but engage in a deep circular movement from Unity to Trinity and from Trinity to Unity, for we are unable to speak of the whole Trinity without already speaking of the three particular Persons of the Trinity or to speak of any of the three Persons without presuming knowledge of the whole Triunity, for God is only God as He is Father, Son, and Holy Spirit. It was said above, with some reservation, that in our knowing of the Triunity of God we engage in a kind of knowing in which we move from the ‘whole’ to the ‘parts’ and from the ‘parts’ to the ‘whole’.",
+      "The reason for the reservation is due to the fact that the Oneness of the Holy Trinity is a three-in-oneness, that is, a wholeness which includes the three divine Persons such that each divine Person is Himself whole God, so that the usual way of thinking in terms of the whole and the parts does not apply. As St. Gregory Nazianzen said, “No sooner do I place before the mind the One, than I am surrounded by the splendor of the Three.",
+    ],
+  },
+  {
+    title: "St. Gregory and the Way of Faith",
+    paragraphs: [
+      "No sooner do I distinguish the Three, than I am brought back to the One. When any one of the Three appears to me I think of Him as a whole; my eyes are filled and the greater part escapes my eye. I cannot comprehend the magnitude of the One, so as to impart a greater greatness to the Rest. When, again, I consider the Three together, I perceive but one splendor, and I cannot divide or measure the light that is one.",
+      "” (Oration XL. In sanctum bqotisma, 41, PG 36:4l7C.)",
+      "The fathers and theologians of the Early Church reflected upon the fact that, since the proof of an unknown reality is its own evidence and the conceptual assent or basic belief it calls forth from people, the right way for people to break through into a completely new realm of meaning or truth is the way of faith- hence the principle widely promulgated in the Church: Unless you believe you will not understand. This is certainly the case whenever we have to do with ultimate which carry their own authority calling for the intelligent commitment of belief, and provide the irreducible ground upon which rational knowledge and theological formulation take place.",
+      "* This lecture is adapted from The Christian Doctrine of God’ One Being Three Persons by T. F. Torrance",
+    ],
+  },
+]
+
+export const fivePillarsTrinitySections: TeachingSection[] = [
+  {
+    title: "Five Pillars of Mystery",
+    paragraphs: [
+      "1. FIVE PILLARS OF MYSTERY (አምስቱ አእማደ ሚስጢር - AMISTU AEMADE MYSTIR)",
+      "The Ethiopian Orthodox Church has Five Pillars of Mystery through which it teaches and demonstrates its basic religious belief. They are called Pillars of Mystery due to the fact that they support and strengthen the faithful in religious teachings as a pillar supports a roof. These mysteries have Biblical foundation (1Cor. 14:19). Accordingly, the five pillars of mystery are expressed in the Creed, which is the confession of our faith.",
+    ],
+  },
+  {
+    title: "Mystery of the Trinity (ሚስጥረ ሥላሴ)",
+    paragraphs: [
+      "In this section, the mystery of Unity and Trinity of the Triune God is described.",
+      "The Holy Trinity is three in name, in person (Akal), in deed and one in essence, in divinity, in existence, in will.",
+      "Three in name (በስም):- Father, Son, Holy Spirit (አብ- Ab፣ ወልድ - Wold፣  መንፈስ ቅዱስ-Menfes Qidus",
+      "Three in deed (በግብር):- the Father is the begetter, the Son is begotten, the Holy Spirit is the one who proceeds.",
+      "Three in person (በአካል):- the Father has a perfect person, the Son has a perfect person the Holy Spirit has a perfect person.",
+      "The Father is the heart, the Son is the word, and the Holy Spirit is the life (breath). The Father is the heart for Himself, and He is the heart for the Son and for the Holy Spirit. The Son is the word for Himself, and He is the word for the Father, and for the Holy Spirit. And the Holy Spirit is the life (breath) for Himself, and He is the life (breath) for the Father and the Son. Even though we say the Trinity are three in name, in deed and in person; the three are one in essence, in divinity, in existence and in will; we do not mean three Gods but one God. While the Father and the Son and the Holy Spirit exist in their own perfect person, they are one in existence. (Abulidis, Faith of the Father’s Chap. 40 Verse 4:6).",
+      "As Ignatius has said in the Book of the Faith of the Fathers (Haimanote Abew - ሀይማኖተ አበው) the name of the Father is not changed to be the name of the Son or the Holy Spirit. The name of the Son is not changed to be the name of the Father or the Holy Spirit, the name of the Holy Spirit is not changed to be the name of the Father or the Son. The Father is called Father but not the Son or the Holy Spirit. The Son is called Son but not the Father or the Holy Spirit. The Holy Spirit is called the Holy Spirit but not the Father and the Son. The Father is the Father, the Son is the Son, and the Holy Spirit is the Holy Spirit. The three exist eternally in their own name and person. (Faith of the Fathers Ch. 11 part 1 Verse 7.8).",
+      "In their name of unity, the three are called Lord, God. Lord the Father, Lord the Son, and Lord the Holy Spirit One Lord. God the Father, God the Son, God the Holy Spirit One God. The three hundred eighteen fathers in The Book of Faith (Haimanote Abew) said “we believe in Lord the Father, in Lord the Son, in Lord the Holy Spirit. (Hai. Ab. Ch. 19 Part 1 Verse 30).",
+      "The unity of God is confessed as the unity of Godhead – Melekote. The Father beget His son without days or hours; and when He beget Him, His Father was not separated from Him. Beyond time, God is the eternal One. That One is Father, Son and Holy Spirit. No one of the three Persons is prior to the other two in time. The Apostolic St. Athanasius Archbishop of Alexandria said “The Father is God, the Son is God, and the Holy Spirit is God. They are called one God but not three Gods.” (Apostolic Athanasius Faith of the Fathers Ch. 24 Part 4 Verse 4). It is stated in many places in the Old and the New Testament Books about the Oneness and Trinity of the Holy Trinity.",
+      "In the Old Testament Gen. 1:26; 2:18; 3:22; 11:7; 18:1-8; Ps. 33:6; 146:5; Isa. 6:3,8",
+      "In the New Testament Mt. 3:16-17; 28:19; Jn. 14:26; 2Cor. 14:13; 1Pet. 1:2; 1Jn. 5:7-8",
+    ],
+  },
+]
+
+export const fivePillarsIncarnationSections: TeachingSection[] = [
+  {
+    title: "Mystery of Incarnation (ሚስጥረ ስጋዌ)",
+    paragraphs: [
+      "Mystery of Incarnation means the mystery of the descending of God the Son who is one of the Trinity from heaven and taking up flesh and soul from Our Holy Mother Virgin Maryam. This is the mystery of God becoming man and man becoming God. “The word became flesh and dwelt among us.” (Jn. 1:14). Therefore the word “Tewahedo” affirms that Our Lord and Savior Eyesus Kristos is not two natures, but one incarnate nature of God the Word.",
+      "The Reason for the Incarnation: The Son of God created Adam and Eve without sin and death. “God did not make death”. But, man, through his transgression brought on himself misery and suffering as well as sin and evil, and was condemned to death-death of body and soul, grave and hell (Gen.3:19-24). “For God did not make death, He takes no pleasure in destroying the living. Do not court death by the errors of your ways, nor invite destruction through the work of your hands. To exist for this he created all things the creatures of the world have health in them, in them is no fatal poison, and Hades has no power over the world. But the godless call for death with deed and word, counting him friend, they were themselves out for him; with him they make a pact, working as they are to belong to him” (Wis. 1:12-16; Rom. 6:23). “For God hath not appointed us to wrath, but to obtain salvation by Our Lord and savior Eyesus Christos” (1Thes. 5:9). Adam and Eve disgraced and impoverished themselves. They were expelled from the Garden of Eden. They brought suffering and misery and were subject to the dominion of the devil. Death reigned from Adam to Our Lord and Savior Eyesus Christos, even to them that had not sinned. (Rom. 5:12-14). They knew that, all that happened due to their transgression and violation of the commandment of God. They regretted and repented. They cried to their Creator seeking mercy. God in his forgiveness along with his judgment, hearing their cry, observing their tears and accepting their repentance, was pleased to redeem them, and gave them promise. (Isa. 63:8; Heb. 2:14-16). When the appointed time had come forth, God sent His only Begotten Son, according to the promise. God the Son, descended from heaven and was born from Our Holy Mother Virgin Maryam. He was born so that all who believe in Him would be saved. When it is said, that He became man, it is said to mean that He united to himself the body and soul of man. Then all the words of the prophets were fulfilled. (Isa. 7:14, 9:6; Mich. 5:2; Gal. 4:4). Without separation of His Divinity from His humanity and His humanity from His Divinity, He became one person, one nature without change, without confusion, without separation and without division. “He is one Son and Christos before and after His Incarnation” (Cyril. Faith of the Fathers Ch. 78 Part 48 Verse 9-18). St. Gregory of Nazianzium said “He is the only God the Son who became man and the only man who became God in unity” (Faith of the Fathers Ch. 61 part 4 Verse 23). John Chrysostom has written that the human body was honored by the union of the Divine Word. The poverty in the nature of the flesh was abolished by the Unity of the Word of God with the flesh, and the flesh retained the glory of the word of God to itself by the unity. (Jn. Chrysostom, Faith of the Fathers Ch. 66 part 9 Verse 18-19).",
+      "After birth He grew like men, doing all human works except sin. He taught 33 years and 3 months in the world. For us men he died on the Cross, destroyed death by his death and saved the world. He was laid in the tomb for three days and three nights; rose from the dead on the third day; appeared to His disciples, stayed on earth for forty days, gathering His disciples and teaching them the Book of the Covenant. On the fortieth day, while the disciples beheld, He ascended unto heaven to the Father in glory praised by angels, sat at the right hand of His Father, and will come again to judge the living and the dead, when everyone will be recompensed according to his work. (Jn. 3:13; 1 Pet. 3:22; Mt. 25:31; Eph. 4:8-10; Acts 2:30; 2 Cor. 5:14). Therefore, the teaching highlighted in the mystery of Incarnation is to believe that Our Lord and Savior Eyesus Christos is the Word of the Father and of the Holy Spirit, thus Our Holy Mother Virgin Mariam is the true Mother of God; the Mother of the Word. (Cyril Hai. Ab.). This mystery also teaches us the two births of the son, His birth before the world from the Father without a mother, and his birth from the Virgin Mariam without a father.",
+    ],
+  },
+]
+
+export const fivePillarsBaptismSections: TeachingSection[] = [
+  {
+    title: "Mystery of Baptism (ሚስጥረ ጥምቀት)",
+    paragraphs: [
+      "Baptism is the sacrament given to all who believe in the Mystery of the Trinity and the Mystery of Incarnation for the remission of sin, to obtain adoption from the Triune God, to inherit the kingdom of God. It is called mystery, because, when the priest recites the prayer of baptism over the water and blesses it, it will be changed and become the water that flowed from the right side of Our Lord and Savior Eyesus Christos and one can receive the invisible grace of the adopted son-hood of God (Jn. 19:34-35). Whosoever believes and is baptized shall get remission of sin. “We believe in one baptism for the remission of sin” (Creed). Every person is born from God through baptism, and will be free from damnation. “He that believes and is baptized shall be saved; but he that believeth not shall be damned” (Mk. 16:16; Acts 2:28). To be born of the Trinity is for inheriting the kingdom of God. Our Lord has taught us that we cannot enter the kingdom of God except through baptism. “Verily, verily I say unto thee, except a man be born of water and Spirit, he cannot enter into the kingdom of God.” (Jn. 3:5; Tit. 3:4-7).",
+      "There were prophecies and symbols foretold by the laws and the prophets about Baptism.",
+      "Prophecy: - Then will I sprinkle clean water upon you, and ye shall be clean. (Ezek. 36:25; Mich 7:19)",
+      "Symbols",
+      "1) Circumcision: - Circumcision in the Old Testament was practiced as a sign of baptism. It was given to Abraham as a token of the Covenant. Every one that was not circumcised on the eighth day after birth was to be cut off from his people, shared not from the promise and shall have no portion from the Promised Land. The uncircumcised were not considered as the nation of God. (Gen. 17:7-14).",
+      "In the New Testament, circumcision was replaced by Baptism. Every one that is not baptized was not born of God, and cannot inherit the heavenly kingdom. (Col. 2:11).",
+      "2) The Ark of Noah and the crossing of Israelites across the Red Sea were symbols of baptism. (1 Pet. 3:19; 1 Cor. 10:2)",
+      "To fulfill the prophesy and to make the archetype real,  Our Lord and Savior Eyesus Christos was baptized in the water of the River Jordan by the hand of John the Baptist. (Mt. 3:16; Mk. 1:9; Lk 3:21; Jn. 1:31). The Ethiopian Orthodox Church baptizes children, males on the fortieth day and females on the eightieth day. This signifies that the first persons obtained adoption from God. (Jubilee 4:2-15).",
+    ],
+  },
+]
+
+export const fivePillarsCommunionSections: TeachingSection[] = [
+  {
+    title: "Mystery of the Holy Communion (ሚስጥረ ቁርባን)",
+    paragraphs: [
+      "Mystery of the Holy Communion is a supreme act of life through which we can hold intimate communion with God and that which makes us one with God. “Verily, verily, I say unto you, except ye eat the flesh of the Son and Man, and drink his blood, ye have no life in you.” “Who so eateth my flesh, and drinketh my blood hath eternal life. My flesh is meat indeed, and my blood is drink indeed, for it is a real food. He that eateth my flesh, and drinketh my blood, dwelleth in me, and I in him.” (Jn. 6:53-57).",
+      "There are prophecies and symbols given about the Holy Communion.",
+      "1. Prophecy",
+      "“Thou has put gladness in my heart, more than in the time that their corn and their wine has increased”. (Ps. 4, 7).",
+      "“Wisdom has built her house, she has hewn out her seven pillars. She has killed her beasts; she hath mingled her wine; she hath also furnished her table; she hath sent forth her maidens: she cries up on the highest place of the city.” (Prov. 9:1-3).",
+      "“The prime needs of human beings for living are water, wheat...and juice of grape”. (Sirach 39:26).",
+      "These prophecies were foretold about Our Lord and Savior Eyesus Christos, the Lamb of Passover, who was crucified on the cross as to give His flesh and blood in the form of bread and wine.",
+      "2. Symbols",
+      "When the children of Israel were liberated from the bondage and went out of Egypt, they were told to kill a lamb, eat the flesh, take the blood and sprinkle it on the two side posts and on the upper door post of the houses, in order to get security from the plague of the firstborn. This was applied as a symbol of Our Lord and Savior Eyesus Christos the Son of God, who was crucified and gave his flesh and blood as a ransom to the children of men. “This is the lamb of God, who takes away the sin of the world.” (Jn. 1:29).",
+      "Melchizedek, who is the archetype of the priesthood of Our Lord and Savior Eyesus Christos, the Son of God, offered a sacrifice in the form of bread and wine. (Gen. 14:18).",
+      "To fulfill these prophecies and realize the symbols, examples, Our Lord and Savior Eyesus Christos on Thursday evening at the Passover, took the bread, blessed it and broke it and gave it to His disciples and said, this bread which I give you is my flesh. In the same manner He took the cup, blessed it and gave it to his disciples, saying “this is my blood which will be shed for you and for many people, for the new covenant, for the remission of sin. (Mt. 26, 28; Mk. 14:22; Lk. 22:19). This mystery is always performed in the Ethiopian Orthodox Tewahedo Church. When the priest puts bread on a paten (ፃህል-T͟sahili) and the wine in a chalice (ፅዋ-Tsiwa) and blesses them with the liturgical prayer, the bread and the wine are changed into the real flesh and blood of the Son of God. This was made clear by the scholar St. Athanasius-when he said “we believe, that the bread and the wine are bread and wine before they are blessed by the priest, but after they are blessed by the priest the bread and the wine are changed to the real flesh and blood of the Son of God.” (Ath. Faith of the Father Ch.28 Part 14 Verse 22).",
+      "Therefore, the Holy Communion which the disciples received on Thursday evening, that which was crucified on the cross on Friday, and that which is being practiced at every corner to the end of the world is one and the same. The Ethiopian Orthodox Church believes and teaches, that the flesh and blood is not simply a memorial or symbolic but real flesh and blood of the Son of God. The pure sacrifice that the clergy offers is the same sacrifice that was given up on the cross on Calvary. (Jn. Chr. Liturgy 85).",
+    ],
+  },
+]
+
+export const fivePillarsResurrectionSections: TeachingSection[] = [
+  {
+    title: "Mystery of the Resurrection of the Dead (ሚስጥረ ትንሳኤ ሙታን)",
+    paragraphs: [
+      "Resurrection is the Mystery of life after death. All those who have departed from the time of Adam, and will pass away until the second coming of Our Lord and Savior Eyesus Christos, will be risen in the union of body and soul. The souls of the righteous shall abide in paradise and the souls of sinners in hades until the end of this world. But on the last day, when Our Lord and Savior Eyesus Christos shall come in His glory, to judge the living and the dead, the souls shall be united with their bodies on the day of resurrection and they shall rise from the dust of the earth. (Lk. 16:19-31). “Marvel not at this: for the hour is coming; in which all that are in the graves shall hear His voice and shall come forth; they that have done good, unto the resurrection of life; and they that have done evil, unto the resurrection of damnation.” (Jn. 5:28).",
+      "Many passages could be cited from the Old and New Testament books about the doctrine of death and the afterlife. The word of God in Deuteronomy 32:39 “I kill, and I make alive” shows the hope of resurrection. Isaiah the prophet says “The dead men shall live, together with my dead body shall they arise. Awake and sing, ye that dwell in dust: for thy dew is as the dew of herbs, and the earth shall cast out the dead.” (Isa. 26:19-20). Daniel the prophet has written “... and at that time thy people shall be delivered, everyone that shall be found written in the book. And many of them that sleep in the dust of the earth shall awake, some to shame and everlasting contempt. And they that be wise shall shine as the brightness of the firmament; and they that turn many to righteousness as the stars forever and ever”. (Dan. 12:1-3). Job said “For I know that my redeemer liveth, and that he shall stand at the latter day, upon the earth: And though after my skin worms destroy this body, yet in my flesh shall I see God: whom I shall see for myself and mine eyes shall behold, and not another.” (Job. 19:25-27)",
+      "The teaching of the resurrection of the dead is not only told orally. It has been proved in practice when many among the departed came forth out of the grave and appeared in public. The prophets Elijah and his disciple Elisha raised the dead. (1Kgs. 17:21; 2Kgs. 13:21). Our Lord and Savior Eyesus Christos and his disciples raised the dead in their ministry during the proclamation of the gospel. (Mt. 9:25; Lk. 7:15; Jn. 11:14). Likewise, the Apostles also raised the dead during their apostolic ministry. On the day of the crucifixion of Our Lord and Savior Eyesus Christos the graves were opened and bodies of many saints came out. (Mt. 27:52). All these prove the truth of the resurrection. All those that sleep in the dust of the earth shall come to life at the last judgment. Our belief in our resurrection is based on the resurrection of Our Lord and Savior Eyesus Christos. “Knowing that He which raised up the Lord Jesus shall raise up us also by Jesus, and shall present us with you.” (2 Cor. 4:14). The Church scholars Amoneos and Eusabios said “Our Lord and Savior Eyesus Christos is risen, in order to make it known to us that our body shall arise”.",
+      "Resurrection is for all human beings. Both the righteous and un-righteous arise. The final resurrection awaits the last day at the second coming of Our Lord and Savior Eyesus Christos. Our Lord and Savior Eyesus Christos shall come in His glory at the end of the world to judge the living and the dead. (Ps. 50:2; Mt. 25:31-32; Rev. 1:7).",
+      "At that time, He shall send forth His angels with a great sound of a trumpet. The dead shall arise. The earth will restore that which was entrusted to it. Then He shall set the righteous on his right hand, but the sinners on the left hand. All arise carrying their works which followed them from the earth; the righteous will be sanctified with the word of blessing, but the sinners will be rebuked with the word of accusation. The righteous shall shine as seven times as the sun, and inherit the kingdom of God, while the sinners shall go away into everlasting punishment prepared for the devil and his angels. (Mt. 13:42-49; 25:31-43; 2 Cor 5:10; Rev. 20:12). Thus the religious teaching of the Ethiopian Orthodox Tewahedo Church is based on the five pillars of mystery mentioned above.",
     ],
   },
 ]
 
 export const christologyTeachingSections: TeachingSection[] = [
   {
-    title: "Our faith concerning Christology",
+    title: "The Nature of Our Lord Jesus Christ",
     paragraphs: [
-      "Our Lord Jesus Christ is God Himself, the Incarnate Logos, who took to Himself a complete manhood. His Divine Nature is united with His Human Nature in a complete Hypostatic Union without mingling, confusion, alteration, or separation. Furthermore, the unity between the two Natures occurred without transmutation. Thus neither the Divine Nature transmutes to the Human Nature, nor did the Human Nature transmute to the Divine.",
-      "Without mingling as in the case of wheat and barley or salt and sugar. Without confusion as in the case of wine and water or tea and milk. Without alteration as in the case of chemical union. In contrast, no change occurred to the Divine or Human Nature as a result of their unity. Without separation, for His Divinity parted not from His Humanity for a single moment nor a twinkling of an eye.",
-      "The Divine Logos was united with the Human Nature that He took from the Virgin Mary by the action of the Holy Spirit. This unity took place from the first moment of the Holy Pregnancy. As a result of this union, One Nature, that is one entity, was formed out of both: the One Nature of God the Incarnate Logos.",
-      "The term One Nature does not refer to either of the two Natures alone, but to the result of the union of both Natures into this one Incarnate reality. The term Two Natures implies division or potential separation, so the Church carefully speaks of the one Incarnate Logos.",
+      "Lecture II: The Nature of Our Lord Jesus Christ",
     ],
   },
   {
-    title: "Examples and summary",
+    title: "Our Faith Concerning Christology",
     paragraphs: [
-      "Human language is inadequate when it comes to describing this union, but some examples may help. One example is the union between iron and fire. The iron is not changed into fire or the fire into iron, yet they are united. Another example is the union between the human spirit and the body. The result is one human being, not two separate beings.",
-      "Therefore, just as we say that a person is one nature consisting of body and spirit, we can also say about the Incarnate Logos that He is one entity of two natures, Divine and Human. The union of the spirit and the body is hypostatic. So is the union of the Divine Logos and the Human Nature in the Virgin’s womb.",
-      "In a nutshell: Our Lord Jesus Christ has two natures: the Divine Nature of the Logos and the Human Nature that He took from the Virgin Mary. The Human Nature is full and complete. The Divine Nature of the Logos is united with every element of the Human Nature without mingling, confusion, alteration, transmutation, or separation.",
-      "As a result of this Hypostatic Union, One Entity is formed out of both Divine and Human Natures. This is the One Nature of God the Incarnate Logos. When the Lord died on the Cross, His Human Spirit was separated from His Human Body, but the Divine Logos remained united with both. That is why His body was not corrupted in the grave and why the spirit could return to the body in the Resurrection.",
+      "Our Lord Jesus Christ is God Himself, the Incarnate Logos, who took to Himself a complete manhood. His Divine Nature is united with His Human Nature in a complete Hypostatic (personal) Union without mingling, confusion, alteration or separation. Furthermore, the unity between the two Natures occurred without transmutation. Thus neither the Divine Nature transmutes to the Human Nature, nor did the Human Nature transmute to the Divine.",
+      "Without mingling as in the case of wheat and barely or salt and sugar. Without confusion as in the case of wine and water or tea and milk. Without alteration as in the case of chemical union: Carbon dioxide consists of Carbon and Oxygen, and the nature of both changes when they are combined; each loses some of its properties that distinguished it before this unity. In contrast, no change occurred to the Divine or Human Nature as a result of their unity. Without separation for His Divinity parted not from His Humanity for a single moment nor a twinkling of an eye.",
+      "The Divine Logos was united with the Human Nature (body & spirit) that He took from Virgin Mary by the action of the Holy Spirit: The Holy Spirit purified and sanctified the Virgin so that the Child to whom she gave birth would not inherit the original sin. This unity between the Two Natures (Human & Divine) took place from the first moment of the Holy Pregnancy. As a result of this unity between both Natures (Divine & Human) inside the Virgin’s womb, One Nature (entity) was formed out of both: “The ONE Nature of God, the Incarnate Logos.” The Term “One Nature” does not refer to either ofthe Two Natures (Divine & Human), but it refers to the result of the union of Both Natures into this One Nature which is “the Nature of the Incarnate Logos”. The term “Two Natures” implies division or potential separation.",
     ],
   },
   {
-    title: "Miaphysite faith and one will",
+    title: "Examples of the Union",
     paragraphs: [
-      "The Oriental Orthodox Churches are Miaphysite, not Monophysite. There is a difference between those who teach one single divine nature only and those who confess one united incarnate nature of the Logos, fully Divine and fully Human. We do not believe in a single divine nature without true humanity. We believe in One Incarnate Nature of the Logos.",
-      "Because we confess that after the union of the Divine and Human Natures there is one Incarnate Logos, we also speak of one will and one act. There is no contradiction or conflict between the will and the act of the two Natures. What the Divine Nature chooses is undoubtedly chosen by the Human Nature.",
-      "Our Lord Jesus Christ said, “My food is to do the will of Him who sent Me, and to finish His work” (Jn 4:34). This proves the unity of His will with the Father. If there were no unity between the will of the Divine Logos and His Human Nature, internal conflict would have resulted. Far be it from Him.",
-      "The complete righteousness that marked the life of our Savior was due to the unity of His Divine and Human will. The crucifixion was the choice of both the Divine and Human will. Had it not been one will, it could not be said that He died by His own will for us. And since the will is one, the act is also one.",
-      "The human nature actually consists of three elements: body, spirit, and soul, as St. Paul says in 1 Thessalonians 5:23. Only two are sometimes mentioned for simplicity, but the Church insists that our Lord had a full human nature.",
-      "The lesson frames all of this under the Lord’s question, “But who do you say that I am?” (Mt 16:15), and strengthens the teaching with John 4:34, John 8:46, and 1 Thessalonians 5:23 in the body of the reading.",
+      "Human language is inadequate when it comes to describing this union but here are two examples:",
+      "a) The union between Iron & Fire:",
+      "In the union of iron and fire, the iron is not changed into fire or the fire into iron. They are both united without mingling, confusion, or alteration.",
+      "{At a certain temperature the iron will change and extinguishing the fire will separate them}.",
+      "b) The union between the human spirit & body:",
+      "The nature of the human spirit unites with the physical earthly nature of the body without mingling, confusion, alteration, or transmutation {they will separate by death and then they reunite}. This union of the two natures (spirit & body) results in ONE nature that is the human nature. The term ONE here doesn’t refer to either of the two natures (spirit — body) but it refers to the result of this union of BOTH natures into this ONE human being.",
+      "Therefore, just as we say that the person is ONE nature consisting of two elements (spirit & body), we can also say about the Incarnate Logos that He is ONE entity of two natures (Divine & Human). The union of the spirit & body is a hypostatic one. So is the union of the Divine Logos & the Human Nature in the virgin’s womb. A hypostatic, real, self-essential union not a mere connection that separates as Nestorius claimed.",
+      "Although a person is formed of two natures (spirit & body), nobody refers to him/her as two. All the person’s acts are attributed to this ONE nature, not to the spirit alone or the physical body alone. Similarly, all the acts of Christ should be attributed to Him as a whole, not to His Divine Nature independently or to His Human Nature independently.",
+      "These examples are intended to clarify some aspects of the union but they are not perfect, just like our human language. The imperfections are put between brackets.",
+    ],
+  },
+  {
+    title: "In a Nutshell",
+    paragraphs: [
+      "Our Lord Jesus Christ has Two Natures:",
+      "1. The Divine Nature of the LOGOS.",
+      "2. The Human Nature that He took from Virgin Mary.",
+      "The Human Nature is composed of Two+ Elements:",
+      "a) Human Spirit.",
+      "b) Human Body.",
+      "The Divine Nature of the LOGOS is united with every element of the Human Nature without mingling, confusion, alteration, transmutation, or separation. As a result of this Hypostatic Union, One Entity is formed out of Both (Divine & Human) Natures. This is the “One Nature Of God, The Incarnate Logos”. When we refer to this ONE NATURE we are referring to this ONE ENTITY that resulted from the union of BOTH the Divine and Human Natures.",
+      "So what happened on the cross? Our Lord Jesus Christ died on the cross. Death means that His Human Spirit was separated from His Human Body. The Divine Logos remained united with BOTH the spirit and the body after their separation. Hence, His Divinity parted not from His Humanity. This explains why the body was not corrupted in the grave and it also explains how the spirit was able to return to the body when the Resurrection took place.",
+    ],
+  },
+  {
+    title: "Are We Monophysites?",
+    paragraphs: [
+      "The Oriental Orthodox Churches (Coptic, Syrian, Armenian, Ethiopian, an Indian) are ‘Miaphysites’. There is a difference between the ‘Monophysites’ who believe in One Single Nature (Divine) of our Lord Jesus Christ and the ‘Miaphysites’ who believe in One United Nature or One Composite Nature (Divine & Human) of our Lord Jesus Christ. We do not believe in a Single Nature but we believe in One Incarnate Nature of the Logos.",
+    ],
+  },
+  {
+    title: "One Will and One Act",
+    paragraphs: [
+      "Naturally, since we believe that after the union of the Divine and Human Natures, One Nature (entity) resulted, namely, the Nature of the Incarnate Logos, we also believe in One Will and One Act for the incarnate Logos. There is no contradiction or conflict between the will and the act of the Two Natures; what the Divine Nature chooses is undoubtedly chosen by the Human Nature.",
+      "Our Lord Jesus Christ said, “My food is to do the will of Him who sent Me, and to finish His work” (Jn 4:34). This proves that His will is the same as the Father’s. Certainly, the Divine Logos has the same will as the Father since He is one with Him in the Godhead. Thus, it must be that the Nature of the Incarnate Logos has One Will that is not different from the Father.",
+      "In fact, sin is nothing but a conflict between man’s will and God’s. But our Lord Jesus Christ said, “Which of you convicts Me of sin?” (Jn 8:46) proving His One will with the Father.",
+      "If there were no unity between the will of the Divine Logos and His Human Nature, internal conflict would have resulted. Far be it from Him! How then could the Lord Jesus Christ be our guide and our example? The complete righteousness that marked the life of our savior was due to the unity of His Divine and Human will. Also, the crucifixion was the choice of both the Divine and Human will. Had it not been one will, it would not have been said that He died by His own will for us. And since the will is one, the act is also one.",
+    ],
+  },
+  {
+    title: "Note on Christ's Full Humanity",
+    paragraphs: [
+      "The human nature actually consists of three elements: The body, the spirit and the soul. As St. Paul said, “May your whole spirit, soul, and body be preserved blameless” (lThess 5:23). Only two are mentioned above for simplicity. But we need to understand that our Lord had a FULL human nature.",
+      "This Lecture is adapted fiom ‘The Nature of Christ’ by H.H. Pope Shenouda III.",
     ],
   },
 ]
 
 export const sacramentTeachingSections: TeachingSection[] = [
   {
+    title: "What Is a Sacrament?",
+    paragraphs: [
+      "Lecture 1: What is a Sacrament?",
+    ],
+  },
+  {
     title: "Introduction",
     paragraphs: [
-      "To materialists, this world is opaque like a curtain; nothing can be seen through it. A mountain is just a mountain, a sunset just a sunset; but to poets, artists and saints, the world is transparent like a windowpane: it tells of something beyond. For example, a mountain tells of the power of God, the sunset of His beauty, and the snow white of His purity.",
-      "A Sacrament, in a very broad sense of the term, combines two elements: one visible, the other invisible. One can be seen, tasted, touched, or heard while the other remains unseen to the eyes of the flesh. There is, however, some relation or significance between the two.",
-      "A spoken word is a kind of sacrament because there is something material or audible about it; there is also something spiritual about it, namely its meaning. A horse can hear the sound of words, but only man grasps the meaning. In the same way, a handshake is a kind of sacrament, because there is something seen and felt, namely the clasping of hands, but there is also something unseen, namely the communication of friendship.",
-      "A kiss is also a kind of sacrament. Its physical side is present if one kisses one’s own hand, but its spiritual side is missing because there is no sign of affection for another. No wonder our Lord said to Judas, “Are you betraying the Son of Man with a kiss?”",
-      "No wonder our Lord said to Judas, “Are you betraying the Son of Man with a kiss?” (Jn 22:48). The brazen serpent in the wilderness is then set before us from Numbers 21:8-9, and our Lord explains its fulfillment in John 3:14.",
-      "Take the brazen serpent in the desert. When the people were bitten by poisonous serpents, God commanded Moses to make a brazen serpent and lift it up. Whoever looked upon it in faith was healed. This was not magic. God used a material thing as a sign of trust and a means of healing. Our Lord later revealed its full meaning when He told Nicodemus that as the serpent was lifted up in the wilderness, so the Son of Man must be lifted up.",
-      "The word sacrament in Greek means mystery, and our Lord Jesus Christ has been called by St. Paul “a great mystery” (1 Tim 3:16). In Him is something divine and something human, something eternal and something temporal, something invisible and something visible. As the humanity of our Lord became the bearer of divine life, so the sacraments became the effective means of sanctification purchased by His death and resurrection.",
-      "If men were pure spirits, there would have been no need for the Lord Jesus Christ to use human nature or material things for the communication of the divine. But because man is composed of body and soul, matter and spirit, he receives the spiritual most fittingly through the material.",
+      "To materialists, this world is opaque like a curtain; nothing can be seen through it. A mountain is just a mountain, a sunset just a sunset; but to poets, artists and saints, the world is transparent like a windowpane it tells of something beyond. For example, a mountain tells of the power of God, the sunset of His beauty, and the snow white of His purity.",
+      "A Sacrament, in a very broad sense of the term, combines two elements: one visible, the other invisible one can be seen, or tasted, or touched, or heard while the other remains unseen to the eyes of the flesh. There is, however, some kind of relation or significance between the two.",
+      "A spoken word is a kind of sacrament because there is something material or audible about it; there is also something spiritual about it, namely, its meaning. A horse can hear a funny story just as well as a man. It is conceivable that the horse may even hear the words better than the man and at the end of the story the man may laugh, but the horse will never give a horselaugh. The reason is that the horse gets the material side of the sacrament namely the sound, but man gets the invisible or the spiritual side, namely, the meaning.",
+      "A handshake is a kind of sacrament, because there is something seen and felt, namely the clasping of the hands, but there is something mysterious and unseen, namely, the communication of friendship.",
+      "A kiss is a kind of sacrament, the physical side of it is present if one kisses one’s own hand, but the spiritual side of it is missing because there is no sign of affection for another. No wonder our Lord said to Judas, “are you betraying the son of Man with a kiss?” (Jn 22:48)",
+    ],
+  },
+  {
+    title: "The Brazen Serpent and the Mystery",
+    paragraphs: [
+      "Take the brazen serpent in the desert. When the Jewish people were bitten by poisonous serpents, God commanded Moses to make a brazen serpent, and to hang it over the crotch of a tree (Num 21:8-9); all who would look upon that serpent of brass would be healed of the serpent’s sting.",
+      "This apparently was a rather ridiculous remedy for poison and not everyone looked at it. If one could discern or guess their reason, it would probably be because they concentrated on only one side of the symbol, namely, the shinny, lifeless brass thing hanging on a pole. But it proved to be a symbol of faith; God used that material thing as a symbol of trust or faith in Him.",
+      "The symbolism goes still further, the Old Testament is fullfilled in our Lord Jesus Christ who revealed the full mystery of the brazen serpent. Our Lord told Nicodemus that the brass serpent was lifted up in the desert so that He would have to be lifted up on the cross (Jn 3:14). The meaning now becomes clear; the brass serpent in the desert looked like the serpent that bit the people, but though it seemed to be the same, it was actually without any poison. Our Blessed Lord now says that He is like that brazen serpent.",
+      "He, too, would be lifted up on the crotch of a tree, a cross. He would look as if He Himself was filled with the poison of sin, for His body would bear the marks, and the stings, and the piercing of sin; and yet as the brass serpent was without poison so He would be without sin. As those who looked upon that brass serpent in the desert in faith were healed of the bite of the serpent, so all who would look upon Him on His cross bearing the sins and poisons of the world would also be healed of the poison of the serpent, Satan.",
+    ],
+  },
+  {
+    title: "Christ the Great Mystery",
+    paragraphs: [
+      "The word “sacrament” in Greek means “mystery”, and our Lord Jesus Christ has been called by St. Paul “a great mystery” (1 Tim 3:16). In Him is something divine, something human, something eternal, something temporal, something invisible, something visible.",
+      "The Human Nature of our Blessed Lord had no power to sanctify of and by itself; that is to say, apart from its union with the Divinity, but because of that union, the Humanity of the Lord became the efficient cause of our justification and sanctification and will be until the end of the world. Herein is hidden a hint of the Sacraments.",
+      "The Humanity of the Lord was the bearer of Divine life and the means of making men holy, the Sacraments were also to become the effective means of the sanctification purchased by his death. As our Blessed Lord was the sensible sign of God (He is truly God), so the Sacraments were to become the sensible signs of the grace (they are truly grace), which our Lord had won for us.",
+      "If men were angels or pure spirits, there would have been no need of our Lord Jesus Christ using human nature or material things for the communication of the divine, but because man is composed of matter and spirit, body and soul, man functions best when he sees the material as the revealer of the spiritual.",
+      "From the very beginning of man’s life, his mother's fondling is not merely to leave an impress upon his infant body, but rather to communicate the sublimely beautiful and invisible love of the mother. It is not the material thing that man values, but rather what is signified by it.",
     ],
   },
   {
     title: "Sacraments and Salvation",
     paragraphs: [
-      "One often sees signs painted on roadways saying, “Jesus saves.” This is true, but the important question is: how does He save? If our relationship with Him were only by memory or reading, then it would not be much different from our relation to great teachers of the past. The answer is found in the sacraments.",
-      "The divine life of the Lord is communicated through His Church, His mystical body, in exactly the same way that His divine life was communicated when He walked on earth. As He then used His human nature as the instrument of divinity and used material things as means to confer grace, so now He uses human natures, the priests, and material things such as water, bread, wine, and oil as instruments for the communication of the same divine life.",
-      "As He used clay and water in the case of the man born blind (Jn 9:11), He now uses water, bread, wine, and oil as means for the communication of grace. The Holy Spirit works in these mysteries, for our Lord said, “He will take of what is Mine and declare it to you” (Jn 17:14 in the book's reference).",
-      "Every sacrament has an outward or visible sign. For example, in Baptism it is water, in the Eucharist it is bread and wine. It also has a form or formula: words of spiritual significance given to the matter when it is conferred. Three things are required for a sacrament: its institution by the Lord Jesus Christ, an outward sign, and the power of conferring the grace purchased for us by His Passion, Death, and Resurrection.",
-      "Calvary is like a reservoir of divine life or grace. From it there flows seven different kinds of sanctification for man in different stages in his spiritual existence. Each of these seven channels is a sacrament through which the power of the risen Christ is bestowed on souls by a spiritual and effective contact.",
-      "This grace pours into the soul when we receive the sacraments, unless we put an obstacle in the way. The sacraments do not confer grace as magical signs. They communicate it only because they are in contact with the risen Christ through the work of the Holy Spirit.",
-      "The Seven Holy Sacraments are: Holy Orders (Priesthood), Baptism, Confirmation, Eucharist, Repentance and Confession, Anointing of the Sick, and Matrimony.",
+      "One often sees signs painted on roadways, “Jesus saves”. Now this indeed is true, but the important question is how does He save? What relation do we have in the twenty- first century to our Lord Jesus Christ in the first? Do we establish contact with Him only by reading about Him? If that were all, our relationship is not much closer than that which we can have with Plato. If the Lord Jesus Christ is only a memory of someone who lived centuries ago, then it is rather difficult to see that His influence will be any different than that of Socrates or Buddha. The answer to the question of how our Lord Jesus Christ saves is to be found in the Sacraments.",
+      "The Divine life of the Lord is communicated through His Church or His mystical body in exactly the same way that His divine life was communicated when He walked on earth. As He then used His human nature as the instrument of divinity and used material things as means to confer His grace; clay and water in the case of the born blind (Jn 9:11). He now uses other human natures (priests) and material things (water, bread and wine, oil) as instruments for the communication of the same divine life (grace).",
+      "Every Sacrament has an outward or visible sign. For example, in Baptism it is water, in the Eucharist it is bread and wine, but the Sacrament also has a form or formula, words of spiritual significance given to the matter when it is conferred. Three things then are absolutely required for a Sacrament: (1) Its institution by the Lord Jesus Christ, (2) an outward sign, (3) the power of conferring the grace purchased for us by the Passion, Death, and Resurrection of the Lord.",
+      "Calvary is like a reservoir of divine life or grace. From it, there flows seven different kinds of sanctification for man in different stages in his spiritual existence. Each of these seven channels is a Sacrament by which the power of the Risen Christ is bestowed on souls by a spiritual and effective contact.",
+      "This divine grace pours into the soul when we receive the Sacraments, unless we put an obstacle in the way, just as water will not flow out of a faucet if we put our hand in front of the faucet. But the faucet in a house has no power to quench thirst unless there is a reservoir and a pipeline. So the Sacraments do not confer grace as magical signs, they communicate it only because they are in contact with the Risen Christ through the work of the Holy Spirit about Whom the Lord said, “He will take of what is Mine and declare it to you.” (Jn 17:14)",
+    ],
+  },
+  {
+    title: "The Seven Holy Sacraments",
+    paragraphs: [
+      "1. The Sacrament of Holy Orders (Priesthood)",
+      "2. The Sacrament of Baptism",
+      "3. The Sacrament of Confirmation",
+      "4. The Sacrament of The Eucharist",
+      "5. The Sacrament of Repentance & Confession",
+      "6. The Sacrament of The Anointing of The Sick",
+      "7. The Sacrament of Matrimony",
     ],
   },
 ]
@@ -1433,48 +1702,118 @@ export const sacramentQna: QnaItem[] = [
   {
     question: "The word “mystery” occurred in Holy Scripture with many meanings. How are these meanings different from the sacraments of the Church?",
     answer:
-      "The word mystery in Holy Scripture has two meanings: mysteries of knowledge that God reveals, that is hidden truths; and mysteries of grace where the Holy Spirit grants invisible gifts, that is the sacraments.",
+      "The word “mystery” in Holy Scripture has two meanings: mysteries of knowledge that God reveals, that is secrets or hidden truths; and mysteries of grace where the Holy Spirit grants invisible gifts, that is the sacraments.",
   },
   {
     question: "What verses does the lesson group under mysteries of knowledge?",
     answer:
-      "The lesson lists Psalm 25:14, Amos 3:7, Daniel 2:19, Luke 8:10, 1 Corinthians 2:7, 1 Corinthians 13:2, Ephesians 1:9, Ephesians 6:19, Colossians 1:26, Colossians 4:3, Colossians 2:2, and 1 Timothy 3:16.",
+      "The lesson lists Psalm 25:14, Amos 3:7, Daniel 2:19, Luke 8:10, 1 Corinthians 2:7, 1 Corinthians 13:2, Ephesians 1:9, Ephesians 6:19, Colossians 1:26, Colossians 4:3, Colossians 2:2, and 1 Timothy 3:16 under mysteries of knowledge.",
   },
   {
     question: "What verse does the lesson use for mysteries of grace?",
     answer:
-      "It points especially to Ephesians 5:31-32, where marriage is called a great mystery in relation to Christ and the Church.",
+      "It points especially to Ephesians 5:31-32, where marriage is called a great mystery or sacrament in relation to Christ and the Church.",
   },
 ]
 
 export const baptismTeachingSections: TeachingSection[] = [
   {
-    title: "Institution and Saving Power",
+    title: "The Sacrament of Baptism",
     paragraphs: [
-      "Baptism is the Holy Sacrament through which we are born again by being immersed in water three times in the name of the Holy Trinity: the Father, the Son, and the Holy Spirit. It has the primacy among the Seven Holy Sacraments because it is the door through which the individual enters the Church and is given the right to partake of the rest of the sacraments.",
-      "Our Lord Jesus Christ instituted this sacrament after His resurrection when He said, “Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit” and “He who believes and is baptized will be saved.” Thus baptism is necessary for salvation, as the Lord also said, “Unless one is born of water and the Spirit, he cannot enter the Kingdom of God.”",
-      "How does baptism save us? Salvation means remission of sins, and without shedding of blood there is no remission. Salvation is made available through the redemptive death of our Lord Jesus Christ. In order to share this salvation, we must share His death and resurrection. St. Paul teaches that we are buried with Christ through baptism into death so that we may also live with Him.",
-      "The lesson cites Matthew 28:18-19, Mark 16:16, John 3:5, Hebrews 9:22, Philippians 3:10, Romans 6:3-8, Romans 6:11-12, Romans 8:13, Galatians 5:24, Galatians 2:20, Colossians 3:3, 2 Corinthians 4:10, Colossians 3:5, and Romans 6:7 inside this teaching.",
-      "The salvation that begins with our death and burial with Christ through baptism continues through a life of putting sin to death. Therefore baptism is not a mere ritual washing, but participation in the death and resurrection of the Lord.",
+      "Lecture V: The Sacrament of Baptism",
+      "Baptism is the Holy Sacrament through which we are born again by being immersed in water three times in the name of the Holy Trinity: the Father, the Son and the Holy Spirit. The Sacrament of Baptism has the primacy among the Seven Holy Sacraments for it is the door through which the individual enters the Church and is given the right to partake of the rest of the Sacraments.",
     ],
   },
   {
-    title: "Figures, Meaning, and Practice",
+    title: "Institution of the Sacrament",
     paragraphs: [
-      "The Old Testament contains many symbols of baptism: the Spirit of God moving over the waters in Genesis, Noah’s ark and the flood, circumcision, the crossing of the Red Sea, the laver of bronze, Elijah, the Jordan, and the entry into the Promised Land.",
-      "More specifically, the lesson names Genesis 1:2, Noah's ark, circumcision, the crossing of the Red Sea, the laver of bronze, Elijah's sacrifice, the Jordan, and the sea of glass in Revelation as figures that help catechumens understand baptism.",
-      "St. John the Baptist’s baptism was preparatory and not the same as Christian baptism. It was a baptism of repentance, but the full saving relation to the death and resurrection of Christ and the gift of the Holy Spirit had not yet been established. Acts 19:1-5 shows why those who had only received John's baptism still needed Christian baptism.",
-      "The lesson also explains the effectiveness of baptismal water by insisting that water is not working alone. Water united with the Holy Spirit becomes a means of regeneration and cleansing, as seen in the examples of Naaman and the man born blind.",
-      "Baptism is by immersion, for to baptize means to immerse. The Ethiopian Orthodox Tewahedo Church baptizes by triple immersion in the name of the Father, the Son, and the Holy Spirit. Immersion best expresses burial and rising with Christ.",
-      "The Church allows baptism by sprinkling only in exceptional medical cases where immersion cannot be performed and death is near. In such emergency cases, even an Ethiopian Orthodox Tewahedo Christian layperson may baptize with water in the name of the Holy Trinity.",
+      "Lord Jesus Christ instituted this Sacrament after His blessed resurrection, having completed our redemption and having made salvation available, He said to His disciples, “All authority has been given to Me in heaven and on earth. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit” (Mt 28:18-19), and “He who believes and is baptized will be saved; but he who does not believe will be condemned” (Mk 16:16).",
+      "Thus baptism is necessary for salvation as the Lord indicated, “Most assuredly, I say to you, unless one is born of water and the Spirit, he cannot enter the Kingdom of God” (Jn 3:5)",
     ],
   },
   {
-    title: "Infants, One Baptism, and Questions",
+    title: "How Exactly Does Baptism Save Us?",
     paragraphs: [
-      "The Church baptizes infants because baptism is necessary for salvation and infants are not exempt from the need for new birth. Circumcision, a symbol of baptism, was given to infants in the Old Covenant, and there is no verse in Holy Scripture forbidding infant baptism. The promise of God is given to believers and to their children.",
-      "The Church confesses one baptism for the remission of sins. Baptism is performed once and is not repeated, because it is a spiritual birth and a dying with the Lord, and both happen once.",
-      "The one-baptism teaching is tied to Ephesians 4:5. The lesson's questions also cite Mark 16:16, John 3:3, John 3:5, Ephesians 2:3, 1 Corinthians 15:50, Genesis 17:14, and 1 Corinthians 5:7 when speaking about Old Testament people and infants who die without baptism.",
+      "Salvation simply means remission of sins and it is written, “Without shedding of blood death there is no remission” (Heb 9:22). Salvation is made available through the redemptive death of Lord Jesus Christ on the cross. In order to have a share in this salvation, we must share the death and resurrection of the Lord. Therefore, St. Paul said, “That I may know Him and the power of His resurrection and the fellowship of His suffering being conformed to His death” (Phil 3:10).",
+      "Unless a person undergoes such death, he or she will not be saved. Now how can we undergo such death? How can we share the death of the Lord? The answer is “Through Baptism”. St. Paul said, “Or do you not know that as many of you were baptized into Christ Jesus were baptized into His death? Therefore we were buried with Him through baptism into death” (Rom 6:3-4).",
+      "It is our death and burial with the Lord through baptism that saves us and makes us share the glories of His Resurrection. St. Paul affirms, “For if we have been united together in the likeness of His death baptism, certainly we shall be in the likeness of His resurrection... now if we died with Christ, we believe that we shall also live with Him” (Rom 6:5-8).",
+      "The salvation that began with our death and burial with Lord Jesus through baptism continues to be effective in us also through death. We obtain salvation through death and our bodies must always remain dead in relation to worldly lusts. For as long as the body is dead to sin, salvation lives in it, but when carnal lusts rise from this death, we become liable to lose our salvation since salvation is only attained through death.",
+      "“Reckon yourselves to be dead indeed to sin, but alive to God in Christ our Lord. Therefore do not let sin reign in your mortal body that you should obey it in its lusts.” (Rom 6:11-12)",
+      "“If by the Spirit you put to death the deeds of the body, you will live.” (Rom 8:13)",
+      "“Those who are Christ’s have crucified the flesh and its passions and desires.” (Gal 5:24)",
+      "“I have been crucified with Christ; it is no longer I who live, but Christ lives in me.” (Gal 2:20)",
+      "“For you died, and your life is hidden with Christ in God.” (Col 3:3)",
+      "“Always carrying about in the body the dying of the Lord Jesus.” (2 Cor 4:10)",
+      "“Therefore put to death your members which are on earth: fornication, uncleanness, passion, evil desire, and covetousness, which is idolatry.” (Col 3:5)",
+      "“He who has died has been freed from sin.” (Rom 6:7)",
+    ],
+  },
+  {
+    title: "Symbols of Baptism in the Old Testament",
+    paragraphs: [
+      "1. It is written in the Holy Book of Genesis, “The Spirit of God was hovering over the face of the waters” (Gen 1:2). This is both a symbol and a prophecy about the work of the Holy Spirit in baptismal water to give it its saving efficacy.",
+      "2. St. Peter interpreted the story of Noah’s ark and the flood as a symbol of baptism, he said, “The divine longsuffering waited in the days of Noah, while the ark was being prepared, in which a few, that is, eight souls, were saved through water. There is also an antitype which now saves us baptism through the resurrection of Jesus Christ” (1 Pet 3:20-21).",
+      "3. St. Paul interprets the commandment of circumcision as a symbol of baptism, he said, “You were also circumcised with the circumcision made without hands, by putting off the body of the sins of the flesh, by the circumcision of Christ, buried with Him in baptism, in which you also were raised with Him through faith in the working of God who raised Him from the dead” (Col 2:11-12).",
+      "4. The relation between the ark, the circumcision, the saving resurrection of the Lord, and baptism goes even further. Notice that St. Peter emphasizes that only eight souls were saved from the evil world through the water of the flood. Also notice that God ordered that children must be circumcised on the eighth day. Now the Lord’s resurrection took place on the first day of the week (Jn 20:1) that is the eighth day from the previous week. The number eight represents the new life and eternity.",
+      "5. St. Paul interpreted the story of crossing the sea as a symbol of baptism, he said, “All our fathers were under the cloud, all passed through the sea, all were baptized into Moses in the cloud and in the sea” (1 Cor 10:1-2).",
+      "6. The Priesthood was not given to Aaron and his sons except after being washed with water, also the laver of bronze and its water set between the tabernacle of meeting and the altar was a symbol of the spiritual cleansing effect of baptismal water.",
+      "7. The sacrifice of Elijah the Prophet was accepted after pouring water on it three times. Moreover, Elijah himself was not taken up to heaven until he crossed the waters of the Jordan river. The same happened with the Israelites who went into the Promised Land after going through the waters of the Jordan. In the Holy Book of Revelation we read about “a sea of glass” (Rev 4:6) before the throne of God. The point is that we must go through the waters of baptism to reach the heavenly Promised Land and enjoy the company of God.",
+    ],
+  },
+  {
+    title: "The Baptism of St. John the Baptist",
+    paragraphs: [
+      "No pre-Pentecostal baptism can be equated with Christian baptism. This not only includes St. John the Baptist’s but also the disciples’ baptisms during the life of the Lord on earth. These baptisms were preparatory ones, just for repentance, as St. John said, “I indeed baptize you with water unto repentance, but He who is coming after me is mightier than I He will baptize you with the Holy Spirit and fire” (Mt 3:11).",
+      "The redemption had not yet been accomplished; the specific relationship of baptism with the cross and the blood of the Lord had not yet been established. Moreover, the gift of the Holy Spirit was not yet available. On the day of Pentecost no exceptions were allowed for those who may have received St. John’s baptism, St. Peter said, “Let every one of you be baptized” (Acts 2:38).",
+      "The Holy Book of Acts tells us of a specific incidence where some believers at Ephesus were only baptized with St. John’s baptism so St. Paul asked, “Did you receive the Holy Spirit when you believed?” They replied, “We have not so much as heard whether there is a Holy Spirit.” He wondered, “Into what then were you baptized?” So they said, “Into John’s baptism” Then St. Paul explained, “John indeed baptized with a baptism of repentance, saying to the people that they should believe on Him who would come after him, that is on Christ Jesus.” So when they heard this, they were baptized in the name of the Lord Jesus. (Acts 19:1-5)",
+    ],
+  },
+  {
+    title: "The Effectiveness of Baptismal Water",
+    paragraphs: [
+      "It may be objected, “What does mere water do when a person is immersed in it?” One might just as well ask, what does water do when poured into the boiler? The water in the boiler can do nothing of and by itself, nor can the water in the baptistery, but when the water in the boiler is united with the mind of an engineer, it can drive an engine across a continent or a ship across the sea. So too, when water is united with the power of the Holy Spirit, it can give regeneration and spiritual cleansing.",
+      "Those who think that the effectiveness of baptism depends on the water alone bring to mind the story of Naaman, the commander of the Syrian army, who was a leper. This man came to Elisha the Prophet to be healed from leprosy so he told him, “Go and wash in the Jordan seven times, and your flesh shall be restored to you, and you shall be clean” (2 Kgs 5:10).",
+      "Likewise, if the blind man from birth had questioned the words of Lord Jesus about washing in the pool of Siloam (Jn 9:11), he would have remained blind. Our Lord emphasized the relation between the water and the Spirit, thus baptismal water is not to be considered mere water for “There are three that bear witness on earth: The Spirit, the water, and the blood; and these three agree as one.” (1 Jn 5:7)",
+    ],
+  },
+  {
+    title: "Immersion Versus Sprinkling",
+    paragraphs: [
+      "To baptize literally means to immerse or to put into. Therefore, the Orthodox Church baptizes by triple immersion, “in the name of the Father, and the Son, and the Holy Spirit” (Mt 28:19).",
+      "“Both Philip and the eunuch went down into the water, and he baptized him. Now when they came out of the water, the Spirit of the Lord caught Philip away” (Acts 8:38-39). If baptism were by sprinkling, St. Philip could have just brought water to the chariot and sprinkled it on the eunuch.",
+      "St. Paul said, “We were buried with Him through baptism” (Rom 6:4), and “Buried with Him in baptism” (Col 2:12). The only way a person is buried in baptism is through complete immersion.",
+      "St. Paul said, “According to His mercy He saved us, through the washing of regeneration and renewing of the Holy Spirit” (Titus 3:5), St. Ananias said to St. Paul, “Be baptized, and wash away your sins” (Acts 22:16). Baptism is also called washing in Holy Scripture. To wash a piece of cloth you need to completely immerse it in water.",
+      "Because baptism is a very important condition for salvation, the Church allows baptism by sprinkling only in the case where immersion is prevented by a medical condition and there is a risk that the person would die without being baptized.",
+      "Moreover, if there was no priest available, any Orthodox Christian male or female can perform the baptism by anointing the baby with water three times saying, “I baptize you in the name of the Father, the Son, and the Holy Spirit”. If the baby lives, baptism is not repeated and the child just needs to be anointed with the Holy oil.",
+    ],
+  },
+  {
+    title: "Why Do We Baptize Infants?",
+    paragraphs: [
+      "1. Baptism is essential for salvation and without it a person cannot enter the Kingdom of God, “Most assuredly I say to you, unless a person is born of water and the Spirit, he cannot enter the Kingdom of God” (Jn 3:5). Infants are no exception since they are born with the corrupt nature due to the original sin. Therefore, infants are baptized to insure their salvation.",
+      "2. Circumcision was a symbol of baptism (Col 2:11-13). Now if God commanded that infants enter in the Old Covenant with Him, should we prevent them from entering in the New Covenant?",
+      "3. Crossing the Red Sea was also a symbol of baptism (1 Cor 10:1-2). Undoubtedly, infants crossed the sea with their parents so why should today’s infants be prevented from being baptized?",
+      "4. St. Peter said to the people on Pentecost, “Be baptized and you shall receive the gift of the Holy Spirit. For the promise is to you and to your children” (Acts 2:38-39). This is a clear implication that children are accepted in baptism.",
+      "5. Holy Scripture records several occasions where families and entire households were baptized together (Acts 16:14-15, 33; 1 Cor 1:16). This is another implication that children were baptized.",
+      "6. There is not a single biblical verse that supports the prevention of infants’ baptism. On the contrary, our Lord said, “Let the little children come to Me, and do not forbid them; for of such is the kingdom of heaven” (Mt 19:14), and “Take heed that you do not despise one of these little ones, for I say to you that in heaven their angels always see the face of My Father who is in heaven” (Mt 18:10)",
+    ],
+  },
+  {
+    title: "One Baptism",
+    paragraphs: [
+      "The Sacrament of Baptism is performed once and is not repeated as we say in the creed, “we confess one baptism for the remission of sins”. Since baptism is a spiritual birth so a person is born baptized once and since baptism is death with the Lord and the Lord died once so a person dies with the Lord baptized once. Thus St. Paul said, “one Lord, one faith, one baptism” (Eph 4:5)",
+    ],
+  },
+  {
+    title: "Frequently Asked Questions",
+    paragraphs: [
+      "Q1: If baptism is necessary for salvation, were the people of the Old Testament baptized?",
+      "A1: Baptism was not a condition for salvation in the Old Testament, but it was only instituted as a condition in the New Testament, “He who believes and is baptized will be saved” (Mk 16:16). The reason is that baptism’s saving efficacy is linked to the death of Lord Jesus Christ and the Lord had not yet died in the Old Testament. Nevertheless, the people of the Old Testament practiced the symbol of baptism available to them at such time, namely circumcision (Col 2:11-13). They also kept the Passover, which was a symbol of our Lord (1 Cor 5:7).",
+      "Q2: What is the fate of infants who die without being baptized?",
+      "A2: Lord Jesus Christ said, “Most assuredly, I say to you, unless one is born again, he cannot see the Kingdom of God” (Jn 3:3), and “Most assuredly, I say to you, unless one is born of water and the Spirit, he cannot enter the kingdom of God” (Jn 3:5). These infants inherited the corrupt nature due to the original sin, “we were by nature children of wrath” (Eph 2:3) and St. Paul affirms that corruption does not inherit incorruption (1 Cor 15:50).",
+      "Therefore, these infants cannot enter nor see the Kingdom of God. One may object, They didn’t do anything wrong. Well, they didn’t do anything right either. The early Church fathers agree that these infants will not enter the Kingdom of God based on the words of the Lord but concerning suffering and punishment the most probable and most acceptable opinion is that they will not suffer since they did not commit any personal sin.",
+      "God said, “the uncircumcised male child, who is not circumcised in the flesh of his foreskin, that person that child shall be cut off from his people; he has broken My covenant” (Gen 17:14). Someone may ask, What about God’s mercy? God’s mercy is full of justice and His Justice is full of mercy. So trust in the merciful justice of our God and don’t worry about this subject.",
+      "This lecture is adapted from ‘The Church Sacraments’ by Archdeacon Habib Guirgess.",
     ],
   },
 ]
@@ -1538,61 +1877,256 @@ export const eucharistTeachingSections: TeachingSection[] = [
   {
     title: "The Sacrament of the Eucharist",
     paragraphs: [
-      "In the Sacrament of the Eucharist, believers eat Lord Jesus Christ’s Holy Body and drink His precious Blood under the physical appearance of bread and wine. This Sacrament is called the Sacrament of all Sacraments and the crown of the Sacraments. In the Ethiopian Orthodox Tewahedo Church, no Sacrament is to be administered on the same day after the person has partaken from Holy Communion.",
-      "Our Lord instituted this Sacrament on Covenant Thursday, just a few hours before His arrest and trial. After He had washed the feet of the disciples as a sign of repentance and preparation, He took bread, blessed it and broke it, and gave it to the disciples saying, 'Take, eat; this is My body.' Then He took the cup and gave it to them, saying, 'Drink from it, all of you. For this is My blood of the new covenant, which is shed for many for the remission of sins.' St. Paul repeats the same apostolic witness in 1 Corinthians 11:23-26.",
+      "Lecture XI: The Sacrament of The Eucharist",
+      "In the Sacrament of the Eucharist, believers eat Lord Jesus Christ’s Holy Body and drink His precious Blood under the physical appearance of bread and wine. This Sacrament is called the Sacrament of all Sacraments and the crown of the Sacraments. In the Coptic Orthodox Church, no Sacrament is to be administered on the same day after the person has partaken from Holy Communion.",
     ],
   },
   {
-    title: "Old Testament symbols and the real presence",
+    title: "Institution of the Sacrament",
     paragraphs: [
-      "The offering of Melchizedek, who brought out bread and wine, was a symbol of this Holy Sacrament. The Passover lamb also pointed forward to it, for indeed Christ our Passover was sacrificed for us. The manna in the wilderness was another symbol, as our Lord said, 'I am the living bread which came down from heaven... and the bread that I shall give is My flesh.'",
-      "The lesson grounds this section in Genesis 14:18, Psalm 110:4, Hebrews 5:6, 1 Corinthians 5:7, John 6:58, and John 6:51.",
-      "Our Lord spoke openly about this mystery in John 6, and many objected, asking how He could give His flesh to eat. Yet He did not correct them into a symbolic reading. Instead, He spoke even more strongly: 'My flesh is food indeed, and My blood is drink indeed.' Because of this, the Church has always confessed the real presence of Christ in the Eucharist.",
-      "St. Cyril of Jerusalem taught that by partaking of the body and blood of Christ we become of one body and one blood with Him. St. John of Damascus taught that the Holy Spirit comes upon the bread and wine and accomplishes what surpasses words and thought. The Church therefore confesses a true change and real presence, received sacramentally and not explained away.",
+      "Our Lord instituted this Sacrament on Covenant Thursday, just a few hours before His arrest and trial. After He had washed the feet of the disciples as a sign of their repentance and preparation, “He took bread, blessed it and broke it, and gave it to the disciples and said, Take, eat; this is My body.’ Then He took the cup, and gave thanks, and gave it to them, saying Drink from it all of you. For this is My blood of the new covenant, which is shed for many for the remission of sins’” (Mt 26:26-28)",
+      "St. Paul said, “The Lord Jesus on the same night in which He was betrayed took bread; and when He had given thanks, He broke it and said, ‘Take, eat; this is My body which is broken for you; do this in remembrance of Me.’ In the same manner He also took the cup after supper, saying, ‘This cup is the new covenant in My blood. This do, as often as you drink it, in remembrance of Me.’ For as often as you eat this bread and drink this cup, you proclaim the Lord’s death till He comes” (1 Cor 11:23-26)",
     ],
   },
   {
-    title: "Benefits, worthiness, and the Eucharistic sacrifice",
+    title: "Symbols of the Eucharist in the Old Testament",
     paragraphs: [
-      "The lesson names several benefits of the Sacrament: abiding in Christ, eternal life, growth and maintenance of spiritual life, salvation and remission of sins, and the unification of believers into one body. At the same time, St. Paul warns that unworthy communion brings judgment. Therefore the believer must approach with Orthodox faith, repentance and confession, reconciliation with others, obedience to Church discipline, and a humble sense of unworthiness.",
-      "The verses directly woven into this part include John 6:56, John 15:5, John 6:54, John 6:58, John 6:53, John 6:55, John 6:57, Matthew 26:28, 1 Corinthians 10:17, 1 Corinthians 11:27-31, Matthew 5:23-24, and 1 Corinthians 4:4.",
-      "The Orthodox Church also confesses that the Eucharist is not only a Sacrament but also a sacrifice and offering to God. The words of institution speak of Christ’s body given and blood shed. The existence of an altar, the prophecy of Malachi’s pure offering, and St. Paul’s language about the Lord’s table all support this confession. The sacrifice of the Cross and the sacrifice of the Eucharist are not opposed: the Cross offered the Body and Blood visibly once, while the Eucharist offers them sacramentally as a bloodless sacrifice from its institution until the second coming.",
-      "The lesson also answers common questions: why communion is not given to those outside the Orthodox faith, why the real presence matters, and how the Church differs from Roman Catholic sacramental practice in administration while still confessing the true Body and Blood of Christ.",
+      "The offering of Melchizedek bread and wine was a symbol of this Holy Sacrament, “Melchizedek king of Salem brought out bread and wine; he was the priest of God Most High” (Gen 14:18). Therefore, it was said about our Lord, “You are a priest forever according to the order of Melchizedek” (Ps 110:4; Heb 5:6).",
+      "The Passover lamb that the children of Israel offered on the night of their exodus from Egypt, and which they used to offer every year thereafter was a symbol of this Sacrament “For indeed Christ, our Passover, was sacrified for us” (1 Cor 5:7).",
+      "The manna that the children of Israel ate in the wilderness of Sinai for forty years was a symbol of the Sacrament of Eucharist. Our Lord said, “This is the bread which came down from heaven not as your fathers ate the manna, and are dead. He who eats this bread will live forever” (Jn 6:58) “I am the living bread which came down from heaven. If anyone eats of this bread, he will live forever and the bread that I shall give is My flesh” (Jn 6:51)",
     ],
   },
   {
     title: "The Question of the Real Presence",
     paragraphs: [
-      "The lesson defines three major positions: transubstantiation, consubstantiation, and memorialism or real absence. It explains that Oriental and Eastern Orthodox Christians firmly confess a true change and real presence while avoiding speculative excess and remaining within Holy Tradition.",
-      "It then gives biblical reasons, logical reasons, and historical reasons for believing in the real presence. John 6 is treated as central. The lesson argues that our Lord did not correct the Jews or disciples into a merely symbolic reading, but spoke more strongly, saying, 'My flesh is food indeed, and My blood is drink indeed.'",
-      "It also appeals to John 2:19-21, John 7:37-39, John 8:25-27, John 6:51-66, Mark 4:34, John 19:33 and 19:36, Psalm 27:2, Micah 3:2-3, Galatians 5:15, 1 Corinthians 11:29, Matthew 26:26-28, Mark 14:22-24, Luke 22:19-20, Romans 3:4, 1 Corinthians 10:15-16, Luke 22:20, Exodus 12:46, Hebrews 9:22, and the witness of the apostolic churches and the fathers. The historical section notes that even Luther did not deny presence, while later memorialism is treated as a departure.",
+      "Lecture XII: The Question of The Real Presence",
+      "Our Lord spoke about this Sacrament openly to the Jews but they “quarreled among themselves saying, ‘How can this Man give us His flesh to eat?’” (Jn 6:52). Moreover, many of the disciples protested saying, “This is a hard saying; who can understand it?” (Jn 6:60). When Lord Jesus explicitly emphasized His real presence in the Sacrament, it was written, “many of His disciples went back and walked with Him no more” (Jn 6:66)",
+      "The question of the real presence is of considerable importance in relation to the differences, which have emerged within Christianity since the time of the so-called Reformation. A particularly important witness to the early Christian understanding of this Sacrament is provided by the Catechetical lectures of St. Cyril of Jerusalem. It is clear that St. Cyril regarded the bread and wine as becoming the real body and blood of our Lord Jesus Christ.",
+      "“Jesus Christ, by his own will, once changed water into wine at Cana of Galilee. So why should we not believe that he can change wine into blood? We should therefore have full assurance that we are sharing in the body and blood of Christ. For in the type of bread, his body is given to you, and in the type of wine, his blood is given to you, so that by partaking of the body and blood of Christ you may become of one body and one blood with Him.” (St. Cyril of Jerusalem)",
+      "“And now you ask how the bread becomes the body of Christ, and the wine and the water become the blood of Christ. I shall tell you. The Holy Spirit comes upon them, and achieves things which surpass every word and thought Let it be enough for you to understand that this takes place by the Holy Spirit” (St. John of Damascus).",
+    ],
+  },
+  {
+    title: "Definitions",
+    paragraphs: [
+      "1. Transubstantiation: This term, associated with the Roman Catholic Church, is the change of the substance of bread and wine into the Body and Blood of Lord Jesus Christ occurring in the Eucharist while all that is accessible to the senses remain as before.",
+      "\"Substance\" here means what something is in itself. A hat's shape is not the hat itself, nor is its color the hat, nor is its size, nor its softness to the touch nor anything else about it perceptible to the senses. The hat itself (the \"substance\") has the shape, the color, the size, the softness and the other appearances, but is distinct from them. While the appearances, which are referred to by the philosophical term accidents, are perceptible to the senses, the substance is not. Oriental and Eastern Orthodox Christians agree that the bread and wine truly and actually become the body and blood of Christ. They have in general refrained from philosophical speculation, and usually rely on the status of the doctrine as a Mystery, something known by divine revelation that could not have been arrived at by reason without revelation. Accordingly, they prefer not to elaborate upon the details and remain firmly within Holy Tradition. However, they do speak clearly of a change or metousiosis of the bread and wine.",
+      "2. Consubstantiation: This view, especially associated with Martin Luther, attempts to describe the nature of the Eucharist in concrete metaphysical terms. It holds that the fundamental substance of the body and blood of the Lord are present alongside the substance of the bread and wine, which remain present.",
+      "3. Memorialism or Real Absence: This understanding of the nature of the Eucharist is especially associated with Zwingli. The Eucharist is nothing but a memorial of the suffering of the Lord, and not a sacrifice. The bread and wine are mere symbols of the Body and Blood.",
+    ],
+  },
+  {
+    title: "Why Do We Believe in the Real Presence?",
+    paragraphs: [
+      "Generally speaking, there are three reasons why we believe in the real presence of Lord Jesus Christ in the Sacrament of the Eucharist:",
+      "I) Biblical Reasons",
+      "II) Logical Reasons",
+      "III) Historical Reasons",
+    ],
+  },
+  {
+    title: "Biblical Reasons",
+    paragraphs: [
+      "1. Whenever our Lord Jesus Christ would speak symbolically and yet the Jews would understand His blessed words literally, St. John would point their mistake out:",
+      "a) “Jesus answered and said to them, ‘Destroy this temple, and in three days I will raise it up.’ So the Jews answered and said to Him, ‘It has taken forty-six years to build this temple, and will You raise it up in three days?’ But He was speaking of the temple of His body.” (Jn 2:19-21)",
+      "b) “On the last day, that great day of the feast, Jesus stood and cried out, saying, ‘If anyone thirsts, let him come to Me and drink. He who believes in Me, as the Scripture has said, out of his heart will flow rivers of living water.' But this He spoke concerning the Spirit, whom those believing in Him would receive.” (Jn 7:37-39)",
+      "c) “Then they said to Him, ‘Who are you?’ And Jesus said to them, ‘Just as I have been saying to you from the beginning...’ They did not understand that He spoke to them of the Father.” (Jn 8:25-27)",
+      "Lord Jesus Christ said, “The bread that I will give is My flesh, which I shall give for the life of the world” (Jn 6:51) but “The Jews therefore quarreled among themselves, saying, ‘How can this Man give us His flesh to eat?’” (Jn 6:52)",
+      "Now, if Lord Jesus Christ was speaking symbolically and the Jews misunderstood Him why didn't St. John point their mistake out as he did previously? The fact that St. John didn't do that means that Lord Jesus Christ was indeed speaking literally.",
+      "The reply of the Lord reinforces the fact that His words were literal, “Most assuredly, I say to you, unless you eat the flesh of the Son of Man and drink His blood, you have no life in you... For My flesh is food indeed, and My blood is drink indeed” (Jn 6:53,55)",
+      "2. When Lord Jesus said, “Most assuredly, I say to you, unless you eat the flesh of the Son of Man and drink His blood, you have no life in you. Whoever eats My flesh and drinks My blood has eternal life, and I will raise him up at the last day. For My flesh is food indeed and My blood is drink indeed. He who eats My flesh and drinks My blood abides in Me, and I in him” (Jn 6:53-56), many of His disciples took Him literally and said, “This is a hard saying: who can understand it?”",
+      "Now our Lord Jesus Christ was fully aware that many of His disciples understood His words literally and were offended. St. John said, “From that time many of His disciples went back and walked with Him no more” (Jn 6:66)",
+      "Obviously, if Lord Jesus Christ had only meant that they would eat His flesh and drink His blood figuratively or symbolically, He would have said so before they walked away for it is written that “He explained all things to His disciples” (Mk 4:34). But the Lord did not explain and let them go. Therefore, He meant His words literally and of course not visually or cannibalistically but miraculously and Sacramentaly.",
+      "Some people become confused by what Lord Jesus Christ said after the disciples complained. He said, “It is the Spirit who gives life; the flesh profits nothing. The words that I speak to you are spirit, and they are life” (Jn 6:63). Rather, Lord Jesus Christ is not talking about His Flesh, but about their flesh. He is telling the unbelieving disciples that they cannot grasp or come to His blessed teaching on the Eucharist by their senses or their flesh which profits nothing for this purpose, only through faith or Spirit.",
+      "3. St. Paul said that our Lord said, “Take, eat; this is My body which is broken for you” (1 Cor 11:24). But we all know that the Body of our Lord was never broken, “when they came to Jesus and saw that He was already dead, they did not break His legs... these things were done that the Scripture should be fulfilled, No one of His bones shall be broken” (Jn 19:33,36)",
+      "The fact that the Lord said that this is His Body which is broken affirms that it is not a symbol but rather the true body because if the bread were a mere symbol, then it should not be broken for the body on the cross was never broken.",
+      "4. Whenever the term eating flesh occurs symbolically in Holy Scripture, it refers to slander, hate and back stabbing:",
+      "a) “When the wicked came against me to eat up my flesh, my enemies and foes, they stumbled and fell.” (Ps 27:2)",
+      "b) “You who hate good and love evil; Who strip the skin from My people, and the flesh from their bones; Who also eat the flesh of My people” (Mic 3:2-3)",
+      "c) “If you bite and devour one another, beware lest you be consumed by one another.” (Gal 5:15)",
+      "If we interpret the Lord’s words about eating His Flesh and drinking His Blood symbolically, we fall in the worst interpretation.",
+      "5. St. Paul said, “He who eats and drinks in an unworthy manner eats and drinks judgment to himself, not discerning the Lord’s body” (1 Cor 11:29). To discern means to perceive or recognize clearly. This verse clearly proves the transformation of the bread to the real body of the Lord and whoever takes communion without this faith eats and drinks judgment to himself.",
+      "6. The words of the Lord about this Sacrament are straightforward and clear.",
+      "7. St. Paul said, “I speak as to wise men; judge for yourselves what I say. The cup of blessing which we bless, is it not the communion of the blood of Christ? The bread which we break, is it not the communion of the body of Christ?” (1 Cor 10:15-16). How can we possibly have communion with the Body and Blood of Lord Jesus Christ if the bread and wine were mere symbols?",
+    ],
+  },
+  {
+    title: "Logical Reasons",
+    paragraphs: [
+      "1. The words of Lord Jesus Christ about this Sacrament constitute a testimony, “This is My Body, This is My Blood” also the Lord testified that His Body is food indeed and His Blood is drink indeed. A testimony must be literal without figurative or symbolic language.",
+      "2. The words of Lord Jesus Christ about this Sacrament constitute a covenant, “This cup is the new covenant” (Lk 22:20) “Whoever eats My flesh and drinks My blood has eternal life” (Jn 6:54). The words of a covenant must be literal.",
+      "3. Symbols and analogies must have a kind of resemblance to what they symbolize. The bread, which is broken, cannot be a symbol of the intact body of our Lord. Notice that because the Passover lamb was a symbol of the Lord, no bone was broken from it (Ex 12:46)",
+      "4. The saving spiritual blessings that are associated with this Sacrament cannot be attributed to eating mere bread unless this bread is truly transformed into the true body of the Savior.",
+      "5. The severe punishment that reaches death cannot be associated with eating mere bread and drinking mere wine unless they are truly transformed to the Body and Blood of Lord Jesus Christ.",
+      "6. It is written about the cup that it is for the remission of sins. The only way this can be true is for the mixture in this cup to be transformed to the real blood of the Savior for “without shedding of blood there is no remission” (Heb 9:22)",
+    ],
+  },
+  {
+    title: "Historical Reasons",
+    paragraphs: [
+      "1. All apostolic Churches universally agree about the real presence of the Lord in the Sacrament of the Eucharist in spite of their disagreements on many other issues.",
+      "2. All Eastern and Western Church Fathers have agreed, without exception, that the words of the Lord about this Holy Sacrament are to be understood literally.",
+      "3. Martin Luther himself could not dare to deny the presence of the Lord in the Eucharist although his view was still heretical and it wasn’t until later that Zwingli came up with the heresy of real absence which most of the Protestants believe today.",
+    ],
+  },
+  {
+    title: "Benefits of the Sacrament",
+    paragraphs: [
+      "Abiding in Lord Jesus Christ: “He who eats My flesh and drinks My blood abides in Me, and I in him” (Jn 6:56). Consequently we bear the fruits of the spirit, “He who abides in Me, and I in him, bears much fruit; for without Me you can do nothing” (Jn 15:5)",
+      "Obtaining Eternal Life: “Whoever eats My flesh and drinks My blood has eternal life, and I will raise him up at the last day. He who eats this bread will live forever” (Jn 6:54,58)",
+      "Growth and maintenance of our spiritual life: “Unless you eat the flesh of the Son of Man and drink His blood, you have no life in you... For My flesh is food indeed, and My blood is drink indeed... he who feeds on Me will live because of Me” (Jn 6:53,55,57)",
+      "Salvation and remission of sins: “This is My blood of the new covenant, which is shed for many for the remission of sins” (Mt 26:28)",
+      "Unification of believers: “For we, being many, are one bread and one body; for we all partake of that one bread” (1 Cor 10:17)",
+    ],
+  },
+  {
+    title: "Consequences of Unworthy Communion",
+    paragraphs: [
+      "St. Paul said, “Whoever eats this bread or drinks this cup of the Lord in an unworthy manner will be guilty of the body and blood of the Lord. But let a man examine himself, and so let him eat of that bread and drink of that cup. For he who eats and drinks in an unworthy manner eats and drinks judgment to himself, not discerning the Lord’s body. For this reason many are weak and sick among you, and many sleep die. For if we would judge ourselves, we would not be judged.” (1 Cor 11:27-31)",
+    ],
+  },
+  {
+    title: "The Meaning of Worthiness",
+    paragraphs: [
+      "Orthodox Faith: The person who approaches the Eucharist must be an Orthodox Christian having no doubt concerning the bread and wine being the true body and precious blood of Lord Jesus Christ.",
+      "Repentance and Confession: The person must be practicing the Sacrament of Repentance and Confession on regular basis as St. Paul said, “let a man examine himself” (1 Cor 11:28)",
+      "Reconciliation With Others: Lord Jesus Christ said, “If you bring your gift to the altar, and there remember that your brother has something against you, leave your gift there before the altar, and go your way. First be reconciled to your brother, and then come offer your gift” (Mt 5:23-24)",
+      "True Worthiness is Feeling Unworthy: St. Paul, the meek and humble apostle said, “I know nothing against myself, yet I am not justified by this” (1 Cor 4:4)",
+      "Obeying The Church Rules: concerning food abstinence before communion, physical cleanliness, and early attendance of the liturgy.",
+    ],
+  },
+  {
+    title: "The Eucharist as a Sacrifice",
+    paragraphs: [
+      "The Orthodox Church believes and confesses that the Eucharist is a sacrifice and an offering to God in addition to being a Sacrament.",
+      "The words of Lord Jesus Christ Himself speak of His blood being shed and His body being broken or given. Undoubtedly, the terms broken body and shed blood refer to a sacrifice.",
+      "The presence of an altar in the Church confirms that the Eucharist is a sacrifice. St. Paul said, “We have an altar from which those who serve the tabernacle have no right to eat” (Heb 13:10). Isaiah the Prophet said, “In that day there will be an altar to the Lord in the midst of the land of Egypt” (Is 19:19).",
+      "Malachi the Prophet prophesied about the New Testament offering saying, “I have no pleasure in you, says the Lord of hosts, nor will accept an offering from your hands. For from the rising of the sun even to its going down, My name shall be great among the nations” (Mal 1:10-11). This pure offering is the Eucharistic offering that Christians offer on their altars.",
+      "St. Paul said, “Observe Israel after the flesh: Are not those who eat of the sacrifices partakers of the altar?... You cannot drink the cup the Lord and the cup of demons; you cannot partake of the Lord's table and the table of demons” (1 Cor 10:18-21). This proves that the Eucharist that is offered on the Christian altar is indeed a sacrifice.",
+    ],
+  },
+  {
+    title: "The Cross and the Eucharistic Sacrifice",
+    paragraphs: [
+      "The Cross: The Holy Body and Precious Blood were offered visibly.",
+      "The Eucharist: The Holy Body and Precious Blood are offered sacramentally as bread and wine.",
+      "The Cross: Offered by Lord Jesus Christ as the Chief High Priest.",
+      "The Eucharist: Offered by the New Testament Priests according to the order of Melchizedek.",
+      "The Cross: The lamb Lord Jesus Christ was slain, His blood was shed, and He died.",
+      "The Eucharist: No shedding of blood and no death. Hence it is called bloodless sacrifice.",
+      "The Cross: Offered once on Good Friday.",
+      "The Eucharist: Offered several times from its institution till the second coming of the Lord.",
+    ],
+  },
+  {
+    title: "Frequently Asked Questions",
+    paragraphs: [
+      "Q1: Why don't we allow Protestants to take communion in our Churches?",
+      "A1: The Didache or the teaching of the 12 apostles states “Let no one eat or drink of your Eucharist but those baptized in the name of the Lord; to this, too the saying of the Lord is applicable, Do not give what is holy to the dogs” (Mt 7:6). St Paul forbade the Jews from taking communion in an unworthy manner. How can the Church allow a protestant, who denies the real presence of the Lord in the Eucharist, to take communion?",
+      "Q: What are the differences with the Roman Catholic Church concerning the Eucharist?",
+      "A: There are no differences concerning the belief that the Eucharist is the true Body and Blood of Lord Jesus Christ. Nevertheless, there are some differences concerning the administration of the Sacrament.",
+      "a) They consecrate unleavened bread wafers even though the very word artos, which is used in the Greek text of the gospel in the narration on the institution of the Sacrament, signifies precisely leavened, fermented, risen bread.",
+      "b) They forbid infants and small children from taking communion. Lord Jesus Christ said about the children, “Let the little children come to Me, and do not forbid them; for of such is the kingdom of heaven” (Mt 19:14).",
+      "c) They allow people to partake of the Holy Body without partaking of the Holy Blood. Lord Jesus Christ administered both His Body and His Blood to His disciples and He said about the cup “Drink from it, all of you” (Mt 26:27). He also said, “Unless you eat the flesh of the Son of Man and drink His blood, you have no life in you. Whoever eats My flesh and drinks My blood has eternal life” (Jn 6:53-54).",
+      "d) Their practice of separate little wafers for the laity contradicts the unity expressed by “For we, being many, are one bread and one body; for we all partake of that one bread.” (1 Cor 10:17)",
+      "Q6: St. Paul said, “Purge out the old leaven, that you may be a new lump, since you truly are unleavened. For indeed Christ, our Passover was sacrificed for us” (1 Cor 5:7). Is the apostle talking about consecrating unleavened bread in the Eucharist?",
+      "A6: Leaven is a symbol of sin and evil, and St. Paul says in the verse that follows, “Let us keep the feast, not with old leaven, nor with the leaven of malice and wickedness, but with the unleavened bread of sincerity and truth” (1 Cor 5:8). St. Paul is not talking about the Eucharist but about the sinner that he mentioned in the beginning of this chapter. Since leaven symbolizes sin and our Lord indeed carried our sins, it is more fitting to consecrate leavened bread in the Eucharist.",
+      "This lecture is adapted from ‘The Sacraments of The Church’ by Archdeacon Habib Guirgess.",
     ],
   },
 ]
+
 
 export const priesthoodTeachingSections: TeachingSection[] = [
   {
     title: "The Sacrament of Priesthood",
     paragraphs: [
-      "The Sacrament of Priesthood is the Holy Sacrament by which the Bishop lays his hand on the elected candidate so that the Holy Spirit descends upon him and grants him one of the priestly ranks. As a result, the ordained person receives authority to perform the ministry of the Church, whether the Holy Sacraments, teaching, or other forms of service. This is called laying on of hands or ordination.",
-      "Lord Jesus Christ instituted this Sacrament when He chose the twelve and consecrated them for ministry. He gave them authority to bind and loose sins, to baptize, and to receive the mystery of His Body and Blood. The lesson stresses that this authority is not self-taken. 'No man takes this honor to himself, but he who is called by God.' Priesthood is therefore divine choice, faithfulness and stewardship, and consecration for ministry.",
+      "Lecture II: The Sacrament of Priesthood",
+      "The Sacrament of Priesthood is the Holy Sacrament by which the Bishop lays his hand on the elected candidate in order for the Holy Spirit to descend on this person to grant him one of the priestly ranks. As a result, the ordained person is granted the authority to perform the ministry of the Church, whether the Holy Sacraments, teaching or others. This process is called “Laying of hands” or “Ordination.”",
     ],
   },
   {
-    title: "The ranks of deacons, priests, and bishops",
+    title: "Institution of The Sacrament",
     paragraphs: [
-      "The order of deacons includes the Epsaltos, Anagnostis, Epideacon, Deacon, and Archdeacon. Each rank has work in hymnody, reading, order, liturgical service, and care for the people. Scripture gives qualifications of reverence, purity, wisdom, and good reputation for deacons.",
-      "The order of priests includes the Priest or Presbyter, the Hegomen or Archpriest, and the Khoori-Episcopos. The priest administers the Church’s sacraments except ordination and serves as teacher, pastor, and spiritual father. The Hegomen is a rank of responsibility among priests. The Khoori-Episcopos stands close to the episcopal rank and assists in broad fields of service.",
-      "The order of bishops includes the Bishop, Metropolitan, and Patriarch. The bishop has the fullness of priesthood and ordains the ranks beneath him. The Metropolitan is a higher rank of oversight. The Patriarch is the leader of the Church, the successor of the Apostles in that see, the head of the synod, and the one who ordains bishops and prepares the Holy Oil.",
-      "The lesson also includes the rank of Khoori-Episcopos and notes its historical use and later revival, while presenting the material for the Ethiopian Orthodox Tewahedo Church context.",
+      "Lord Jesus Christ instituted this Sacrament when He chose the twelve of His followers and consecrated them for ministry, “He called His disciples to Him, and from them He chose twelve whom He also named apostles” (Lk 6:13). He gave them the authority of absolution and binding, “He breathed on them, and said to them, ‘Receive the Holy Spirit’. If you forgive the sins of any, they are forgiven them; if you retain the sins of any, they are retained” (Jn 20:22-23). Notice that this took place before the Pentecost and the gift of the Holy Spirit here is the gift of ordination. Only to them He said, “Go therefore and make disciples of all the nations, baptizing them in the name of the Father and the Son and of the Holy Spirit” (Mt 28:19) and only to them He delivered the mystery of His Body and Blood (The Eucharist)",
     ],
   },
   {
-    title: "Qualifications and Christ as the model of priesthood",
+    title: "Honor of Priesthood",
     paragraphs: [
-      "The lesson includes apostolic qualifications for bishops and deacons from Titus and 1 Timothy: blamelessness, sobriety, hospitality, sound doctrine, gentleness, holiness, and good reputation. It also explains why bishops are ordained from celibate monks, drawing on patristic interpretation and the Church’s discipline.",
-      "The lesson closes by showing how our Lord Jesus Christ practiced and blessed what later became the essence of the Church’s ranks. He sang hymns, read Scripture, ordered the temple, washed feet, gave the Eucharist, shepherded the flock, and entrusted apostolic authority. The references named here include Matthew 26:30, Luke 4:16, Matthew 21:12, John 13:5, Mark 14:22-26, John 13:27-29, 1 Peter 2:25, John 10:14, and John 20:22-23.",
-      "The point is practical and spiritual: no rank in the Church is lowly or empty, because the Lord Himself honored the work of service. Priesthood therefore exists for sanctification, stewardship, teaching, sacrifice, and pastoral care.",
+      "St. Paul said, “No man takes this honor to himself, but he who is called by God” (Heb 5:4) and “Let the elders [priests] who rule well be counted worthy of double honor’ (I Tim 5:17), for the Priesthood is:",
+      "a) A divine choice, call and appointment:",
+      "“Then He appointed twelve, that they might be with Him and that He might send them out to preach and to have power to heal sicknesses and to cast out demons.” (Mk 3:13-15)",
+      "“And when it was day, He called His disciples to Himself; and from them He chose twelve whom He also named apostles.” (Lk 6:12-13)",
+      "“You did not choose Me, but I chose you and appointed you that you should go and bear fruit and that",
+      "“After these things the Lord appointed seventy others also, and sent them two by two before His face into every city and place where He Himself was about to go.” (Lk 10:1)",
+      "“As they ministered to the Lord and fasted, the Holy Spirit said, ‘Now separate to Me Barnabas and Saul for the work to which I have called them.’ Then, having fasted and prayed, and laid hands on them, they sent them away.” (Acts 13:2-3)",
+      "b) Faithfulness and Stewardship:",
+      "“Who then is that faithfiul and wise steward, whom his master will make ruler over his household, to give them their portion in due season? Blessed is that servant whom his master will find so doing he comes.” (Lk 12:42-43)",
+      "“Let a man so consider us, as servants of Christ and stewards of the mysteries [Sacraments] of God. Moreover it is required in stewards that one be found faithful” (1 Cor 4:1-2)",
+      "c) Consecration or Sanctification:",
+      "Lord Jesus Christ said, “for their sakes I sanctify Myself, that they also may be sanctified by the truth” (Jn 17:19). To sanctify means to consecrate; our Lord has consecrated Himself for the ministry and redemption. Likewise, all ranks ofthe Priesthood are consecrated for the ministry according to the example of Lord Jesus Christ, the Great High Priest.",
+    ],
+  },
+  {
+    title: "The Order of Deacons",
+    paragraphs: [
+      "1. Epsaltos (Hymnist, Cantor):",
+      "The work of the Epsaltos is obvious from his name that is to learn and sing Church hymns and praises. This rank is mentioned in some of the early Church canons, “Chanters also must be blessed by the Bishop”. Children are usually ordained in this rank as the Psalm says, “Out of the mouth of babes and infants You have ordained strength” (Ps 8:2), the wisdom of children’s ordination is attaching them to the Church in order to grow up being nourished by the Orthodox faith and rites, so that they become steadfast in the faith, clinging to it with a high level of spirituality and holiness, as the Psalm says, “But I am like a green olive tree in the house of God I will praise You forever” (Ps 52:8-9)",
+      "2. Anagnostis (Reader, Lector):",
+      "His work is the daily readings in Church especially the Holy Epistles; he must read without mistakes so that the congregation may understand what is read. After the Commemoration of the Saints, readers recite the names of the Patriarchs who passed away in the Lord as the deacon says, “Let those who read recite the names of our fathers the Patriarchs who have fallen asleep; 0 Lord repose their souls and forgive us our sins”. Readers also can give sermons to the congregation as mentioned in the rite oftheir ordination, “Lord show Your face to Your servant standing before You to know by Your Holy Words to preach Your laws to Your people, teach them Your pure words for their rescue and salvation”, this is done by the permission from the Bishop or Priest. Readers are required to receive the Church Psalmody (Praises) and receipt it with the chorus during Liturgy and other occasions.",
+      "3. Epideacon (Sub-deacon):",
+      "His work is to prevent heretics and false teachers from entering the Church, to light the Church’s lamps, to maintain the books ofthe Church, to prepare the censer, to organize the worshipers and to help the deacon and replace him if necessary. These responsibilities are added to the previous ones of the reader.",
+      "4. Deacon (Servant):",
+      "His work is to recite all the liturgical responses. In the past no one was allowed to enter to the Sanctuary except the Bishop, Priest and the Deacon or Archdeacon, also kings who were believers and anointed by Chrism. The deacon may carry the chalice and give the congregation from the precious blood of the Lord during communion. He reads the Holy Gospel of the Liturgy and may teach or preach by the permission of the Bishop or Priest. The deacon helps the priest in the service by visiting the congregation, widows and orphans, sick, etc. If he was ordained before marriage, he does not marry. If he had a wife and was ordained then his wife died, he remains without marriage like the case of Priests. Ifhe elects to marry, he loses his rank.",
+      "5. Archdeacon (Leader of Deacons):",
+      "The Archdeacon leads all the ranks of deacons, manages their needs, and specifies their deeds.",
+      "Qualifications of Deacons:",
+      "St. Paul said, “Deacons must be reverent, not double-tongued, not given to much wine,not greedy for money, holding the mystery of faith with a pure conscience. But let these also first be proved; then let them serve as deacons, being found blameless... Let deacons be the husbands of one wife, ruling their children and their own houses well.” (1 Tim 3:8-9,12)",
+      "The twelve apostles set the criteria ofordination of the seven deacons as being “of good reputation, full of the Holy Spirit and wisdom” (Acts 6:3). Although this rank is the smallest of the priestly ranks, St. Paul praised it saying, “Those who have served well as deacons obtain for themselves a good standing and great boldness in the faith which is in Christ Jesus” (1 Tim 3:13). It is also noteworthy to mention that the first Christian martyr was St. Steven the deacon who saw heaven opened and Lord Jesus standing at the right hand of God (Acts 7:56)",
+    ],
+  },
+  {
+    title: "The Order of Priests",
+    paragraphs: [
+      "1. Priest, Elder, Presbyter:",
+      "This is the first and essential priestly rank. The priest has the right to administer all the church Sacraments except the laying of hands and ordination, which reserved to the Bishop or someone above him. He teaches the people the word of God, explains to them the dogmas and rites, and leads them to the way of righteousness “For the lips of a priest should keep knowledge, and people should seek the law from his mouth; for he is the messenger of the Lord of hosts.” (Mal 2:7) He is a father who pastors his children compassionately, visits them with tenderness care and love, as he is zealous for their salvation. He humbly serves them as Lord Jesus washed the feet of His disciples.",
+      "2. Hegomen, Senior Priest, Archpriest:",
+      "This is only a promotional rank from a priest and is not considered as a new ordination. If there were more than one priest serving in the same Church, the oldest in ordination or the most active and knowledgeable is promoted to the rank of hegomen. The rest of the priests submit to him and consider him the primary responsible person in the Church.",
+      "3. Khoori-Episcopos (Bishop of a village):",
+      "This rank came to existence by the end of the third century in Asia Minor when the dioceses extended and their division to smaller ones was not preferred. Members of the Nicene Council included 15 Khoori-Episcopos from Asia Minor and Syria. This rank disappeared from our Coptic Church and was revived by H.H. Pope Shenouda III when His Holiness ordained several monks as Khoori-Episcopos in order to assist some Bishops and Metropolitans in the service of their wide dioceses. His Holiness promoted most of them later on to general Bishops or Bishops of Dioceses. This rank is closer to the Bishopric rank for the candidate is a monk, holds the title of \"Anba\", his turban is very similar to the Bishop's, has the authority to ordain the various ranks of Deacons, is a member of the Holy synod, and his name is mentioned like the Bishop in all liturgical prayers and hymns.",
+    ],
+  },
+  {
+    title: "The Order of Bishops",
+    paragraphs: [
+      "1. Bishop, Overseer, Episcopos:",
+      "This is the highest rank of the Priesthood. Bishops are distinguished from Priests by having the perfection of the Priesthood and the authority to lay hands and ordain all the deaconry and priestly ranks in their dioceses.",
+      "2. Metropolitan (Bishop of a large city):",
+      "This is a promotional rank from the Bishop, and the Metropolitan is mentioned before the Bishop in all the Church rites.",
+      "3. Patriarch, Pope, Archbishop:",
+      "The Patriarch is the highest rank in the Bishopric level and has the greatest ruling of Priesthood; he is the leader of the Church, Bishops and Metropolitans. The Patriarch is the successor of our fathers the Apostles and is the symbol of the unity of the Church. He has the right to ordain Bishops (at least one Bishop accompany him) and promote them to Metropolitans. He also has the right to make the Holy oil (Mayron). He heads the sessions of the Holy Synod, which is the highest authority in the Church.",
+      "Qualification of Bishops:",
+      "St. Paul said, “A bishop must be blameless, as a steward of God, not self- willed, not quick-tempered, not given to wine, not violent, not greedy for money, but hospitable, a lover of what is good, sober-minded, just, holy, self controlled, holding fast the faithfiul word as he has been taught, that he may be able, by sound doctrine, both to exhort and convict those who contradict.” (Titus 1:7-9)",
+      "“A bishop then must be blameless, the husband of one wife, temperate, sober-minded, of good behavior, hospitable, able to teach; not given to wine, not violent, not greedy for money, but gentle, not quarrelsome, not covetous. .. not a novice, lest being puffed up with pride he fall into the same condemnation as the devil. Moreover he must have a good testimony among those who are outside, lest he fall into reproach and the snare of the devil.” (1 Tim 3:2-3,6-7)",
+      "Q: The Holy Bible said that the Bishop should be “the husband of one wife” (1 Tim 3:2). Why then do we ordain the Bishops from the celibate monks?",
+      "A: First of all, “we” don’t ordain anybody; the Pope does, “we” merely recommend the ordination. Secondly, St. John Chrysostom said, “The apostle did not place this order as a basis that he (the Bishop) must be a husband of a wife, but he forbids from this rank the individual who married more than one wife, as he wanted to choose the most pure and modest, but since the door of celibacy and monasticism is opened so the Bishops are ordained from the celibate monks who never married at all.” Moreover, The Holy Book of Revelation (the only Prophetic Book of the New Testament) called the Bishops “Angels” and our Lord said that the angels “neither man'y nor are given in marriage” (Mt 22:30). In the Nicene Council 325 AD, a decision was made that priests must be married because of the nature of their service since they enter houses and solve family problems. Nevertheless, if the priest is widowed, he does not remarry another woman since he is the father of all women and a father cannot marry one of his daughters.",
+    ],
+  },
+  {
+    title: "Lord Jesus Christ & The Ranks of Priesthood",
+    paragraphs: [
+      "Our Lord Jesus Christ practiced certain services that became the essence of the Church ranks:",
+      "a) The Epsaltos: The person who holds this rank is required to learn and sing the Church hymns. Lord Jesus Christ sung a hymn with His disciples before going to Gethsemane, “And when they had sung a hymn, they went out to the Mount of Olives” (Mt 26:30)",
+      "b) The Anagnostis: The most important work of this rank is reading the Holy Scriptures in Church during the Liturgy. Our Lord practiced the work ofthe reader when He went in the synagogue and stood up to read (Lk 4:16)",
+      "c) The Epideacon: The most important work is keeping the Church organized. The Lord did the same when He drove out all those who bought and sold in the temple (Mt 21:12)",
+      "d) The Deacon: One of the duties of the Deacon is to pour water for the priest to wash his hands upon the start of the Mass. Our Lord poured water into a basin and washed the disciples’ feet (Jn 13:5)",
+      "e) The Priest: The main work of the priest is to sanctify the bread and wine during the Holy Liturgy and to give communion to the congregation. The Lord did the same on Covenant Thursday (Mk 14:22-26)",
+      "1) The Hegomen: The role of the Hegomen is to provide for the Church services. It is obvious that our Lord did the same for when He said to Judas “What you do, do quickly” (Jn 13:27) the disciples thought that since Judas had the money box, the Lord had asked him to buy what they need for the feast or to give to the poor (Jn 13:29)",
+      "g) The Bishop: The bishop is the shepherd of the flock. St. Peter refers to Lord Jesus as the shepherd and overseer of our souls (1 Pet 2:25) and the Lord said about Himself, “I am the good Shepherd” (Jn 10:14)",
+      "h) The Patriarch: Only the Pope can ordain Bishops and our Lord breathed on His apostles and gve them the authority to bind and loose sins (Jn 20:22-23)",
+      "Therefore, we find Lord Jesus Christ practicing most of the priestly ranks despite their variation so that every person may find in Him a good example to follow and to know that however small his rank may seem it is not lowly since the Lord Himself practiced and blessed it.",
+      "This lecture 15 adapted from ‘The Sacrament of Priesthood’ by H.G. Bishop Mettaous.",
     ],
   },
 ]
@@ -1601,44 +2135,92 @@ export const anointingTeachingSections: TeachingSection[] = [
   {
     title: "The Sacrament of the Anointing of the Sick",
     paragraphs: [
-      "There are two sacraments for healing: one for spiritual illness, which is the Sacrament of Repentance and Confession, and the other for physical and psychological illness, which is the Sacrament of the Anointing of the Sick.",
-      "We do not know the exact time or occasion when our Lord instituted this sacrament, but we know that He commanded the healing of the sick and that the disciples anointed many sick people with oil and healed them. St. James makes the sacramental practice explicit: the sick are to call the priests of the Church, who pray over them and anoint them with oil in the name of the Lord.",
-      "The lesson treats James 5:14-16 as speaking together of both confession and anointing of the sick. This is not an ordinary means of healing, because it is administered by priests and handed down as apostolic teaching.",
-      "The lesson also places around this Matthew 10:8, Luke 10:8-9, Mark 6:13, and John 21:25.",
+      "Lecture XVIII: The Sacrament of the Anointing of the Sick",
+      "There are two Sacraments for ‘healing’; one for spiritual illness, which is the Sacrament of Repentance & Confession, the other for physical and psychological illness, which is the Sacrament of the Anointing of the Sick.",
     ],
   },
   {
-    title: "Questions and pastoral use",
+    title: "Institution of The Sacrament",
     paragraphs: [
-      "The lesson asks why people sometimes receive this sacrament and are not healed. It answers that this may be because of lack of faith, or because God in His wisdom sees that the illness is spiritually beneficial, as in the case of St. Paul whose weakness was not removed.",
-      "It also explains why the Church performs this sacrament for the whole congregation on the last Friday of Lent. During Holy Week the Church does not perform it, so she performs it beforehand, and many are also physically weakened by fasting and helped by this anointing as they continue into Pascha.",
+      "We do not know the exact time or occasion when our Lord instituted this Sacrament, which is no surprise for there are many things that the Lord did that were not written one by one (Jn 21:25), but we know that the Lord said:",
+      "“Heal the sick, cleanse the leper.” (Mt 10:8)",
+      "“Whatever city you enter, and they received you ....heal the sick who are there.” (Lk 10:8-9)",
+      "We also know that the disciples:",
+      "“Anointed with oil many who were sick, and healed them.” (Mk 6:13). It is understood that the apostles, having been sent by the Lord, were instructed to do so.",
+      "St. James also said:",
+      "“Is anyone among you sick? Let him call for the elders (priests) ofthe church, and let them pray over him, anointing him with oil in the name ofthe Lord. And the prayer of faith will save the sick, and the Lord will raise him up. And if he has committed sins, he will be forgiven. Confess your trespasses to one another, and pray for one another, that you may be healed.” (Jam 5:14-16)",
+      "Here St. James is talking about both the Sacraments of Confession and Anointing ofthe Sick. This is not an ordinary means ofhealing sickness because it is administered by the priests and not by any person. Since the apostles did not preach their own gospel but delivered to us what they had previously received from the Lord, Therefore, St. James must have received this teaching directly from the Lord.",
+    ],
+  },
+  {
+    title: "FAQ",
+    paragraphs: [
+      "Q1: Why do people sometimes receive this Sacrament and yet are not healed?",
+      "A1: It could be because of their lack of faith, “He did not do many mighty works there because of their unbelief” (Mt 13:58) or it could be that God in His wisdom sees that this illness is beneficial to the person’s spiritual life as the case with St. Paul who prayed three times to be healed but God said to him, “My strength is made perfect in weakness” (2 Cor 12:9). We need to understand that in this Sacrament we do not dictate to God what to do but rather ask for his mercies.",
+      "Q2: Why does the Church perform this Sacrament to the whole congregation on the last Friday of the Lent?",
+      "A2: During the Holy Week of Pascha, the Church does not perform this Sacrament and therefore performs it and anoints the entire congregation on the last Friday ofthe Lent. Moreover, many are weak from fasting and this anointing helps them to continue with the scheduled prayers and food abstinence of the Pascha.",
+      "This lecture is adapted fiom, ‘The Church Sacraments ’ by Archdeacon Habib Guirgess.",
     ],
   },
 ]
 
 export const matrimonyTeachingSections: TeachingSection[] = [
   {
-    title: "Marriage as a sacrament",
+    title: "The Sacrament of Matrimony",
     paragraphs: [
-      "Marriage is a universal human practice, yet in the Orthodox Church it is also a sacrament. A sacrament is a visible form of an invisible grace, a mystery through which mankind passes from the merely earthly into the life of communion with God.",
-      "The lesson explains that created realities such as bread, wine, water, and oil are taken up into the Kingdom and transformed by grace. In the same way, marriage as a natural human reality is sanctified and raised to a higher life in Christ.",
-      "It points to the wedding at Cana of Galilee in John 2:1-11. By attending the wedding and performing His first miracle there, our Lord Jesus Christ blessed marriage forever and revealed the transformation of earthly union into something heavenly and spiritual.",
+      "Lecture XIX: The Sacrament of Matrimony",
+      "Marriage is and has been a universal practice for almost every civilized culture throughout history, yet it is considered to be a Sacrament in the Orthodox Church. A Sacrament is a visible form of an invisible grace, it’s a mystery, an open door through which mankind passes from the realm of the physical and earthly, into the reality of the spiritual and heavenly — the realm of communion with God. A Sacrament is seen through the context of created reality (for example, wine and bread in the Eucharist, water in Baptism, and oil in Confirmation, etc. ..). This created reality is then projected into the Kingdom of God and transformed into a higher reality, which belongs to the spiritual realm. As a result of Lord Jesus Christ’s work of redemption, marriage is raised to a new level that transcends human procreation and legal contracts.",
+      "Marriage is, on one level, a created reality, which is indeed a universal practice. Men and women are attracted to each other, fall in love, and marry. But this created reality of marriage can be assumed into the Kingdom of God and sanctified. When a man and a woman come to the Church to be married, they are experiencing the transfiguration of their earthly marriage into the reality of the Kingdom of God. In the Holy Gospel according to St. John 2:1-11, we read about Lord Jesus Christ attending a wedding ceremony in Cana of Galilee. In being at this wedding and in performing His first miracle there, Lord Jesus Christ forever blesses marriage and sets it apart as “sanctified” way of life. This first miracle performed by the Lord at the wedding of Cana of Galilee is also symbolic; the transformation o fwater into wine is symbolic of the Sacramental transformation of the earthly reality of marriage into something heavenly and spiritual.",
+      "(Adapted from an article by Fr. John Meyendorff) ‘",
     ],
   },
   {
     title: "Marriage and the Church",
     paragraphs: [
-      "Marriage belongs to a different order than a civil contract alone. The lesson treats husband and wife as symbols of another marriage: the union of Christ and the Church.",
-      "It therefore quotes Ephesians 5:22 and 5:24 for the wife, Ephesians 5:25, 5:28-29 for the husband, and Ephesians 5:32 where St. Paul calls marriage “a great mystery” in relation to Christ and the Church.",
-      "The lesson notes that some fathers connect the institution of this sacrament to Cana in John 2:1-11, while others connect it to the Lord's words on divorce: “What God has joined together, let not man separate” (Mt 19:6).",
+      "Marriage, as a Sacrament, belongs to an entirely different order than the mere union of man and woman through civil contract. It basically regards a husband and wife as symbols of another marriage; namely, the marriage of Lord Jesus and the Church.",
+      "“Wives, submit to your own husbands, as to the Lord therefore, just as the church is subject to Christ, so let the wives be to their own husbands in everything.” (Eph 5:22,24)",
+      "“Husbands, love your wives, just as Christ also loved the church and gave Himself for it so husbands ought to love their own wives as their own bodies; he who loves his wife loves himself. For no one ever hated his own flesh, but nourishes and cherishes it, just as the Lord does the church.” (Eph 5:25,28-29)",
     ],
   },
   {
-    title: "Characteristics, goal, and question",
+    title: "Institution of the Sacrament",
     paragraphs: [
-      "The characteristics of Orthodox marriage are clear: no mixed marriage with unbelief, according to 2 Corinthians 6:14-16; monogamy, according to 1 Corinthians 7:2; and no divorce except for sexual immorality, according to Matthew 19:9.",
-      "The lesson also says that many couples come to marriage expecting personal satisfaction, emotional relief, or easy happiness. Orthodox teaching corrects this by saying that the goal of marriage is heaven, not merely the satisfaction of personal needs.",
-      "1 Corinthians 7:14 does not grant permission to seek marriage with unbelievers. It addresses people who were already married when one spouse came to faith, as shown by 1 Corinthians 7:12-15.",
+      "Holy Scripture does not explicitly mention when our Lord instituted this Sacrament. Nevertheless, some fathers have said that He instituted it when He attended and blessed the wedding at Cana ofGalilee (Jn 2:1—11) others have said that the Lord instituted it during His discussion with the Pharisees about divorce when He said, “What God has joined together, let no man separate.” (Mt 19:6)",
+      "In any case, St. Paul explicitly calls marriage “a great mystery [Sacrament]” (Eph 5:32)",
+    ],
+  },
+  {
+    title: "Characteristics of an Orthodox Marriage",
+    paragraphs: [
+      "No mixed marriages: “Do not be equally yoked together with unbelievers. For what fellowship has righteousness with lawlessness? And what communion has light with darkness? And what accord has Christ with Belial? Or what part has a believer with an unbeliever? And what agreement has the temple of God with idols? For you are the temple ofthe living God.” (2 Cor 6:14-16)",
+      "Monogamy: “Let each man have his own wife, and let each woman have her own husband.” (1 Cor 7:2)",
+      "Divorce is allowed only for sexual immorality reasons, “Whoever divorces his wife, except for sexual immorality and marries another, commits adultery; and whoever marries her who is divorced commits adultery” (Mt 19:9)",
+    ],
+  },
+  {
+    title: "The Goal of an Orthodox Marriage",
+    paragraphs: [
+      "Very often couples get married for the purpose of filling certain needs that they have in their own personal lives. Therefore, they come to marriage expecting happiness, emotional well-being, personal satisfaction without even having to work for them. When they don’t get these things, they feel cheated or blame their spouse. As Orthodox Christians, we approach marriage very differently. The goal of marriage is not the fullfilment of one’s needs; rather, the ultimate goal of marriage is heaven.",
+    ],
+  },
+  {
+    title: "FAQ",
+    paragraphs: [
+      "Q1: St. Paul said, “The unbelieving husband is sanctified by the wife, and the unbelieving wife is sanctified by the husband” (1 Cor 7:14) Is St. Paul permitting the marriage to unbelievers?",
+      "Al: St. Paul is talking to people who believed and were already married yet their spouses did not accept the faith. He said before the above verse, “If any brother has a wife who does not believe, and she is willing to live with him, let him not divorce her. And a woman who has a husband who does not believe, if he is willing to live with her, let her not divorce him” (1 Cor 7:12-13) then he said, “if the unbeliever departs, let him depart; a brother or a sister is not under bondage in such cases” (1 Cor 7:15)",
+      "This lecture is adapted fom ‘The Church Sacraments’ by Habib Guirgess.",
+    ],
+  },
+  {
+    title: "Resources for Marriage",
+    paragraphs: [
+      "1. “Before You Say I Do” - by H. Norman Wright",
+      "2.“Fire Proof Your Marriage” (Couples Kit) — by Jennifer Dion",
+      "3. On Marriage and Family Life Paperback by Saint John Chrysostom",
+      "4. http://www.focusonthefamily.ca/marriage/pre-marriage/",
+      "7-essential-conversations-to-have-with-your-future-spouse",
+      "5. http://www.smalley.cc/",
+      "6. http://www.5lovelanguages.com/",
     ],
   },
 ]
@@ -1647,78 +2229,384 @@ export const salvationTeachingSections: TeachingSection[] = [
   {
     title: "The blood of Christ and salvation",
     paragraphs: [
-      "The lesson opens by insisting that salvation is available only through the blood of our Lord and Savior Jesus Christ, for “without shedding of blood there is no remission” (Heb 9:22).",
-      "It ties this to the Passover lamb in 1 Corinthians 5:7 and Exodus 12:13, and then to the words of institution: “This is My blood of the new covenant which is shed for many for the remission of sins” (Mt 26:28).",
-      "The lesson then gathers many references around this doctrine: Acts 20:28, Romans 5:9, Ephesians 1:7, Colossians 1:14, Ephesians 2:13, Colossians 1:20, Hebrews 9:12, Hebrews 9:14, Hebrews 10:19, Hebrews 10:29, Hebrews 12:24, Luke 23:34, Hebrews 13:20-21, 1 Peter 1:18-19, 1 John 5:8, 1 John 1:7, Revelation 1:5, Revelation 5:9, Revelation 7:14, and Revelation 12:11.",
+      "“How shall we escape if we neglect so great a salvation.” (Heb 2:3)",
+      "I) The Blood of our Lord Jesus Christ & Salvation:",
+      "Salvation is only available through the blood of our Lord and Savior Jesus Christ, “without shedding of blood there is no remission” (Heb 9:22). The Passover lamb was a symbol of our Lord, “For indeed Christ, our Passover, was sacrificed for us” (1Cor 5:7). Through the blood of the lamb, the Israelites were saved from death, “Now the blood shall be a sign for you on the houses where you are, and when I see the blood, I will pass over you and the plague shall not be on you to destroy you when I strike the land of Egypt” (Ex 12:13). Through this precious blood sins are remitted and we enter in a new covenant with God, “This is My blood of the new covenant which is shed for many for the remission of sins” (Mt 26:28).",
+      "+ Some Biblical References +",
+      "“ Shepherd the Church of God which He purchased with His own blood.” (Acts 20:28)",
+      "“Having now been justified by His blood, we shall be saved fiom wrath through Him.” (Rom 5:9)",
+      "“In Him we have redemption through His blood.” (Eph 1:7) & (Col 1:14)",
+      "“In Christ Jesus you who once were far off have been made near by the blood of Christ.” (Eph 2:13)",
+      "“Having made peace through the blood of His cross.” (Col 1:20)",
+      "“Not with the blood ofgoats and calves, but with His own blood He entered the most Holy place once for all, having obtained eternal redemption.” (Heb 9:12)",
+      "“. . .How much more shall the blood of Christ, who through the eternal spirit offered Himself without spot to God, purge your conscience from dead works to serve the living God.” (Heb 9:14)",
+      "“Therefore brethren having boldness to enter the Holiest by the blood of Jesus.” (Heb 10:19)",
+      "“Of how much worse punishment, do you suppose, will be thought worthy who has trampled the son of God underfoot, counted the blood of the covenant by which he was sanctifieda common thing, and insulted the Spirit of grace?” (Heb 10:29)",
+      "“. . .To Jesus the Mediator of the new covenant, and to the blood of sprinkling that speaks better things than that of Abel” (Heb 12:24)",
+      "The blood of our Lord Jesus Christ speaks better things than that ofAbel because the blood of Abel was seeking revenge as God said to Cain, “The voice of your brother’s blood cries out to Me from the ground” (Gen 4:10). On the other hand, the blood of Lord Jesus Christ was seeking forgiveness of sins, “Father, forgive them for they do not know what they do.” (Lk 23:34).",
+      "“Now may the God of peace through the blood of the everlasting covenant, make you complete in every good work to do His will.” (Heb 13:20-21)",
+      "“You were not redeemed with corruptible things ...but with the precious blood of Christ as of a “lamb without blemish and without spot.” (1Pet 1:18-19)",
+      "“There are three that bear witness on earth: the Spirit, the water, and the blood; and these three agree as one.” (1Jn 5:8)",
+      "“The blood of Jesus Christ His Son cleanses us from all sin.” (1Jn 1:7)",
+      "“... To Him who loved us and washed us from our sins in His own blood...” (Rev 1:5)",
+      "“.. You were slain, and have redeemed us to God by Your blood ...” (Rev 5:9)",
+      "“These are the ones who came out of the great tribulation, and washed their robes and made them white in the blood of the lamb.” (Rev 7:14)",
+      "“And they over came him by the blood of the lamb ...” (Rev 12:11)",
     ],
   },
   {
     title: "Application and conditions",
     paragraphs: [
-      "The lesson applies this by saying that Old Testament sins were put away until the Cross rather than fully remitted before the blood of Christ was shed. Nathan's word to David in 2 Samuel 12:13 is read in this light, and the closed state of Paradise before the Crucifixion is emphasized.",
-      "It also says that when the Lord told the paralytic, “your sins are forgiven you” (Lk 5:20), He gave a promise of forgiveness grounded in the Cross to come. This same pattern is applied to other pre-crucifixion acts of forgiveness.",
-      "The conditions for salvation in normal adult life are faith, the saving sacraments of Baptism, Confirmation, Repentance and Confession, Eucharist, and good works. The people of the Old Testament had symbols of these sacraments, such as circumcision, which is explained in Colossians 2:11-12.",
+      "+ Application of the above concept:",
+      "1. The sins of the people in the Old Testament were not forgiven until the day of the crucifixion of our Lord Jesus Christ. All the sins of the Old Testament were merely “put away” as Nathan the Prophet said to King David, “The Lord also has put away your sin; you shall not die” (2Sam 12:13). He didn’t say ‘ has forgiven your sin ’ because “without shedding of blood there is no remission” (Heb 9:22). Hence, the Paradise was closed in front all the righteous people of the Old Testament until the day when our Lord Jesus Christ shed His ‘Blood on the cross and sins were remitted. The term “put away” means that the sin is transferred from one’s account to the account of the Savior.",
+      "2. When our Lord said to the paralytic “your sins are forgiven you” (Lk 5:20), He merely gave him a promise of forgiveness or a check so to speak, which would be cashed on the cross. This applies to all the instances where forgiveness and salvation were mentioned before the crucifixion (the sinful woman, the tax collector, Zacchaeus, and others. . .).",
+      "+ Conditions for Salvation:",
+      "Our Lord said that His blood is shed for many (Mt 26:28) but in reality only few are saved (Mt 7:13-14).",
+      "This sad reality is due to the fact that there are certain conditions (prerequisites) for Salvation:",
+      "1. Faith.",
+      "2. Saving Sacraments:",
+      "a) Baptism.",
+      "b) Confirmation.",
+      "c) Repentance & Confession.",
+      "d) Eucharist.",
+      "3. Good Works.",
+      "Each of these conditions will be discussed separately after we clarify certain points:",
+      "1. Baptism, Confirmation and Eucharist don’t apply to the people of tie Old Testament because they acquire their saving efficacy from the blood of our Lord and the work of the Holy Spirit, which pertains to the New Testament. Nevertheless, the people of the Old Testament had symbols of these Sacraments like Circumcision being symbolic for Baptism (Col 2:11-12).",
+      "2. The above conditions for salvation apply to normal responsible adults. Whenever these conditions are mentioned, people come up with all sorts of scenarios to question them. For instance, mentally challenged individuals and infants don’t possess the intellectual ability to understand and believe and therefore the condition of faith doesn’t apply to them.",
+      "3. The Sacrament of the Priesthood administers to us the saving Sacraments and therefore plays a major role in our salvation and even though we don’t have to become priests to be saved, we do need them for our salvation as “stewards of the mysteries of God” (1Cor 4:1).",
     ],
   },
   {
     title: "Salvation as the story of the whole life",
     paragraphs: [
-      "The lesson is explicit that salvation is not reduced to a single past moment. It quotes 1 Corinthians 1:18 and says salvation in the Orthodox concept comprehends all of life.",
-      "It then formulates three aspects: I have been saved, having put on Christ in baptism; I am being saved, growing in Christ through the sacramental life of the Church; and I hope I will be saved, by God's mercy in the last judgment.",
-      "The body of the teaching then gathers Mark 16:16, Acts 2:38, Colossians 2:12, Romans 6:4, Romans 6:6, Galatians 3:27, 1 John 2:20, 1 Corinthians 6:19, Galatians 5:22-23, 1 John 1:8, Hebrews 10:29, Luke 12:10, Luke 13:3 and 13:5, 1 John 1:9, John 6:54, 1 Peter 1:6-7, Acts 14:22, Ephesians 6:12, 1 Peter 5:8, Matthew 10:22, Revelation 21:8, 1 Corinthians 9:27, Philippians 2:12, 1 Peter 1:17, 1 Peter 1:5, Revelation 2:10, and concludes that salvation is indeed the story of the whole life.",
+      "Salvation is the story of the whole life:",
+      "St. Paul said that, “The message of the cross is foolishness to those who are perishing, but to us who are being saved it is the power of God” (1Cor 1:18). Salvation in the Orthodox concept is seen as comprehending all of life; it is not a historical event that took place during a moment in the past. As the subject of salvation is addressed in Holy Scripture, the Orthodox Christian would see it in at least three aspects:",
+      "a) I believe that I have been saved, having put on our Lord Jesus Christ in baptism.",
+      "b) I believe that I am being saved, growing in our Lord Jesus Christ through the sacramental life ofthe Church.",
+      "c) I believe that I will be saved, by God’s mercy in the Last Day of Judgment.",
+    ],
+  },
+  {
+    title: "The Beginning of Salvation",
+    paragraphs: [
+      "The story of salvation starts by faith, repentance and baptism, “He who believes and is baptized will be saved” (Mk 16:16), “Repent, and let everyone of you be baptized in the name of Jesus Christ for the remission of sins” (Acts 2:38), this remission includes the original sin as well as all actual sins committed before baptism. Baptism provides us with salvation, forgiveness and regeneration. In baptism we are buried with our Lord Jesus Christ (Col 2:12), we die and rise with Him in the newness of life (Rom 6:4), “Knowing this, that our old man was crucified with Him, that the body of sin might be done away with, that we should no longer be slaves of sin” (Rom 6:6). Through baptism, we become children of God and members of His body (the Church). Moreover, St. Paul said, “As many of you as were baptized into Christ have put on Christ” (Gal 3:27).",
+    ],
+  },
+  {
+    title: "Growth Through the Holy Spirit",
+    paragraphs: [
+      "In the Sacrament of Confirmation, we receive the gift of the Holy Spirit, “you have an anointing fiom the Holy One” (1Jn 2:20), and we become a temple of the Holy Spirit, “do you not know that your body is the temple of the Holy Spirit who is in you, whom you have from God” (lCor 6:19). As a result of our response to the work of the Holy Spirit within us, we grow spiritually and bear the fruits of the Spirit (Gal 5:22-23).",
+      "Unfortunately, we still sin after being baptized and confirmed, “If we say that we have no sin, we deceive ourselves, and the truth is not in us” (1Jn 1:18). Even though our nature was renewed, we did not become infallible. The nature we receive in baptism is pure, yet liable to sin, as was Adam’s nature before the fall. The gift of regeneration that we receive in baptism does not cancel the gift of free will. Nevertheless, there is a difference between people who sin without being baptized, while living the life of wickedness and those who sin after baptism. The later have the Holy Spirit to rebuke and lead them to repentance, sin is temporary unless a person, with his/her free will, decides to reject repentance insulting the spirit of grace (Heb 10:29) and thus blasphemes against the Holy Spirit (Lk 12:10).",
+    ],
+  },
+  {
+    title: "Repentance, Confession, and Eucharist",
+    paragraphs: [
+      "Through repentance and confession we are being saved, “Unless you repent you will all likewise perish” (Lk 13:3, 5), “If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness” (1Jn 1: 9). Additionally, we obtain salvation during Holy Eucharist, as the priest says in the Divine Liturgy,“ “. .. given for us salvation, remission of sins and eternal life to those who partake of it”, “whoever eats My flesh and drinks My blood has eternal life” (Jn 6:54).",
+    ],
+  },
+  {
+    title: "Trials and Spiritual Warfare",
+    paragraphs: [
+      "Our life on earth is a test of our faith, “Now for a little while, if need be, you have been grieved by various trials, that the genuineness of your faith, being much more precious than gold that perishes, though it is tested by fire, may be found to praise, honor, and glory at the revelation of Jesus Christ” (lPet 1:6—7). Indeed, “We must through many tribulations enter the kingdom of God” (Acts 14:22). Moreover, we are subject to spiritual warfare, “we do not wrestle against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this age, against spiritual hosts of wickedness in the heavenly places” (Eph 6:12), “Be sober, be vigilant; because your adversary the devil walks about like a raring lion, seeking whom he may devour” (lPet 5:8).",
+    ],
+  },
+  {
+    title: "Endurance and the Last Day",
+    paragraphs: [
+      "Our Lord said, “He who endures to the end will be saved” (Mt 10:22), “He who overcomes shall inherit all things” (Rev 21:8). St. Paul said, “Lest, when I have preached to others, I myself should become disqualified” (lCor 9:27), therefore, he also said, “Work out you salvation in fear and trembling” (Phil 2:12) and St. Peter exhorts us, “conduct yourselves throughout the time of your sojourning here in fear” (lPet 1:17). The outcome of our life and struggle will be revealed in the last day, “. . .you, who are kept by the power of God through faith for salvation ready to be revealed in the last time” (lPet 1:5). Therefore, our Lord said, “Be faithful until death, and I will give you the crown of life” (Rev 2:10).",
+      "Since the spiritual struggle and warfare takes up our whole life, therefore salvation is indeed the story of the whole life.",
+      "* This lecture is adapted from ‘The Heresy of Salvation in a Moment ’ by H.H. Pope Shenouda III.",
     ],
   },
 ]
 
 export const saintsTeachingSections: TeachingSection[] = [
   {
-    title: "Intercession belongs to Christ's saving work",
+    title: "On the Saints’ Intercession & Veneration",
     paragraphs: [
-      "The lesson begins by clarifying that in honoring saints and angels the Church does not place them in the place of Lord Jesus Christ or even adjacent to Him as saviors. No one except Christ saves from sin.",
-      "When the saints pray for us, they ask the Lord for our salvation. From Him they entreat mercy and help; they do not save by their own power.",
+      "“Assuredly, I say to you, wherever this gospel is preached throughout the whole world, what this woman did will also be spoken of as a memorial to her.” (Mk 14:9)",
+      "+ Lecture VI: On the Saints’ Intercession & Veneration +",
+      "In Lecture II of Mariology, we presented, by the grace of God, the Orthodox Concept of intercession. However, we need to highlight the fact that in honoring the saints and angels we do not put them in the place of Lord Jesus Christ or even adjacent to Him. No one except Lord Jesus Christ is able to save man from sin thus when the saints pray for us, it is our salvation that they seek from the Lord. They intercede with Him for our salvation. From the Lord they entreat our salvation — not, however, as if they themselves have the power to save, for the only one who saves is Lord Jesus Christ.",
     ],
   },
   {
-    title: "Biblical examples of intercession",
+    title: "Biblical Examples of Intercession",
     paragraphs: [
-      "Holy Scripture gives many examples of accepted intercession: Abraham praying for Abimelech in Genesis 20:1-7, Job praying for his friends in Job 42:7-8, Abraham pleading for Sodom in Genesis 18:26-32, Jerusalem being spared for the sake of one righteous person in Jeremiah 5:1, and Moses interceding in Exodus 32:7-14.",
-      "It then turns to examples involving the departed: Moses appealing to God for the sake of Abraham, Isaac, and Israel in Exodus 32:13, God's regard for David in 1 Kings 11:12-13, and the statement in Jeremiah 15:1 about Moses and Samuel standing before the Lord.",
-      "The conclusion drawn is that God Himself encourages and accepts intercession.",
+      "Biblical Exam les of Intercession:",
+      "(Gen 20:1-7) 9 Abimelech King of Gerar took Sarah to his palace because our father Abraham said that she was his sister. However God rebuked him and ordered him to restore Sarah to her husband and said to him, “...he [Abraham] will pray for you and you shall live” (Gen 20:7).",
+      "(Job 42:7,8) God made the prayer of Job the Righteous on behalf of the three friends a condition for their forgiveness.",
+      "(Gen 18:26-32) God said to our father Abraham that He would not destroy Sodom “for the sake” of even 10 righteous people. _",
+      "(Jer 5:1) It is written that God is ready to pardon Jerusalem for the sake of one righteous person.",
+      "(Ex 32:7-14) We read about Moses the Prophet interceding on behalf of the People with God.",
+      "Thus we conclude that God Himself encourages and accepts intercession. However, someone may protest and say that the above holy verses are examples of intercession of people who are still alive. Therefore, we shall mention more biblical examples about the intercession of saints who have already departed:",
+      "(Ex 32:13) Moses the Prophet is asking God to act for the sake of Abraham, Isaac, and Israel.",
+      "(1 Kg 11:l2,13) God declares that He will not tear the kingdom away in the days of King Solomon “for the sake” of his father David the Prophet who had already departed.",
+      "(Jer 15:1) God, wanting to illustrate how sever His wrath towards the people, said, “Even if Moses and Samuel [who had already departed] stood before Me, My mind would not be favorable toward this people.” — This shows that the principle of intercession does exist.",
     ],
   },
   {
-    title: "God honors His saints",
+    title: "God Honors His Saints",
     paragraphs: [
-      "The lesson says God honors His saints by granting them extraordinary gifts and powers. It points to the bones of Elisha in 2 Kings 13:21, the shadow of St. Peter in Acts 5:15, the handkerchiefs of St. Paul in Acts 19:12, Elijah's word in 1 Kings 17:1, and the Lord's promise in John 12:26.",
-      "It then answers common questions with Luke 15:10, Matthew 22:30, Revelation 6:10, Luke 16:25, and 1 Corinthians 13:12 to argue that the saints and angels know what happens on earth in a heavenly manner.",
-      "The same teaching also explains naming churches after saints and venerating relics, citing Revelation 21:14, Exodus 3:6, and 1 Corinthians 6:19, and always returning to the principle that honoring the saints is honor given to the God who glorified them.",
+      "God honors His saints by giving them extraordinary powers and gifis. For instance we read that the dead bones of Elisha the Prophet raised the dead (2 Kg 13:21) and the handkerchiefs or aprons of St. Paul healed the sick and cast out demons (Acts 19:12) while the shadow of St. Peter healed the sick (Acts, 5:15). Therefore, Elijah the Prophet said with confidence, “there shall not be dew nor rain these years, except at my word.” (1 Kg 17:1) — Our Lord said, “If anyone serves Me, him My Father will honor.” (Jn 12:26)",
+      "Thus, since God Himself has honored His saints, and accepted their intercessions, we are not mistaken if we honor them and ask for their prayer, blessings and intercession.",
+      "Q1: Do the saints who departed and the angels know what happens on earth?",
+      "A1: Our Lord said, “Likewise, I say to you, there is joy in the presence of the angels of God over one sinner who repents.” (Lk 15:10) — Thus the angels know and also react to what happens on earth. Moreover, our Lord said that the saints who depart would be like “angels of God in heaven.” (Mt 22:30) Therefore we read about the souls of the martyrs that they knew that God had not avenged their blood yet (Rev 6:10). Also our father Abraham knew that the rich man had received his good things in his life time and that Lazarus evil things (Lk 16:25) he also knew about Moses and the prophets. St. Paul said, “Now I know in part, but then I shall know just as I also am known.” (1 Cor 13:12)",
+      "Q2: Why are the Orthodox Churches named after saints aren’t they God’s Churches?",
+      "A2: Indeed they are. However, naming the house of God after the saints does not mean that they share God’s Glory. For instance, God’s temple was called after King Solomon and God’s Law was called the “Law of Moses” (Mal 4:4) also the inspired Holy Scriptures are God’s words yet we read “the words of Jeremiah” (Jer 1:1) and “the vision of Isaiah” (Is 1:1) — Moreover, we read about the heavenly Jerusalem, “Now the wall of the city had twelve foundations, and on them were the names of the twelve apostles of the Lamb.” (Rev 21:14) Also, God called Himself the God of Abraham, Isaac and Jacob (Ex 3:6; 4:5; Mt 22:32)",
+      "Q3: Is the veneration of the saints’ relics border on idolatry?",
+      "A3: The holy relics are neither idols nor deities, nor figures of God, and their veneration is not idol worship. For inasmuch as God has glorified them, giving them miraculous power, so too should we venerate them, for this way we honor God, who bestowed His grace on them (2 Kg 13:21). — These relics were the temple of the Holy Spirit (1 Cor 6:19) and thus we are not honoring the bones themselves, but the divine grace bestowed on them.",
+      "A Final Word:",
+      "The interaction between the heavenly hosts (saints & angels) and the Church in this world is a practical reality that we experience and thus is not really subject to theological debate and philosophical arguments. Those who deny this reality are the ones who lose the blessings.",
+      "* This lecture is adapted from ‘Comparative Theology’ by H.H. Pope Shenouda III.",
     ],
   },
 ]
 
 export const fastingTeachingSections: TeachingSection[] = [
   {
-    title: "What fasting is in the life of the Church",
+    title: "Fasting (ጾም)",
     paragraphs: [
-      "The lesson contrasts the neglect of fasting in many Protestant settings with the disciplined fasting life of the Orthodox Church.",
-      "During a fast the faithful abstain from food and water for a set period, usually guided by the father of confession and adjusted for spiritual maturity and health. After the abstinence period ends, the fast is broken with vegetarian food, while fish is permitted in some fasts because the Church fasts for more than half the days of the year.",
-      "The lesson also notes the ninth hour, around three o'clock in the afternoon, as a key pattern because our Lord died on the Cross at that hour.",
+      "Fasting is abstinence from all things a body needs, including animal products and any kind of food for a limited time (Fetha Negest 15, Matthew 6:16)",
+      "The aims of fasting:",
+      "- to make the desire of the body to obey the will of the soul*",
+      "- to seek forgiveness for our guilt",
+      "- to increase the reward of the soul",
+      "The relationship between fasting and religion is strong and everlasting*",
     ],
   },
   {
-    title: "Questions about congregational fasting and fasting seasons",
+    title: "Fasting in the Old Testament",
     paragraphs: [
-      "The objection that fasting should only be secret is answered by comparing it to prayer. Matthew 6:18 and Matthew 6:6 are read together, so private depth does not abolish congregational discipline.",
-      "It gives scriptural examples of communal fasting from Esther 4, Jonah 3, Joel 2:15, Acts 27:21, Acts 13:2-3, and Zechariah 8:19.",
-      "It then lists the fasting seasons of the Church: the Advent fast, Jonah's fast, the Holy Great Lent, the Apostles fast, St. Mary's fast, and the weekly Wednesday and Friday fasts, with notes about fish and abstinence.",
+      "Fasting in the Old Testament",
+      "In the Old Testament, fasting had a very prominent place",
+      "- when the prophets wanted to communicate with God, they did not eat food and drink water (Exodus 34:28)*",
+      "- fasting and prayer were used to prevent the anger of God (Joel 2:15).",
+      "- righteous people received what they needed and whished through fasting and praying (Ezra 8:21; Nehemiah 9:1-3; Esther 4:16-17)*",
     ],
   },
   {
-    title: "Why the food rule matters and why Christians still fast",
+    title: "Fasting in the New Testament",
     paragraphs: [
-      "The lesson explains vegetarian fasting through Genesis 1:29, Genesis 3:18, Genesis 9:3, Numbers 11:7-8, and Numbers 11:33, presenting it as ascetic discipline rather than a declaration that other foods are unclean.",
-      "It then explains why fish is allowed in some fasting seasons and points to John 21:9 as part of the lesson's reasoning.",
-      "Finally, it argues that fasting remains part of Christian worship by citing Matthew 6:18, Matthew 9:15, Mark 9:29, Matthew 4:2, Mark 1:12, Luke 4:1, 2 Corinthians 11:27, 2 Corinthians 6:5, Acts 14:23, Acts 13:3, and 1 Corinthians 7:5.",
+      "Fasting in the New Testament",
+      "Fasting has significant value in the New Testament",
+      "- our Saviour Jesus Christ made fasting the beginning of His ministry (Matthew 4:2; Luke 4:2)*",
+      "- He has also taught that fasting has the power of driving away evil spirits (Matthew 17:21; Mark. 9:2)",
+      "- The Apostles who were commanded to serve the church received guidance from the Holy Spirit while they were praying and fasting (Acts 13:2)*",
+      "- Priests and deacons were inspired and ordained while fasting and praying (Acts 13:3; 14:23)",
+      "- The righteous people received what they needed and whished through fasting and praying (Acts 10:30; 13:2-3)",
+    ],
+  },
+  {
+    title: "Things to Consider While Fasting",
+    paragraphs: [
+      "Things to consider while fasting",
+      "Abstain from animal products and alcoholic drinks which trigger desire (lust) (Daniel 10:2-3).",
+      "Give what has been saved during fasting to the poor or the Church (Isaiah 58:6-7)*",
+      "Keep yourself from evil things- eyes from seeing, your mouth from speaking and your ear from hearing evil things (Matthew. 5:21-30; St.Yared-Digua).",
+      "Do not fast for a show",
+      "Do not fast while blaming others",
+      "Do not fast without repentance and asking forgiveness",
+      "Do not consider diet for our health as fasting",
+    ],
+  },
+  {
+    title: "Fasting in Ethiopian Orthodox Tewahedo Church",
+    paragraphs: [
+      "There are seven fasting periods",
+      "1. The Great Fast/Lent (ዐብይ ጾም)",
+      "2. Wednesdays and Fridays (የረቡዕ እና አርብ ጾም)",
+      "3. Nineveh (ጾመ ነነዌ)",
+      "4. Gehad (the eves of Christmas and Epiphany) (ጾመ ገኃድ)",
+      "5. The fast of the prophets or advent (ጾመ ነብያት)",
+      "6. The fast of the Apostles (ጾመ ሐዋርያት)",
+      "7. The fast of the Assumption of the Holy Virgin Mary (ጾመ ፍልሰታ ለማርያም)",
+    ],
+  },
+  {
+    title: "Lent or the Great Fast",
+    paragraphs: [
+      "1. Lent or the Great Fast",
+      "This is the fast that our Lord and Savior Jesus Christ fasted for forty days and forty nights after his baptism",
+      "This Lent is called great because",
+      "- it is the Lord’s fast",
+      "- Satan’s temptations (love of money, greediness and arrogance) were overcome (Matthew 4:2)*",
+      "The Church observes this fast following the example set by Lord",
+      "All Christians, young and old must observe this Fast",
+      "The Great Fast has 8 weeks which consist of 55 days.",
+      "According to St. Yared, the Ethiopian Hymnologist who wrote hymn of our Church, each Sunday during the Great Fast is given name",
+      "1. Zewerede (ዘወረደ)",
+      "2. Kidist (ቅድስት)",
+      "3. Mikurab (ምኩራብ)",
+      "4. Metsague (መጻጉ)",
+      "5. Debre Zeit (ደብረ ዘይት)",
+      "6. Gebrhel/Good Servant (ገብርሄል)",
+      "7. Nicodemus (ኒቆዲሞስ)",
+      "8. Hoshanna/Palm Sunday (ሆሣህና)",
+    ],
+  },
+  {
+    title: "Sundays of the Great Fast I",
+    paragraphs: [
+      "Sundays of the Great Fast",
+      "1. Zewerede – means the one who descends from the above",
+      "– on this Sunday, the descent, incarnation and crucifixion of our Lord Jesus Christ is preached (John 3:13).",
+      "2. Kidist – means Holy and it tells the Holiness of Sunday",
+      "3. Mikurab – the word stands for the synagogue",
+      "– It reminds us that our Lord Jesus Christ taught in the synagogue during his ministry",
+      "4. Metsague – means a person who is in poor health (infirm)",
+      "– A hymn for the healing of the sick and giving sight to the blind by the Lord is sung on this day",
+      "5. Debre Zeit – the Geez word for Mount of Olive",
+      "– on this Sunday, our Lord taught about the second coming on Mount of Olives",
+    ],
+  },
+  {
+    title: "Sundays of the Great Fast II",
+    paragraphs: [
+      "Sundays of the Great Fast",
+      "6. Gebrhel/Good Servant",
+      "– The story of the good servant who received five talents and made a profit of five more talents is told on this day (Matthew 25:14-30).",
+      "7. Nicodemus (ኒቆዲሞስ)",
+      "– A hymn commemorating the coming of Nicodemus to our Lord during the night is sung",
+      "8. Palm Sunday",
+      "– It is a commemorative day on which our Lord entered the temple in triumph and during which the people sung “Hosanna in the highest”.",
+      "Sundays of the Great Fast",
+      "Questions",
+      "1. Why do we fast OR what are the objectives of fasting?",
+      "2. How many fasting periods are there in the Ethiopian Orthodox Tewahedo Church? Please mention one of them.",
+      "3. What makes the Lent or Great Fast different/special?",
+    ],
+  },
+  {
+    title: "The Passion Week (ሰሞነ ህማማት)",
+    paragraphs: [
+      "The week from the eve of Palm Sunday to Easter is known as Passion Week.",
+      "In this week, varieties of food are not eaten",
+      "Adoration (ስግደት) is given to God",
+      "Gibrehimamat, a book composed of different passages dealing with the passion and death of our Lord the Savior Jesus Christ is read",
+      "The priests wear black vestments, and the altar is covered with black cloth",
+      "Prayer for the dead and that of intercession are not conducted to commemorate the suffering and damnation of 5500 years since Adam was alienated from his Creator.",
+      "The Passion Week (ሰሞነ ህማማት)",
+    ],
+  },
+  {
+    title: "Maundy Thursday (የጸሎት ሐሙስ/ሕጽበተ ሐሙስ)",
+    paragraphs: [
+      "On this day, the Lord Jesus",
+      "- Washed his Disciples’ feet with an absolute humility",
+      "- Ate the Last Supper with them and",
+      "- Revealed the mystery of the Holy Communion",
+      "In commemoration of the above, on this day, the priests wash the feet of the parishioners before the Liturgy.",
+      "Maundy Thursday (የጸሎት ሐሙስ/ሕጽበተ ሐሙስ)",
+    ],
+  },
+  {
+    title: "Good Friday (ስቅለት)",
+    paragraphs: [
+      "On this day, our Lord Jesus Christ was crucified.",
+      "Passages from the Scriptures and other religious books are read in remembrance of Jesus Christ’s crucifixion",
+      "The faithful (parishioners) intensively prostrate (adorate)",
+      "Sometimes, Good Friday is called the day of prostration.",
+      "Late in the afternoon, the priests pat (touch) the portioners with small olive tree branches and command them to prostrate. Patting symbolizes the whipping of our Lord.",
+      "At the end of the day, prayer of intercession (የምልጃ ጸሎት) is conducted, and the program is concluded.",
+      "The Apostles did not eat and drink until they knew the resurrection of the Lord.",
+      "Portioners who have the strength, fast from every kind food for two days (Friday and Saturday). Those who don’t have the strength, fast on Saturday only (Lk. 5:5-35; Fetha Negest Art.15 No. 578).",
+      "Good Friday (ስቅለት)",
+    ],
+  },
+  {
+    title: "Important Events on Saturday Morning",
+    paragraphs: [
+      "The laity and the clergy gather in the church",
+      "After the morning prayer, the clergy give sedge to the assembled people by singing “Christ made reconciliation by his crucifixion’",
+      "The portioners tie the sedge around their heads",
+      "The clergy go to the houses of the people who did not come to the Church and give them sedges as good news. They wear vestments, hold cross and ring a bell in the process.*",
+      "Using sedge as a sign of good news has a Biblical history. When the earth was covered by the water of destruction, an olive leaf brought by a dove into Noah’s Ark was used as indicator the lowering of the water.",
+      "This Sabbath is a day on which Christ passed lying in the grave",
+      "This Saturday is called “Se’ur” – unobserved Saturday because once a year it becomes a fast day. It is also called the green Saturday.",
+      "Important events on Saturday morning",
+    ],
+  },
+  {
+    title: "The Fast of the Apostles (ጾመ ሐዋርያት)",
+    paragraphs: [
+      "This fast was observed by the Apostles after they received the Holy Spirit and before they set out to proclaim the Gospel.",
+      "Orthodox Tewahedo Christians observe this fast following the Pentecost Sunday (the day the Holy Spirit descended on the Apostles) up until Hamle 5 (12 July).",
+      "This fast sometimes goes beyond 40 days and sometimes falls short of 30 days.",
+      "Christians observe this Fast to express their thanks for the Apostles’ endurance of persecution and to receive blessing.",
+      "The Fast of the Apostles (ጾመ ሐዋርያት)",
+    ],
+  },
+  {
+    title: "The Fast of Wednesdays and Fridays",
+    paragraphs: [
+      "Wednesdays and Fridays are observed as fast days, except for the 50 days between Easter and Pentecost and on days of Christmas and Epiphany",
+      "Why are these days observed as fast days?",
+      "- Wednesday is a day on which the Jewish Council discussed to crucify the Lord (John 11:46-53)",
+      "- Instruction is given that Christians should fast on this day remembering the death sentence made against Jesus Christ.",
+      "- Friday this is a blessed day on which the Lord is crucified in His flesh and the long awaiting redemption was fulfilled (John 19:17).",
+      "Because of the above reasons it is canonized that Wednesday and Friday should be observed every week in fasting and prayer.",
+      "The Fast of Wednesdays and Fridays",
+    ],
+  },
+  {
+    title: "The Fast of Nineveh (ጾመ ነነዌ)",
+    paragraphs: [
+      "This is a three days fast – Monday, Tuesday and Wednesday.",
+      "Depending on the years, it falls either in January or in February.",
+      "Reason for this fast",
+      "- The people of Nineveh committed great wickedness",
+      "- God called up on prophet Jonah to warn the residents",
+      "- Jonah attempted to flee from ‘the presence of God’",
+      "- Jonah was swallowed by a whale",
+      "- Jonah prays to God inside the belly of the whale",
+      "- God commanded the whale to spit Jonah out",
+      "- God again commanded Jonah to travel to Nineveh and prophesy to the inhabitants",
+      "- The people of Nineveh fasted for three days and were saved from the wrath (extreme anger and punishment) of God (Jonah 3:5-9; Matthew 12:39)",
+      "The Fast of Nineveh (ጾመ ነነዌ)",
+    ],
+  },
+  {
+    title: "The Fast of the Prophets (ጾመ ነብያት)",
+    paragraphs: [
+      "This fast starts on Hidar 15 (November 24) and extends to Tahisas 28 (06 January)",
+      "We observe this fast following the example set by the prophets.",
+      "In their time, the prophets fasted and prayed longing for the Advent (the coming) of Christ.",
+      "In the Law of Kings Article 15, instruction is given that we should observe this fast before we celebrate Christmas.",
+      "The Fast of the Prophets (ጾመ ነብያት)",
+      "We observe this Fast:",
+      "- To celebrate the gift, we acquired following the birth of Jesus Christ",
+      "- To take part in the blessings of our forefathers, the Prophets and the Apostles",
+      "Gehad (ጾመ ገኃድ)",
+    ],
+  },
+  {
+    title: "Gehad (ጾመ ገኃድ)",
+    paragraphs: [
+      "This is a fast observed on the eves of Christmas and Epiphany, when they fall on a Wednesday or a Friday.",
+      "On Christmas and Epiphany, the Holy Liturgy is celebrated from midnight to 3:00am.",
+      "In the morning people eat animal products even if the days are Wednesdays or Fridays.",
+      "So, if Christmas and Epiphany fall on Wednesday and Friday, Tuesday and Thursday will be observed as fast days.",
+      "As Christmas Eve is generally a fasting day anyway, this only has the effect of forbidding fasting on Christmas even if it falls on a Wednesday or Friday.",
+    ],
+  },
+  {
+    title: "The Fast of Assumption of the Virgin Mary (ጾመ ፍልሰታ ለማርያም)",
+    paragraphs: [
+      "This is a two weeks fast (1 to 15 Nehassie/7-21 August).",
+      "It was observed by Apostles requesting God to reveal the body of St. Virgin Mary.",
+      "St. Virgin Mary completed her earthly life and departed on 21 Ter (30 January) in 50 A.D.",
+      "While the Apostles were taking her body for burial at Gethsemani, the Jewish priests dispersed them. Following this, the body of St. Virgin Mary was taken by the Angels to paradise and put under the Tree of Life (The Miracle of St. Mary, Sinaxarium Nehassie (August) 16 E.C).",
+      "St. John, the Apostle, was used to be taken to the paradise to burn incense over the body of St. Virgin Mary. When he told them this fact, the Apostles they went for retreat and fasted for two weeks, praying to God to reveal this mystery to them.",
+      "The Fast of Assumption of the Virgin Mary (ጾመ ፍልሰታ ለማርያም)",
+      "On the 14th day of their fast, the Angels brought our Lady’s body and gave them to bury it.",
+      "On the 3rd day, on the 16th of August E.C (22 August G.C.) her Assumption took place.",
+      "From that time onwards, our Church observes the fast of our Lady’s Assumption.",
+      "This fast is being observed by all Orthodox Christians, including Children.",
+      "Many elderly people go for retreat leaving their home, abstaining from nutritious food and subsisting only on cereals and water.",
+      "They spend all the 15 days fasting and praying to receive the blessings of St. Mary and to get answers for their outstanding issues.",
+      "The Fast of Assumption of the Virgin Mary (ጾመ ፍልሰታ ለማርያም)",
+      "In the tradition of the Ethiopian Orthodox Church, all its followers above the age of seven should observe all the seven fasts mentioned above.",
     ],
   },
 ]

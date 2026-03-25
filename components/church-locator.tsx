@@ -33,7 +33,7 @@ export function ChurchLocator() {
   const mapUrl = useMemo(() => googleMapsEmbedUrl(activeQuery), [activeQuery])
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-white/90 dark:bg-gray-900">
+    <Card className="border-none shadow-lg overflow-hidden bg-white/90 dark:bg-[linear-gradient(180deg,rgba(31,20,14,0.96),rgba(22,15,11,0.98))] dark:border dark:border-orange-900/25">
       <CardContent className="p-6">
         <div className="space-y-5">
           <div className="flex flex-col sm:flex-row gap-2">
@@ -43,7 +43,7 @@ export function ChurchLocator() {
                 placeholder="Enter your city, ZIP code, or address..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 border-amber-200 dark:border-amber-800 focus:border-amber-500 dark:focus:border-amber-500"
+                className="pl-10 border-amber-200 dark:border-amber-700/35 focus:border-amber-500 dark:focus:border-amber-500 dark:bg-[rgba(255,255,255,0.04)] dark:text-stone-100"
               />
             </div>
           </div>
@@ -57,15 +57,15 @@ export function ChurchLocator() {
             </Button>
             <Button
               variant="outline"
-              className="border-amber-300 dark:border-amber-700 text-amber-700 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30"
+              className="border-amber-300 dark:border-amber-700/40 text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/20"
               onClick={() => setSearchType("oriental")}
             >
               Find Oriental Orthodox Churches
             </Button>
           </div>
 
-          <div className="rounded-lg overflow-hidden border border-amber-200/60 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60">
-            <div className="px-4 py-2 border-b border-amber-200/60 dark:border-gray-800 text-xs text-muted-foreground flex items-center gap-2">
+          <div className="rounded-lg overflow-hidden border border-amber-200/60 dark:border-orange-900/25 bg-white/60 dark:bg-[linear-gradient(180deg,rgba(28,20,15,0.86),rgba(22,16,13,0.78))]">
+            <div className="px-4 py-2 border-b border-amber-200/60 dark:border-orange-900/25 text-xs text-muted-foreground flex items-center gap-2">
               <MapPin className="h-3.5 w-3.5" />
               Showing results for: <span className="font-medium text-foreground">{activeQuery}</span>
             </div>

@@ -495,9 +495,9 @@ export default function TeachingsPage() {
             className="text-center mb-16"
           >
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ትምህርቶች</GeezHeading>
-            <h1 className="mx-auto mb-6 max-w-[16ch] px-2 text-center text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:max-w-none md:text-6xl [text-wrap:balance]">
-              <span className="block">Ethiopian Orthodox</span>
-              <AnimatedGradientText text="Teachings" className="mt-1 block" />
+            <h1 className="mx-auto mb-6 max-w-[16ch] px-2 text-center text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl md:max-w-none md:text-6xl [text-wrap:balance]">
+              <span className="block text-stone-900 dark:text-white">Ethiopian Orthodox</span>
+              <AnimatedGradientText text="Teachings" className="mt-4 block md:mt-5" />
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Explore the rich spiritual heritage and teachings of the Ethiopian Orthodox Tewahedo Church

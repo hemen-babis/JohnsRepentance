@@ -19,6 +19,7 @@ function getCompletionState(lesson: CatechumenLesson, completedIds: number[]) {
 
 function getLessonIcon(lesson: CatechumenLesson) {
   if (lesson.section === "Foundations") return BookOpen
+  if (lesson.section === "Five Pillars") return Compass
   if (lesson.section === "Sacrament") return Sparkles
   if (lesson.section === "Spiritual Life") return Flame
   return Compass
@@ -28,6 +29,7 @@ export function CatechumenRoadmap() {
   const [completedIds, setCompletedIds] = useState<number[]>([])
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
   const [expandedHistoryLesson, setExpandedHistoryLesson] = useState(false)
+  const [expandedEucharistLesson, setExpandedEucharistLesson] = useState(false)
 
   useEffect(() => {
     const syncProgress = () => {
@@ -67,6 +69,7 @@ export function CatechumenRoadmap() {
     "Relations with Orthodox Chalcedonian Churches",
     "Dialogue Between Orthodox Chalcedonian and Non-Chalcedonian Churches",
   ]
+  const eucharistSubtopics = ["Lecture XII: The Question of The Real Presence"]
   const lessonsBySection = catechumenSections.map((section) => ({
     ...section,
     lessons: catechumenLessons.filter((lesson) => lesson.section === section.key),
@@ -78,17 +81,18 @@ export function CatechumenRoadmap() {
 
       <div className="container mx-auto px-4 relative">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-8 text-center">
+          <div className="mb-10 text-center">
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">የእምነት ጉዞ</GeezHeading>
-            <h2 className="text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-5xl">
+            <h2 className="font-serif text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-5xl">
               Follow the path
             </h2>
+            <div className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-amber-500/60 to-transparent" />
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-stone-700 dark:text-stone-300">Start at lesson 1 and keep going.</p>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] items-start">
             <div className="lg:sticky lg:top-24">
-              <div className="rounded-[2rem] border border-white/45 bg-white/58 p-6 shadow-[0_25px_80px_-40px_rgba(120,53,15,0.45)] backdrop-blur-xl dark:border-orange-500/14 dark:bg-[linear-gradient(135deg,rgba(56,32,20,0.5),rgba(38,24,17,0.34))]">
+              <div className="rounded-[2rem] border border-white/45 bg-[linear-gradient(135deg,rgba(255,250,243,0.78),rgba(255,241,224,0.52))] p-6 shadow-[0_25px_80px_-40px_rgba(120,53,15,0.45)] backdrop-blur-xl dark:border-orange-500/14 dark:bg-[linear-gradient(135deg,rgba(56,32,20,0.5),rgba(38,24,17,0.34))]">
                 <div className="space-y-3">
                   <div className="rounded-2xl bg-white/72 p-4 shadow-sm dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.52),rgba(41,25,18,0.36))]">
                     <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Next</p>
@@ -122,7 +126,15 @@ export function CatechumenRoadmap() {
                 const sectionCurrent = section.lessons.some((lesson) => getCompletionState(lesson, completedIds) === "current")
                 const sectionDone = section.lessons.length > 0 && section.lessons.every((lesson) => completedIds.includes(lesson.id))
                 const SectionIcon =
-                  section.key === "Foundations" ? BookOpen : section.key === "Sacrament" ? Sparkles : section.key === "Spiritual Life" ? Flame : Compass
+                  section.key === "Foundations"
+                    ? BookOpen
+                    : section.key === "Five Pillars"
+                      ? Compass
+                      : section.key === "Sacrament"
+                        ? Sparkles
+                        : section.key === "Spiritual Life"
+                          ? Flame
+                          : Compass
 
                 return (
                   <motion.div
@@ -137,7 +149,7 @@ export function CatechumenRoadmap() {
                       type="button"
                       onClick={() => setExpandedSection((current) => (current === section.key ? null : section.key))}
                       className={cn(
-                        "group flex w-full items-center justify-between gap-4 rounded-[1.75rem] border px-5 py-5 text-left shadow-[0_22px_60px_-40px_rgba(120,53,15,0.38)] transition-all duration-300",
+                        "group flex w-full items-center justify-between gap-4 rounded-[1.75rem] border px-5 py-5 text-left shadow-[0_22px_60px_-40px_rgba(120,53,15,0.38)] transition-all duration-300 hover:-translate-y-0.5",
                         "border-amber-200/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(250,241,227,0.62))] backdrop-blur-xl",
                         "dark:border-orange-500/18 dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.46),rgba(42,26,18,0.3))]",
                         isExpanded && "ring-1 ring-amber-300/70 dark:ring-amber-700/30",
@@ -182,6 +194,7 @@ export function CatechumenRoadmap() {
                           const isCurrent = state === "current"
                           const LessonIcon = getLessonIcon(lesson)
                           const isHistoryRoadmapLesson = lesson.slug === "history-of-the-church"
+                          const isEucharistRoadmapLesson = lesson.slug === "sacrament-of-eucharist"
 
                           const lessonCard = (
                             <div className="relative overflow-hidden rounded-[1.5rem] bg-transparent p-1 transition-all duration-300">
@@ -226,6 +239,8 @@ export function CatechumenRoadmap() {
                                   <div className="flex items-center gap-2 text-orange-700 dark:text-amber-300">
                                     {isHistoryRoadmapLesson ? (
                                       <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", expandedHistoryLesson && "rotate-180")} />
+                                    ) : isEucharistRoadmapLesson ? (
+                                      <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", expandedEucharistLesson && "rotate-180")} />
                                     ) : state === "locked" ? (
                                       <Lock className="h-4 w-4" />
                                     ) : (
@@ -275,6 +290,38 @@ export function CatechumenRoadmap() {
                                           >
                                             <Link
                                               href={`/catechumen/${lesson.slug}#${topic.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+                                              className="group block"
+                                            >
+                                              <div className="rounded-[1.15rem] border border-amber-200/45 bg-[linear-gradient(135deg,rgba(255,255,255,0.26),rgba(255,248,235,0.18))] px-4 py-3 shadow-[0_14px_34px_-28px_rgba(120,53,15,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-300/70 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),rgba(255,244,230,0.24))] dark:border-orange-900/20 dark:bg-[linear-gradient(135deg,rgba(36,24,17,0.72),rgba(26,18,14,0.64))] dark:hover:border-orange-800/35 dark:hover:bg-[linear-gradient(135deg,rgba(48,31,21,0.84),rgba(31,21,16,0.74))]">
+                                                <div className="flex items-start gap-3">
+                                                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 shadow-[0_0_0_4px_rgba(251,191,36,0.12)]" />
+                                                  <span className="text-sm font-medium leading-relaxed text-stone-700 transition-colors duration-300 group-hover:text-orange-700 dark:text-stone-300 dark:group-hover:text-amber-200">
+                                                    {topic}
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </Link>
+                                          </motion.div>
+                                        ))}
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                ) : isEucharistRoadmapLesson ? (
+                                  <div className="space-y-3">
+                                    <button type="button" onClick={() => setExpandedEucharistLesson((current) => !current)} className="block w-full text-left">
+                                      {lessonCard}
+                                    </button>
+                                    {expandedEucharistLesson ? (
+                                      <div className="ml-6 space-y-3 border-l-2 border-amber-300/50 pl-4 dark:border-orange-800/35">
+                                        {eucharistSubtopics.map((topic, topicIndex) => (
+                                          <motion.div
+                                            key={topic}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.22, delay: topicIndex * 0.04 }}
+                                          >
+                                            <Link
+                                              href={`/catechumen/${lesson.slug}#the-question-of-the-real-presence`}
                                               className="group block"
                                             >
                                               <div className="rounded-[1.15rem] border border-amber-200/45 bg-[linear-gradient(135deg,rgba(255,255,255,0.26),rgba(255,248,235,0.18))] px-4 py-3 shadow-[0_14px_34px_-28px_rgba(120,53,15,0.32)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-300/70 hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),rgba(255,244,230,0.24))] dark:border-orange-900/20 dark:bg-[linear-gradient(135deg,rgba(36,24,17,0.72),rgba(26,18,14,0.64))] dark:hover:border-orange-800/35 dark:hover:bg-[linear-gradient(135deg,rgba(48,31,21,0.84),rgba(31,21,16,0.74))]">
