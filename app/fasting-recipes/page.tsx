@@ -261,7 +261,7 @@ export default function FastingRecipesPage() {
             </Button>
           </div>
           <div className="mt-4">
-            <Button asChild className="rounded-full bg-sky-600 hover:bg-sky-500">
+            <Button asChild className="rounded-full bg-orange-600 hover:bg-orange-500">
               <a href={`https://t.me/johnsrepentance?text=${suggestRecipeMessage}`} target="_blank" rel="noreferrer">
                 Suggest a Recipe
               </a>

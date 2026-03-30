@@ -64,10 +64,10 @@ export function VirtualCandle() {
   }
 
   return (
-    <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 relative">
+    <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-r from-orange-50 to-amber-100 dark:from-orange-950 dark:to-amber-900 relative">
       <CardContent className="p-6">
         <div className="text-center mb-4">
-          <h3 className="text-lg font-bold text-blue-800 dark:text-blue-500 mb-2">Light a Virtual Candle</h3>
+          <h3 className="text-lg font-bold text-orange-800 dark:text-orange-400 mb-2">Light a Virtual Candle</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300">
             Light a candle and say a prayer for yourself or a loved one
           </p>
@@ -121,7 +121,7 @@ export function VirtualCandle() {
         {!isLit ? (
           <Button
             onClick={lightCandle}
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+            className="w-full bg-gradient-to-r from-orange-600 to-amber-700 hover:from-orange-700 hover:to-amber-800 text-white"
           >
             Light a Candle
           </Button>
@@ -131,19 +131,19 @@ export function VirtualCandle() {
               placeholder="Write your prayer request here..."
               value={prayer}
               onChange={(e) => setPrayer(e.target.value)}
-              className="min-h-[80px] bg-white/80 dark:bg-gray-800/80 border-blue-200 dark:border-blue-800"
+              className="min-h-[80px] bg-white/80 dark:bg-gray-800/80 border-orange-200 dark:border-orange-800"
             />
 
             <div className="flex gap-2">
               <Button
                 onClick={submitPrayer}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 bg-gradient-to-r from-orange-600 to-amber-700 hover:from-orange-700 hover:to-amber-800 text-white"
               >
                 <Send className="h-4 w-4 mr-2" />
                 Submit Prayer
               </Button>
 
-              <Button variant="outline" onClick={shareCandle} className="border-blue-300 dark:border-blue-700">
+              <Button variant="outline" onClick={shareCandle} className="border-orange-300 dark:border-orange-700">
                 <Share2 className="h-4 w-4" />
               </Button>
             </div>
@@ -152,12 +152,12 @@ export function VirtualCandle() {
           <div className="flex gap-2">
             <Button
               onClick={() => setShowPrayerForm(true)}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+              className="flex-1 bg-gradient-to-r from-orange-600 to-amber-700 hover:from-orange-700 hover:to-amber-800 text-white"
             >
               Add Prayer
             </Button>
 
-            <Button variant="outline" onClick={shareCandle} className="border-blue-300 dark:border-blue-700">
+            <Button variant="outline" onClick={shareCandle} className="border-orange-300 dark:border-orange-700">
               <Share2 className="h-4 w-4" />
             </Button>
           </div>

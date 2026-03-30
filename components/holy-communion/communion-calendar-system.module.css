@@ -1,0 +1,36 @@
+.calendarDay {
+  min-height: 92px;
+}
+
+@media (min-width: 768px) {
+  .calendarDay {
+    min-height: 108px;
+  }
+}
+
+.stateDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+}
+
+.stateNeutral {
+  background: rgba(163, 163, 163, 0.52);
+}
+
+.statePreparation {
+  background: rgb(234, 179, 8);
+}
+
+.stateCommunion {
+  background: rgb(34, 197, 94);
+}
+
+.statePost {
+  background: rgb(194, 101, 22);
+}
+
+.statePause {
+  background: rgb(239, 68, 68);
+}

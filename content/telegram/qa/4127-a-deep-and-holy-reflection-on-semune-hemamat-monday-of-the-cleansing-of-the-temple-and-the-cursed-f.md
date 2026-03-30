@@ -54,7 +54,7 @@ And let us not think this act ended two thousand years ago. You are the temple o
 
 II. The Cursed Fig Tree
 
-As the morning sun rose, the Lord, the very Bread of Life, hungered — not only for physical food, but for righteousness among His people. Approaching a fig tree clothed in leaves, He searched for fruit. Finding none, He said: "May no fruit ever grow on you again." And immediately it withered.
+As the morning sun rose, the Lord, the very Bread of Life, hungered - not only for physical food, but for righteousness among His people. Approaching a fig tree clothed in leaves, He searched for fruit. Finding none, He said: "May no fruit ever grow on you again." And immediately it withered.
 
 Here, the Word made flesh speaks to creation, and creation obeys. But why such a harsh judgment for a tree? Why did our gentle Lord curse it?
 

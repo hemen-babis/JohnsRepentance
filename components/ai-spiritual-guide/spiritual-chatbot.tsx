@@ -219,7 +219,7 @@ export function SpiritualChatbot() {
                         <Badge
                           className={`
                             ${message.category === "prayer" ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400" : ""}
-                            ${message.category === "scripture" ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" : ""}
+                            ${message.category === "scripture" ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400" : ""}
                             ${message.category === "fasting" ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400" : ""}
                             ${message.category === "general" ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400" : ""}
                           `}

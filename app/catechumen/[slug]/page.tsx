@@ -17,6 +17,7 @@ import {
   catechumenLessonQuizzes,
   catechumenLessonRecaps,
   catechumenMemoryVerses,
+  churchTeachingSections,
   christologyTeachingSections,
   confirmationTeachingSections,
   creedExplanationSections,
@@ -362,7 +363,7 @@ export default async function CatechumenLessonPage({
             "Leave ready for the next lesson",
           ]
   const lessonParts = isChurchLesson
-    ? historyTeachingSections.map((section) => section.title)
+    ? churchTeachingSections.map((section) => section.title)
     : isCreedLesson
       ? ["The Orthodox Creed", ...creedExplanationSections.map((section) => section.title)]
       : isTrinityLesson
@@ -416,7 +417,8 @@ export default async function CatechumenLessonPage({
   const requiresQuizGate = quizQuestions.length > 0
   const memoryVerse = catechumenMemoryVerses[lesson.slug]
   const genericTeachingSections =
-    isHistoryLesson ? historyTeachingSections
+    isChurchLesson ? churchTeachingSections
+    : isHistoryLesson ? historyTeachingSections
     : isFivePillarsTrinityLesson ? fivePillarsTrinitySections
     : isFivePillarsIncarnationLesson ? fivePillarsIncarnationSections
     : isFivePillarsBaptismLesson ? fivePillarsBaptismSections
@@ -481,7 +483,7 @@ export default async function CatechumenLessonPage({
 
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <Button asChild className="bg-gradient-to-r from-amber-500 to-orange-600 text-white">
-                      <Link href="/catechumen">
+                      <Link href="/catechumen/roadmap">
                         <ArrowLeft className="h-4 w-4" />
                         Back to Roadmap
                       </Link>
@@ -614,89 +616,24 @@ export default async function CatechumenLessonPage({
               ) : null}
 
               {isChurchLesson ? (
-                <>
-                  <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
-                    <div className="h-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600" />
-                    <CardHeader className="space-y-5">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-orange-700 dark:text-amber-400">Foundations</p>
-                        <CardTitle className="mt-3 text-2xl md:text-3xl text-stone-900 dark:text-white">
-                          The Sacred History of the Ethiopian Orthodox Tewahedo Church
-                        </CardTitle>
-                        <p className="mt-4 text-sm italic text-stone-600 dark:text-stone-300">
-                          “Princes shall come out of Egypt; Ethiopia shall soon stretch out her hands unto God.”
-                        </p>
-                        <p className="mt-2 text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-                          Psalm 68:31
-                        </p>
-                      </div>
-                      <div className="rounded-[1.5rem] border border-amber-200/70 bg-gradient-to-br from-amber-50/90 via-white/75 to-orange-50/70 p-5 dark:border-orange-900/40 dark:from-stone-900 dark:to-orange-950/40">
-                        <p className="text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-                          This first lesson introduces the Church through her long story: from the first covenant, to
-                          the coming of the Gospel, to the apostolic and monastic life that shaped the Ethiopian
-                          Orthodox Tewahedo Church.
-                        </p>
-                      </div>
-                    </CardHeader>
-                  </Card>
-
-                  <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
-                    <CardHeader className="space-y-3">
-                      <p className="text-xs uppercase tracking-[0.2em] text-orange-700 dark:text-amber-400">Visual Guides</p>
-                      <CardTitle className="text-3xl md:text-4xl text-stone-900 dark:text-white">Church History Diagrams</CardTitle>
-                      <p className="text-sm leading-relaxed text-stone-600 dark:text-stone-300">
-                        These diagrams summarize the major church divisions after Chalcedon and the Christological debates behind them.
-                      </p>
-                    </CardHeader>
-                    <CardContent className="space-y-8">
-                      <div className="overflow-hidden rounded-[1.75rem] border border-amber-200/60 bg-gradient-to-br from-white to-amber-50/60 p-5 shadow-[0_14px_40px_-28px_rgba(120,53,15,0.25)] dark:border-orange-900/30 dark:from-stone-900 dark:to-orange-950/25">
-                        <div className="overflow-hidden rounded-[1.25rem] border border-amber-100/80 bg-[#f7efe2]">
-                          <Image
-                            src="/images/pic1.png"
-                            alt="A historical overview of church divisions after Chalcedon, showing the Oriental Orthodox, Eastern Orthodox, Roman Catholic, Protestant, and Anglican branches."
-                            width={1691}
-                            height={1095}
-                            className="h-auto w-full"
-                          />
+                <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">
+                  <CardContent className="space-y-5">
+                    {churchTeachingSections.map((section) => (
+                      <div
+                        key={section.title}
+                        id={sectionAnchorId(section.title)}
+                        className="rounded-[1.35rem] border border-amber-200/60 bg-gradient-to-br from-white to-amber-50/60 p-5 shadow-[0_12px_30px_-24px_rgba(120,53,15,0.22)] dark:border-orange-900/30 dark:from-stone-900 dark:to-orange-950/20"
+                      >
+                        <h3 className="text-lg font-semibold text-stone-900 dark:text-white">{section.title}</h3>
+                        <div className="mt-3 space-y-3 text-stone-700 dark:text-stone-300 leading-relaxed">
+                          {section.paragraphs.map((paragraph) => (
+                            <p key={paragraph}>{renderRichParagraph(paragraph)}</p>
+                          ))}
                         </div>
-                        <p className="mt-4 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
-                          Historical overview of the major church groupings after Chalcedon.
-                        </p>
                       </div>
-
-                      <div className="overflow-hidden rounded-[1.75rem] border border-amber-200/60 bg-gradient-to-br from-white to-amber-50/60 p-5 shadow-[0_14px_40px_-28px_rgba(120,53,15,0.25)] dark:border-orange-900/30 dark:from-stone-900 dark:to-orange-950/25">
-                        <div className="overflow-hidden rounded-[1.25rem] border border-amber-100/80 bg-[#f7efe2]">
-                          <Image
-                            src="/images/pic2.png"
-                            alt="A Christological map centered on one person and two natures, comparing different errors and the Alexandrian emphasis on the unity of Christ."
-                            width={1707}
-                            height={1007}
-                            className="h-auto w-full"
-                          />
-                        </div>
-                        <p className="mt-4 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
-                          Christological map related to the Council of Chalcedon and later teaching.
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-none shadow-[0_28px_90px_-48px_rgba(17,24,39,0.5)] bg-gradient-to-br from-orange-900 via-amber-800 to-orange-900 text-white overflow-hidden">
-                    <CardContent className="p-6 md:p-8">
-                      <div className="flex items-center gap-3">
-                        <Crown className="h-5 w-5 text-amber-200" />
-                        <h2 className="text-2xl font-bold">Conclusion for the Catechumen</h2>
-                      </div>
-                      <div className="mt-5 space-y-4">
-                        {historyLessonConclusion.map((line) => (
-                          <p key={line} className="text-white/88 leading-relaxed">
-                            {line}
-                          </p>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </>
+                    ))}
+                  </CardContent>
+                </Card>
               ) : isHistoryLesson ? (
                 <>
                   <Card className="overflow-hidden border-none bg-white/82 shadow-[0_28px_90px_-48px_rgba(120,53,15,0.34)] backdrop-blur-xl dark:border-orange-900/30 dark:bg-[linear-gradient(135deg,rgba(42,28,20,0.96),rgba(24,17,14,0.94))]">

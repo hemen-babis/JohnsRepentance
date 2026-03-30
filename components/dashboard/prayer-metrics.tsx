@@ -56,8 +56,8 @@ export function PrayerMetrics() {
             </div>
           </div>
 
-          <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-            <h4 className="font-medium flex items-center text-blue-800 dark:text-blue-400 mb-2">
+          <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
+            <h4 className="font-medium flex items-center text-orange-800 dark:text-orange-400 mb-2">
               <span className="mr-2">✨</span> AI Insight
             </h4>
             <p className="text-sm text-gray-700 dark:text-gray-300">

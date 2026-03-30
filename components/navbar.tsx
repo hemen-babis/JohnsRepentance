@@ -35,6 +35,7 @@ export function Navbar() {
   const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const hideForImmersiveReader = pathname?.startsWith("/youth-corner/plans/")
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8)
@@ -51,6 +52,10 @@ export function Navbar() {
 
   const toggleTheme = () => {
     setTheme(currentTheme === "dark" ? "light" : "dark")
+  }
+
+  if (hideForImmersiveReader) {
+    return null
   }
 
   return (

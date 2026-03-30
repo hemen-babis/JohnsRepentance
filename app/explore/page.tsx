@@ -27,7 +27,7 @@ const sections = [
     description: "Prepare for the sacred mystery of the Eucharist",
     image: "/placeholder.svg?height=300&width=400",
     link: "/holy-communion",
-    color: "from-blue-500 to-blue-700",
+    color: "from-orange-500 to-orange-700",
   },
   {
     title: "Q&A",
@@ -41,7 +41,7 @@ const sections = [
     description: "Resources and activities for young Orthodox believers",
     image: "/placeholder.svg?height=300&width=400",
     link: "/youth",
-    color: "from-purple-500 to-purple-700",
+    color: "from-amber-500 to-orange-700",
   },
   {
     title: "Deacon's Corner",
@@ -62,7 +62,7 @@ const sections = [
     description: "Learn about our mission and the people behind John's Repentance",
     image: "/placeholder.svg?height=300&width=400",
     link: "/about",
-    color: "from-indigo-500 to-indigo-700",
+    color: "from-orange-600 to-amber-700",
   },
 ]
 

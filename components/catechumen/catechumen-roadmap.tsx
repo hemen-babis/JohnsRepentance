@@ -2,14 +2,16 @@
 
 import Link from "next/link"
 import { useEffect, useMemo, useState } from "react"
-import { motion } from "framer-motion"
-import { ArrowRight, BookOpen, Check, ChevronDown, Compass, Flame, Lock, Sparkles } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { ArrowRight, BookOpen, Check, ChevronDown, Compass, Flame, Lock, Sparkles, Target, Trophy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { GeezHeading } from "@/components/geez-heading"
 import { cn } from "@/lib/utils"
 import { catechumenLessons, catechumenSections, type CatechumenLesson } from "@/lib/catechumen-data"
 
 const STORAGE_KEY = "catechumen-progress"
+const ROADMAP_UI_KEY = "catechumen-roadmap-ui"
+const ROADMAP_SCROLL_KEY = "catechumen-roadmap-scroll"
 
 function getCompletionState(lesson: CatechumenLesson, completedIds: number[]) {
   if (completedIds.includes(lesson.id)) return "completed"
@@ -25,11 +27,53 @@ function getLessonIcon(lesson: CatechumenLesson) {
   return Compass
 }
 
+function getSectionAccent(sectionKey: string) {
+  if (sectionKey === "Foundations") {
+    return {
+      orb: "from-amber-400 to-orange-600",
+      panel: "from-amber-50/95 via-white/85 to-orange-50/75 dark:from-stone-900 dark:to-orange-950/25",
+      glow: "bg-amber-200/55 dark:bg-amber-500/10",
+      pattern: "✦",
+    }
+  }
+  if (sectionKey === "Core Beliefs") {
+    return {
+      orb: "from-amber-400 to-orange-600",
+      panel: "from-amber-50/95 via-white/85 to-orange-50/75 dark:from-stone-900 dark:to-orange-950/25",
+      glow: "bg-amber-200/55 dark:bg-amber-500/10",
+      pattern: "◌",
+    }
+  }
+  if (sectionKey === "Five Pillars") {
+    return {
+      orb: "from-amber-400 to-orange-600",
+      panel: "from-amber-50/95 via-white/85 to-orange-50/75 dark:from-stone-900 dark:to-orange-950/25",
+      glow: "bg-amber-200/55 dark:bg-amber-500/10",
+      pattern: "Ⅴ",
+    }
+  }
+  if (sectionKey === "Sacrament") {
+    return {
+      orb: "from-amber-400 to-orange-600",
+      panel: "from-amber-50/95 via-white/85 to-orange-50/75 dark:from-stone-900 dark:to-orange-950/25",
+      glow: "bg-amber-200/55 dark:bg-amber-500/10",
+      pattern: "✢",
+    }
+  }
+  return {
+    orb: "from-amber-400 to-orange-600",
+    panel: "from-amber-50/95 via-white/85 to-orange-50/75 dark:from-stone-900 dark:to-orange-950/25",
+    glow: "bg-amber-200/55 dark:bg-amber-500/10",
+    pattern: "◔",
+  }
+}
+
 export function CatechumenRoadmap() {
   const [completedIds, setCompletedIds] = useState<number[]>([])
   const [expandedSection, setExpandedSection] = useState<string | null>(null)
   const [expandedHistoryLesson, setExpandedHistoryLesson] = useState(false)
   const [expandedEucharistLesson, setExpandedEucharistLesson] = useState(false)
+  const [hasLoadedUiState, setHasLoadedUiState] = useState(false)
 
   useEffect(() => {
     const syncProgress = () => {
@@ -59,10 +103,72 @@ export function CatechumenRoadmap() {
     }
   }, [])
 
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    try {
+      const raw = window.sessionStorage.getItem(ROADMAP_UI_KEY)
+      if (raw) {
+        const parsed = JSON.parse(raw) as {
+          expandedSection?: string | null
+          expandedHistoryLesson?: boolean
+          expandedEucharistLesson?: boolean
+        }
+        if (typeof parsed.expandedSection === "string" || parsed.expandedSection === null) {
+          setExpandedSection(parsed.expandedSection ?? null)
+        }
+        if (typeof parsed.expandedHistoryLesson === "boolean") {
+          setExpandedHistoryLesson(parsed.expandedHistoryLesson)
+        }
+        if (typeof parsed.expandedEucharistLesson === "boolean") {
+          setExpandedEucharistLesson(parsed.expandedEucharistLesson)
+        }
+      }
+    } catch {
+      window.sessionStorage.removeItem(ROADMAP_UI_KEY)
+    } finally {
+      setHasLoadedUiState(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !hasLoadedUiState) return
+    window.sessionStorage.setItem(
+      ROADMAP_UI_KEY,
+      JSON.stringify({
+        expandedSection,
+        expandedHistoryLesson,
+        expandedEucharistLesson,
+      }),
+    )
+  }, [expandedEucharistLesson, expandedHistoryLesson, expandedSection, hasLoadedUiState])
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !hasLoadedUiState) return
+    const raw = window.sessionStorage.getItem(ROADMAP_SCROLL_KEY)
+    if (!raw) return
+    const scrollY = Number(raw)
+    if (!Number.isFinite(scrollY)) return
+    const restoreScroll = () => window.scrollTo({ top: scrollY, behavior: "auto" })
+    const frameId = window.requestAnimationFrame(() => {
+      window.setTimeout(restoreScroll, 80)
+    })
+    return () => window.cancelAnimationFrame(frameId)
+  }, [expandedEucharistLesson, expandedHistoryLesson, expandedSection, hasLoadedUiState])
+
   const nextLesson = useMemo(
     () => catechumenLessons.find((lesson) => !completedIds.includes(lesson.id)) ?? catechumenLessons[catechumenLessons.length - 1],
     [completedIds],
   )
+  const completedCount = completedIds.length
+  const progressPercent = Math.round((completedCount / catechumenLessons.length) * 100)
+  const streakCount = useMemo(() => {
+    let streak = 0
+    for (const lesson of catechumenLessons) {
+      if (completedIds.includes(lesson.id)) streak += 1
+      else break
+    }
+    return streak
+  }, [completedIds])
   const historySubtopics = [
     "The Issue Between Monophysitism and Dyophysitism",
     "Fundamental Dogmas in the Nicene Creed",
@@ -75,6 +181,19 @@ export function CatechumenRoadmap() {
     lessons: catechumenLessons.filter((lesson) => lesson.section === section.key),
   }))
 
+  function persistRoadmapUi() {
+    if (typeof window === "undefined") return
+    window.sessionStorage.setItem(
+      ROADMAP_UI_KEY,
+      JSON.stringify({
+        expandedSection,
+        expandedHistoryLesson,
+        expandedEucharistLesson,
+      }),
+    )
+    window.sessionStorage.setItem(ROADMAP_SCROLL_KEY, String(window.scrollY))
+  }
+
   return (
     <section id="roadmap" className="relative py-8 md:py-10">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.3)_12%,transparent_100%)] dark:bg-[linear-gradient(180deg,transparent,rgba(255,184,76,0.05)_12%,transparent_100%)]" />
@@ -83,11 +202,62 @@ export function CatechumenRoadmap() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">የእምነት ጉዞ</GeezHeading>
-            <h2 className="font-serif text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-5xl">
+            <h2 className="text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-5xl">
               Follow the path
             </h2>
             <div className="mx-auto mt-4 h-px w-24 bg-gradient-to-r from-transparent via-amber-500/60 to-transparent" />
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-stone-700 dark:text-stone-300">Start at lesson 1 and keep going.</p>
+                <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-stone-700 dark:text-stone-300">Start at lesson 1 and keep going.</p>
+          </div>
+
+          <div className="mb-10 grid gap-4 md:grid-cols-3">
+            <div className="rounded-[1.8rem] border border-white/50 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,244,230,0.62))] p-5 shadow-[0_18px_50px_-34px_rgba(120,53,15,0.35)] backdrop-blur-xl dark:border-orange-500/18 dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.46),rgba(42,26,18,0.3))]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-lg">
+                  <Trophy className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Progress</p>
+                  <p className="text-2xl font-bold text-stone-900 dark:text-white">{progressPercent}%</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-stone-600 dark:text-stone-300">
+                {completedCount} of {catechumenLessons.length} lessons completed.
+              </p>
+              <div className="mt-4">
+                <div className="h-2 overflow-hidden rounded-full bg-amber-100 dark:bg-stone-800">
+                  <motion.div
+                    className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-orange-600"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progressPercent}%` }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[1.8rem] border border-white/50 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,244,230,0.62))] p-5 shadow-[0_18px_50px_-34px_rgba(120,53,15,0.35)] backdrop-blur-xl dark:border-orange-500/18 dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.46),rgba(42,26,18,0.3))]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-lg">
+                  <Target className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Next Focus</p>
+                  <p className="text-lg font-bold text-stone-900 dark:text-white">{nextLesson.section}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-stone-600 dark:text-stone-300">{nextLesson.title}</p>
+            </div>
+
+            <div className="rounded-[1.8rem] border border-white/50 bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,244,230,0.62))] p-5 shadow-[0_18px_50px_-34px_rgba(120,53,15,0.35)] backdrop-blur-xl dark:border-orange-500/18 dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.46),rgba(42,26,18,0.3))]">
+              <p className="text-xs uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">Learning Streak</p>
+              <div className="mt-3 flex items-end gap-3">
+                <p className="text-2xl font-bold text-stone-900 dark:text-white">{streakCount}</p>
+                <p className="pb-1 text-sm text-stone-600 dark:text-stone-300">lessons in order</p>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+                Open a section, choose one lesson, finish the check, then keep moving. Treat it like formation, not scrolling.
+              </p>
+            </div>
           </div>
 
           <div className="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)] items-start">
@@ -99,7 +269,7 @@ export function CatechumenRoadmap() {
                     <p className="font-semibold text-stone-900 dark:text-white">{nextLesson.title}</p>
                   </div>
                   <Button asChild className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white">
-                    <Link href={`/catechumen/${nextLesson.slug}`}>
+                    <Link href={`/catechumen/${nextLesson.slug}`} onClick={persistRoadmapUi}>
                       Continue
                       <ArrowRight className="h-4 w-4" />
                     </Link>
@@ -125,6 +295,7 @@ export function CatechumenRoadmap() {
                 const isExpanded = expandedSection === section.key
                 const sectionCurrent = section.lessons.some((lesson) => getCompletionState(lesson, completedIds) === "current")
                 const sectionDone = section.lessons.length > 0 && section.lessons.every((lesson) => completedIds.includes(lesson.id))
+                const sectionAccent = getSectionAccent(section.key)
                 const SectionIcon =
                   section.key === "Foundations"
                     ? BookOpen
@@ -149,33 +320,35 @@ export function CatechumenRoadmap() {
                       type="button"
                       onClick={() => setExpandedSection((current) => (current === section.key ? null : section.key))}
                       className={cn(
-                        "group flex w-full items-center justify-between gap-4 rounded-[1.75rem] border px-5 py-5 text-left shadow-[0_22px_60px_-40px_rgba(120,53,15,0.38)] transition-all duration-300 hover:-translate-y-0.5",
-                        "border-amber-200/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(250,241,227,0.62))] backdrop-blur-xl",
+                        "group relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-[1.75rem] border px-5 py-5 text-left shadow-[0_22px_60px_-40px_rgba(120,53,15,0.38)] transition-all duration-300 hover:-translate-y-0.5",
+                        `border-amber-200/60 bg-gradient-to-br ${sectionAccent.panel} backdrop-blur-xl`,
                         "dark:border-orange-500/18 dark:bg-[linear-gradient(135deg,rgba(66,38,22,0.46),rgba(42,26,18,0.3))]",
-                        isExpanded && "ring-1 ring-amber-300/70 dark:ring-amber-700/30",
+                        isExpanded && "ring-1 ring-amber-300/70 shadow-[0_28px_80px_-42px_rgba(120,53,15,0.5)] dark:ring-amber-700/30",
                       )}
                     >
+                      <div className={cn("pointer-events-none absolute -right-4 -top-6 h-24 w-24 rounded-full blur-2xl", sectionAccent.glow)} />
                       <div className="flex items-center gap-4">
                         <div
                           className={cn(
                             "flex h-11 w-11 items-center justify-center rounded-full border text-white shadow-lg",
                             sectionDone
                               ? "border-orange-200 bg-gradient-to-br from-orange-500 to-orange-700"
-                              : sectionCurrent
-                                ? "border-amber-100 bg-gradient-to-br from-amber-400 via-orange-500 to-orange-700"
-                                : "border-amber-200 bg-gradient-to-br from-amber-500 to-orange-600 dark:border-orange-900/30",
+                            : sectionCurrent
+                                ? `border-amber-100 bg-gradient-to-br ${sectionAccent.orb}`
+                                : `border-amber-200 bg-gradient-to-br ${sectionAccent.orb} dark:border-orange-900/30`,
                           )}
                         >
                           {sectionDone ? <Check className="h-5 w-5" /> : <SectionIcon className="h-5 w-5" />}
                         </div>
                         <div>
                           <p className="text-lg font-semibold text-stone-900 dark:text-white">{section.title}</p>
+                          <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">{section.description}</p>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-3">
                         <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-orange-700 dark:bg-orange-950/40 dark:text-amber-300">
-                          {section.lessons.length} lessons
+                          {section.lessons.filter((lesson) => completedIds.includes(lesson.id)).length}/{section.lessons.length}
                         </span>
                         <ChevronDown
                           className={cn(
@@ -186,8 +359,16 @@ export function CatechumenRoadmap() {
                       </div>
                     </button>
 
-                    {isExpanded ? (
-                      <div className="ml-6 space-y-4 border-l-2 border-amber-300/60 pl-5 dark:border-orange-500/28">
+                    <AnimatePresence initial={false}>
+                      {isExpanded ? (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                      <div className="ml-6 space-y-4 border-l-2 border-amber-300/60 pl-5 pt-1 dark:border-orange-500/28">
                         {section.lessons.map((lesson) => {
                           const state = getCompletionState(lesson, completedIds)
                           const isCompleted = state === "completed"
@@ -204,7 +385,7 @@ export function CatechumenRoadmap() {
                                   isCurrent &&
                                     "bg-[linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,244,230,0.72))] shadow-[0_24px_70px_-40px_rgba(120,53,15,0.45)] backdrop-blur-xl dark:bg-[linear-gradient(135deg,rgba(41,28,19,0.92),rgba(61,39,24,0.85))]",
                                   isCompleted &&
-                                    "bg-[linear-gradient(135deg,rgba(255,255,255,0.62),rgba(250,241,227,0.52))] shadow-[0_18px_50px_-40px_rgba(120,53,15,0.35)] backdrop-blur-lg dark:bg-[linear-gradient(135deg,rgba(34,23,15,0.85),rgba(44,30,20,0.8))]",
+                                    "ring-1 ring-orange-200/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,243,226,0.7))] shadow-[0_22px_60px_-36px_rgba(249,115,22,0.4)] backdrop-blur-lg dark:bg-[linear-gradient(135deg,rgba(34,23,15,0.85),rgba(44,30,20,0.8))]",
                                   !isCompleted &&
                                     !isCurrent &&
                                     "bg-[linear-gradient(135deg,rgba(255,255,255,0.34),rgba(255,255,255,0.2))] opacity-95 backdrop-blur-md dark:bg-[linear-gradient(135deg,rgba(29,21,16,0.72),rgba(29,21,16,0.52))]",
@@ -221,6 +402,9 @@ export function CatechumenRoadmap() {
                                     <h3 className="text-xl font-semibold text-stone-900 transition-colors duration-300 dark:text-white">
                                       {lesson.title}
                                     </h3>
+                                    <p className="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-300">
+                                      {lesson.description}
+                                    </p>
                                   </div>
 
                                   <div
@@ -236,6 +420,11 @@ export function CatechumenRoadmap() {
                                 </div>
 
                                 <div className="mt-4 flex items-center justify-end gap-4">
+                                  {isCompleted ? (
+                                    <span className="rounded-full bg-orange-100 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-orange-700 dark:bg-orange-950/50 dark:text-amber-300">
+                                      Completed
+                                    </span>
+                                  ) : null}
                                   <div className="flex items-center gap-2 text-orange-700 dark:text-amber-300">
                                     {isHistoryRoadmapLesson ? (
                                       <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", expandedHistoryLesson && "rotate-180")} />
@@ -339,7 +528,7 @@ export function CatechumenRoadmap() {
                                     ) : null}
                                   </div>
                                 ) : (
-                                  <Link href={`/catechumen/${lesson.slug}`} className="group block">
+                                  <Link href={`/catechumen/${lesson.slug}`} className="group block" onClick={persistRoadmapUi}>
                                     {lessonCard}
                                   </Link>
                                 )}
@@ -348,7 +537,9 @@ export function CatechumenRoadmap() {
                           )
                         })}
                       </div>
+                      </motion.div>
                     ) : null}
+                    </AnimatePresence>
                   </motion.div>
                 )
               })}

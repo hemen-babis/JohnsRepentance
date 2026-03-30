@@ -28,7 +28,7 @@ Thank you for bringing your concerns forward with a spirit of inquiry and faithf
 
 As you rightly pointed out, our Church Fathers, including St. Ambrose and others, have spoken about the dangers of adorning oneself in ways that detract from the natural beauty that God has bestowed upon us. In the spirit of their teachings, the use of makeup should be approached with great caution and discernment.
 
-The Apostolic Constitutions reminds us that our primary adornment should be the "hidden person of the heart," as noted in 1 Peter 3:3-4. The focus is on cultivating inner beauty — a beauty that reflects our devotion, humility, and love for God.
+The Apostolic Constitutions reminds us that our primary adornment should be the "hidden person of the heart," as noted in 1 Peter 3:3-4. The focus is on cultivating inner beauty - a beauty that reflects our devotion, humility, and love for God.
 
 While the previous answer mentioned that makeup is not inherently sinful, it is crucial to emphasize that in our tradition, simplicity and naturalness in appearance are valued highly as expressions of humility and purity of heart. The use of makeup can easily lead to vanity and a focus on external appearances, which is contrary to the spirit of Orthodox Christian living.
 

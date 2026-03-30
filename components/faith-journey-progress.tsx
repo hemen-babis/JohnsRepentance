@@ -74,8 +74,8 @@ export function FaithJourneyProgress() {
               ))}
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-              <h4 className="font-medium flex items-center text-blue-800 dark:text-blue-400 mb-2">
+            <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
+              <h4 className="font-medium flex items-center text-orange-800 dark:text-orange-400 mb-2">
                 <span className="mr-2">✨</span> AI Insight
               </h4>
               <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -139,8 +139,8 @@ export function FaithJourneyProgress() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-              <h4 className="font-medium flex items-center text-blue-800 dark:text-blue-400 mb-2">
+            <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
+              <h4 className="font-medium flex items-center text-orange-800 dark:text-orange-400 mb-2">
                 <span className="mr-2">✨</span> AI Recommendation
               </h4>
               <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -200,8 +200,8 @@ export function FaithJourneyProgress() {
               </p>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-              <h4 className="font-medium flex items-center text-blue-800 dark:text-blue-400 mb-2">
+            <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
+              <h4 className="font-medium flex items-center text-orange-800 dark:text-orange-400 mb-2">
                 <span className="mr-2">✨</span> AI Insight
               </h4>
               <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -231,8 +231,8 @@ export function FaithJourneyProgress() {
               </div>
 
               <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center">
-                <div className="w-16 h-16 mx-auto bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-3">
-                  <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-500" />
+                <div className="w-16 h-16 mx-auto bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mb-3">
+                  <BookOpen className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                 </div>
                 <h4 className="font-medium">Scripture Scholar</h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Read 50 chapters of scripture</p>
@@ -255,8 +255,8 @@ export function FaithJourneyProgress() {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-              <h4 className="font-medium flex items-center text-blue-800 dark:text-blue-400 mb-2">
+            <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
+              <h4 className="font-medium flex items-center text-orange-800 dark:text-orange-400 mb-2">
                 <span className="mr-2">✨</span> Next Achievement
               </h4>
               <p className="text-sm text-gray-700 dark:text-gray-300">

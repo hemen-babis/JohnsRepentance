@@ -176,9 +176,9 @@ export function AnimatedFeatureSection() {
           <ScrollTriggeredAnimation type="slide" direction="up" delay={0.3}>
             <Card className="border-none shadow-lg overflow-hidden h-full">
               <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 mx-auto bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-4">
+                <div className="w-16 h-16 mx-auto bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mb-4">
                   <svg
-                    className="w-8 h-8 text-blue-600 dark:text-blue-500"
+                    className="w-8 h-8 text-orange-600 dark:text-orange-400"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"

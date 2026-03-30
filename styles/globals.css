@@ -89,4 +89,90 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html.dark body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 28%),
+      radial-gradient(circle at 18% 22%, rgba(249, 115, 22, 0.09), transparent 24%),
+      radial-gradient(circle at 82% 18%, rgba(245, 158, 11, 0.06), transparent 22%),
+      linear-gradient(180deg, rgba(14, 10, 8, 0.96) 0%, rgba(24, 16, 12, 0.98) 48%, rgba(13, 9, 7, 1) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #3a1e01 !important;
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    color: inherit !important;
+  }
+
+  html.dark .light-mode-adaptive-page {
+    background: transparent !important;
+    background-image: none !important;
+  }
+
+  html.dark .light-mode-adaptive-page [class*="bg-[linear-gradient(180deg,#fff"],
+  html.dark .light-mode-adaptive-page [class*="bg-[linear-gradient(135deg,#fff"],
+  html.dark .light-mode-adaptive-page [class*="bg-[linear-gradient(180deg,rgba(255"],
+  html.dark .light-mode-adaptive-page [class*="bg-[linear-gradient(135deg,rgba(255"],
+  html.dark .light-mode-adaptive-page [class*="bg-gradient-to-br from-white"],
+  html.dark .light-mode-adaptive-page [class*="bg-white/9"],
+  html.dark .light-mode-adaptive-page [class*="bg-white/8"],
+  html.dark .light-mode-adaptive-page [class*="bg-white/7"],
+  html.dark .light-mode-adaptive-page [class*="bg-white/6"],
+  html.dark .light-mode-adaptive-page [class*="bg-[#fff"],
+  html.dark .light-mode-adaptive-page [class*="bg-amber-50"],
+  html.dark .light-mode-adaptive-page [class*="bg-orange-50"] {
+    background: linear-gradient(180deg, rgba(40, 27, 20, 0.96), rgba(23, 16, 12, 0.94)) !important;
+    color: rgba(255, 248, 239, 0.95) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 245, 230, 0.04),
+      0 24px 70px -42px rgba(0, 0, 0, 0.72) !important;
+  }
+
+  html.dark .light-mode-adaptive-page [class*="border-[#ead8b6]"],
+  html.dark .light-mode-adaptive-page [class*="border-[#d8c395]"],
+  html.dark .light-mode-adaptive-page [class*="border-amber-200"],
+  html.dark .light-mode-adaptive-page [class*="border-amber-300"],
+  html.dark .light-mode-adaptive-page [class*="border-orange-200"] {
+    border-color: rgba(180, 97, 32, 0.26) !important;
+  }
+
+  html.dark .light-mode-adaptive-page [class*="text-[#3d2206]"],
+  html.dark .light-mode-adaptive-page [class*="text-[#4b2b0e]"],
+  html.dark .light-mode-adaptive-page [class*="text-[#6f4b18]"],
+  html.dark .light-mode-adaptive-page [class*="text-[#7c2d12]"],
+  html.dark .light-mode-adaptive-page [class*="text-[#8b6a2b]"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-900"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-800"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-700"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-600"],
+  html.dark .light-mode-adaptive-page [class*="text-gray-900"],
+  html.dark .light-mode-adaptive-page [class*="text-gray-800"],
+  html.dark .light-mode-adaptive-page [class*="text-gray-700"],
+  html.dark .light-mode-adaptive-page [class*="text-gray-600"] {
+    color: rgba(255, 248, 239, 0.96) !important;
+  }
+
+  html.dark .light-mode-adaptive-page [class*="text-gray-500"],
+  html.dark .light-mode-adaptive-page [class*="text-gray-400"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-500"],
+  html.dark .light-mode-adaptive-page [class*="text-stone-400"] {
+    color: rgba(255, 248, 239, 0.72) !important;
+  }
 }

@@ -315,7 +315,7 @@ export default function AboutPage() {
                         </div>
                       </li>
                       <li className="flex items-start gap-3 group/item">
-                        <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mt-0.5 transition-colors duration-300 group-hover/item:bg-blue-200 dark:group-hover/item:bg-blue-950/60">
+                        <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-orange-100 dark:bg-orange-950/40 text-orange-600 dark:text-orange-400 flex items-center justify-center mt-0.5 transition-colors duration-300 group-hover/item:bg-orange-200 dark:group-hover/item:bg-orange-950/60">
                           <Check className="w-4 h-4" />
                         </span>
                         <div>

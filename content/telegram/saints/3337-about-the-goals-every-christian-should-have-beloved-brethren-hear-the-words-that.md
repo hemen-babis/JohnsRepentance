@@ -39,17 +39,17 @@ In the Ethiopian tradition, this festival is also called the Head of the Geez Ye
 
 September: The Month of New Beginnings
 
-The answer lies in both celestial and sacred order. In Ethiopia, September is the month when the lights of the heavens — the sun, moon, and stars — complete their annual cycle. The month of Pagume, the last of the year, closes with the alignment of these heavenly bodies, and with the dawn of September, the balance between day and night is restored. On the first of Meskerem, the day and night are equal, each lasting twelve hours, reflecting a perfect harmony that mirrors the ordered cosmos. The year, measured according to the divine structure, totals 364 days, with this moment of equilibrium ushering in a new beginning.
+The answer lies in both celestial and sacred order. In Ethiopia, September is the month when the lights of the heavens - the sun, moon, and stars - complete their annual cycle. The month of Pagume, the last of the year, closes with the alignment of these heavenly bodies, and with the dawn of September, the balance between day and night is restored. On the first of Meskerem, the day and night are equal, each lasting twelve hours, reflecting a perfect harmony that mirrors the ordered cosmos. The year, measured according to the divine structure, totals 364 days, with this moment of equilibrium ushering in a new beginning.
 
 The Biblical Foundations of the New Year
 
 The Ethiopian New Year is not simply a seasonal festival, but a day that reverberates with biblical significance. As the book of Enoch declares, "He created the sun and the moon and the stars to be the identity of the times" (Enoch 21:49). This heavenly order is not random but divinely ordained, a signpost of God’s sovereignty over time and creation.
 
-Moreover, the New Year is linked to the flood of Noah, that cataclysmic event which purged the earth of its sin. It is recorded in the ancient texts, "In the first month the earth appeared, and the waters of the river dried up from the earth" (Kufale 7:1). It was in this first month, Meskerem, that the waters receded, revealing the land anew — a fitting metaphor for the renewal we experience at the dawn of a new year. Just as the earth was cleansed, so too are we called to begin afresh, to be washed of the sins of the past and emerge renewed in spirit.
+Moreover, the New Year is linked to the flood of Noah, that cataclysmic event which purged the earth of its sin. It is recorded in the ancient texts, "In the first month the earth appeared, and the waters of the river dried up from the earth" (Kufale 7:1). It was in this first month, Meskerem, that the waters receded, revealing the land anew - a fitting metaphor for the renewal we experience at the dawn of a new year. Just as the earth was cleansed, so too are we called to begin afresh, to be washed of the sins of the past and emerge renewed in spirit.
 
 The Evangelists and the Cycle of Time
 
-In the wisdom of the Ethiopian Church, the passing of time is also measured according to the four evangelists — Matthew, Mark, Luke, and John. Each evangelist is associated with a particular era in the divine narrative of salvation. As scholars of the Church explain, Matthew's era marks the conception of Christ, Mark's era His baptism, Luke's era His crucifixion, and John's era the culmination of His eternal reign.
+In the wisdom of the Ethiopian Church, the passing of time is also measured according to the four evangelists - Matthew, Mark, Luke, and John. Each evangelist is associated with a particular era in the divine narrative of salvation. As scholars of the Church explain, Matthew's era marks the conception of Christ, Mark's era His baptism, Luke's era His crucifixion, and John's era the culmination of His eternal reign.
 
 To determine which era governs the present year, the faithful add the Year of Mercy (our current year) to the Year of Condemnation (5500, marking the years from Adam to Christ) and divide the sum by four. The remainder reveals the evangelist of the era:
 

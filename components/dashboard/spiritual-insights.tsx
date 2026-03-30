@@ -173,7 +173,7 @@ export function SpiritualInsightsDashboard() {
         <Card className="border-none shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-blue-600" />
+              <BookOpen className="h-5 w-5 text-orange-600" />
               Scripture Engagement
             </CardTitle>
             <CardDescription>Distribution of your scripture readings</CardDescription>

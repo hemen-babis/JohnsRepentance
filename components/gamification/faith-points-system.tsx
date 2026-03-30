@@ -73,7 +73,7 @@ export function FaithPointsSystem() {
       description: "Read a chapter from the Ethiopian Orthodox Bible",
       points: 15,
       category: "scripture",
-      icon: <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+      icon: <BookOpen className="h-5 w-5 text-orange-600 dark:text-orange-400" />,
       completed: false,
     },
     {
@@ -100,7 +100,7 @@ export function FaithPointsSystem() {
       description: "Complete the weekly quiz about EOTC teachings",
       points: 15,
       category: "learning",
-      icon: <BookOpen className="h-5 w-5 text-purple-600 dark:text-purple-500" />,
+      icon: <BookOpen className="h-5 w-5 text-orange-700 dark:text-orange-500" />,
       completed: false,
     },
   ])
@@ -120,7 +120,7 @@ export function FaithPointsSystem() {
       name: "Exclusive Meditation Audio",
       description: "Traditional Ethiopian Orthodox chants",
       pointCost: 100,
-      icon: <Gift className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+      icon: <Gift className="h-5 w-5 text-orange-600 dark:text-orange-400" />,
       unlocked: true,
     },
     {
@@ -144,7 +144,7 @@ export function FaithPointsSystem() {
       name: "Community Leader Status",
       description: "Special recognition in the community forums",
       pointCost: 500,
-      icon: <Award className="h-5 w-5 text-purple-600 dark:text-purple-500" />,
+      icon: <Award className="h-5 w-5 text-orange-700 dark:text-orange-500" />,
       unlocked: false,
     },
   ])
@@ -322,7 +322,7 @@ export function FaithPointsSystem() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Activities Section */}
         <Card className="border-none shadow-lg overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-4">
+          <CardHeader className="bg-gradient-to-r from-orange-600 to-amber-700 text-white py-4">
             <div className="flex justify-between items-center">
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="h-5 w-5" />
@@ -354,7 +354,7 @@ export function FaithPointsSystem() {
                         className={`p-4 rounded-lg border ${
                           activity.completed
                             ? "bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-                            : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 transition-colors"
+                            : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
                         }`}
                       >
                         <div className="flex justify-between items-start">
@@ -364,12 +364,12 @@ export function FaithPointsSystem() {
                                 activity.category === "prayer"
                                   ? "bg-orange-100 dark:bg-orange-900/30"
                                   : activity.category === "scripture"
-                                    ? "bg-blue-100 dark:bg-blue-900/30"
+                                    ? "bg-orange-100 dark:bg-orange-900/30"
                                     : activity.category === "fasting"
                                       ? "bg-green-100 dark:bg-green-900/30"
                                       : activity.category === "community"
                                         ? "bg-amber-100 dark:bg-amber-900/30"
-                                        : "bg-purple-100 dark:bg-purple-900/30"
+                                        : "bg-amber-100 dark:bg-amber-900/30"
                               }`}
                             >
                               {activity.icon}
@@ -392,12 +392,12 @@ export function FaithPointsSystem() {
                                 activity.category === "prayer"
                                   ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400"
                                   : activity.category === "scripture"
-                                    ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400"
+                                    ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400"
                                     : activity.category === "fasting"
                                       ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
                                       : activity.category === "community"
                                         ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400"
-                                        : "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400"
+                                        : "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400"
                               }`}
                             >
                               +{activity.points} points
@@ -414,12 +414,12 @@ export function FaithPointsSystem() {
                                 activity.category === "prayer"
                                   ? "bg-orange-600 hover:bg-orange-700"
                                   : activity.category === "scripture"
-                                    ? "bg-blue-600 hover:bg-blue-700"
+                                    ? "bg-orange-600 hover:bg-orange-700"
                                     : activity.category === "fasting"
                                       ? "bg-green-600 hover:bg-green-700"
                                       : activity.category === "community"
                                         ? "bg-amber-600 hover:bg-amber-700"
-                                        : "bg-purple-600 hover:bg-purple-700"
+                                        : "bg-amber-600 hover:bg-amber-700"
                               }`}
                             >
                               Complete Activity

@@ -449,17 +449,17 @@ export default function TeachingsPage() {
 
   const categoryBadgeClass = (category: string) => {
     if (category === "Great Lent") return "bg-lime-700"
-    if (category === "Liturgy") return "bg-blue-600"
-    if (category === "Theology") return "bg-purple-600"
+    if (category === "Liturgy") return "bg-orange-600"
+    if (category === "Theology") return "bg-orange-700"
     if (category === "Sacraments") return "bg-green-600"
     if (category === "Bible Study") return "bg-amber-600"
     if (category === "Saints") return "bg-orange-600"
     if (category === "Theotokos (Virgin Mary)") return "bg-rose-600"
     if (category === "Feasts & Liturgical Year") return "bg-cyan-600"
     if (category === "Christian Living") return "bg-emerald-600"
-    if (category === "Tradition & Culture") return "bg-indigo-600"
-    if (category === "Monastics & Asceticism") return "bg-teal-700"
-    return "bg-gray-600"
+    if (category === "Tradition & Culture") return "bg-amber-600"
+    if (category === "Monastics & Asceticism") return "bg-stone-700"
+    return "bg-stone-700"
   }
 
   const fadeInUp = {
@@ -482,7 +482,7 @@ export default function TeachingsPage() {
   }
 
   return (
-    <div className="bg-[url('/images/mobile-parch.png?v=20260321')] md:bg-[url('/images/parchment-bg.png?v=20260321')] bg-cover bg-center bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
+    <div className="light-mode-adaptive-page bg-[url('/images/mobile-parch.png?v=20260321')] md:bg-[url('/images/parchment-bg.png?v=20260321')] bg-cover bg-center bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-amber-500/5 dark:from-orange-900/20 dark:to-amber-900/20 z-0" />
@@ -495,11 +495,11 @@ export default function TeachingsPage() {
             className="text-center mb-16"
           >
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ትምህርቶች</GeezHeading>
-            <h1 className="mx-auto mb-6 max-w-[16ch] px-2 text-center text-4xl font-extrabold leading-[0.95] tracking-tight sm:text-5xl md:max-w-none md:text-6xl [text-wrap:balance]">
-              <span className="block text-stone-900 dark:text-white">Ethiopian Orthodox</span>
-              <AnimatedGradientText text="Teachings" className="mt-4 block md:mt-5" />
+            <h1 className="mx-auto mb-6 max-w-6xl px-2 pb-2 text-center text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl">
+              <span className="block text-stone-900 dark:text-white">Ethiopian Orthodox Tewahedo Church</span>
+              <AnimatedGradientText text="Teachings" className="mt-4 block pb-1 md:mt-5" />
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="mx-auto max-w-5xl text-lg text-gray-600 dark:text-gray-300">
               Explore the rich spiritual heritage and teachings of the Ethiopian Orthodox Tewahedo Church
             </p>
           </motion.div>
@@ -898,18 +898,18 @@ export default function TeachingsPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-white to-blue-50 dark:from-gray-900 dark:to-blue-950">
+            <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-orange-950">
               <CardContent className="p-6">
                 <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
-                    <Book className="h-8 w-8 text-blue-600 dark:text-blue-500" />
+                  <div className="w-16 h-16 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
+                    <Book className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-center mb-2">Prayer Book</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
                   Daily prayers and devotionals from the Ethiopian Orthodox tradition
                 </p>
-                <Button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700">
+                <Button className="w-full flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700">
                   <Download className="h-4 w-4" />
                   Download PDF
                 </Button>

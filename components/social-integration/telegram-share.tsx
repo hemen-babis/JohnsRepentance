@@ -84,7 +84,7 @@ export function TelegramShare({
             )}
 
             <div className="flex items-center gap-2">
-              <Badge className="bg-blue-500">
+              <Badge className="bg-orange-600">
                 <MessageSquare className="h-3 w-3 mr-1" />
                 Official Channel
               </Badge>
@@ -97,7 +97,7 @@ export function TelegramShare({
                 Copy Link
               </Button>
 
-              <Button className="flex-1 bg-[#0088cc] hover:bg-[#0077b5]" onClick={handleShare}>
+              <Button className="flex-1 bg-orange-600 hover:bg-orange-700" onClick={handleShare}>
                 <Share2 className="h-4 w-4 mr-2" />
                 Share Content
               </Button>

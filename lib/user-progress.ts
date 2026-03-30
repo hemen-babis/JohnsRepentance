@@ -17,6 +17,12 @@ export type ShoppingItem = {
   checked: boolean
 }
 
+export type DeaconStudyProgress = {
+  currentTrackId?: string
+  completedTrackIds: string[]
+  lastOpenedTrackId?: string
+}
+
 export type UserProgress = {
   fastingCheckins: string[]
   challengeCompletions: string[]
@@ -37,6 +43,7 @@ export type UserProgress = {
   quizCompletions: string[]
   safetyReportsCount: number
   youthGoals: string[]
+  deaconStudy: DeaconStudyProgress
 }
 
 export const defaultUserProgress: UserProgress = {
@@ -59,4 +66,9 @@ export const defaultUserProgress: UserProgress = {
   quizCompletions: [],
   safetyReportsCount: 0,
   youthGoals: [],
+  deaconStudy: {
+    currentTrackId: undefined,
+    completedTrackIds: [],
+    lastOpenedTrackId: undefined,
+  },
 }

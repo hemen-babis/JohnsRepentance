@@ -91,11 +91,12 @@ export function TodayChurchCalendar() {
   const enParts = ethiopicEnFormatter.formatToParts(today)
   const ethDay = Number.parseInt(enParts.find((p) => p.type === "day")?.value ?? "1", 10)
   const ethMonth = enParts.find((p) => p.type === "month")?.value ?? "Meskerem"
+  const ethYear = enParts.find((p) => p.type === "year")?.value ?? ""
   const saint = saintDays[ethDay] ?? "Commemoration of saints"
   const fastItems = getFastItems(today)
 
   return (
-    <Card className="h-auto md:h-[340px] overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 text-gray-900 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(47,29,18,0.92),rgba(26,18,13,0.9))] dark:text-stone-100">
+    <Card className="overflow-hidden border border-amber-200/70 bg-gradient-to-br from-white to-orange-50/40 text-gray-900 shadow-lg dark:border-amber-700/20 dark:bg-[linear-gradient(135deg,rgba(47,29,18,0.92),rgba(26,18,13,0.9))] dark:text-stone-100">
       <div className="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500" />
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-300">
@@ -103,31 +104,32 @@ export function TodayChurchCalendar() {
           Today in the Church Calendar
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 md:overflow-y-auto">
+      <CardContent className="space-y-4">
         <div>
           <p className="text-base font-semibold text-amber-700 dark:text-amber-300">{gregorianDate}</p>
-          <p className="text-base font-semibold text-orange-700 dark:text-orange-300">
-            {ethMonth} {ethDay}
+          <p className="text-base font-semibold text-amber-700 dark:text-amber-300">
+            {ethMonth} {ethDay}, {ethYear} E.C.
           </p>
-          <p className="text-base font-semibold text-amber-700 dark:text-amber-300">{ethiopicEnFormatter.format(today)} (E.C.)</p>
         </div>
 
-        <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
-          <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Feast</p>
-          <p className="text-sm font-semibold text-orange-700 dark:text-orange-300">{saint}</p>
-        </div>
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
+            <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Feast</p>
+            <p className="mt-1 text-sm font-semibold text-orange-700 dark:text-orange-300">{saint}</p>
+          </div>
 
-        <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
-          <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Fast</p>
-          {fastItems.length === 0 ? (
-            <p className="text-sm font-semibold text-orange-700 dark:text-orange-300">No fast today</p>
-          ) : (
-            fastItems.map((fast) => (
-              <p key={fast.label} className="text-sm font-semibold text-orange-700 dark:text-orange-300">
-                {fast.label}
-              </p>
-            ))
-          )}
+          <div className="rounded-md border border-amber-200/70 bg-white p-3 dark:border-amber-700/20 dark:bg-[rgba(255,255,255,0.05)]">
+            <p className="text-sm font-semibold text-amber-700 dark:text-amber-300">Fast</p>
+            {fastItems.length === 0 ? (
+              <p className="mt-1 text-sm font-semibold text-orange-700 dark:text-orange-300">No fast today</p>
+            ) : (
+              fastItems.map((fast) => (
+                <p key={fast.label} className="mt-1 text-sm font-semibold text-orange-700 dark:text-orange-300">
+                  {fast.label}
+                </p>
+              ))
+            )}
+          </div>
         </div>
 
         <Button asChild className="w-full bg-orange-600 hover:bg-orange-500 text-white">

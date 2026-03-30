@@ -61,6 +61,27 @@ export function LessonModuleShell({
     }
   }, [lessonId])
 
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    function openCheckTab() {
+      setActiveTab("check")
+      window.requestAnimationFrame(() => {
+        document.getElementById("check")?.scrollIntoView({ behavior: "smooth", block: "start" })
+      })
+    }
+
+    window.addEventListener("catechumen-open-check", openCheckTab)
+
+    if (window.location.hash === "#check") {
+      openCheckTab()
+    }
+
+    return () => {
+      window.removeEventListener("catechumen-open-check", openCheckTab)
+    }
+  }, [])
+
   function persistQuizResult(result: StoredQuizResult) {
     setQuizResult(result)
     try {
@@ -120,6 +141,7 @@ export function LessonModuleShell({
 
           <TabsContent value="check" className="mt-0 space-y-6">
             <div className="rounded-[1.75rem] border border-white/45 bg-white/80 p-6 shadow-[0_24px_80px_-46px_rgba(120,53,15,0.28)] backdrop-blur-xl dark:border-white/10 dark:bg-stone-900/45">
+              <div id="check" className="relative -top-24" />
               <div className="flex items-center gap-3 text-orange-700 dark:text-amber-300">
                 <HelpCircle className="h-5 w-5" />
                 <h3 className="text-xl font-semibold text-stone-900 dark:text-white">Question and answer check</h3>

@@ -9,6 +9,13 @@ const FALLBACK_ITEMS = [
   },
 ]
 
+type PlaylistItem = {
+  id: string
+  title: string
+  thumb: string
+  addedAt?: string
+}
+
 const ROMAN_TO_AMHARIC_ALIASES: Record<string, string[]> = {
   tekeneyu: ["ተቀነዩ", "ተቀነይ", "ተቀነየ", "ተከነዩ"],
   teqeneyu: ["ተቀነዩ", "ተቀነይ", "ተቀነየ"],
@@ -66,7 +73,13 @@ const GEEZ_TO_LATIN: Record<string, string> = {
 
 function normalize(value: string) {
   const withArabicDigits = value.replace(/[፩-፲]/g, (m) => ETHIOPIC_DIGITS[m] ?? m)
-  return withArabicDigits.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/g, " ").trim()
+  return withArabicDigits
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
 }
 
 function transliterateGeez(value: string) {
@@ -92,6 +105,7 @@ function queryVariants(rawQuery: string) {
   const variants = new Set<string>([q])
   const compact = q.replace(/\s+/g, "")
   variants.add(compact)
+  variants.add(normalize(transliterateGeez(q)))
 
   if (ROMAN_TO_AMHARIC_ALIASES[q]) {
     ROMAN_TO_AMHARIC_ALIASES[q].forEach((alias) => variants.add(normalize(alias)))
@@ -109,11 +123,13 @@ function filterItemsByQuery<T extends { title: string }>(items: T[], rawQuery: s
   const variants = queryVariants(rawQuery)
   if (variants.length === 0) return items
 
+  const queryTerms = normalize(rawQuery).split(" ").filter(Boolean)
+
   return items.filter((item) => {
     const title = normalize(item.title)
     const latinTitle = normalize(transliterateGeez(item.title))
     const titleSkeleton = consonantSkeleton(latinTitle)
-    return variants.some((variant) => {
+    const matchesVariant = variants.some((variant) => {
       if (!variant) return false
       const variantSkeleton = consonantSkeleton(variant)
       return (
@@ -122,6 +138,29 @@ function filterItemsByQuery<T extends { title: string }>(items: T[], rawQuery: s
         titleSkeleton.includes(variantSkeleton)
       )
     })
+
+    if (matchesVariant) return true
+
+    return queryTerms.every((term) => {
+      const normalizedTerm = normalize(term)
+      const latinTerm = normalize(transliterateGeez(term))
+      const termSkeleton = consonantSkeleton(normalizedTerm)
+      return (
+        title.includes(normalizedTerm) ||
+        title.includes(latinTerm) ||
+        latinTitle.includes(normalizedTerm) ||
+        latinTitle.includes(latinTerm) ||
+        titleSkeleton.includes(termSkeleton)
+      )
+    })
+  })
+}
+
+function sortByNewestFirst<T extends { addedAt?: string }>(items: T[]) {
+  return [...items].sort((a, b) => {
+    const aTime = a.addedAt ? Date.parse(a.addedAt) : 0
+    const bTime = b.addedAt ? Date.parse(b.addedAt) : 0
+    return bTime - aTime
   })
 }
 
@@ -148,7 +187,7 @@ async function fetchPlaylistFeed(q: string) {
   const entries = xml.match(/<entry>[\s\S]*?<\/entry>/g) ?? []
 
   const items = entries
-    .map((entry) => {
+    .map<PlaylistItem | null>((entry) => {
       const videoId = extractTag(entry, "yt:videoId")
       const title = decodeXml(extractTag(entry, "title"))
       if (!videoId || !title) return null
@@ -156,11 +195,12 @@ async function fetchPlaylistFeed(q: string) {
         id: videoId,
         title,
         thumb: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+        addedAt: extractTag(entry, "published") || extractTag(entry, "updated"),
       }
     })
-    .filter((item): item is { id: string; title: string; thumb: string } => Boolean(item))
+    .filter((item): item is PlaylistItem => item !== null)
 
-  const filtered = filterItemsByQuery(items, q)
+  const filtered = filterItemsByQuery(sortByNewestFirst(items), q)
   return filtered.slice(0, 24)
 }
 
@@ -180,36 +220,49 @@ export async function GET(req: NextRequest) {
     })
   }
 
-  const endpoint = new URL("https://www.googleapis.com/youtube/v3/playlistItems")
-  endpoint.searchParams.set("part", "snippet")
-  endpoint.searchParams.set("maxResults", "50")
-  endpoint.searchParams.set("playlistId", PLAYLIST_ID)
-  endpoint.searchParams.set("key", key)
+  const parsed: PlaylistItem[] = []
+  let pageToken = ""
 
-  const res = await fetch(endpoint.toString(), { next: { revalidate: 600 } })
-  if (!res.ok) {
-    return NextResponse.json({ items: FALLBACK_ITEMS, source: "fallback-fetch-failed" })
-  }
+  do {
+    const endpoint = new URL("https://www.googleapis.com/youtube/v3/playlistItems")
+    endpoint.searchParams.set("part", "snippet")
+    endpoint.searchParams.set("maxResults", "50")
+    endpoint.searchParams.set("playlistId", PLAYLIST_ID)
+    endpoint.searchParams.set("key", key)
+    if (pageToken) endpoint.searchParams.set("pageToken", pageToken)
 
-  const data = (await res.json()) as {
-    items?: Array<{
-      snippet?: {
-        title?: string
-        resourceId?: { videoId?: string }
-        thumbnails?: { medium?: { url?: string }; default?: { url?: string } }
-      }
-    }>
-  }
+    const res = await fetch(endpoint.toString(), { next: { revalidate: 600 } })
+    if (!res.ok) {
+      return NextResponse.json({ items: FALLBACK_ITEMS, source: "fallback-fetch-failed" })
+    }
 
-  const parsed = (data.items ?? [])
-    .map((item) => {
-      const title = item.snippet?.title ?? ""
-      const id = item.snippet?.resourceId?.videoId ?? ""
-      const thumb = item.snippet?.thumbnails?.medium?.url ?? item.snippet?.thumbnails?.default?.url ?? ""
-      return { id, title, thumb }
-    })
-    .filter((item) => Boolean(item.id) && Boolean(item.title))
+    const data = (await res.json()) as {
+      nextPageToken?: string
+      items?: Array<{
+        snippet?: {
+          title?: string
+          publishedAt?: string
+          resourceId?: { videoId?: string }
+          thumbnails?: { medium?: { url?: string }; default?: { url?: string } }
+        }
+      }>
+    }
 
-  const filtered = filterItemsByQuery(parsed, q)
+    parsed.push(
+      ...(data.items ?? [])
+        .map((item) => {
+          const title = item.snippet?.title ?? ""
+          const id = item.snippet?.resourceId?.videoId ?? ""
+          const thumb = item.snippet?.thumbnails?.medium?.url ?? item.snippet?.thumbnails?.default?.url ?? ""
+          const addedAt = item.snippet?.publishedAt ?? ""
+          return { id, title, thumb, addedAt }
+        })
+        .filter((item) => Boolean(item.id) && Boolean(item.title)),
+    )
+
+    pageToken = data.nextPageToken ?? ""
+  } while (pageToken)
+
+  const filtered = filterItemsByQuery(sortByNewestFirst(parsed), q)
   return NextResponse.json({ items: filtered.slice(0, 24), source: "youtube-api" })
 }

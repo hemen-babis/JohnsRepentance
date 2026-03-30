@@ -15,7 +15,7 @@ export function QRCode({
   value,
   size = 128,
   bgColor = "#ffffff",
-  fgColor = "#000000",
+  fgColor = "#3a1e01",
   level = "L",
   includeMargin = false,
 }: QRCodeProps) {
