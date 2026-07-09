@@ -9,8 +9,10 @@ import { Toaster } from "@/components/ui/toaster"
 import { AuthProgressProvider } from "@/components/providers/auth-progress-provider"
 
 const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -42,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={poppins.className}>
+      <body className={`${poppins.className} ${poppins.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <AuthProgressProvider>
             <div className="flex min-h-screen flex-col">

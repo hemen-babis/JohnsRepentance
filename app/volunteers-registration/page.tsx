@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import Link from "next/link"
+import { ShieldCheck } from "lucide-react"
 
 const interestAreas = [
   "Communication / Social Media / Photography / Videography",
@@ -53,6 +55,21 @@ export default function VolunteersRegistrationPage() {
                     setSubmitted(true)
                   }}
                 >
+                  <div className="rounded-xl border border-amber-200/70 bg-amber-50/80 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-100">
+                    <p className="flex items-center gap-2 font-semibold">
+                      <ShieldCheck className="h-4 w-4" />
+                      Privacy note
+                    </p>
+                    <p className="mt-2 leading-6">
+                      Volunteer details are used for service coordination and follow-up only. They are not posted
+                      publicly, and only the responsible ministry team should access them.{" "}
+                      <Link href="/privacy" className="underline underline-offset-2">
+                        Read privacy details
+                      </Link>
+                      .
+                    </p>
+                  </div>
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name (required)</Label>

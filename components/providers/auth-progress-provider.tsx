@@ -9,7 +9,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth"
-import { doc, getDoc, setDoc } from "firebase/firestore"
+import { doc, getDoc, setDoc } from "firebase/firestore/lite"
 import { auth, db, googleProvider, isFirebaseConfigured } from "@/lib/firebase-client"
 import { defaultUserProgress, type UserProgress } from "@/lib/user-progress"
 import { defaultUserProfile, type UserProfile } from "@/lib/user-profile"

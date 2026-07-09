@@ -108,6 +108,10 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
             <Button variant="outline" className="w-full" onClick={() => void signInWithGoogle()}>
               Continue with Google
             </Button>
+            <p className="text-xs leading-5 text-muted-foreground">
+              Accounts are optional. Personal details are used only for your access and progress, and are not shown
+              publicly. See <Link href="/privacy" className="underline underline-offset-2">privacy details</Link>.
+            </p>
           </div>
         </div>
       )}

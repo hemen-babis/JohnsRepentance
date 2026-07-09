@@ -131,6 +131,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/library" className="footer-link inline-block text-amber-50/92 hover:text-white">
+                  Library
+                </Link>
+              </li>
+              <li>
                 <Link href="/repentance" className="footer-link inline-block text-amber-50/92 hover:text-white">
                   Repentance
                 </Link>

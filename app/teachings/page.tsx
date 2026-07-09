@@ -1,961 +1,404 @@
 "use client"
 
-import { useMemo, useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { AnimatedGradientText } from "@/components/animated-gradient-text"
-import { ScrollToTop } from "@/components/scroll-to-top"
-import { GeezHeading } from "@/components/geez-heading"
-import { Book, Video, FileText, Bookmark, Search, Filter, Clock, Play, Download, Share2, Calendar } from "lucide-react"
-import telegramPosts from "@/content/telegram/index.json"
-import { groupImportedPosts } from "@/lib/imported-post-groups"
-import { stripTeachingFiller, toNaturalTeachingTitle, toStandardShortTitle } from "@/lib/teaching-title"
+import { useState, useEffect, useRef, useCallback } from "react"
+import { Search, X, Check, ChevronRight, ArrowRight } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { teachings, type TeachingMeta, type TeachingCategory } from "./teachings-data"
 
-type TelegramPost = {
-  id: number
-  type: "lesson" | "Q&A"
-  title: string
-  date: string
-  tags: string[]
-      excerpt: string
-      contentPath: string
-}
-
-type TeachingItem = {
-  id: number
-  title: string
-  subtitle?: string
-  description: string
-  category: string
-  format: "Article" | "Video" | "Audio" | "PDF Guide"
-  duration: string
-  image: string
-  featured?: boolean
-  popular?: boolean
-  link: string
-  searchTerms?: string
-}
-
-const categories = [
-  "All",
-  "Great Lent",
-  "Feasts & Liturgical Year",
-  "Christian Living",
-  "Theotokos (Virgin Mary)",
-  "Tradition & Culture",
-  "Monastics & Asceticism",
-  "Bible Study",
-  "Liturgy",
-  "Sacraments",
-  "Saints",
-  "Prayer",
-  "Fasting",
-  "Church History",
-  "Theology",
+const CATEGORIES: TeachingCategory[] = [
+  "Holy Communion",
+  "Saints & Mary",
+  "Fasting & Prayer",
+  "Trinity & Christ",
+  "Marriage & Family",
+  "Church & Liturgy",
+  "Spiritual Life",
 ]
 
-const baseTeachings: TeachingItem[] = [
-  {
-    id: 1,
-    title: "Understanding the Divine Liturgy",
-    description:
-      "A comprehensive guide to the Ethiopian Orthodox Divine Liturgy (Kidase) and its spiritual significance.",
-    category: "Liturgy",
-    format: "Article",
-    duration: "15 min read",
-    image: "/orthodox-card-bg.svg",
-    featured: true,
-    popular: true,
-    link: "/teachings/1",
-  },
-  {
-    id: 2,
-    title: "The Meaning of the Cross in Ethiopian Tradition",
-    description: "Explore the unique symbolism and designs of Ethiopian crosses and their spiritual significance.",
-    category: "Tradition & Culture",
-    format: "Video",
-    duration: "22 min",
-    image: "/orthodox-card-bg.svg",
-    featured: true,
-    link: "/teachings/2",
-  },
-  {
-    id: 3,
-    title: "Preparing for Holy Communion",
-    description: "Learn the spiritual and physical preparation required before receiving the Holy Qurban.",
-    category: "Sacraments",
-    format: "PDF Guide",
-    duration: "12 pages",
-    image: "/orthodox-card-bg.svg",
-    popular: true,
-    link: "/teachings/3",
-  },
-  {
-    id: 4,
-    title: "The Book of Enoch: Ethiopian Perspective",
-    description: "Discover the importance of the Book of Enoch in Ethiopian Orthodox tradition and theology.",
-    category: "Bible Study",
-    format: "Audio",
-    duration: "45 min",
-    image: "/orthodox-card-bg.svg",
-    link: "/teachings/4",
-  },
-  {
-    id: 5,
-    title: "Saints of Ethiopia: St. Tekle Haymanot",
-    description: "The life and miracles of one of Ethiopia's most beloved saints.",
-    category: "Saints",
-    format: "Article",
-    duration: "10 min read",
-    image: "/orthodox-card-bg.svg",
-    link: "/teachings/5",
-  },
-  {
-    id: 6,
-    title: "The Spiritual Meaning of Fasting",
-    description: "Understanding the purpose and benefits of fasting in the Ethiopian Orthodox tradition.",
-    category: "Fasting",
-    format: "Video",
-    duration: "18 min",
-    image: "/orthodox-card-bg.svg",
-    link: "/teachings/6",
-  },
-]
+// All warm brown / amber / maroon — no cool colors
+const CATEGORY_BADGE_BG: Record<TeachingCategory, string> = {
+  "Holy Communion":  "bg-[#7c2d12] text-white",
+  "Saints & Mary":   "bg-amber-700 text-white",
+  "Fasting & Prayer":"bg-stone-600 text-white",
+  "Trinity & Christ":"bg-[#451a03] text-white",
+  "Marriage & Family":"bg-orange-800 text-white",
+  "Church & Liturgy":"bg-amber-900 text-white",
+  "Spiritual Life":  "bg-stone-700 text-white",
+}
 
-export default function TeachingsPage() {
-  const [activeCategory, setActiveCategory] = useState("All")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [formatFilter, setFormatFilter] = useState<string[]>([])
+// Left border — all warm tones
+const CATEGORY_BORDER: Record<TeachingCategory, string> = {
+  "Holy Communion":  "border-l-[#7c2d12]",
+  "Saints & Mary":   "border-l-amber-700",
+  "Fasting & Prayer":"border-l-stone-500",
+  "Trinity & Christ":"border-l-[#451a03]",
+  "Marriage & Family":"border-l-orange-700",
+  "Church & Liturgy":"border-l-amber-800",
+  "Spiritual Life":  "border-l-stone-600",
+}
 
-  const toggleFormatFilter = (format: string) => {
-    if (formatFilter.includes(format)) {
-      setFormatFilter(formatFilter.filter((f) => f !== format))
-    } else {
-      setFormatFilter([...formatFilter, format])
-    }
-  }
+// Subtle cross-grid SVG for card headers
+const CROSS_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect x='12' y='3' width='4' height='22' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3Crect x='3' y='11' width='22' height='4' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3C/svg%3E")`
 
-  const allTeachings = useMemo(() => {
-    const saintPattern = /(saint|saints|kidus|ቅዱስ|ቅዱሳን)/i
-    const theotokosPattern = /(mary|virgin|theotokos|kidane meheret|zion|assumption)/i
-    const greatLentPattern = /(great lent|abiy tsom|suba'?e|zewerede|metsague|mekurab|guebre|holy lent)/i
-    const feastsPattern = /(epiphany|timkat|nativity|genna|meskel|hosanna|palm sunday|holy week|pascha|easter|feast|lent|season)/i
-    const christianLivingPattern = /(marriage|family|parenting|youth|depression|anxiety|optimism|peace|virtue|ai|technology|work|daily life)/i
-    const traditionPattern = /(kebero|bell|icon|iconography|adwa|tradition|culture|church custom|hymn)/i
-    const monasticPattern = /(monastic|ascetic|monk|desert|abune aregawi|tekle haymanot|gebre menfes kidus)/i
-    const prayerPattern = /(prayer|pray|supplication|intercession|psalm 50|our father|kneeling|prostration)/i
-    const churchHistoryPattern =
-      /(church history|history of the church|fathers|patriarch|synod|council|axum|aksum|ethiopian orthodox tewahedo church|apostolic era|martyrdom)/i
-    const theologyCorePattern = /(trinity|incarnation|tewahedo|christology|dogma|creed|nature of christ|core pillar|divinity)/i
-    const liturgyPattern = /(liturgy|kidassie|qurbana|worship service|vespers)/i
-    const biblePattern = /(scripture|gospel|bible|john|apostle|psalm)/i
-    const fastingPattern = /(fasting|abiye tsom|nineveh|wednesday|friday fast)/i
-    const isAnnouncementLike = (post: TelegramPost) => {
-      const tags = post.tags.map((tag) => tag.toLowerCase())
-      const normalizeSignalText = (value: string) =>
-        value
-          .toLowerCase()
-          .replace(/[^\p{L}\p{N}\s]/gu, " ")
-          .replace(/\s+/g, " ")
-          .trim()
-      const title = normalizeSignalText(post.title)
-      const text = normalizeSignalText(`${post.title} ${post.excerpt} ${post.tags.join(" ")}`)
+const STORAGE_KEY = "jr_teachings_read"
 
-      if (tags.includes("announcement")) return true
-      if (title === "imported post" || title === "announcement") return true
+function getReadIds(): Set<string> {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY)
+    return new Set(s ? JSON.parse(s) : [])
+  } catch { return new Set() }
+}
+function markRead(id: string) {
+  const ids = getReadIds(); ids.add(id)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...ids]))
+}
+function formatDate(d: string) {
+  return new Date(d).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+}
 
-      const hardSignals = [
-        "gentle reminder",
-        "live q&a",
-        "q&a session",
-        "session is starting",
-        "starting now",
-        "scheduled to begin",
-        "postponement",
-        "postponed",
-        "rescheduled",
-        "admin team",
-        "join us live",
-        "happy new year",
-        "new year (2026)",
-        "we sincerely apologize",
-        "hour has come for us to gather",
-        "weekly live",
-        "may the name of the holy god be praised forever and ever",
-        "may the blessings of gods mother",
-        "reach out to us on our social media platforms",
-        "share it with your friends",
-        "linktr ee",
-        "we are pleased to share the new",
-        "new tiktok account",
-        "tiktok account",
-        "please follow the page",
-        "follow the page",
-        "like the content",
-        "theological college",
-      ]
-      if (hardSignals.some((signal) => text.includes(signal))) return true
+// ── Teaching Card ──────────────────────────────────────────────────────────────
+function TeachingCard({ teaching, isRead, onClick }: { teaching: TeachingMeta; isRead: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "group flex w-full flex-col overflow-hidden rounded-2xl border border-l-4 border-stone-200/80 bg-white text-left shadow-sm transition-all duration-200",
+        "hover:-translate-y-0.5 hover:shadow-lg dark:border-stone-700/60 dark:bg-stone-900",
+        CATEGORY_BORDER[teaching.category],
+      )}
+    >
+      {/* Dark maroon card header */}
+      <div
+        className="relative flex h-24 w-full items-end p-3"
+        style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+      >
+        {isRead && (
+          <span className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
+            <Check className="h-3 w-3 text-white" />
+          </span>
+        )}
+        <span
+          className={cn(
+            "inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.1em]",
+            CATEGORY_BADGE_BG[teaching.category],
+          )}
+        >
+          {teaching.category}
+        </span>
+      </div>
 
-      const promoPattern =
-        /\b(tiktok|telegram|youtube|instagram|facebook)\b.*\b(account|channel|page)\b|\bplease\s+follow\b|\bfollow\s+the\s+page\b|\blike\s+the\s+content\b/i
-      if (promoPattern.test(`${post.title} ${post.excerpt}`)) return true
-
-      const greetingStarts = [
-        "peace be with you",
-        "beloved brothers and sisters in christ",
-        "it is with deep joy that we share",
-        "saint brothers and sisters",
-        "may the name of the holy god be praised forever and ever",
-        "may the blessings of gods mother",
-        "may the blessings of the holy mother of god",
-      ]
-      if (greetingStarts.some((prefix) => title.startsWith(prefix))) return true
-
-      return false
-    }
-    const isQuestionLike = (post: TelegramPost) =>
-      /question\s*[:፦]|answer\s*[:፦]/i.test(`${post.title} ${post.excerpt}`)
-    const cleanForTitle = (value: string) =>
-      value
-        .replace(/[#*_`]/g, "")
-        .replace(/[👉👇☝️🏾🏽🏿]+/gu, " ")
-        .replace(/\s+/g, " ")
-        .trim()
-    const stripLeadPhrases = (value: string) =>
-      value
-        .replace(/^(continued|continuation|cont(?:'|’)?d|\(continued\)|\(cont(?:'|’)?d\)|part\s*\d+)\s*/i, "")
-        .replace(/^(about|lesson(?:\s+on)?|reflection(?:\s+on)?|a\s+homily\s+on|on)\s+/i, "")
-        .replace(/^(the\s+annual\s+feast\s+of|the\s+feast\s+of|feast\s+of)\s+/i, "")
-        .trim()
-    const firstSentence = (value: string) => cleanForTitle(value).split(/\n|(?<=[.!?])\s+/)[0].trim()
-    const sanitizeDisplayTitle = (value: string) => {
-      let title = value.trim()
-      if (!title) return title
-
-      if (/\bbeloved\b/i.test(title)) title = title.split(/\bbeloved\b/i)[0].trim()
-      title = title.replace(/[,\-–—]\s*$/g, "").trim()
-      if (/^beloved\b/i.test(title)) return ""
-
-      return title
-    }
-    const normalizeForDedupe = (value: string) =>
-      value
-        .normalize("NFKD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase()
-        .replace(/[^\w\s]/g, " ")
-        .replace(/\b(part\s*\d+|continued|continuation|contd|cont)\b/g, " ")
-        .replace(/\b(the|about|lesson|reflection|of|on|and|for|with|a|an)\b/g, " ")
-        .replace(/\s+/g, " ")
-        .trim()
-    const topicStopWords = new Set([
-      "about",
-      "annual",
-      "beloved",
-      "blessed",
-      "christ",
-      "church",
-      "continued",
-      "faith",
-      "holy",
-      "lesson",
-      "lord",
-      "orthodox",
-      "part",
-      "reflection",
-      "saint",
-      "service",
-      "teaching",
-      "the",
-      "week",
-    ])
-    const canonicalTopicKey = (title: string, searchTerms?: string) => {
-      const normalizeText = (value: string) =>
-        value
-          .normalize("NFKD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .replace(/[#*_`]/g, " ")
-          .replace(/[^\w\s]/g, " ")
-          .replace(/\s+/g, " ")
-          .trim()
-
-      const normalizedTitle = normalizeText(title)
-      const normalizedFallback = normalizeText(searchTerms ?? "")
-
-      if (/holy\s+communion/.test(normalizedTitle)) return "holy-communion"
-      if (/holy\s+eucharist/.test(normalizedTitle)) return "holy-eucharist"
-      if (/great\s+lent|abiy\s+tsom/.test(normalizedTitle)) return "great-lent"
-      if (/metsague|metsagu/.test(normalizedTitle)) return "metsague"
-      if (/nineveh/.test(normalizedTitle)) return "nineveh"
-      if (/saint\s+george|st\s+george/.test(normalizedTitle)) return "saint-george"
-      if (/saint\s+gabriel|st\s+gabriel|archangel\s+gabriel/.test(normalizedTitle)) return "saint-gabriel"
-
-      const extractTokens = (value: string) =>
-        value
-          .split(" ")
-          .filter((token) => token.length >= 3)
-          .filter((token) => !topicStopWords.has(token))
-          .filter((token) => !/^\d+$/.test(token))
-
-      let tokens = extractTokens(normalizedTitle)
-      if (tokens.length < 2 && normalizedFallback) tokens = extractTokens(normalizedFallback)
-
-      const unique = Array.from(new Set(tokens)).sort()
-      return unique.slice(0, 6).join("-")
-    }
-    const buildDisplayTitle = (post: TelegramPost) => {
-      let candidate = sanitizeDisplayTitle(stripLeadPhrases(cleanForTitle(post.title)))
-      if (!candidate || candidate.split(/\s+/).length < 5) {
-        candidate = sanitizeDisplayTitle(stripLeadPhrases(firstSentence(post.excerpt)))
-      }
-      if (!candidate || candidate.split(/\s+/).length < 5) {
-        return "Orthodox Spiritual Teaching for Faithful Christian Life"
-      }
-      return candidate.split(/\s+/).slice(0, 12).join(" ").trim()
-    }
-    const genericPartTitlePattern = /^(continued|continuation|cont(?:'|’)?d|part\s*\d+)/i
-    const urlOnlyPattern = /^(https?:\/\/|www\.)/i
-    const isUrlOnlyPost = (post: TelegramPost) =>
-      urlOnlyPattern.test(post.title.trim()) && urlOnlyPattern.test(post.excerpt.trim())
-
-    const byDate = [...(telegramPosts as TelegramPost[])]
-      .filter((post) => post.type === "lesson" && !isQuestionLike(post) && !isAnnouncementLike(post))
-      .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    const groupedLessons = groupImportedPosts(byDate)
-    const importedWithKeys = groupedLessons
-      .map((group, idx): (TeachingItem & { dedupeKey: string }) | null => {
-        const postsForDisplay = group.posts.filter((entry) => !isUrlOnlyPost(entry))
-        if (postsForDisplay.length === 0) return null
-
-        const representative =
-          postsForDisplay.find((entry) => !genericPartTitlePattern.test(entry.title.trim())) ?? postsForDisplay[0]
-        if (genericPartTitlePattern.test(representative.title.trim()) && postsForDisplay.length === 1) return null
-
-        const post = representative
-        const allTags = Array.from(new Set(postsForDisplay.flatMap((entry) => entry.tags)))
-        const haystack = postsForDisplay.map((entry) => `${entry.title} ${entry.excerpt} ${entry.tags.join(" ")}`).join(" ")
-        const totalPosts = postsForDisplay.length
-        const builtTitle = buildDisplayTitle(post)
-        let title = toNaturalTeachingTitle(builtTitle)
-        let category = "Theology"
-        if (saintPattern.test(haystack)) category = "Saints"
-        else if (theotokosPattern.test(haystack)) category = "Theotokos (Virgin Mary)"
-        else if (greatLentPattern.test(haystack)) category = "Great Lent"
-        else if (feastsPattern.test(haystack)) category = "Feasts & Liturgical Year"
-        else if (christianLivingPattern.test(haystack)) category = "Christian Living"
-        else if (traditionPattern.test(haystack)) category = "Tradition & Culture"
-        else if (monasticPattern.test(haystack)) category = "Monastics & Asceticism"
-        else if (prayerPattern.test(haystack)) category = "Prayer"
-        else if (churchHistoryPattern.test(haystack)) category = "Church History"
-        else if (postsForDisplay.some((entry) => entry.tags.some((tag) => /(eucharist|communion|confession|repentance|sin|sacrament|mysteries)/i.test(tag))))
-          category = "Sacraments"
-        else if (liturgyPattern.test(haystack)) category = "Liturgy"
-        else if (biblePattern.test(haystack)) category = "Bible Study"
-        else if (fastingPattern.test(haystack)) category = "Fasting"
-        else if (theologyCorePattern.test(haystack)) category = "Theology"
-
-        if (category === "Saints" && !/\b(saint|st\.?|archangel|virgin)\b/i.test(title)) title = `Saint ${title}`
-
-        title = toStandardShortTitle(toNaturalTeachingTitle(title), 7)
-
-        const dedupeKey = `${normalizeForDedupe(builtTitle)}|${normalizeForDedupe(post.excerpt).slice(0, 90)}`
-        return {
-          dedupeKey,
-          id: 100000 + post.id,
-          title,
-          subtitle: undefined,
-          description: stripTeachingFiller(post.excerpt),
-          category,
-          format: "Article",
-          duration: totalPosts > 1 ? `${totalPosts} posts` : "1 post",
-          image: "/orthodox-card-bg.svg",
-          featured: idx < 12,
-          popular: idx < 18,
-          link: `/teachings/imported/${group.leadId}`,
-          searchTerms: postsForDisplay.map((entry) => `${entry.title} ${entry.excerpt} ${entry.tags.join(" ")}`).join(" "),
-        }
-      })
-      .filter((teaching): teaching is TeachingItem & { dedupeKey: string } => teaching !== null)
-
-    const seenDedupeKeys = new Set<string>()
-    const seenTitleKeys = new Set<string>()
-    const seenTopicKeys = new Set<string>()
-    const imported: TeachingItem[] = []
-    for (const teaching of importedWithKeys) {
-      const titleKey = normalizeForDedupe(teaching.title)
-      const topicKey = canonicalTopicKey(teaching.title, teaching.searchTerms)
-      if (seenDedupeKeys.has(teaching.dedupeKey)) continue
-      if (titleKey && seenTitleKeys.has(titleKey)) continue
-      if (topicKey && topicKey.split("-").length >= 3 && seenTopicKeys.has(topicKey)) continue
-      seenDedupeKeys.add(teaching.dedupeKey)
-      if (titleKey) seenTitleKeys.add(titleKey)
-      if (topicKey && topicKey.split("-").length >= 3) seenTopicKeys.add(topicKey)
-      imported.push({
-        id: teaching.id,
-        title: teaching.title,
-        subtitle: teaching.subtitle,
-        description: teaching.description,
-        category: teaching.category,
-        format: teaching.format,
-        duration: teaching.duration,
-        image: teaching.image,
-        featured: teaching.featured,
-        popular: teaching.popular,
-        link: teaching.link,
-        searchTerms: teaching.searchTerms,
-      })
-    }
-    const baseWithSearch = baseTeachings.map((teaching) => ({
-      ...teaching,
-      searchTerms: `${teaching.title} ${teaching.description} ${teaching.category}`,
-    }))
-    return [...imported, ...baseWithSearch]
-  }, [])
-
-  const normalize = (value: string) =>
-    value
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim()
-
-  const normalizedQuery = useMemo(() => normalize(searchQuery), [searchQuery])
-  const indexedTeachings = useMemo(
-    () =>
-      allTeachings.map((teaching) => ({
-        ...teaching,
-        _searchText: normalize(`${teaching.title} ${teaching.description} ${teaching.category} ${teaching.searchTerms ?? ""}`),
-      })),
-    [allTeachings],
+      {/* Card body */}
+      <div className="flex flex-1 flex-col gap-2 p-4">
+        <h3 className="line-clamp-2 text-[15px] font-extrabold leading-snug text-stone-900 dark:text-stone-50">
+          {teaching.title}
+        </h3>
+        <p className="line-clamp-2 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
+          {teaching.preview}
+        </p>
+        <div className="mt-auto flex items-center justify-between pt-1">
+          <span className="flex items-center gap-1 text-[12px] font-bold text-[#9a3412] dark:text-amber-500">
+            {isRead ? "Read again" : "Read now"} <ArrowRight className="h-3.5 w-3.5" />
+          </span>
+          <span className="text-[10px] text-stone-400">{formatDate(teaching.date)}</span>
+        </div>
+      </div>
+    </button>
   )
-  const filteredTeachings = useMemo(
-    () =>
-      indexedTeachings.filter((teaching) => {
-        const hasQuery = normalizedQuery.length > 0
-        const categoryMatch = hasQuery ? true : activeCategory === "All" || teaching.category === activeCategory
-        const searchMatch = normalizedQuery === "" || teaching._searchText.includes(normalizedQuery)
-        const formatMatch = hasQuery ? true : formatFilter.length === 0 || formatFilter.includes(teaching.format)
-        return categoryMatch && searchMatch && formatMatch
-      }),
-    [indexedTeachings, activeCategory, normalizedQuery, formatFilter],
+}
+
+// ── Category Shelf ─────────────────────────────────────────────────────────────
+function CategoryShelf({
+  category, items, readIds, onOpen, onSeeAll,
+}: {
+  category: TeachingCategory; items: TeachingMeta[]; readIds: Set<string>
+  onOpen: (t: TeachingMeta) => void; onSeeAll: () => void
+}) {
+  const readCount = items.filter((t) => readIds.has(t.id)).length
+  return (
+    <section className="mb-10">
+      <div className="mb-3 flex items-center gap-3">
+        <h2 className="text-[17px] font-black text-stone-900 dark:text-stone-100">{category}</h2>
+        <span className="text-[11px] text-stone-400">{items.length} · {readCount} read</span>
+        <button
+          onClick={onSeeAll}
+          className="ml-auto flex items-center gap-1 text-[12px] font-bold text-[#9a3412] transition hover:text-orange-800 dark:text-amber-500"
+        >
+          See all <ChevronRight className="h-3.5 w-3.5" />
+        </button>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {items.slice(0, 8).map((t) => (
+          <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => onOpen(t)} />
+        ))}
+      </div>
+    </section>
   )
+}
 
-  const categoryBadgeClass = (category: string) => {
-    if (category === "Great Lent") return "bg-lime-700"
-    if (category === "Liturgy") return "bg-orange-600"
-    if (category === "Theology") return "bg-orange-700"
-    if (category === "Sacraments") return "bg-green-600"
-    if (category === "Bible Study") return "bg-amber-600"
-    if (category === "Saints") return "bg-orange-600"
-    if (category === "Theotokos (Virgin Mary)") return "bg-rose-600"
-    if (category === "Feasts & Liturgical Year") return "bg-cyan-600"
-    if (category === "Christian Living") return "bg-emerald-600"
-    if (category === "Tradition & Culture") return "bg-amber-600"
-    if (category === "Monastics & Asceticism") return "bg-stone-700"
-    return "bg-stone-700"
-  }
+// ── Reading Modal ──────────────────────────────────────────────────────────────
+function ReadingModal({ teaching, onClose, onRead }: { teaching: TeachingMeta; onClose: () => void; onRead: (id: string) => void }) {
+  const [fullText, setFullText] = useState<string | null>(null)
+  const [scrollPct, setScrollPct] = useState(0)
+  const [markedRead, setMarkedRead] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
+  useEffect(() => {
+    fetch("/teachings-content.json")
+      .then((r) => r.json())
+      .then((data: Record<string, string>) => setFullText(data[teaching.id] ?? "Content not available."))
+      .catch(() => setFullText("Failed to load content."))
+  }, [teaching.id])
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const pct = el.scrollTop / (el.scrollHeight - el.clientHeight)
+    setScrollPct(Math.min(1, pct))
+    if (pct >= 0.95 && !markedRead) {
+      setMarkedRead(true); markRead(teaching.id); onRead(teaching.id)
+    }
+  }, [markedRead, teaching.id, onRead])
+
+  useEffect(() => { document.body.style.overflow = "hidden"; return () => { document.body.style.overflow = "" } }, [])
 
   return (
-    <div className="light-mode-adaptive-page bg-[url('/images/mobile-parch.png?v=20260321')] md:bg-[url('/images/parchment-bg.png?v=20260321')] bg-cover bg-center bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-amber-500/5 dark:from-orange-900/20 dark:to-amber-900/20 z-0" />
-        <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-5 z-0" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ትምህርቶች</GeezHeading>
-            <h1 className="mx-auto mb-6 max-w-6xl px-2 pb-2 text-center text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl md:text-6xl">
-              <span className="block text-stone-900 dark:text-white">Ethiopian Orthodox Tewahedo Church</span>
-              <AnimatedGradientText text="Teachings" className="mt-4 block pb-1 md:mt-5" />
-            </h1>
-            <p className="mx-auto max-w-5xl text-lg text-gray-600 dark:text-gray-300">
-              Explore the rich spiritual heritage and teachings of the Ethiopian Orthodox Tewahedo Church
-            </p>
-          </motion.div>
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-stone-950/70 backdrop-blur-sm md:items-center"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div className="relative flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-[#fffaf0] shadow-2xl dark:bg-stone-950 md:rounded-3xl">
+        {/* Scroll progress */}
+        <div className="h-1 w-full bg-stone-200 dark:bg-stone-800">
+          <div className="h-full bg-[#9a3412] transition-all duration-150" style={{ width: `${scrollPct * 100}%` }} />
         </div>
-      </section>
+        {/* Dark header */}
+        <div
+          className="flex items-end gap-3 p-4"
+          style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+        >
+          <div className="flex-1">
+            <span className={cn("inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.1em]", CATEGORY_BADGE_BG[teaching.category])}>
+              {teaching.category}
+            </span>
+            <p className="mt-1.5 text-[11px] text-white/50">{formatDate(teaching.date)}</p>
+          </div>
+          <button onClick={onClose} className="rounded-full p-1.5 text-white/60 transition hover:text-white">
+            <X className="h-5 w-5" />
+          </button>
+        </div>
 
-      {/* Main Content */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <Tabs defaultValue="browse" className="w-full">
-              <TabsContent value="browse">
-                <div className="grid md:grid-cols-4 gap-8">
-                  {/* Sidebar */}
-                  <div className="md:col-span-1">
-                    <div className="space-y-6 sticky top-20">
-                      <Card className="border-none shadow-lg overflow-hidden">
-                        <CardHeader>
-                          <CardTitle className="flex items-center gap-2">
-                            <Search className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                            Search
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-4">
-                            <div className="relative">
-                              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
-                              <Input
-                                placeholder="Search teachings..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-10 border-gray-300 dark:border-gray-700"
-                              />
-                            </div>
-                            {(searchQuery.trim() || activeCategory !== "All" || formatFilter.length > 0) && (
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => {
-                                  setSearchQuery("")
-                                  setActiveCategory("All")
-                                  setFormatFilter([])
-                                }}
-                              >
-                                Clear search & filters
-                              </Button>
-                            )}
-                          </div>
-                        </CardContent>
-                      </Card>
+        {/* Body */}
+        <div ref={scrollRef} onScroll={handleScroll} className="flex-1 overflow-y-auto px-6 py-6 md:px-8">
+          <h1 className="mb-6 text-[1.6rem] font-black leading-tight text-stone-950 dark:text-stone-50">
+            {teaching.title}
+          </h1>
+          {fullText === null ? (
+            <div className="space-y-3">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="h-4 animate-pulse rounded bg-stone-200 dark:bg-stone-800" style={{ width: `${65 + (i % 4) * 8}%` }} />
+              ))}
+            </div>
+          ) : (
+            <div className="whitespace-pre-wrap text-[15px] leading-8 text-stone-800 dark:text-stone-200">{fullText}</div>
+          )}
+          <div className="mt-10 flex justify-center pb-4">
+            <button
+              onClick={() => { markRead(teaching.id); onRead(teaching.id); onClose() }}
+              className={cn(
+                "flex items-center gap-2 rounded-full px-8 py-3 text-sm font-black shadow-lg transition",
+                markedRead ? "bg-stone-700 text-white" : "bg-[#7c2d12] text-white hover:bg-[#5a1e08]",
+              )}
+            >
+              {markedRead ? <><Check className="h-4 w-4" /> Read</> : "Mark as Read"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-                      <Card className="border-none shadow-lg overflow-hidden">
-                        <CardHeader>
-                          <CardTitle className="flex items-center gap-2">
-                            <Filter className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                            Categories
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            {categories.map((category) => (
-                              <button
-                                key={category}
-                                onClick={() => setActiveCategory(category)}
-                                className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
-                                  activeCategory === category
-                                    ? "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 font-medium"
-                                    : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-                                }`}
-                              >
-                                {category}
-                              </button>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
+// ── Main Page ──────────────────────────────────────────────────────────────────
+export default function TeachingsPage() {
+  const [activeCategory, setActiveCategory] = useState<TeachingCategory | "All">("All")
+  const [searchQuery, setSearchQuery] = useState("")
+  const [readIds, setReadIds] = useState<Set<string>>(new Set())
+  const [openTeaching, setOpenTeaching] = useState<TeachingMeta | null>(null)
+  const [visibleCount, setVisibleCount] = useState(24)
 
-                      <Card className="border-none shadow-lg overflow-hidden">
-                        <CardHeader>
-                          <CardTitle className="flex items-center gap-2">
-                            <FileText className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-                            Format
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="flex flex-wrap gap-2">
-                            {["Article", "Video", "Audio", "PDF Guide"].map((format) => (
-                              <Badge
-                                key={format}
-                                variant={formatFilter.includes(format) ? "default" : "outline"}
-                                className={`cursor-pointer ${
-                                  formatFilter.includes(format)
-                                    ? "bg-orange-600 hover:bg-orange-700"
-                                    : "hover:bg-orange-100 dark:hover:bg-orange-900/30 hover:text-orange-700 dark:hover:text-orange-400"
-                                }`}
-                                onClick={() => toggleFormatFilter(format)}
-                              >
-                                {format}
-                              </Badge>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
+  useEffect(() => { setReadIds(getReadIds()) }, [])
 
-                  {/* Main Content */}
-                  <div className="md:col-span-3">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {filteredTeachings.length > 0 ? (
-                        filteredTeachings.map((teaching) => (
-                          <div key={teaching.id}>
-                            <Card className="border-none shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 group">
-                              <div className="relative h-48">
-                                <Image
-                                  src={teaching.image || "/placeholder.svg"}
-                                  alt={teaching.title}
-                                  fill
-                                  className="object-cover transition-transform group-hover:scale-105 duration-300"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                                <div className="absolute bottom-0 left-0 right-0 p-4">
-                                  <Badge className={`mb-2 text-[11px] ${categoryBadgeClass(teaching.category)}`}>
-                                    {teaching.category}
-                                  </Badge>
-                                  <div className="flex items-center text-white text-xs">
-                                    <span className="flex items-center">
-                                      {teaching.format === "Article" ? (
-                                        <Book className="h-3 w-3 mr-1" />
-                                      ) : teaching.format === "Video" ? (
-                                        <Video className="h-3 w-3 mr-1" />
-                                      ) : teaching.format === "Audio" ? (
-                                        <Play className="h-3 w-3 mr-1" />
-                                      ) : (
-                                        <FileText className="h-3 w-3 mr-1" />
-                                      )}
-                                      {teaching.format}
-                                    </span>
-                                    {teaching.duration !== "1 post" && (
-                                      <>
-                                        <span className="mx-2">•</span>
-                                        <span className="flex items-center">
-                                          <Clock className="h-3 w-3 mr-1" />
-                                          {teaching.duration}
-                                        </span>
-                                      </>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                              <CardContent className="p-4">
-                                <h3 className="font-extrabold text-lg leading-[1.4] [hyphens:none] mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
-                                  {teaching.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">{teaching.description}</p>
-                                <div className="flex justify-between items-center">
-                                  <Link
-                                    href={teaching.link}
-                                    className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
-                                  >
-                                    Read More →
-                                  </Link>
-                                  <div className="flex gap-2">
-                                    <Button
-                                      variant="ghost"
-                                      size="icon"
-                                      className="h-8 w-8 rounded-full text-gray-500 hover:text-orange-600 dark:hover:text-orange-400"
-                                    >
-                                      <Bookmark className="h-4 w-4" />
-                                    </Button>
-                                    <Button
-                                      variant="ghost"
-                                      size="icon"
-                                      className="h-8 w-8 rounded-full text-gray-500 hover:text-orange-600 dark:hover:text-orange-400"
-                                    >
-                                      <Share2 className="h-4 w-4" />
-                                    </Button>
-                                  </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="col-span-2 text-center py-12">
-                          <Book className="h-16 w-16 mx-auto text-gray-300 dark:text-gray-700 mb-4" />
-                          <h3 className="text-xl font-bold mb-2">No teachings found</h3>
-                          <p className="text-gray-500 dark:text-gray-400 mb-6">
-                            Try adjusting your search filters or browse our categories
-                          </p>
-                          <Button
-                            onClick={() => {
-                              setActiveCategory("All")
-                              setSearchQuery("")
-                              setFormatFilter([])
-                            }}
-                            className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600"
-                          >
-                            Reset Filters
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </TabsContent>
+  const handleRead = useCallback((id: string) => {
+    setReadIds((prev) => new Set([...prev, id]))
+  }, [])
 
-              <TabsContent value="featured">
-                <motion.div
-                  className="grid md:grid-cols-2 gap-8"
-                  initial="hidden"
-                  animate="visible"
-                  variants={staggerContainer}
-                >
-                  {allTeachings
-                    .filter((teaching) => teaching.featured)
-                    .map((teaching) => (
-                      <motion.div key={teaching.id} variants={fadeInUp}>
-                        <Card className="border-none shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 group">
-                          <div className="relative h-64">
-                            <Image
-                              src={teaching.image || "/placeholder.svg"}
-                              alt={teaching.title}
-                              fill
-                              className="object-cover transition-transform group-hover:scale-105 duration-300"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                            <div className="absolute top-4 right-4">
-                              <Badge className="bg-amber-600">Featured</Badge>
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-0 p-4">
-                              <Badge className={`mb-2 text-[11px] ${categoryBadgeClass(teaching.category)}`}>
-                                {teaching.category}
-                              </Badge>
-                              <div className="flex items-center text-white text-xs">
-                                <span className="flex items-center">
-                                  {teaching.format === "Article" ? (
-                                    <Book className="h-3 w-3 mr-1" />
-                                  ) : teaching.format === "Video" ? (
-                                    <Video className="h-3 w-3 mr-1" />
-                                  ) : (
-                                    <FileText className="h-3 w-3 mr-1" />
-                                  )}
-                                  {teaching.format}
-                                </span>
-                                {teaching.duration !== "1 post" && (
-                                  <>
-                                    <span className="mx-2">•</span>
-                                    <span className="flex items-center">
-                                      <Clock className="h-3 w-3 mr-1" />
-                                      {teaching.duration}
-                                    </span>
-                                  </>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="font-extrabold text-xl leading-[1.4] [hyphens:none] mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
-                              {teaching.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{teaching.description}</p>
-                            <div className="flex justify-between items-center">
-                              <Link
-                                href={teaching.link}
-                                className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
-                              >
-                                Read More →
-                              </Link>
-                              <div className="flex gap-2">
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8 rounded-full text-gray-500 hover:text-orange-600 dark:hover:text-orange-400"
-                                >
-                                  <Bookmark className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8 rounded-full text-gray-500 hover:text-orange-600 dark:hover:text-orange-400"
-                                >
-                                  <Share2 className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    ))}
-                </motion.div>
-              </TabsContent>
+  const categoryCounts = Object.fromEntries(
+    CATEGORIES.map((c) => [c, teachings.filter((t) => t.category === c).length]),
+  ) as Record<TeachingCategory, number>
 
-              <TabsContent value="popular">
-                <motion.div
-                  className="grid md:grid-cols-3 gap-6"
-                  initial="hidden"
-                  animate="visible"
-                  variants={staggerContainer}
-                >
-                  {allTeachings
-                    .filter((teaching) => teaching.popular)
-                    .map((teaching) => (
-                      <motion.div key={teaching.id} variants={fadeInUp}>
-                        <Card className="border-none shadow-lg overflow-hidden h-full hover:shadow-xl transition-all duration-300 group">
-                          <div className="relative h-48">
-                            <Image
-                              src={teaching.image || "/placeholder.svg"}
-                              alt={teaching.title}
-                              fill
-                              className="object-cover transition-transform group-hover:scale-105 duration-300"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                            <div className="absolute top-4 right-4">
-                              <Badge className="bg-orange-600">Popular</Badge>
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-0 p-4">
-                              <div className="flex items-center text-white text-xs">
-                                <span className="flex items-center">
-                                  {teaching.format === "Article" ? (
-                                    <Book className="h-3 w-3 mr-1" />
-                                  ) : teaching.format === "Video" ? (
-                                    <Video className="h-3 w-3 mr-1" />
-                                  ) : (
-                                    <FileText className="h-3 w-3 mr-1" />
-                                  )}
-                                  {teaching.format}
-                                </span>
-                                {teaching.duration !== "1 post" && (
-                                  <>
-                                    <span className="mx-2">•</span>
-                                    <span className="flex items-center">
-                                      <Clock className="h-3 w-3 mr-1" />
-                                      {teaching.duration}
-                                    </span>
-                                  </>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                          <CardContent className="p-4">
-                            <h3 className="font-extrabold text-lg leading-[1.4] [hyphens:none] mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-2">
-                              {teaching.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
-                              {teaching.description}
-                            </p>
-                            <Link
-                              href={teaching.link}
-                              className="text-orange-700 dark:text-orange-400 font-semibold hover:underline"
-                            >
-                              Read More →
-                            </Link>
-                          </CardContent>
-                        </Card>
-                      </motion.div>
-                    ))}
-                </motion.div>
-              </TabsContent>
-            </Tabs>
+  const filteredTeachings = teachings.filter((t) => {
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase()
+      return t.title.toLowerCase().includes(q) || t.preview.toLowerCase().includes(q)
+    }
+    if (activeCategory !== "All") return t.category === activeCategory
+    return true
+  })
+
+  const recentlyRead = teachings.filter((t) => readIds.has(t.id)).slice(-3).reverse()
+
+  return (
+    <div className="min-h-screen">
+
+      {/* ── HERO ── */}
+      <section className="relative flex flex-col items-center justify-center overflow-hidden px-6 pb-6 pt-16 text-center">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_36%,rgba(180,83,9,0.13),transparent_54%)]" />
+        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#7c2d12]/35 bg-white/50 shadow-lg backdrop-blur-sm dark:bg-stone-900/50">
+          <svg viewBox="0 0 100 130" className="h-7 w-7" aria-hidden>
+            <rect x="44" y="4" width="12" height="122" rx="2.5" fill="#9a3412" />
+            <rect x="4" y="40" width="92" height="12" rx="2.5" fill="#9a3412" />
+            <rect x="24" y="78" width="52" height="9" rx="2" fill="#9a3412" />
+          </svg>
+        </div>
+        <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.28em] text-[#9a3412] dark:text-amber-600">
+          EOTC Teachings
+        </p>
+        <h1 className="bg-gradient-to-br from-[#7c2d12] via-[#9a3412] to-amber-700 bg-clip-text text-[clamp(3.5rem,11vw,7.5rem)] font-black leading-none text-transparent">
+          Teachings
+        </h1>
+        <div className="mt-6 flex flex-col items-center gap-2">
+          {readIds.size > 0 ? (
+            <>
+              <p className="text-[14px] font-medium text-stone-700 dark:text-stone-300">
+                You&apos;ve read <span className="font-black text-[#9a3412]">{readIds.size}</span> of {teachings.length} teachings
+              </p>
+              <div className="h-1.5 w-48 overflow-hidden rounded-full bg-stone-300 dark:bg-stone-700">
+                <div className="h-full rounded-full bg-[#9a3412]" style={{ width: `${(readIds.size / teachings.length) * 100}%` }} />
+              </div>
+            </>
+          ) : (
+            <p className="text-[14px] font-medium text-stone-600 dark:text-stone-400">
+              {teachings.length} teachings from the John&apos;s Repentance channel
+            </p>
+          )}
+        </div>
+
+        {/* Search */}
+        <div className="mt-6 w-full max-w-md">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+            <input
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setActiveCategory("All"); setVisibleCount(24) }}
+              placeholder="Search teachings..."
+              className="w-full rounded-2xl border border-stone-300/70 bg-white/80 py-3.5 pl-10 pr-10 text-[15px] placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#9a3412]/40 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-100"
+            />
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-stone-400 hover:text-stone-600">
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Subscribe Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-800 to-amber-700 dark:from-orange-950 dark:to-amber-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-10" />
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <GeezHeading className="mb-4 text-amber-300">ተመዝገብ</GeezHeading>
-            <h2 className="text-3xl font-bold mb-4">Get Weekly Teachings</h2>
-            <p className="text-lg mb-8">
-              Subscribe to receive weekly teachings, articles, and resources directly to your inbox
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
-              />
-              <Button className="bg-white text-orange-800 hover:bg-amber-100">Subscribe</Button>
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 md:px-8">
+
+        {/* ── CONTINUE READING ── */}
+        {recentlyRead.length > 0 && !searchQuery && activeCategory === "All" && (
+          <section className="mb-10">
+            <h2 className="mb-3 text-[17px] font-black text-stone-900 dark:text-stone-100">Continue Reading</h2>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {recentlyRead.map((t) => (
+                <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── CATEGORY FILTER TABS ── */}
+        {!searchQuery && (
+          <div className="sticky top-16 z-30 -mx-4 mb-8 overflow-x-auto border-b border-stone-300/50 bg-[#fffaf0]/90 px-4 backdrop-blur-sm dark:border-stone-800/60 dark:bg-stone-950/90 md:-mx-8 md:px-8">
+            <div className="flex gap-2 py-3">
+              {(["All", ...CATEGORIES] as const).map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setActiveCategory(cat); setVisibleCount(24) }}
+                  className={cn(
+                    "flex-shrink-0 rounded-full px-4 py-1.5 text-[12px] font-black transition-all",
+                    activeCategory === cat
+                      ? "bg-[#7c2d12] text-white shadow"
+                      : "border border-stone-300/70 bg-white/80 text-stone-600 hover:border-[#9a3412]/50 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-400",
+                  )}
+                >
+                  {cat === "All" ? `All (${teachings.length})` : `${cat} (${categoryCounts[cat as TeachingCategory]})`}
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* Download Resources */}
-      <section className="py-16 bg-amber-50/30 dark:bg-stone-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ሀብቶች</GeezHeading>
-            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Free Resources</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Download these free resources to deepen your understanding of the Ethiopian Orthodox faith
+        {/* ── SEARCH RESULTS ── */}
+        {searchQuery && (
+          <div>
+            <p className="mb-4 text-[13px] text-stone-500">
+              {filteredTeachings.length} result{filteredTeachings.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
             </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredTeachings.slice(0, visibleCount).map((t) => (
+                <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
+              ))}
+            </div>
+            {filteredTeachings.length > visibleCount && (
+              <div className="mt-8 flex justify-center">
+                <button onClick={() => setVisibleCount((v) => v + 24)} className="rounded-full border border-[#9a3412]/40 bg-white/80 px-8 py-3 text-sm font-black text-[#9a3412] shadow transition hover:bg-amber-50 dark:bg-stone-900/80">
+                  Load more ({filteredTeachings.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
           </div>
+        )}
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-white to-orange-50 dark:from-gray-900 dark:to-orange-950">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
-                    <Book className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Prayer Book</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
-                  Daily prayers and devotionals from the Ethiopian Orthodox tradition
-                </p>
-                <Button className="w-full flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700">
-                  <Download className="h-4 w-4" />
-                  Download PDF
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-white to-amber-50 dark:from-gray-900 dark:to-amber-950">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
-                    <Calendar className="h-8 w-8 text-amber-600 dark:text-amber-500" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Fasting Calendar</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
-                  Complete calendar of Ethiopian Orthodox fasting days and feast days
-                </p>
-                <Button className="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700">
-                  <Download className="h-4 w-4" />
-                  Download Calendar
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg overflow-hidden bg-gradient-to-br from-white to-green-50 dark:from-gray-900 dark:to-green-950">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
-                    <FileText className="h-8 w-8 text-green-600 dark:text-green-500" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-2">Study Guide</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center mb-4">
-                  Introduction to the Ethiopian Orthodox Tewahedo Church for beginners
-                </p>
-                <Button className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700">
-                  <Download className="h-4 w-4" />
-                  Download Guide
-                </Button>
-              </CardContent>
-            </Card>
+        {/* ── ALL SHELVES ── */}
+        {!searchQuery && activeCategory === "All" && (
+          <div>
+            {CATEGORIES.map((cat) => {
+              const items = teachings.filter((t) => t.category === cat)
+              if (!items.length) return null
+              return (
+                <CategoryShelf key={cat} category={cat} items={items} readIds={readIds}
+                  onOpen={(t) => setOpenTeaching(t)} onSeeAll={() => { setActiveCategory(cat); setVisibleCount(24) }} />
+              )
+            })}
           </div>
-        </div>
-      </section>
+        )}
 
-      <ScrollToTop />
+        {/* ── SINGLE CATEGORY GRID ── */}
+        {!searchQuery && activeCategory !== "All" && (
+          <div>
+            <p className="mb-4 text-[13px] text-stone-500">
+              {filteredTeachings.length} teachings · {filteredTeachings.filter((t) => readIds.has(t.id)).length} read
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredTeachings.slice(0, visibleCount).map((t) => (
+                <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
+              ))}
+            </div>
+            {filteredTeachings.length > visibleCount && (
+              <div className="mt-8 flex justify-center">
+                <button onClick={() => setVisibleCount((v) => v + 24)} className="rounded-full border border-[#9a3412]/40 bg-white/80 px-8 py-3 text-sm font-black text-[#9a3412] shadow transition hover:bg-amber-50 dark:bg-stone-900/80">
+                  Load more ({filteredTeachings.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* ── MODAL ── */}
+      {openTeaching && (
+        <ReadingModal teaching={openTeaching} onClose={() => setOpenTeaching(null)} onRead={handleRead} />
+      )}
     </div>
   )
 }

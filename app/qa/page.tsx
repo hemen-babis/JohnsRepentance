@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { Search, MessageSquare, Send, Sparkles } from "lucide-react"
+import { Search, MessageSquare, Send, Sparkles, Cross, Heart, Church, Users, BookOpen, ShieldCheck } from "lucide-react"
 import telegramPosts from "@/content/telegram/index.json"
 import { groupImportedPosts } from "@/lib/imported-post-groups"
 
@@ -112,6 +112,7 @@ const qaData: QAItem[] = [
 ]
 
 export default function QAPage() {
+  const [activeCategory, setActiveCategory] = useState("All")
   const normalizeText = (value: string) =>
     value
       .toLowerCase()
@@ -263,8 +264,29 @@ export default function QAPage() {
   const [resolvedAnswer, setResolvedAnswer] = useState("")
   const [isAnswerLoading, setIsAnswerLoading] = useState(false)
 
+  const categoryMeta: Record<string, { icon: typeof MessageSquare; summary: string }> = {
+    All: { icon: MessageSquare, summary: "Browse all questions and answers." },
+    Faith: { icon: Cross, summary: "Belief, doctrine, and the foundations of Orthodox faith." },
+    Repentance: { icon: Heart, summary: "Confession, turning back to God, and spiritual struggle." },
+    Communion: { icon: Church, summary: "Preparation, worthiness, and Holy Communion questions." },
+    Practices: { icon: ShieldCheck, summary: "Fasting, prayer, discipline, and practical church life." },
+    Youth: { icon: Users, summary: "Guidance for younger believers and modern life questions." },
+    Culture: { icon: BookOpen, summary: "Orthodox customs, symbols, and Ethiopian church culture." },
+    "Imported Q&A": { icon: MessageSquare, summary: "Answers imported from the John’s Repentance archive." },
+  }
+
   // Extract all unique tags
   const allTags = useMemo(() => Array.from(new Set(allQA.flatMap((item) => item.tags))), [allQA])
+  const qaCategories = useMemo(
+    () =>
+      Array.from(new Set(allQA.map((item) => item.category || "Imported Q&A")))
+        .sort((a, b) => a.localeCompare(b))
+        .map((category) => ({
+          category,
+          count: allQA.filter((item) => (item.category || "Imported Q&A") === category).length,
+        })),
+    [allQA],
+  )
   const rankedQA = useMemo(() => {
     const query = normalizeText(searchTerm)
     const queryTokens = tokenize(searchTerm)
@@ -276,7 +298,9 @@ export default function QAPage() {
         const tagsText = normalizeText(item.tags.join(" "))
         const fullText = `${questionText} ${answerText} ${tagsText}`
         const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => item.tags.includes(tag))
-        if (!matchesTags) return null
+        const itemCategory = item.category || "Imported Q&A"
+        const matchesCategory = activeCategory === "All" || itemCategory === activeCategory
+        if (!matchesTags || !matchesCategory) return null
 
         let score = 0
         if (!query) score = 1
@@ -297,7 +321,7 @@ export default function QAPage() {
       .filter((entry): entry is { item: QAItem; score: number } => entry !== null)
       .sort((a, b) => b.score - a.score || (b.item.likes || 0) - (a.item.likes || 0))
       .map((entry) => entry.item)
-  }, [allQA, searchTerm, selectedTags])
+  }, [activeCategory, allQA, searchTerm, selectedTags])
 
   const filteredQA = useMemo(() => {
     if (activeTab === "popular") return [...rankedQA].sort((a, b) => (b.likes || 0) - (a.likes || 0))
@@ -337,6 +361,7 @@ export default function QAPage() {
   const clearFilters = () => {
     setSearchTerm("")
     setSelectedTags([])
+    setActiveCategory("All")
   }
 
   const extractAnswerFromImportedText = (raw: string) => {
@@ -546,8 +571,40 @@ export default function QAPage() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="md:col-span-2">
+            <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {qaCategories.map(({ category, count }) => {
+                const Icon = categoryMeta[category]?.icon ?? MessageSquare
+                const isActive = activeCategory === category
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActiveCategory(category)}
+                    className={`rounded-[1.5rem] border p-5 text-left shadow-lg transition-all ${
+                      isActive
+                        ? "border-orange-300 bg-gradient-to-br from-orange-100 to-amber-50 dark:border-orange-800 dark:from-orange-950/60 dark:to-amber-950/30"
+                        : "border-amber-100/80 bg-white/90 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl dark:border-stone-800 dark:bg-stone-900/80"
+                    }`}
+                  >
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-600 to-amber-500 text-white">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div className="flex items-center justify-between gap-3">
+                      <h2 className="text-2xl font-semibold leading-tight text-stone-900 dark:text-white">{category}</h2>
+                      <span className="rounded-full bg-stone-900 px-2.5 py-1 text-xs font-semibold text-white dark:bg-stone-100 dark:text-stone-900">
+                        {count}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                      {categoryMeta[category]?.summary ?? "Browse questions in this group."}
+                    </p>
+                  </button>
+                )
+              })}
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+              <div className="min-w-0">
                 {/* Search and Filters */}
                 <div className="mb-8">
                   <div className="relative mb-4">
@@ -607,6 +664,15 @@ export default function QAPage() {
                       </div>
                     </div>
                   )}
+
+                  <div className="rounded-2xl border border-orange-200/70 bg-white/80 px-5 py-4 shadow-sm dark:border-orange-900/30 dark:bg-stone-900/70">
+                    <p className="text-sm font-semibold text-stone-900 dark:text-white">
+                      {filteredQA.length} result{filteredQA.length === 1 ? "" : "s"} in {activeCategory}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                      Use the category cards for grouped browsing, then refine with tags or search.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Q&A Results */}
@@ -634,6 +700,45 @@ export default function QAPage() {
                 {/* Ask a Question */}
                 <div className="sticky top-20 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto md:pr-2">
                   <Card className="border-none shadow-lg overflow-hidden mb-8">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Sparkles className="h-5 w-5 text-amber-600" />
+                        Categories
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
+                        <button
+                          type="button"
+                          onClick={() => setActiveCategory("All")}
+                          className={`w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                            activeCategory === "All"
+                              ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                              : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                          }`}
+                        >
+                          All questions
+                        </button>
+                        {qaCategories.map(({ category, count }) => (
+                          <button
+                            key={`sidebar-${category}`}
+                            type="button"
+                            onClick={() => setActiveCategory(category)}
+                            className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                              activeCategory === category
+                                ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
+                                : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                            }`}
+                          >
+                            <span>{category}</span>
+                            <span className="text-xs opacity-70">{count}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-none shadow-lg overflow-hidden mb-8">
                     <div className="h-2 bg-gradient-to-r from-orange-500 to-amber-500" />
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
@@ -659,6 +764,10 @@ export default function QAPage() {
                           <Send className="h-4 w-4 mr-2" />
                           Submit Question
                         </Button>
+                        <p className="text-xs leading-5 text-gray-500 dark:text-gray-400">
+                          Personal questions are not meant for public display. Sensitive details should be shared
+                          minimally online and handled discreetly.
+                        </p>
                       </div>
                     </CardContent>
                   </Card>

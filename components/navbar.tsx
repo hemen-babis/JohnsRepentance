@@ -23,6 +23,7 @@ const routes = [
 ]
 
 const resourceRoutes = [
+  { href: "/library", label: "Library" },
   { href: "/about", label: "About Us" },
   { href: "/fasting-guide", label: "Fasting Guide" },
   { href: "/calendar-events", label: "Calendar + Events" },

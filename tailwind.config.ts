@@ -133,11 +133,14 @@ const config = {
         "breathe": "breathe 4s ease-in-out infinite",
       },
       fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "serif"],
+        monoUi: ["var(--font-mono-ui)", "ui-monospace", "SFMono-Regular", "monospace"],
         serif: ["Abyssinica SIL", "serif"],
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config
 
 export default config

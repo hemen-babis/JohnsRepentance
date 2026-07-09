@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { GeezHeading } from "@/components/geez-heading"
-import { CheckCircle, Users, Calendar, MapPin, Mail, Phone, Send } from "lucide-react"
+import { CheckCircle, Users, Calendar, MapPin, Mail, Phone, Send, ShieldCheck } from "lucide-react"
 
 export default function JoinPage() {
   const [formStep, setFormStep] = useState(0)
@@ -25,16 +25,16 @@ export default function JoinPage() {
     howHeard: "",
   })
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleRadioChange = (value) => {
+  const handleRadioChange = (value: string) => {
     setFormData((prev) => ({ ...prev, interest: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // In a real application, this would submit the form data to a server
     setFormStep(2) // Move to success step
@@ -262,6 +262,21 @@ export default function JoinPage() {
                               value={formData.phone}
                               onChange={handleInputChange}
                             />
+                          </div>
+
+                          <div className="rounded-xl border border-amber-200/70 bg-amber-50/80 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-100">
+                            <p className="flex items-center gap-2 font-semibold">
+                              <ShieldCheck className="h-4 w-4" />
+                              Privacy note
+                            </p>
+                            <p className="mt-2 leading-6">
+                              We keep contact details private and use them only to follow up on your request, class
+                              interest, or account access. Sensitive repentance matters should be shared discreetly.{" "}
+                              <Link href="/privacy" className="underline underline-offset-2">
+                                Read privacy details
+                              </Link>
+                              .
+                            </p>
                           </div>
 
                           <div className="space-y-2">
