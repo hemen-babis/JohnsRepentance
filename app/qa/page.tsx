@@ -80,7 +80,7 @@ function QnaCard({ qna, onClick }: { qna: QnaMeta; onClick: () => void }) {
     >
       {/* Dark maroon header with Q badge */}
       <div
-        className="relative flex h-20 w-full items-center justify-between px-3.5"
+        className="relative flex h-32 w-full items-center justify-between px-3.5"
         style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
       >
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#9a3412] text-[16px] font-black text-white shadow-inner">
@@ -131,7 +131,7 @@ function CategoryShelf({
           See all <ChevronRight className="h-3.5 w-3.5" />
         </button>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.slice(0, 8).map((q) => (
           <QnaCard key={q.id} qna={q} onClick={() => onOpen(q)} />
         ))}
@@ -336,7 +336,7 @@ export default function QnaPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredQnas.length} result{filteredQnas.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
             </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredQnas.slice(0, visibleCount).map((q) => (
                 <QnaCard key={q.id} qna={q} onClick={() => setOpenQna(q)} />
               ))}
@@ -379,7 +379,7 @@ export default function QnaPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredQnas.length} questions in {activeCategory}
             </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredQnas.slice(0, visibleCount).map((q) => (
                 <QnaCard key={q.id} qna={q} onClick={() => setOpenQna(q)} />
               ))}

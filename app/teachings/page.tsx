@@ -70,7 +70,7 @@ function TeachingCard({ teaching, isRead, onClick }: { teaching: TeachingMeta; i
     >
       {/* Dark maroon card header */}
       <div
-        className="relative flex h-24 w-full items-end p-3"
+        className="relative flex h-36 w-full items-end p-3"
         style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
       >
         {isRead && (
@@ -127,7 +127,7 @@ function CategoryShelf({
           See all <ChevronRight className="h-3.5 w-3.5" />
         </button>
       </div>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.slice(0, 8).map((t) => (
           <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => onOpen(t)} />
         ))}
@@ -347,7 +347,7 @@ export default function TeachingsPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredTeachings.length} result{filteredTeachings.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
             </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredTeachings.slice(0, visibleCount).map((t) => (
                 <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
               ))}
@@ -393,7 +393,7 @@ export default function TeachingsPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredTeachings.length} teachings · {filteredTeachings.filter((t) => readIds.has(t.id)).length} read
             </p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredTeachings.slice(0, visibleCount).map((t) => (
                 <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
               ))}
