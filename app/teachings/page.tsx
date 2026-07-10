@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { Search, X, Check, ChevronRight, ArrowRight } from "lucide-react"
+import { Search, X, Check, ChevronRight, ArrowRight, LogIn } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { teachings, type TeachingMeta, type TeachingCategory } from "./teachings-data"
+import { useAuthProgress } from "@/components/providers/auth-progress-provider"
 
 const CATEGORIES: TeachingCategory[] = [
   "Holy Communion",
@@ -136,7 +137,7 @@ function CategoryShelf({
 }
 
 // ── Reading Modal ──────────────────────────────────────────────────────────────
-function ReadingModal({ teaching, onClose, onRead }: { teaching: TeachingMeta; onClose: () => void; onRead: (id: string) => void }) {
+function ReadingModal({ teaching, onClose, onRead, isSignedIn }: { teaching: TeachingMeta; onClose: () => void; onRead: (id: string) => void; isSignedIn: boolean }) {
   const [fullText, setFullText] = useState<string | null>(null)
   const [scrollPct, setScrollPct] = useState(0)
   const [markedRead, setMarkedRead] = useState(false)
@@ -154,10 +155,10 @@ function ReadingModal({ teaching, onClose, onRead }: { teaching: TeachingMeta; o
     if (!el) return
     const pct = el.scrollTop / (el.scrollHeight - el.clientHeight)
     setScrollPct(Math.min(1, pct))
-    if (pct >= 0.95 && !markedRead) {
+    if (isSignedIn && pct >= 0.95 && !markedRead) {
       setMarkedRead(true); markRead(teaching.id); onRead(teaching.id)
     }
-  }, [markedRead, teaching.id, onRead])
+  }, [isSignedIn, markedRead, teaching.id, onRead])
 
   useEffect(() => { document.body.style.overflow = "hidden"; return () => { document.body.style.overflow = "" } }, [])
 
@@ -202,15 +203,24 @@ function ReadingModal({ teaching, onClose, onRead }: { teaching: TeachingMeta; o
             <div className="whitespace-pre-wrap text-[15px] leading-8 text-stone-800 dark:text-stone-200">{fullText}</div>
           )}
           <div className="mt-10 flex justify-center pb-4">
-            <button
-              onClick={() => { markRead(teaching.id); onRead(teaching.id); onClose() }}
-              className={cn(
-                "flex items-center gap-2 rounded-full px-8 py-3 text-sm font-black shadow-lg transition",
-                markedRead ? "bg-stone-700 text-white" : "bg-[#7c2d12] text-white hover:bg-[#5a1e08]",
-              )}
-            >
-              {markedRead ? <><Check className="h-4 w-4" /> Read</> : "Mark as Read"}
-            </button>
+            {isSignedIn ? (
+              <button
+                onClick={() => { markRead(teaching.id); onRead(teaching.id); onClose() }}
+                className={cn(
+                  "flex items-center gap-2 rounded-full px-8 py-3 text-sm font-black shadow-lg transition",
+                  markedRead ? "bg-stone-700 text-white" : "bg-[#7c2d12] text-white hover:bg-[#5a1e08]",
+                )}
+              >
+                {markedRead ? <><Check className="h-4 w-4" /> Read</> : "Mark as Read"}
+              </button>
+            ) : (
+              <a
+                href="/profile"
+                className="flex items-center gap-2 rounded-full border border-[#9a3412]/40 bg-white/80 px-6 py-2.5 text-sm font-bold text-[#9a3412] shadow transition hover:bg-amber-50 dark:bg-stone-900/80"
+              >
+                <LogIn className="h-4 w-4" /> Sign in to track progress
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -220,17 +230,22 @@ function ReadingModal({ teaching, onClose, onRead }: { teaching: TeachingMeta; o
 
 // ── Main Page ──────────────────────────────────────────────────────────────────
 export default function TeachingsPage() {
+  const { user } = useAuthProgress()
+  const isSignedIn = !!user
   const [activeCategory, setActiveCategory] = useState<TeachingCategory | "All">("All")
   const [searchQuery, setSearchQuery] = useState("")
   const [readIds, setReadIds] = useState<Set<string>>(new Set())
   const [openTeaching, setOpenTeaching] = useState<TeachingMeta | null>(null)
   const [visibleCount, setVisibleCount] = useState(24)
 
-  useEffect(() => { setReadIds(getReadIds()) }, [])
+  useEffect(() => {
+    if (isSignedIn) { setReadIds(getReadIds()) } else { setReadIds(new Set()) }
+  }, [isSignedIn])
 
   const handleRead = useCallback((id: string) => {
+    if (!isSignedIn) return
     setReadIds((prev) => new Set([...prev, id]))
-  }, [])
+  }, [isSignedIn])
 
   const categoryCounts = Object.fromEntries(
     CATEGORIES.map((c) => [c, teachings.filter((t) => t.category === c).length]),
@@ -267,7 +282,7 @@ export default function TeachingsPage() {
           Teachings
         </h1>
         <div className="mt-6 flex flex-col items-center gap-2">
-          {readIds.size > 0 ? (
+          {isSignedIn && readIds.size > 0 ? (
             <>
               <p className="text-[14px] font-medium text-stone-700 dark:text-stone-300">
                 You&apos;ve read <span className="font-black text-[#9a3412]">{readIds.size}</span> of {teachings.length} teachings
@@ -303,18 +318,6 @@ export default function TeachingsPage() {
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 md:px-8">
-
-        {/* ── CONTINUE READING ── */}
-        {recentlyRead.length > 0 && !searchQuery && activeCategory === "All" && (
-          <section className="mb-10">
-            <h2 className="mb-3 text-[17px] font-black text-stone-900 dark:text-stone-100">Continue Reading</h2>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {recentlyRead.map((t) => (
-                <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* ── CATEGORY FILTER TABS ── */}
         {!searchQuery && (
@@ -370,6 +373,17 @@ export default function TeachingsPage() {
                   onOpen={(t) => setOpenTeaching(t)} onSeeAll={() => { setActiveCategory(cat); setVisibleCount(24) }} />
               )
             })}
+            {/* ── CONTINUE READING ── */}
+            {isSignedIn && recentlyRead.length > 0 && (
+              <section className="mt-4 border-t border-stone-200/60 pt-10 dark:border-stone-800/60">
+                <h2 className="mb-3 text-[17px] font-black text-stone-900 dark:text-stone-100">Continue Reading</h2>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {recentlyRead.map((t) => (
+                    <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => setOpenTeaching(t)} />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         )}
 
@@ -397,7 +411,7 @@ export default function TeachingsPage() {
 
       {/* ── MODAL ── */}
       {openTeaching && (
-        <ReadingModal teaching={openTeaching} onClose={() => setOpenTeaching(null)} onRead={handleRead} />
+        <ReadingModal teaching={openTeaching} onClose={() => setOpenTeaching(null)} onRead={handleRead} isSignedIn={isSignedIn} />
       )}
     </div>
   )
