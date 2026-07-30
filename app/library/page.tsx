@@ -1641,30 +1641,31 @@ function CollectionTile({
   return (
     <button
       onClick={() => onOpen(shelf.id)}
-      className="group overflow-hidden rounded-2xl border border-amber-200/70 bg-white/82 text-left shadow-sm transition hover:-translate-y-1 hover:border-orange-300 hover:shadow-xl dark:border-stone-800 dark:bg-stone-900/82 dark:hover:border-orange-800/60"
+      className="group relative min-h-[292px] overflow-hidden rounded-2xl border border-black/12 text-left shadow-[0_2px_12px_rgba(0,0,0,0.18),0_1px_3px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-black/20 hover:shadow-[0_20px_48px_rgba(0,0,0,0.32),0_4px_12px_rgba(0,0,0,0.16)] dark:border-stone-800"
     >
-      <div className="relative h-28 overflow-hidden bg-[#1a0c05]">
-        <div className="absolute inset-0 grid grid-cols-3 gap-1 opacity-86">
+      <div className="absolute inset-0 bg-stone-900">
+        <div className="grid h-full grid-cols-3 gap-1 opacity-92">
           {(covers.length ? covers : items.slice(0, 3)).map((resource) => (
             <div key={resource.id} className="relative min-w-0">
               <ResourceCover resource={resource} />
             </div>
           ))}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a0c05]/86 via-[#1a0c05]/24 to-transparent" />
-        <div className="absolute left-4 top-4 flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/90 text-base font-black text-orange-700 shadow-sm">
-            {shelf.emoji}
-          </span>
-          <span className="jr-badge rounded-full bg-black/45 px-2.5 py-1 text-[9px] font-black text-white backdrop-blur">
-            {items.length} resources
-          </span>
-        </div>
       </div>
-      <div className="p-4">
-        <p className="jr-card-title text-xl font-black leading-tight text-stone-950 dark:text-white">{shelf.title}</p>
-        <p className="mt-2 line-clamp-2 text-xs leading-5 text-stone-600 dark:text-stone-400">{shelf.subtitle}</p>
-        <span className="jr-badge mt-4 inline-flex items-center gap-1 text-[10px] font-black text-orange-700 dark:text-orange-300">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/42 to-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-transparent to-transparent opacity-70" />
+      <div className="absolute left-4 top-4 flex items-center gap-2">
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/92 text-base font-black text-orange-700 shadow ring-1 ring-white/50">
+          {shelf.emoji}
+        </span>
+        <span className="jr-badge rounded-full bg-white/18 px-2.5 py-1 text-[9px] font-black text-white shadow backdrop-blur">
+          {items.length} resources
+        </span>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <p className="jr-card-title text-2xl font-black leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">{shelf.title}</p>
+        <p className="mt-2 line-clamp-2 text-sm font-medium leading-6 text-white/82 drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]">{shelf.subtitle}</p>
+        <span className="jr-badge mt-4 inline-flex items-center gap-1 text-[10px] font-black text-amber-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
           Open shelf
           <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
         </span>
