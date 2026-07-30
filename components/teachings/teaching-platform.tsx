@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import type { ReactNode } from "react"
-import { BookOpen, Bookmark, CheckCircle2, ChevronLeft, ChevronRight, Clock, FileText, Headphones, Library, Play, Search, Sparkles, Video } from "lucide-react"
+import { BookOpen, Bookmark, CheckCircle2, ChevronLeft, ChevronRight, Clock, FileText, Headphones, Library, Search, Sparkles, Video } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
@@ -81,17 +81,17 @@ export function SeasonalHero() {
   )
 }
 
-const formatIcon = (format: Teaching["format"]) => {
-  if (format === "Video") return Video
-  if (format === "Audio") return Headphones
-  if (format === "PDF Guide") return FileText
-  if (format === "Series") return Library
-  if (format === "Q&A") return Search
-  return BookOpen
+const formatIcons = {
+  Video,
+  Audio: Headphones,
+  "PDF Guide": FileText,
+  Series: Library,
+  "Q&A": Search,
+  Article: BookOpen,
 }
 
 export function TeachingCard({ teaching, compact = false }: { teaching: Teaching; compact?: boolean }) {
-  const Icon = formatIcon(teaching.format)
+  const Icon = formatIcons[teaching.format] ?? BookOpen
 
   return (
     <Link href={teaching.href} className="group block h-full">

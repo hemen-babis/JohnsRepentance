@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server"
 const PLAYLIST_ID = "PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1"
 const FALLBACK_ITEMS = [
   {
-    id: "GfBL_vM8eSM",
-    title: "Misbak Playlist Starter",
-    thumb: "https://i.ytimg.com/vi/GfBL_vM8eSM/hqdefault.jpg",
+    id: "XA9Oro8uIuE",
+    title: "ምስባክ - Misbak",
+    thumb: "https://i.ytimg.com/vi/XA9Oro8uIuE/hqdefault.jpg",
   },
 ]
 
@@ -178,30 +178,65 @@ function decodeXml(value: string) {
     .replaceAll("&#39;", "'")
 }
 
-async function fetchPlaylistFeed(q: string) {
-  const feedUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`
-  const res = await fetch(feedUrl, { next: { revalidate: 600 } })
+async function fetchPlaylistFromPage(q: string) {
+  const url = `https://www.youtube.com/playlist?list=${PLAYLIST_ID}`
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "Accept-Language": "en-US,en;q=0.9",
+    },
+    next: { revalidate: 3600 },
+  })
   if (!res.ok) return []
 
-  const xml = await res.text()
-  const entries = xml.match(/<entry>[\s\S]*?<\/entry>/g) ?? []
+  const html = await res.text()
+  const markerIdx = html.indexOf("var ytInitialData = ")
+  if (markerIdx === -1) return []
 
-  const items = entries
-    .map<PlaylistItem | null>((entry) => {
-      const videoId = extractTag(entry, "yt:videoId")
-      const title = decodeXml(extractTag(entry, "title"))
-      if (!videoId || !title) return null
-      return {
-        id: videoId,
-        title,
-        thumb: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-        addedAt: extractTag(entry, "published") || extractTag(entry, "updated"),
-      }
-    })
-    .filter((item): item is PlaylistItem => item !== null)
+  // Extract the JSON object by counting braces
+  const start = markerIdx + "var ytInitialData = ".length
+  let depth = 0
+  let end = start
+  for (let i = start; i < html.length; i++) {
+    if (html[i] === "{") depth++
+    else if (html[i] === "}") { depth--; if (depth === 0) { end = i; break } }
+  }
+  if (end === start) return []
 
-  const filtered = filterItemsByQuery(sortByNewestFirst(items), q)
-  return filtered.slice(0, 24)
+  let data: Record<string, unknown>
+  try {
+    data = JSON.parse(html.slice(start, end + 1)) as Record<string, unknown>
+  } catch {
+    return []
+  }
+
+  // Navigate to items
+  const items = (
+    (data as { contents?: { twoColumnBrowseResultsRenderer?: { tabs?: Array<{ tabRenderer?: { content?: { sectionListRenderer?: { contents?: Array<{ itemSectionRenderer?: { contents?: unknown[] } }> } } } }> } } })
+      ?.contents?.twoColumnBrowseResultsRenderer?.tabs?.[0]?.tabRenderer?.content?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents
+  ) as Array<Record<string, unknown>> | undefined
+
+  if (!items?.length) return []
+
+  const parsed: PlaylistItem[] = []
+  for (const item of items) {
+    const lv = (item.lockupViewModel ?? {}) as Record<string, unknown>
+    const title = (
+      (lv as { metadata?: { lockupMetadataViewModel?: { title?: { content?: string } } } })
+        ?.metadata?.lockupMetadataViewModel?.title?.content ?? ""
+    )
+    const thumbUrl: string = (
+      (lv as { contentImage?: { thumbnailViewModel?: { image?: { sources?: Array<{ url?: string }> } } } })
+        ?.contentImage?.thumbnailViewModel?.image?.sources?.[0]?.url ?? ""
+    )
+    const vidMatch = thumbUrl.match(/\/vi\/([A-Za-z0-9_-]{11})\//)
+    const id = vidMatch?.[1] ?? ""
+    if (id && title) {
+      parsed.push({ id, title, thumb: `https://i.ytimg.com/vi/${id}/hqdefault.jpg` })
+    }
+  }
+
+  return filterItemsByQuery(parsed, q).slice(0, 24)
 }
 
 export async function GET(req: NextRequest) {
@@ -209,11 +244,10 @@ export async function GET(req: NextRequest) {
   const key = process.env.YOUTUBE_API_KEY
 
   if (!key) {
-    const feedItems = await fetchPlaylistFeed(q)
-    if (feedItems.length > 0) {
-      return NextResponse.json({ items: feedItems, source: "youtube-feed-no-key" })
+    const pageItems = await fetchPlaylistFromPage(q)
+    if (pageItems.length > 0) {
+      return NextResponse.json({ items: pageItems, source: "youtube-page-scrape" })
     }
-
     return NextResponse.json({
       items: filterItemsByQuery(FALLBACK_ITEMS, q),
       source: "fallback-no-key",

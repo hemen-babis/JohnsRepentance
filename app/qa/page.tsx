@@ -35,8 +35,6 @@ const CATEGORY_BORDER: Record<QnaCategory, string> = {
   "Spiritual Life":    "border-l-stone-600",
 }
 
-const CROSS_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect x='12' y='3' width='4' height='22' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3Crect x='3' y='11' width='22' height='4' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3C/svg%3E")`
-
 function formatDate(d: string) {
   return new Date(d).toLocaleDateString("en-US", { month: "short", year: "numeric" })
 }
@@ -73,35 +71,41 @@ function QnaCard({ qna, onClick }: { qna: QnaMeta; onClick: () => void }) {
     <button
       onClick={onClick}
       className={cn(
-        "group flex w-full flex-col overflow-hidden rounded-2xl border border-l-4 border-stone-200/80 bg-white text-left shadow-sm transition-all duration-200",
-        "hover:-translate-y-0.5 hover:shadow-lg dark:border-stone-700/60 dark:bg-stone-900",
-        CATEGORY_BORDER[qna.category],
+        "group flex w-full flex-col overflow-hidden rounded-3xl text-left",
+        "shadow-[0_2px_16px_-4px_rgba(120,53,15,0.14)] transition-all duration-300",
+        "hover:-translate-y-1.5 hover:shadow-[0_16px_48px_-8px_rgba(120,53,15,0.26)]",
+        "border border-stone-200/50 dark:border-stone-700/40",
       )}
     >
-      {/* Dark maroon header with Q badge */}
+      {/* Rich gradient header */}
       <div
-        className="relative flex h-20 w-full items-center justify-between px-3.5"
-        style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+        className="relative flex h-36 w-full flex-col justify-between p-4"
+        style={{ background: "linear-gradient(145deg,#2d0900 0%,#1a0700 55%,#3a1000 100%)" }}
       >
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#9a3412] text-[16px] font-black text-white shadow-inner">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(194,99,22,0.22),transparent_65%)]" />
+        <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#f97316] to-[#9a3412] text-[15px] font-black text-white shadow-[0_0_14px_rgba(249,115,22,0.35)]">
           Q
         </div>
-        <span className={cn(
-          "inline-flex rounded-full px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.1em]",
-          CATEGORY_BADGE_BG[qna.category],
-        )}>
-          {qna.category}
-        </span>
+        <div className="relative flex items-end justify-between">
+          <div className="h-px w-8 bg-white/10" />
+          <span className={cn(
+            "inline-flex rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[0.14em] shadow-sm",
+            CATEGORY_BADGE_BG[qna.category],
+          )}>
+            {qna.category}
+          </span>
+        </div>
       </div>
 
-      {/* Question as main content */}
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-3 text-[14px] font-extrabold leading-snug text-stone-900 dark:text-stone-50">
+      {/* Card body */}
+      <div className="flex flex-1 flex-col bg-gradient-to-b from-[#fffcf8] to-[#fff8ef] px-5 pb-4 pt-4 dark:from-stone-900 dark:to-stone-900">
+        <h3 className="line-clamp-2 text-[15px] font-bold leading-snug text-stone-900 dark:text-stone-50">
           {title}
         </h3>
-        <div className="mt-auto flex items-center justify-between pt-3">
-          <span className="flex items-center gap-1 text-[12px] font-bold text-[#9a3412] dark:text-amber-500">
-            Read answer <ArrowRight className="h-3.5 w-3.5" />
+        <div className="mt-auto flex items-center justify-between pt-4">
+          <span className="flex items-center gap-1.5 text-[13px] font-semibold text-[#9a3412] transition-all duration-200 group-hover:gap-2.5 dark:text-amber-500">
+            Read answer
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </span>
           <span className="text-[10px] text-stone-400">{formatDate(qna.date)}</span>
         </div>
@@ -120,23 +124,22 @@ function CategoryShelf({
   onSeeAll: () => void
 }) {
   return (
-    <section className="mb-10">
-      <div className="mb-3 flex items-center gap-3">
-        <h2 className="text-[17px] font-black text-stone-900 dark:text-stone-100">{category}</h2>
-        <span className="text-[11px] text-stone-400">{items.length} questions</span>
+    <section className="mb-14">
+      <div className="mb-5 flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <div className="h-5 w-1 rounded-full bg-gradient-to-b from-[#ea580c] to-[#7c2d12]" />
+          <h2 className="text-[18px] font-black tracking-tight text-stone-900 dark:text-stone-100">{category}</h2>
+        </div>
+        <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[11px] font-semibold text-stone-500 dark:bg-stone-800 dark:text-stone-400">{items.length}</span>
         <button
           onClick={onSeeAll}
-          className="ml-auto flex items-center gap-1 text-[12px] font-bold text-[#9a3412] transition hover:text-orange-800 dark:text-amber-500"
+          className="ml-auto flex items-center gap-1 text-[12px] font-bold text-[#9a3412] transition-all hover:gap-2 hover:text-orange-800 dark:text-amber-500"
         >
           See all <ChevronRight className="h-3.5 w-3.5" />
         </button>
       </div>
-<<<<<<< HEAD
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-=======
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
->>>>>>> 63b027e (final commit)
-        {items.slice(0, 8).map((q) => (
+        {items.slice(0, 6).map((q) => (
           <QnaCard key={q.id} qna={q} onClick={() => onOpen(q)} />
         ))}
       </div>
@@ -171,28 +174,29 @@ function QnaModal({ qna, onClose }: { qna: QnaMeta; onClose: () => void }) {
     >
       <div className="relative flex max-h-[92vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-3xl bg-[#fffaf0] shadow-2xl dark:bg-stone-950 md:rounded-3xl">
 
-        {/* Question block — dark maroon */}
+        {/* Question block */}
         <div
-          className="flex items-start gap-3 p-5"
-          style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+          className="relative flex items-start gap-3 p-5"
+          style={{ background: "linear-gradient(145deg,#2d0900 0%,#1a0700 55%,#3a1000 100%)" }}
         >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#9a3412] text-[15px] font-black text-white">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(194,99,22,0.2),transparent_60%)]" />
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#f97316] to-[#9a3412] text-[15px] font-black text-white shadow-[0_0_14px_rgba(249,115,22,0.3)]">
             Q
           </div>
-          <div className="min-w-0 flex-1">
+          <div className="relative min-w-0 flex-1">
             <span className={cn(
-              "mb-2 inline-flex rounded-full px-2 py-0.5 text-[9px] font-black uppercase tracking-[0.1em]",
+              "mb-2 inline-flex rounded-full px-2.5 py-0.5 text-[9px] font-black uppercase tracking-[0.14em] shadow-sm",
               CATEGORY_BADGE_BG[qna.category],
             )}>
               {qna.category}
             </span>
-            <p className="mt-1 text-[14px] font-bold leading-snug text-white/95">
+            <p className="mt-1.5 text-[15px] font-bold leading-snug text-white/95">
               {parsed?.question ?? title}
             </p>
           </div>
           <button
             onClick={onClose}
-            className="shrink-0 rounded-full p-1.5 text-white/50 transition hover:text-white"
+            className="relative shrink-0 rounded-full p-1.5 text-white/40 transition hover:bg-white/10 hover:text-white"
           >
             <X className="h-5 w-5" />
           </button>
@@ -235,6 +239,25 @@ function QnaModal({ qna, onClose }: { qna: QnaMeta; onClose: () => void }) {
   )
 }
 
+// ── Ask a Question Box ─────────────────────────────────────────────────────────
+function AskBox() {
+  return (
+    <div className="mx-auto mt-8 flex justify-center">
+      <a
+        href="https://t.me/johnsrepentance"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ask a question on John's Repentance Telegram"
+        className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#7c2d12] to-[#9a3412] px-7 py-4 text-sm font-black text-white shadow-[0_12px_28px_-12px_rgba(124,45,18,0.65)] transition hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98]"
+      >
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/14 ring-1 ring-white/20 transition group-hover:bg-white/20">
+          <MessageCircle className="h-5 w-5" />
+        </span>
+        <span>Ask on Telegram</span>
+      </a>
+    </div>
+  )
+}
 // ── Main Page ──────────────────────────────────────────────────────────────────
 export default function QnaPage() {
   const [activeCategory, setActiveCategory] = useState<QnaCategory | "All">("All")
@@ -306,23 +329,25 @@ export default function QnaPage() {
             )}
           </div>
         </div>
+
+        <AskBox />
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-4 md:px-8">
 
         {/* ── CATEGORY FILTER TABS ── */}
         {!searchQuery && (
-          <div className="sticky top-16 z-30 -mx-4 mb-8 overflow-x-auto border-b border-stone-300/50 bg-[#fffaf0]/90 px-4 backdrop-blur-sm dark:border-stone-800/60 dark:bg-stone-950/90 md:-mx-8 md:px-8">
+          <div className="sticky top-16 z-30 -mx-4 mb-10 overflow-x-auto border-b border-stone-200/60 bg-[#fffdf9]/95 px-4 backdrop-blur-md dark:border-stone-800/60 dark:bg-stone-950/95 md:-mx-8 md:px-8">
             <div className="flex gap-2 py-3">
               {(["All", ...CATEGORIES] as const).map((cat) => (
                 <button
                   key={cat}
                   onClick={() => { setActiveCategory(cat); setVisibleCount(24) }}
                   className={cn(
-                    "flex-shrink-0 rounded-full px-4 py-1.5 text-[12px] font-black transition-all",
+                    "flex-shrink-0 rounded-full px-4 py-2 text-[12px] font-bold transition-all duration-200",
                     activeCategory === cat
-                      ? "bg-[#7c2d12] text-white shadow"
-                      : "border border-stone-300/70 bg-white/80 text-stone-600 hover:border-[#9a3412]/50 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-400",
+                      ? "bg-gradient-to-r from-[#9a3412] to-[#7c2d12] text-white shadow-[0_2px_12px_rgba(154,52,18,0.35)]"
+                      : "border border-stone-200/80 bg-white/90 text-stone-600 hover:border-[#9a3412]/30 hover:text-[#9a3412] dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-400",
                   )}
                 >
                   {cat === "All"
@@ -340,11 +365,7 @@ export default function QnaPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredQnas.length} result{filteredQnas.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
             </p>
-<<<<<<< HEAD
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-=======
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
->>>>>>> 63b027e (final commit)
               {filteredQnas.slice(0, visibleCount).map((q) => (
                 <QnaCard key={q.id} qna={q} onClick={() => setOpenQna(q)} />
               ))}
@@ -387,11 +408,7 @@ export default function QnaPage() {
             <p className="mb-4 text-[13px] text-stone-500">
               {filteredQnas.length} questions in {activeCategory}
             </p>
-<<<<<<< HEAD
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-=======
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
->>>>>>> 63b027e (final commit)
               {filteredQnas.slice(0, visibleCount).map((q) => (
                 <QnaCard key={q.id} qna={q} onClick={() => setOpenQna(q)} />
               ))}

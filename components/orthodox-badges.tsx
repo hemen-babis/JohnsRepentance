@@ -13,7 +13,7 @@ const badges = [
     description: "Completed 30 days of Bible reading",
     earned: true,
     progress: 100,
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/logo.png",
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const badges = [
     description: "Completed 10 fasting days",
     earned: true,
     progress: 100,
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/logo.png",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const badges = [
     description: "Prayed daily for 14 consecutive days",
     earned: false,
     progress: 65,
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/logo.png",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const badges = [
     description: "Learned about 15 Ethiopian saints",
     earned: false,
     progress: 40,
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/images/logo.png",
   },
 ]
 

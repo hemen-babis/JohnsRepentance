@@ -11,56 +11,56 @@ const sections = [
   {
     title: "Teachings",
     description: "Explore the doctrines and theology of the Ethiopian Orthodox Church",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/teachings",
     color: "from-amber-500 to-amber-700",
   },
   {
     title: "Repentance",
     description: "Learn about the sacrament of confession and spiritual renewal",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/repentance",
     color: "from-orange-500 to-orange-700",
   },
   {
     title: "Holy Communion",
     description: "Prepare for the sacred mystery of the Eucharist",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/holy-communion",
     color: "from-orange-500 to-orange-700",
   },
   {
     title: "Q&A",
     description: "Find answers to common questions about the Orthodox faith",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/qa",
     color: "from-green-500 to-green-700",
   },
   {
     title: "Youth Corner",
     description: "Resources and activities for young Orthodox believers",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/youth",
     color: "from-amber-500 to-orange-700",
   },
   {
     title: "Deacon's Corner",
     description: "Liturgical resources and training for deacons and chanters",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/deacons",
     color: "from-amber-500 to-red-500",
   },
   {
     title: "Fasting Guide",
     description: "Learn about the spiritual practice of fasting in the Ethiopian Orthodox Tewahedo Church",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/fasting-guide",
     color: "from-amber-500 to-amber-700",
   },
   {
     title: "About Us",
     description: "Learn about our mission and the people behind John's Repentance",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/images/pic1.png",
     link: "/about",
     color: "from-orange-600 to-amber-700",
   },
@@ -104,7 +104,7 @@ export default function ExplorePage() {
                   <Card className="overflow-hidden border-none shadow-lg h-full group">
                     <div className="relative h-48">
                       <Image
-                        src={section.image || "/placeholder.svg"}
+                        src={section.image || "/images/logo.png"}
                         alt={section.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-110"

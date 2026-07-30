@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 export default function CatechumenPage() {
   return (
     <div className="relative overflow-hidden">
-      <div className="pointer-events-none fixed inset-0 bg-[url('/images/parchment-bg.png?v=20260321')] bg-cover bg-center bg-no-repeat dark:bg-[linear-gradient(180deg,#110b08_0%,#1a110c_24%,#22140d_58%,#130c08_100%)]" />
+      <div className="pointer-events-none fixed inset-0 parchment-fixed-bg dark:bg-[linear-gradient(180deg,#110b08_0%,#1a110c_24%,#22140d_58%,#130c08_100%)]" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.045] dark:opacity-[0.03]" />
         <div className="absolute left-1/2 top-0 h-[34rem] w-[70rem] -translate-x-1/2 rounded-full bg-amber-200/35 blur-3xl" />
@@ -30,17 +30,15 @@ export default function CatechumenPage() {
           <div className="mx-auto max-w-6xl">
             <div className="relative overflow-hidden rounded-[2rem] border border-amber-200/55 bg-[rgba(255,248,236,0.42)] p-3 shadow-[0_32px_90px_-48px_rgba(120,53,15,0.28)] backdrop-blur-md dark:border-orange-900/25 dark:bg-[rgba(44,27,18,0.44)] md:p-4">
               <div className="relative overflow-hidden rounded-[1.55rem] border border-black/8 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.38)]">
-                <video
-                  className="aspect-video w-full object-cover bg-black"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                >
-                  <source src="/videos/beautyoforthodoxy.mp4" type="video/mp4" />
-                </video>
+                <iframe
+                  src="https://drive.google.com/file/d/1IPoFMYiN-ojRiXA-MKNAXLRIZ2COcJuU/preview"
+                  title="The Beauty of Orthodox Life"
+                  className="aspect-video w-full bg-black"
+                  allow="autoplay"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  style={{ border: "none" }}
+                />
               </div>
             </div>
           </div>

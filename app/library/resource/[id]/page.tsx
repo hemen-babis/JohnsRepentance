@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowRight, Download, ExternalLink, FileText, Headphones, La
 import mammoth from "mammoth"
 
 import { libraryResources } from "../../library-data"
-import { getResourceHref, relatedResources, seriesForResource, sourceSlug } from "../../library-utils"
+import { displayResourceAlias, getResourceHref, relatedResources, seriesForResource, sourceSlug } from "../../library-utils"
 
 type ResourcePageProps = {
   params: Promise<{ id: string }>
@@ -170,7 +170,7 @@ export default async function LibraryResourcePage({ params }: ResourcePageProps)
   const showOriginalButton = resource.url !== "#" && !isWordDocument(resource.url)
 
   return (
-    <main className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:bg-[url('/images/parchment-bg.png?v=20260321')] md:px-8">
+    <main className="light-mode-adaptive-page min-h-screen parchment-page-bg px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <Link
@@ -212,8 +212,8 @@ export default async function LibraryResourcePage({ params }: ResourcePageProps)
               <h1 className="jr-display text-4xl font-black text-stone-950 dark:text-white md:text-6xl">
                 {resource.title}
               </h1>
-              {resource.aliases?.[0] && (
-                <p className="mt-2 text-sm italic text-stone-500 dark:text-stone-400">{resource.aliases[0]}</p>
+              {displayResourceAlias(resource) && (
+                <p className="mt-2 text-sm italic text-stone-500 dark:text-stone-400">{displayResourceAlias(resource)}</p>
               )}
               <p className="mt-4 max-w-3xl text-sm leading-7 text-stone-600 dark:text-stone-300 md:text-base">
                 {resource.description}

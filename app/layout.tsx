@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     description: "Explore teachings, repentance, and prayers with the Ethiopian Orthodox Tewahedo Church.",
     images: ["/images/banner.jpg"],
   },
-  generator: "v0.app",
 }
 
 export default function RootLayout({

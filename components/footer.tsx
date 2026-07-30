@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Facebook, Instagram, Mail, Phone, MessageSquare, Youtube, ArrowRight } from "lucide-react"
+import { Facebook, Instagram, Mail, Phone, MessageSquare, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -33,7 +33,10 @@ export function Footer() {
       return
     }
 
-    setMessage(`Thank you for subscribing, ${normalizedEmail}!`)
+    const subject = encodeURIComponent("Newsletter subscription")
+    const body = encodeURIComponent(`Please add this email to the John's Repentance newsletter:\n\n${normalizedEmail}`)
+    window.location.href = `mailto:info@johnsrepentance.org?subject=${subject}&body=${body}`
+    setMessage("Your email app should open with a subscription request. Please send the message to finish subscribing.")
     setEmail("")
   }
 
@@ -104,15 +107,6 @@ export function Footer() {
                 aria-label="Telegram"
               >
                 <MessageSquare className="h-4 w-4" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-icon-hover flex items-center justify-center w-9 h-9 rounded-full border border-white/15 bg-white/10 text-amber-50 hover:bg-orange-500/25"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-4 w-4" />
               </a>
             </div>
           </div>

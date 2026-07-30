@@ -267,8 +267,6 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center mb-4">
-                {/* REPLACE: Add your church logo/cross image */}
-                {/* Place in /public/images/logo.png */}
                 <div className="w-12 h-12 mr-3 relative">
                   <Image
                     src="/images/logo.png"

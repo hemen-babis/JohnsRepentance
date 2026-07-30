@@ -89,7 +89,7 @@ export default function RepentancePage() {
   }
 
   return (
-    <main className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat text-stone-900 md:bg-[url('/images/parchment-bg.png?v=20260321')] dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
+    <main className="light-mode-adaptive-page min-h-screen parchment-page-bg text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
 
       {/* ══════════════════════════════════════════════════════════════════
           HERO

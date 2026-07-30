@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import { displayResourceAlias, isKidaseTypeResource } from "./library-utils"
 import {
   defaultFilters,
   filterOptions,
@@ -579,8 +580,7 @@ const SERIES_DEFS: LibrarySeriesDef[] = [
     title: "ቅዳሴ – ዓይነቶች",
     subtitle: "Ethiopian Orthodox anaphoras – all liturgy types",
     aliases: ["kidase types", "anaphora", "qidase mariysam hawariat"],
-    matches: (resource) =>
-      resource.title.startsWith("ቅዳሴ ") && resource.title.length < 40,
+    matches: (resource) => isKidaseTypeResource(resource),
   },
 ]
 
@@ -868,7 +868,7 @@ export default function LibraryPage() {
   }
 
   return (
-    <main className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-fixed bg-cover bg-center text-stone-900 dark:bg-none dark:text-white">
+    <main className="light-mode-adaptive-page min-h-screen parchment-page-bg text-stone-900 dark:bg-none dark:text-white">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative flex min-h-[88vh] flex-col items-center justify-center overflow-hidden px-6 pb-16 pt-20 text-center">
@@ -1637,38 +1637,46 @@ function CollectionTile({
   const items = sortResources(resources.filter(shelf.filter))
   const covers = items.filter((item) => item.coverImage).slice(0, 3)
   if (items.length === 0) return null
+  const accent = shelf.accent ?? "from-amber-700 via-orange-700 to-red-700"
 
   return (
     <button
       onClick={() => onOpen(shelf.id)}
-      className="group relative min-h-[292px] overflow-hidden rounded-2xl border border-black/12 text-left shadow-[0_2px_12px_rgba(0,0,0,0.18),0_1px_3px_rgba(0,0,0,0.12)] transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-black/20 hover:shadow-[0_20px_48px_rgba(0,0,0,0.32),0_4px_12px_rgba(0,0,0,0.16)] dark:border-stone-800"
+      className={cn(
+        "group relative min-h-[292px] overflow-hidden rounded-2xl border border-white/45 text-left text-white shadow-[0_14px_34px_rgba(90,42,12,0.18)] transition duration-200",
+        "hover:-translate-y-1 hover:border-white/70 hover:shadow-[0_24px_54px_rgba(90,42,12,0.28)]",
+        "dark:border-stone-700/80 dark:hover:border-orange-700/70",
+      )}
     >
-      <div className="absolute inset-0 bg-stone-900">
-        <div className="grid h-full grid-cols-3 gap-1 opacity-92">
+      <div className="absolute inset-0 bg-[#1a0c05]">
+        <div className="absolute inset-0 grid grid-cols-3 gap-1 opacity-90 transition duration-300 group-hover:scale-[1.025] group-hover:opacity-100">
           {(covers.length ? covers : items.slice(0, 3)).map((resource) => (
             <div key={resource.id} className="relative min-w-0">
               <ResourceCover resource={resource} />
             </div>
           ))}
         </div>
+        <div className={cn("absolute inset-0 bg-gradient-to-br opacity-72 mix-blend-multiply", accent)} />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(255,245,220,0.34),transparent_30%),linear-gradient(180deg,rgba(48,20,6,0.08)_0%,rgba(48,20,6,0.42)_38%,rgba(48,20,6,0.9)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#2b1005] via-[#4a1907]/76 to-transparent" />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/92 via-black/42 to-black/5" />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-transparent to-transparent opacity-70" />
-      <div className="absolute left-4 top-4 flex items-center gap-2">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/92 text-base font-black text-orange-700 shadow ring-1 ring-white/50">
-          {shelf.emoji}
-        </span>
-        <span className="jr-badge rounded-full bg-white/18 px-2.5 py-1 text-[9px] font-black text-white shadow backdrop-blur">
-          {items.length} resources
-        </span>
-      </div>
-      <div className="absolute inset-x-0 bottom-0 p-5">
-        <p className="jr-card-title text-2xl font-black leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">{shelf.title}</p>
-        <p className="mt-2 line-clamp-2 text-sm font-medium leading-6 text-white/82 drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]">{shelf.subtitle}</p>
-        <span className="jr-badge mt-4 inline-flex items-center gap-1 text-[10px] font-black text-amber-300 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
-          Open shelf
-          <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
-        </span>
+      <div className="relative flex min-h-[292px] flex-col justify-between p-5">
+        <div className="flex items-center gap-2">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 text-base font-black text-orange-700 shadow-sm ring-1 ring-white/70 backdrop-blur-md">
+            {shelf.emoji}
+          </span>
+          <span className="jr-badge rounded-full bg-white/24 px-3 py-1 text-[9px] font-black text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
+            {items.length} resources
+          </span>
+        </div>
+        <div>
+          <p className="jr-card-title max-w-[17rem] text-2xl font-black leading-[1.04] text-white drop-shadow-md">{shelf.title}</p>
+          <p className="mt-3 line-clamp-2 max-w-[28rem] text-[13px] font-semibold leading-5 text-orange-50/86 drop-shadow-sm">{shelf.subtitle}</p>
+          <span className="jr-badge mt-5 inline-flex items-center gap-1.5 rounded-full bg-white/12 px-3 py-1.5 text-[10px] font-black text-white ring-1 ring-white/18 backdrop-blur-sm">
+            Open shelf
+            <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
+          </span>
+        </div>
       </div>
     </button>
   )
@@ -1903,9 +1911,9 @@ function SeriesCard({ item, layout = "shelf" }: { item: Extract<LibraryListItem,
                       <span className="jr-card-title line-clamp-2 text-sm font-black leading-tight text-stone-950 group-hover/volume:text-orange-800 dark:text-white dark:group-hover/volume:text-orange-300">
                         {resource.title}
                       </span>
-                      {resource.aliases?.[0] && (
+                      {displayResourceAlias(resource) && (
                         <span className="mt-0.5 block truncate text-[11px] italic text-stone-500 dark:text-stone-500">
-                          {resource.aliases[0]}
+                          {displayResourceAlias(resource)}
                         </span>
                       )}
                     </span>

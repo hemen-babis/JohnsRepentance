@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, BookOpen, Layers } from "lucide-react"
 
 import { libraryResources } from "../../library-data"
-import { getResourceHref, SERIES_DEFS, sortSeriesVolumes } from "../../library-utils"
+import { displayResourceAlias, getResourceHref, SERIES_DEFS, sortSeriesVolumes } from "../../library-utils"
 
 type SeriesPageProps = {
   params: Promise<{ id: string }>
@@ -35,7 +35,7 @@ export default async function LibrarySeriesPage({ params }: SeriesPageProps) {
   const topics = Array.from(new Set(volumes.flatMap((resource) => resource.topics))).slice(0, 10)
 
   return (
-    <main className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:bg-[url('/images/parchment-bg.png?v=20260321')] md:px-8">
+    <main className="light-mode-adaptive-page min-h-screen parchment-page-bg px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:px-8">
       <div className="mx-auto max-w-6xl">
         <Link
           href="/library"
@@ -72,7 +72,7 @@ export default async function LibrarySeriesPage({ params }: SeriesPageProps) {
                 <Link href={getResourceHref(first)} className="group mt-2 flex items-center justify-between gap-4">
                   <span>
                     <span className="jr-card-title block text-xl font-black text-stone-950 group-hover:text-orange-800 dark:text-white dark:group-hover:text-orange-300">{first.title}</span>
-                    {first.aliases?.[0] && <span className="mt-1 block text-sm italic text-stone-500">{first.aliases[0]}</span>}
+                    {displayResourceAlias(first) && <span className="mt-1 block text-sm italic text-stone-500">{displayResourceAlias(first)}</span>}
                   </span>
                   <ArrowRight className="h-5 w-5 shrink-0 text-orange-700 transition group-hover:translate-x-1 dark:text-orange-300" />
                 </Link>
@@ -90,7 +90,7 @@ export default async function LibrarySeriesPage({ params }: SeriesPageProps) {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="jr-card-title line-clamp-2 text-lg font-black leading-tight text-stone-950 group-hover:text-orange-800 dark:text-white dark:group-hover:text-orange-300">{resource.title}</span>
-                      {resource.aliases?.[0] && <span className="mt-1 block truncate text-sm italic text-stone-500">{resource.aliases[0]}</span>}
+                      {displayResourceAlias(resource) && <span className="mt-1 block truncate text-sm italic text-stone-500">{displayResourceAlias(resource)}</span>}
                     </span>
                     <span className="jr-badge rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-black text-orange-800 dark:bg-orange-950/60 dark:text-orange-300">{resource.type}</span>
                   </Link>

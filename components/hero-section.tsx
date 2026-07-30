@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
@@ -10,31 +9,17 @@ import { Badge } from "@/components/ui/badge"
 import { Sparkles, ArrowRight, ChevronDown } from "lucide-react"
 
 export function HeroSection() {
-  const [videoLoaded, setVideoLoaded] = useState(false)
-
   return (
     <section className="relative h-[90vh] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-orange-950/80 via-amber-900/70 to-orange-800/60 dark:from-stone-950/90 dark:via-orange-950/70 dark:to-amber-950/60 z-10" />
       <div className="absolute inset-0 z-0">
-        {/* REPLACE: Add your hero background video here */}
-        {/* Place your .mp4 file in /public/videos/hero-bg.mp4 */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
-          poster="/placeholder.svg?height=800&width=1200"
-          onLoadedData={() => setVideoLoaded(true)}
-        >
-          <source src="#" type="video/mp4" />
-          <Image
-            src="/placeholder.svg?height=800&width=1200"
-            alt="Ethiopian Orthodox worship"
-            fill
-            className="object-cover"
-          />
-        </video>
+        <Image
+          src="/images/home-hero.png"
+          alt="Repentance and Orthodox faith hero artwork"
+          fill
+          priority
+          className="object-cover"
+        />
       </div>
       <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.08] z-5" />
       {/* Radial glow from top */}
@@ -90,8 +75,8 @@ export function HeroSection() {
               variant="outline"
               className="bg-white/10 backdrop-blur-sm border border-white/25 text-white hover:bg-white/20 group relative overflow-hidden shadow-[0_8px_32px_rgba(255,255,255,0.08)] transition-all duration-300 hover:-translate-y-0.5"
             >
-              <Link href="/ai-spiritual-guide">
-                <span className="relative z-10 font-semibold">Try AI Spiritual Guide</span>
+              <Link href="/catechumen">
+                <span className="relative z-10 font-semibold">Start Catechumen Corner</span>
                 <span className="absolute inset-0 bg-white/15 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
               </Link>
             </Button>

@@ -322,7 +322,7 @@ export default function FastingGuidePage() {
                   <Card className="border-none shadow-lg overflow-hidden">
                     <div className="relative h-64">
                       <Image
-                        src="/placeholder.svg?height=300&width=500"
+                        src="/images/pic2.png"
                         alt="Ethiopian Orthodox Fasting"
                         fill
                         className="object-cover"

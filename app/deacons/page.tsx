@@ -64,12 +64,10 @@ function getNormalizedEthiopicParts(date: Date) {
 }
 
 export default function DeaconsCornerPage() {
-  const collapsedResultCount = 6
   const [misbakQuery, setMisbakQuery] = useState("")
   const [misbakLoading, setMisbakLoading] = useState(false)
-  const [selectedVideoId, setSelectedVideoId] = useState("GfBL_vM8eSM")
   const [misbakResults, setMisbakResults] = useState<Array<{ id: string; title: string; thumb: string }>>([])
-  const [showAllMisbakResults, setShowAllMisbakResults] = useState(false)
+  const [selectedVideoId, setSelectedVideoId] = useState("XA9Oro8uIuE")
   const [readingModalOpen, setReadingModalOpen] = useState(false)
 
   const thisSunday = useMemo(() => getUpcomingSunday(), [])
@@ -86,8 +84,7 @@ export default function DeaconsCornerPage() {
   const thisSundayEth = useMemo(() => getNormalizedEthiopicParts(thisSunday), [thisSunday])
   const thisSundayReadingKey = `${thisSundayEth.month} ${thisSundayEth.day}`
   const thisSundayReading = liturgicalReadings[thisSundayReadingKey] ?? null
-  const visibleMisbakResults = showAllMisbakResults ? misbakResults : misbakResults.slice(0, collapsedResultCount)
-  const hasHiddenMisbakResults = misbakResults.length > collapsedResultCount
+  const PLAYLIST_ID = "PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1"
 
   const searchMisbak = async (query = misbakQuery) => {
     setMisbakLoading(true)
@@ -96,10 +93,7 @@ export default function DeaconsCornerPage() {
       const data = (await res.json()) as { items?: Array<{ id: string; title: string; thumb: string }> }
       const items = data.items ?? []
       setMisbakResults(items)
-      setShowAllMisbakResults(false)
-      if (items.length > 0) {
-        setSelectedVideoId(items[0].id)
-      }
+      if (items.length > 0) setSelectedVideoId(items[0].id)
     } catch {
       setMisbakResults([])
     } finally {
@@ -107,12 +101,10 @@ export default function DeaconsCornerPage() {
     }
   }
 
-  useEffect(() => {
-    void searchMisbak("")
-  }, [])
+  useEffect(() => { void searchMisbak("") }, [])
 
   return (
-    <div className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat md:bg-[url('/images/parchment-bg.png?v=20260321')] dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
+    <div className="light-mode-adaptive-page min-h-screen parchment-page-bg dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
       <section className="relative overflow-hidden px-4 pb-10 pt-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_36%)]" />
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.05]" />
@@ -247,10 +239,10 @@ export default function DeaconsCornerPage() {
                           </p>
                         </div>
 
+                        {/* Search */}
                         <div className="mb-5 rounded-[1.5rem] border border-amber-200/80 bg-white/70 p-4 shadow-[0_12px_32px_-26px_rgba(120,53,15,0.24)]">
                           <p className="mb-2 text-sm text-stone-800">
-                            Search in English (for example, <span className="font-semibold">&quot;tekeneyu&quot;</span>) or in
-                            Amharic to quickly find the Misbak you need.
+                            Search in English (for example, <span className="font-semibold">&quot;tekeneyu&quot;</span>) or in Amharic to find the Misbak you need.
                           </p>
                           <div className="flex flex-col gap-2 md:flex-row">
                             <div className="relative flex-1">
@@ -258,7 +250,7 @@ export default function DeaconsCornerPage() {
                               <Input
                                 value={misbakQuery}
                                 onChange={(e) => setMisbakQuery(e.target.value)}
-                                onKeyDown={(e) => e.key === "Enter" && searchMisbak()}
+                                onKeyDown={(e) => e.key === "Enter" && void searchMisbak()}
                                 placeholder="Search Misbak in this playlist..."
                                 className="border-amber-200 bg-white pl-10 text-stone-900"
                               />
@@ -270,11 +262,12 @@ export default function DeaconsCornerPage() {
                           {misbakLoading && <p className="mt-2 text-xs text-stone-600">Searching playlist...</p>}
                         </div>
 
+                        {/* Player */}
                         <div className="overflow-hidden rounded-[1.5rem] border border-amber-200/80 shadow-[0_18px_44px_-28px_rgba(120,53,15,0.24)]">
                           <div className="aspect-video w-full">
                             <iframe
                               className="h-full w-full"
-                              src={`https://www.youtube.com/embed/${selectedVideoId}?list=PLluUizhBpZV9aKPupYA5X_FMmzAD1UNR1`}
+                              src={`https://www.youtube.com/embed/${selectedVideoId}?list=${PLAYLIST_ID}`}
                               title="Misbak Playlist"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                               referrerPolicy="strict-origin-when-cross-origin"
@@ -283,37 +276,22 @@ export default function DeaconsCornerPage() {
                           </div>
                         </div>
 
+                        {/* Results */}
                         {misbakResults.length > 0 && (
-                          <div className="mt-4">
-                            <div className="grid gap-3 md:grid-cols-2">
-                              {visibleMisbakResults.map((item) => (
-                                <button
-                                  key={item.id}
-                                  type="button"
-                                  onClick={() => {
-                                    setSelectedVideoId(item.id)
-                                  }}
-                                  className="rounded-xl border border-amber-200/80 bg-white/78 p-3 text-left shadow-[0_12px_28px_-24px_rgba(120,53,15,0.24)] hover:bg-white"
-                                >
-                                  <div className="flex items-center gap-3">
-                                    <img src={item.thumb} alt={item.title} className="h-14 w-20 rounded object-cover" />
-                                    <p className="line-clamp-2 text-sm text-stone-800">{item.title}</p>
-                                  </div>
-                                </button>
-                              ))}
-                            </div>
-                            {hasHiddenMisbakResults && (
-                              <div className="mt-4 flex justify-center">
-                                <Button
-                                  type="button"
-                                  variant="outline"
-                                  onClick={() => setShowAllMisbakResults((current) => !current)}
-                                  className="rounded-full border-amber-300 bg-white/85 px-5 text-stone-700 hover:bg-amber-50"
-                                >
-                                  {showAllMisbakResults ? "Collapse Results" : `Show ${misbakResults.length - collapsedResultCount} More`}
-                                </Button>
-                              </div>
-                            )}
+                          <div className="mt-4 grid gap-3 md:grid-cols-2">
+                            {misbakResults.map((item) => (
+                              <button
+                                key={item.id}
+                                type="button"
+                                onClick={() => setSelectedVideoId(item.id)}
+                                className={`rounded-xl border p-3 text-left shadow-sm transition hover:bg-white ${selectedVideoId === item.id ? "border-orange-400 bg-orange-50" : "border-amber-200/80 bg-white/78"}`}
+                              >
+                                <div className="flex items-center gap-3">
+                                  <img src={item.thumb} alt={item.title} className="h-14 w-20 shrink-0 rounded object-cover" />
+                                  <p className="line-clamp-2 text-sm text-stone-800">{item.title}</p>
+                                </div>
+                              </button>
+                            ))}
                           </div>
                         )}
                       </CardContent>

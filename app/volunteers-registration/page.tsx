@@ -30,9 +30,6 @@ export default function VolunteersRegistrationPage() {
             <Card className="border-none shadow-lg overflow-hidden">
               <div className="h-2 bg-gradient-to-r from-orange-500 to-amber-500" />
               <CardHeader className="space-y-3">
-                <p className="text-sm text-orange-700 dark:text-orange-400">
-                  Ethiopian Orthodox Tewahedo Church - Menbere Berhan Kidest Mariam (St. Mary) Cathedral in Toronto
-                </p>
                 <CardTitle className="text-2xl">Volunteers Registration Form</CardTitle>
                 <p className="text-sm text-gray-600 dark:text-gray-300 italic">
                   &quot;Each of you should use whatever gift you have received to serve others, as faithful stewards of
@@ -52,6 +49,23 @@ export default function VolunteersRegistrationPage() {
                       return
                     }
                     setInterestError("")
+                    const subject = encodeURIComponent("Volunteer registration")
+                    const body = encodeURIComponent(
+                      [
+                        "Volunteer registration from John's Repentance:",
+                        "",
+                        `First name: ${formData.get("firstName") || ""}`,
+                        `Last name: ${formData.get("lastName") || ""}`,
+                        `Email: ${formData.get("email") || ""}`,
+                        `Phone: ${formData.get("phone") || ""}`,
+                        `Church member: ${formData.get("churchMember") || ""}`,
+                        `Has confession father: ${formData.get("confessionFather") || ""}`,
+                        `Served before: ${formData.get("servedBefore") || ""}`,
+                        `Previous roles: ${formData.get("roles") || "Not provided"}`,
+                        `Areas of interest: ${selectedInterests.join(", ")}`,
+                      ].join("\n"),
+                    )
+                    window.location.href = `mailto:info@johnsrepentance.org?subject=${subject}&body=${body}`
                     setSubmitted(true)
                   }}
                 >
@@ -168,7 +182,7 @@ export default function VolunteersRegistrationPage() {
 
                   {submitted && (
                     <p className="text-sm text-green-700 dark:text-green-400">
-                      Your volunteer form has been submitted.
+                      Your email app should open with your volunteer registration prepared. Please send that message to finish registration.
                     </p>
                   )}
                 </form>

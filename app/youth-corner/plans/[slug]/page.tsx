@@ -218,7 +218,7 @@ export default function YouthPlanDetailPage({ params }: { params: { slug: string
 
   if (!plan || !currentDay) {
     return (
-      <div className="light-mode-adaptive-page youth-corner-root min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-[length:auto_100%] bg-top bg-repeat-x text-stone-900 md:bg-[url('/images/parchment-bg.png?v=20260321')] md:bg-[length:auto_1400px] md:bg-top md:bg-repeat">
+      <div className="light-mode-adaptive-page youth-corner-root min-h-screen parchment-page-bg text-stone-900">
         <section className="container mx-auto px-4 py-16">
           <div className="rounded-[2rem] border border-[#d8c395] bg-white/94 p-8">
             <h1 className="text-3xl font-black text-[#3d2206]">Plan not found</h1>
@@ -288,7 +288,7 @@ export default function YouthPlanDetailPage({ params }: { params: { slug: string
 
   if (showFoundationLanding && isPrayerFoundationPlan) {
     return (
-      <div className="light-mode-adaptive-page youth-corner-root min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_26%),url('/images/mobile-parch.png?v=20260321')] bg-[length:auto_100%] bg-top bg-repeat-x text-stone-900 md:bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.14),transparent_24%),url('/images/parchment-bg.png?v=20260321')] md:bg-[length:auto_1400px] md:bg-top md:bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
+      <div className="light-mode-adaptive-page youth-corner-root min-h-screen parchment-page-bg-with-glow text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
         <section className="container mx-auto px-4 py-6 md:py-10">
           <Link href="/youth-corner/plans" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8b6a2b]">
             <ArrowLeft className="h-4 w-4" />
@@ -374,7 +374,7 @@ export default function YouthPlanDetailPage({ params }: { params: { slug: string
   }
 
   return (
-    <div className="light-mode-adaptive-page youth-corner-root min-h-screen bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.16),transparent_26%),url('/images/mobile-parch.png?v=20260321')] bg-[length:auto_100%] bg-top bg-repeat-x text-stone-900 md:bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.14),transparent_24%),url('/images/parchment-bg.png?v=20260321')] md:bg-[length:auto_1400px] md:bg-top md:bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
+    <div className="light-mode-adaptive-page youth-corner-root min-h-screen parchment-page-bg-with-glow text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
       <section className="container mx-auto px-4 py-6 md:py-10">
         <Link href="/youth-corner/plans" className="inline-flex items-center gap-2 text-sm font-semibold text-[#8b6a2b]">
           <ArrowLeft className="h-4 w-4" />

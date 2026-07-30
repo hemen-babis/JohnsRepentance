@@ -13,7 +13,7 @@ const saints = [
     title: "One leg, all faith!",
     description:
       "Known for standing on one leg for 29 years in prayer, St. Tekle Haymanot is one of Ethiopia's most revered saints. His dedication to prayer and fasting inspires us to persevere in our spiritual disciplines.",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/images/logo.png",
     feastDay: "Nehassie 24 (August 30)",
   },
 ]
@@ -48,7 +48,7 @@ export function DailySaintVibeCheck() {
       <CardContent className="p-0">
         <div className="grid md:grid-cols-2">
           <div className="relative h-[300px] md:h-auto">
-            <Image src={saint.image || "/placeholder.svg"} alt={saint.name} fill className="object-cover" />
+            <Image src={saint.image || "/images/logo.png"} alt={saint.name} fill className="object-cover" />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 md:hidden">
               <h3 className="text-xl font-bold text-white">{saint.name}</h3>
               <p className="text-white/90">{saint.title}</p>

@@ -56,12 +56,10 @@ export default function AboutPage() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp}>
-              {/* REPLACE: Add your about section image here */}
-              {/* Place in /public/images/about-church.jpg */}
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl image-hover-zoom group">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  alt="Ethiopian Orthodox Church"
+                  src="/images/pic1.png"
+                  alt="John's Repentance Orthodox teaching artwork"
                   fill
                   className="object-cover"
                 />
@@ -166,23 +164,21 @@ export default function AboutPage() {
             viewport={{ once: true }}
           >
             {[
-              { name: "Abune Ermias", role: "Bishop", quote: "Faith is your strength\u2014own it!" },
+              { name: "Abune Ermias", role: "Bishop", quote: "Faith is your strength. Own it!" },
               { name: "Like Hiruyan Tserse Abebe", role: "Priest and Scholar", quote: "Knowledge without practice is like a tree without fruit." },
               { name: "Aba Wolde Giorgis", role: "Monk", quote: "Prayer is the breath of the soul." },
               { name: "Memeher Simur Getenet", role: "Priest and Scholar", quote: "Repentance is the door to salvation." },
             ].map((leader) => (
               <motion.div key={leader.name} variants={fadeInUp}>
                 <Card className="border-none shadow-lg overflow-hidden text-center card-hover-lift card-inner-glow group">
-                  {/* REPLACE: Add leader photos */}
-                  {/* Place in /public/images/leaders/[name].jpg */}
-                  <div className="relative h-64 image-hover-zoom">
+                  <div className="relative h-64 image-hover-zoom bg-gradient-to-br from-orange-50 to-amber-100 dark:from-stone-900 dark:to-orange-950">
                     <Image
-                      src="/placeholder.svg?height=300&width=300"
-                      alt={leader.name}
+                      src="/images/logo.png"
+                      alt=""
                       fill
-                      className="object-cover"
+                      className="object-contain p-10"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-lg group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">

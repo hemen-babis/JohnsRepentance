@@ -76,7 +76,7 @@ export function AccountMenu({ embedded = false }: { embedded?: boolean }) {
   if (!authEnabled) {
     return (
       <Button variant="outline" size="sm" title="Configure Firebase env vars to enable accounts">
-        Guest Mode
+        Local Progress
       </Button>
     )
   }

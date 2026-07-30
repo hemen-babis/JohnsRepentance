@@ -38,9 +38,6 @@ const CATEGORY_BORDER: Record<TeachingCategory, string> = {
   "Spiritual Life":  "border-l-stone-600",
 }
 
-// Subtle cross-grid SVG for card headers
-const CROSS_BG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Crect x='12' y='3' width='4' height='22' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3Crect x='3' y='11' width='22' height='4' rx='1' fill='rgba(255,255,255,0.065)'/%3E%3C/svg%3E")`
-
 const STORAGE_KEY = "jr_teachings_read"
 
 function getReadIds(): Set<string> {
@@ -63,42 +60,49 @@ function TeachingCard({ teaching, isRead, onClick }: { teaching: TeachingMeta; i
     <button
       onClick={onClick}
       className={cn(
-        "group flex w-full flex-col overflow-hidden rounded-2xl border border-l-4 border-stone-200/80 bg-white text-left shadow-sm transition-all duration-200",
-        "hover:-translate-y-0.5 hover:shadow-lg dark:border-stone-700/60 dark:bg-stone-900",
-        CATEGORY_BORDER[teaching.category],
+        "group flex w-full flex-col overflow-hidden rounded-3xl text-left",
+        "shadow-[0_2px_16px_-4px_rgba(120,53,15,0.14)] transition-all duration-300",
+        "hover:-translate-y-1.5 hover:shadow-[0_16px_48px_-8px_rgba(120,53,15,0.26)]",
+        "border border-stone-200/50 dark:border-stone-700/40",
       )}
     >
-      {/* Dark maroon card header */}
+      {/* Rich gradient header */}
       <div
-        className="relative flex h-36 w-full items-end p-3"
-        style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+        className="relative flex h-36 w-full flex-col justify-between p-4"
+        style={{ background: "linear-gradient(145deg,#2d0900 0%,#1a0700 55%,#3a1000 100%)" }}
       >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(194,99,22,0.22),transparent_65%)]" />
         {isRead && (
-          <span className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-            <Check className="h-3 w-3 text-white" />
-          </span>
+          <div className="relative ml-auto flex h-6 w-6 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/20">
+            <Check className="h-3.5 w-3.5 text-white" />
+          </div>
         )}
-        <span
-          className={cn(
-            "inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.1em]",
-            CATEGORY_BADGE_BG[teaching.category],
-          )}
-        >
-          {teaching.category}
-        </span>
+        {!isRead && <div />}
+        <div className="relative flex items-end justify-between">
+          <div className="h-px w-8 bg-white/10" />
+          <span
+            className={cn(
+              "inline-flex rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[0.14em] shadow-sm",
+              CATEGORY_BADGE_BG[teaching.category],
+            )}
+          >
+            {teaching.category}
+          </span>
+        </div>
       </div>
 
       {/* Card body */}
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <h3 className="line-clamp-2 text-[15px] font-extrabold leading-snug text-stone-900 dark:text-stone-50">
+      <div className="flex flex-1 flex-col gap-2 bg-gradient-to-b from-[#fffcf8] to-[#fff8ef] px-5 pb-4 pt-4 dark:from-stone-900 dark:to-stone-900">
+        <h3 className="line-clamp-2 text-[15px] font-bold leading-snug text-stone-900 dark:text-stone-50">
           {teaching.title}
         </h3>
         <p className="line-clamp-2 text-[13px] leading-relaxed text-stone-500 dark:text-stone-400">
           {teaching.preview}
         </p>
-        <div className="mt-auto flex items-center justify-between pt-1">
-          <span className="flex items-center gap-1 text-[12px] font-bold text-[#9a3412] dark:text-amber-500">
-            {isRead ? "Read again" : "Read now"} <ArrowRight className="h-3.5 w-3.5" />
+        <div className="mt-auto flex items-center justify-between pt-2">
+          <span className="flex items-center gap-1.5 text-[13px] font-semibold text-[#9a3412] transition-all duration-200 group-hover:gap-2.5 dark:text-amber-500">
+            {isRead ? "Read again" : "Read now"}
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
           </span>
           <span className="text-[10px] text-stone-400">{formatDate(teaching.date)}</span>
         </div>
@@ -116,19 +120,24 @@ function CategoryShelf({
 }) {
   const readCount = items.filter((t) => readIds.has(t.id)).length
   return (
-    <section className="mb-10">
-      <div className="mb-3 flex items-center gap-3">
-        <h2 className="text-[17px] font-black text-stone-900 dark:text-stone-100">{category}</h2>
-        <span className="text-[11px] text-stone-400">{items.length} · {readCount} read</span>
+    <section className="mb-14">
+      <div className="mb-5 flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <div className="h-5 w-1 rounded-full bg-gradient-to-b from-[#ea580c] to-[#7c2d12]" />
+          <h2 className="text-[18px] font-black tracking-tight text-stone-900 dark:text-stone-100">{category}</h2>
+        </div>
+        <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[11px] font-semibold text-stone-500 dark:bg-stone-800 dark:text-stone-400">
+          {readCount > 0 ? `${readCount}/${items.length}` : items.length}
+        </span>
         <button
           onClick={onSeeAll}
-          className="ml-auto flex items-center gap-1 text-[12px] font-bold text-[#9a3412] transition hover:text-orange-800 dark:text-amber-500"
+          className="ml-auto flex items-center gap-1 text-[12px] font-bold text-[#9a3412] transition-all hover:gap-2 hover:text-orange-800 dark:text-amber-500"
         >
           See all <ChevronRight className="h-3.5 w-3.5" />
         </button>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {items.slice(0, 8).map((t) => (
+        {items.slice(0, 6).map((t) => (
           <TeachingCard key={t.id} teaching={t} isRead={readIds.has(t.id)} onClick={() => onOpen(t)} />
         ))}
       </div>
@@ -172,18 +181,19 @@ function ReadingModal({ teaching, onClose, onRead, isSignedIn }: { teaching: Tea
         <div className="h-1 w-full bg-stone-200 dark:bg-stone-800">
           <div className="h-full bg-[#9a3412] transition-all duration-150" style={{ width: `${scrollPct * 100}%` }} />
         </div>
-        {/* Dark header */}
+        {/* Rich gradient header */}
         <div
-          className="flex items-end gap-3 p-4"
-          style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
+          className="relative flex items-end gap-3 p-4"
+          style={{ background: "linear-gradient(145deg,#2d0900 0%,#1a0700 55%,#3a1000 100%)" }}
         >
-          <div className="flex-1">
-            <span className={cn("inline-flex rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.1em]", CATEGORY_BADGE_BG[teaching.category])}>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(194,99,22,0.2),transparent_60%)]" />
+          <div className="relative flex-1">
+            <span className={cn("inline-flex rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-[0.14em] shadow-sm", CATEGORY_BADGE_BG[teaching.category])}>
               {teaching.category}
             </span>
-            <p className="mt-1.5 text-[11px] text-white/50">{formatDate(teaching.date)}</p>
+            <p className="mt-1.5 text-[11px] text-white/40">{formatDate(teaching.date)}</p>
           </div>
-          <button onClick={onClose} className="rounded-full p-1.5 text-white/60 transition hover:text-white">
+          <button onClick={onClose} className="relative rounded-full p-1.5 text-white/40 transition hover:bg-white/10 hover:text-white">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -321,17 +331,17 @@ export default function TeachingsPage() {
 
         {/* ── CATEGORY FILTER TABS ── */}
         {!searchQuery && (
-          <div className="sticky top-16 z-30 -mx-4 mb-8 overflow-x-auto border-b border-stone-300/50 bg-[#fffaf0]/90 px-4 backdrop-blur-sm dark:border-stone-800/60 dark:bg-stone-950/90 md:-mx-8 md:px-8">
+          <div className="sticky top-16 z-30 -mx-4 mb-10 overflow-x-auto border-b border-stone-200/60 bg-[#fffdf9]/95 px-4 backdrop-blur-md dark:border-stone-800/60 dark:bg-stone-950/95 md:-mx-8 md:px-8">
             <div className="flex gap-2 py-3">
               {(["All", ...CATEGORIES] as const).map((cat) => (
                 <button
                   key={cat}
                   onClick={() => { setActiveCategory(cat); setVisibleCount(24) }}
                   className={cn(
-                    "flex-shrink-0 rounded-full px-4 py-1.5 text-[12px] font-black transition-all",
+                    "flex-shrink-0 rounded-full px-4 py-2 text-[12px] font-bold transition-all duration-200",
                     activeCategory === cat
-                      ? "bg-[#7c2d12] text-white shadow"
-                      : "border border-stone-300/70 bg-white/80 text-stone-600 hover:border-[#9a3412]/50 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-400",
+                      ? "bg-gradient-to-r from-[#9a3412] to-[#7c2d12] text-white shadow-[0_2px_12px_rgba(154,52,18,0.35)]"
+                      : "border border-stone-200/80 bg-white/90 text-stone-600 hover:border-[#9a3412]/30 hover:text-[#9a3412] dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-400",
                   )}
                 >
                   {cat === "All" ? `All (${teachings.length})` : `${cat} (${categoryCounts[cat as TeachingCategory]})`}

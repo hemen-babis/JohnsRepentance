@@ -1,1 +1,5 @@
-export { default } from "../youth-corner/page"
+import { redirect } from "next/navigation"
+
+export default function YouthPage() {
+  redirect("/youth-corner")
+}

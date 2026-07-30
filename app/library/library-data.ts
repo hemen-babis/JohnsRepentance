@@ -2318,14 +2318,57 @@ const rawLibraryResources: LibraryResource[] = [
   ...localBookResources,
 ]
 
-export const libraryResources: LibraryResource[] = rawLibraryResources.filter((resource) => {
+function cleanResourceKey(resource: LibraryResource) {
+  return resource.title
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\.pdf\s*thumb\b/g, "")
+    .replace(/\.pdf_thumb\.jpg\b/g, "")
+    .replace(/\bpdf\s*thumb\b/g, "")
+    .replace(/\bpdf_thumb\b/g, "")
+    .replace(/\.(pdf|jpg|jpeg|png|docx?|pptx?)\b/g, "")
+    .replace(/[^a-z0-9\u1200-\u137f]+/g, " ")
+    .trim()
+}
+
+function isThumbnailArtifact(resource: LibraryResource) {
+  const haystack = `${resource.id} ${resource.title} ${resource.description} ${resource.aliases?.join(" ") ?? ""}`.toLowerCase()
+  return haystack.includes("pdf_thumb.jpg") || haystack.includes(".pdf thumb") || haystack.includes("pdf-thumb")
+}
+
+function resourcePreference(resource: LibraryResource) {
+  let score = 0
+  if (resource.source === "Ethiopian Orthodox Resource") score += 20
+  if (resource.type === "PDF") score += 12
+  if (resource.coverImage) score += 4
+  if (resource.source === "John's Repentance Google Drive") score -= 4
+  if (resource.type === "Book") score -= 2
+  return score
+}
+
+const visibleLibraryResources = rawLibraryResources.filter((resource) => {
   const haystack = `${resource.title} ${resource.description} ${resource.source} ${resource.url}`
   return (
     allowedChurches.has(resource.church) &&
     allowedLibraryTypes.has(resource.type) &&
     !isHiddenLibraryResource(resource) &&
     !excludedResourceIds.has(resource.id) &&
+    !isThumbnailArtifact(resource) &&
     !resource.url.toLowerCase().endsWith(".epub") &&
     !nonOrientalSignals.some((signal) => haystack.includes(signal))
   )
 })
+
+export const libraryResources: LibraryResource[] = Array.from(
+  visibleLibraryResources
+    .reduce((resourcesByTitle, resource) => {
+      const key = cleanResourceKey(resource)
+      const existing = resourcesByTitle.get(key)
+      if (!existing || resourcePreference(resource) > resourcePreference(existing)) {
+        resourcesByTitle.set(key, resource)
+      }
+      return resourcesByTitle
+    }, new Map<string, LibraryResource>())
+    .values(),
+)

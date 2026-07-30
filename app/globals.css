@@ -75,10 +75,10 @@
 
   html:not(.dark) body {
     background-image: url('/images/parchment-bg.png?v=20260321');
-    background-size: cover;
+    background-size: auto;
     background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-position: top center;
+    background-repeat: repeat;
   }
 
   .dark h1,
@@ -815,13 +815,50 @@ html:not(.dark) main > section[class*="bg-gradient-to-"] {
   background: transparent !important;
 }
 
+.parchment-page-bg {
+  background-image: url('/images/mobile-parch.png?v=20260321');
+  background-size: auto;
+  background-position: top center;
+  background-repeat: repeat;
+}
+
+@media (min-width: 768px) {
+  .parchment-page-bg {
+    background-image: url('/images/parchment-bg.png?v=20260321');
+  }
+}
+
+.parchment-fixed-bg {
+  background-image: url('/images/parchment-bg.png?v=20260321');
+  background-size: auto;
+  background-position: top center;
+  background-repeat: repeat;
+}
+
+.parchment-page-bg-with-glow {
+  background-image:
+    radial-gradient(circle at top, rgba(251, 191, 36, 0.16), transparent 26%),
+    url('/images/mobile-parch.png?v=20260321');
+  background-size: auto, auto;
+  background-position: top center, top center;
+  background-repeat: no-repeat, repeat;
+}
+
+@media (min-width: 768px) {
+  .parchment-page-bg-with-glow {
+    background-image:
+      radial-gradient(circle at top, rgba(251, 191, 36, 0.14), transparent 24%),
+      url('/images/parchment-bg.png?v=20260321');
+  }
+}
+
 /* ========================================
    YOUTH CORNER PAGE
    ======================================== */
 
-/* Page background: orange gradient in light, dark brown gradient in dark */
+/* Page background: parchment image in light, dark brown gradient in dark */
 .youth-corner-root {
-  background: linear-gradient(to bottom, #fff3e0 0%, #fff8f0 35%, #fffaf5 70%, #fff7ee 100%);
+  background-color: hsl(var(--background));
 }
 
 .dark .youth-corner-root {

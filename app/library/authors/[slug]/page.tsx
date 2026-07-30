@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, BookOpen, Layers } from "lucide-react"
 
 import { libraryResources } from "../../library-data"
-import { getResourceHref, sourceSlug, sortResources } from "../../library-utils"
+import { displayResourceAlias, getResourceHref, sourceSlug, sortResources } from "../../library-utils"
 
 type AuthorPageProps = {
   params: Promise<{ slug: string }>
@@ -47,7 +47,7 @@ export default async function LibraryAuthorPage({ params }: AuthorPageProps) {
   const topics = Array.from(new Set(resources.flatMap((resource) => resource.topics))).slice(0, 14)
 
   return (
-    <main className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:bg-[url('/images/parchment-bg.png?v=20260321')] md:px-8">
+    <main className="light-mode-adaptive-page min-h-screen parchment-page-bg px-4 py-6 text-stone-900 dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#1e1208] dark:to-[#140d09] dark:text-white md:px-8">
       <div className="mx-auto max-w-7xl">
         <Link
           href="/library"
@@ -112,7 +112,7 @@ export default async function LibraryAuthorPage({ params }: AuthorPageProps) {
               <span>
                 <span className="jr-badge rounded-full bg-orange-100 px-2.5 py-1 text-[9px] font-black text-orange-800 dark:bg-orange-950/60 dark:text-orange-300">{resource.type}</span>
                 <h2 className="jr-card-title mt-3 line-clamp-3 text-lg font-black leading-tight text-stone-950 group-hover:text-orange-800 dark:text-white dark:group-hover:text-orange-300">{resource.title}</h2>
-                {resource.aliases?.[0] && <span className="mt-1 block truncate text-xs italic text-stone-500">{resource.aliases[0]}</span>}
+                {displayResourceAlias(resource) && <span className="mt-1 block truncate text-xs italic text-stone-500">{displayResourceAlias(resource)}</span>}
               </span>
               <span className="mt-4 inline-flex items-center gap-1 text-xs font-black text-orange-700 dark:text-orange-300">
                 Open resource

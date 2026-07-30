@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { GeezHeading } from "@/components/geez-heading"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
-import { CommunionCalendarSystem } from "@/components/holy-communion"
+
 import { ScrollToTop } from "@/components/scroll-to-top"
 
 type StageId = "mystery" | "need" | "path" | "examination" | "confession"
@@ -555,7 +555,7 @@ export default function CommunionJourneyPage() {
   }
 
   return (
-    <div className="light-mode-adaptive-page min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-cover bg-center bg-repeat md:bg-[url('/images/parchment-bg.png?v=20260321')] dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
+    <div className="light-mode-adaptive-page min-h-screen parchment-page-bg dark:bg-none dark:bg-gradient-to-b dark:from-stone-950 dark:to-orange-950/20">
       <section className="relative overflow-hidden py-20 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,214,153,0.34),transparent_28%),radial-gradient(circle_at_80%_15%,rgba(226,145,59,0.16),transparent_26%),linear-gradient(180deg,rgba(255,248,238,0.22),transparent_62%)] dark:from-orange-900/20 dark:to-amber-900/20" />
         <div className="absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] opacity-[0.045]" />
@@ -692,7 +692,25 @@ export default function CommunionJourneyPage() {
               }}
             />
 
-            <CommunionCalendarSystem />
+            {/* Communion Planner link */}
+            <div className="mt-10 overflow-hidden rounded-[2rem] border border-[#d8c395] bg-[linear-gradient(160deg,#fffcf5_0%,#fff4e0_55%,#fdf0d8_100%)] shadow-[0_30px_80px_-40px_rgba(120,53,15,0.32)] dark:border-amber-500/20 dark:bg-[linear-gradient(160deg,#1a0f07,#180e07)]">
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#7c2d12] via-[#d4a84f] to-[#0f766e]" />
+              <div className="flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#8b6a2b] dark:text-amber-500">Communion Planner</p>
+                  <h3 className="mt-2 text-2xl font-black text-[#3d2206] dark:text-[#f3e4cd]" style={{ fontFamily: "'Iowan Old Style', Georgia, serif" }}>
+                    Plan your next Communion
+                  </h3>
+                  <p className="mt-2 max-w-lg text-sm leading-6 text-stone-600 dark:text-stone-400">
+                    Set a 3-day preparation window, track your fast timer, manage cycle rest periods, log communion history, and see your daily guidance — all in one place.
+                  </p>
+                </div>
+                <Link href="/holy-communion/calendar" className="shrink-0 rounded-full bg-gradient-to-r from-[#c86224] to-[#e2a13c] px-6 py-3 text-sm font-bold text-white shadow-[0_14px_30px_-18px_rgba(200,98,36,0.5)] hover:brightness-105 transition inline-flex items-center gap-2">
+                  Open Planner
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

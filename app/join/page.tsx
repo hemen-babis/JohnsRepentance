@@ -36,7 +36,20 @@ export default function JoinPage() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // In a real application, this would submit the form data to a server
+    const subject = encodeURIComponent(`Join request: ${formData.interest}`)
+    const body = encodeURIComponent(
+      [
+        "New join/contact request from John's Repentance:",
+        "",
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone || "Not provided"}`,
+        `Interest: ${formData.interest}`,
+        `Message: ${formData.message || "Not provided"}`,
+        `How they heard about us: ${formData.howHeard || "Not provided"}`,
+      ].join("\n"),
+    )
+    window.location.href = `mailto:info@johnsrepentance.org?subject=${subject}&body=${body}`
     setFormStep(2) // Move to success step
   }
 
@@ -74,7 +87,7 @@ export default function JoinPage() {
           >
             <GeezHeading className="mb-4 text-orange-700 dark:text-amber-400">ተቀላቀል</GeezHeading>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Join the <AnimatedGradientText text="Faith Vibe" />
+              Join the <AnimatedGradientText text="Faith Journey" />
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Connect with our Ethiopian Orthodox community and grow in your faith journey
@@ -357,8 +370,8 @@ export default function JoinPage() {
                           </div>
                           <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">Thank You!</h3>
                           <p className="text-gray-600 dark:text-gray-300 mb-6">
-                            We've received your information and will be in touch soon. We look forward to welcoming you
-                            to our community!
+                            Your email app should open with your request prepared. Please send that message so the
+                            ministry team can follow up.
                           </p>
                           <Button
                             asChild

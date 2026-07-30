@@ -127,6 +127,12 @@ export function ConfessionPrepGuide({
   const activeQuestionIsComplete =
     activeQuestionResponse === "not_really" || (activeQuestionResponse === "yes" && activeQuestionDetail.length > 0)
 
+  useEffect(() => {
+    return () => {
+      if (holdFrameRef.current) cancelAnimationFrame(holdFrameRef.current)
+    }
+  }, [])
+
   if (!activeQuestion) {
     return null
   }
@@ -259,12 +265,6 @@ export function ConfessionPrepGuide({
     }
     holdFrameRef.current = requestAnimationFrame(tick)
   }
-
-  useEffect(() => {
-    return () => {
-      if (holdFrameRef.current) cancelAnimationFrame(holdFrameRef.current)
-    }
-  }, [])
 
   return (
     <section className="space-y-5">

@@ -52,7 +52,39 @@ export const SERIES_DEFS: LibrarySeriesDef[] = [
       return text.includes("homilies on") && (text.includes("chrysostom") || resource.source === "St. John Chrysostom")
     },
   },
+  {
+    id: "series-kidase-types",
+    title: "ቅዳሴ – ዓይነቶች",
+    subtitle: "Ethiopian Orthodox anaphoras – all liturgy types",
+    aliases: ["kidase types", "anaphora", "qidase", "kidassie"],
+    matches: (resource) => isKidaseTypeResource(resource),
+  },
 ]
+
+export function isKidaseTypeResource(resource: LibraryResource) {
+  const title = resource.title.trim()
+  const normalizedTitle = title.toLowerCase()
+  const artifactText = `${resource.id} ${title} ${resource.aliases?.join(" ") ?? ""}`.toLowerCase()
+  if (title.includes(".pdf") || artifactText.includes("pdf_thumb") || artifactText.includes("pdf thumb")) return false
+  if (title.includes("ስለ ") || title.includes("ስርዓተ") || title.includes("ሥርዓተ")) return false
+  if (title === "ቅዳሴ") return false
+
+  return (
+    /^ቅዳሴ\s+\S+/.test(title) ||
+    /\bkidassie\s+\S+/i.test(normalizedTitle) ||
+    /\bqidase\s+\S+/i.test(normalizedTitle) ||
+    /\bqdase\s+\S+/i.test(normalizedTitle)
+  )
+}
+
+export function displayResourceAlias(resource: Pick<LibraryResource, "aliases">) {
+  return resource.aliases?.find((alias) => {
+    const text = alias.toLowerCase()
+    if (text.includes("thumb") || text.includes(".jpg")) return false
+    if (/[\u1200-\u137f]/.test(alias) && /[a-z]/i.test(alias)) return false
+    return true
+  })
+}
 
 export function searchableText(resource: LibraryResource) {
   return [resource.title, resource.description, resource.church, resource.source, resource.purpose, resource.type, resource.language, resource.topics.join(" "), resource.aliases?.join(" ")]

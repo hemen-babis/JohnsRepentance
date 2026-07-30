@@ -180,7 +180,7 @@ export function getDayState(date: Date, store: RhythmStore): RhythmState {
 }
 
 export function isChecklistComplete(cl: PrepChecklist): boolean {
-  return cl.fasting && cl.prayer && cl.forgiveness
+  return cl.confession && cl.fasting && cl.prayer && cl.forgiveness
 }
 
 // ─── Communion helpers ────────────────────────────────────────────────────────

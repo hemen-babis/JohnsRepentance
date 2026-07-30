@@ -1,116 +1,143 @@
 "use client"
 
 import { useState } from "react"
-import { PlayCircle } from "lucide-react"
-
-import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { PlayCircle, X } from "lucide-react"
 import { videoItems, type VideoCategory, getYouTubeThumbnail } from "@/lib/youth-corner-data"
 
+const serif = "'Iowan Old Style', 'Palatino Linotype', Georgia, serif"
+
+const CATEGORIES: VideoCategory[] = ["Featured Teachings", "Prayer & Meditation", "Church Life & Youth Witness"]
+
 export default function YouthCornerShortsPage() {
-  const [activeVideoCategory, setActiveVideoCategory] = useState<VideoCategory>("Featured Teachings")
-  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null)
-  const filteredVideos = videoItems.filter((video) => video.category === activeVideoCategory)
-  const selectedVideo = videoItems.find((video) => video.id === selectedVideoId) ?? null
+  const [activeCategory, setActiveCategory] = useState<VideoCategory>("Featured Teachings")
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+
+  const filtered = videoItems.filter((v) => v.category === activeCategory)
+  const selected = videoItems.find((v) => v.id === selectedId) ?? null
 
   return (
-    <div className="light-mode-adaptive-page youth-corner-root min-h-screen bg-[url('/images/mobile-parch.png?v=20260321')] bg-[length:auto_100%] bg-top bg-repeat-x text-stone-900 md:bg-[url('/images/parchment-bg.png?v=20260321')] md:bg-[length:auto_1400px] md:bg-top md:bg-repeat dark:bg-none dark:bg-gradient-to-b dark:from-[#120d09] dark:via-[#24140d] dark:to-[#140d09]">
-      <section className="container mx-auto px-4 py-10 md:py-14">
-        <div className="mb-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7a6437]">Youth Corner</p>
-          <h1 className="mt-3 text-4xl font-black tracking-tight text-[#3d2206] dark:text-white md:text-5xl">Spiritual shorts</h1>
-          <p className="mt-3 text-sm font-medium text-[#c76618]">Scroll left and right to browse the shorts.</p>
+    <div className="min-h-screen text-stone-900 dark:text-white">
+
+      {/* Hero */}
+      <div
+        className="relative overflow-hidden px-5 pt-10 pb-10"
+        style={{ background: "linear-gradient(160deg, #1c0700 0%, #3d1205 50%, #0a1e12 100%)" }}
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[url('/patterns/ethiopian-cross-pattern.svg')] bg-[length:auto_48px] opacity-[0.06]" />
+        <div className="relative">
+          <p className="text-[11px] font-bold uppercase tracking-[0.32em] text-amber-400/70 mb-3">Youth Corner</p>
+          <h1 className="text-4xl font-black text-white leading-tight" style={{ fontFamily: serif }}>Spiritual Shorts</h1>
+          <p className="mt-3 text-sm text-white/55">Short, focused teachings to strengthen your walk.</p>
         </div>
-        <div className="mb-5 flex flex-wrap gap-3">
-          {(["Featured Teachings", "Prayer & Meditation", "Church Life & Youth Witness"] as VideoCategory[]).map((category) => (
+
+        {/* Category tabs */}
+        <div className="mt-6 flex gap-2.5 overflow-x-auto pb-1">
+          {CATEGORIES.map((cat) => (
             <button
-              key={category}
+              key={cat}
               type="button"
-              onClick={() => setActiveVideoCategory(category)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                activeVideoCategory === category
-                  ? "bg-gradient-to-r from-[#f97316] to-[#f59e0b] text-white"
-                  : "bg-white text-stone-700 ring-1 ring-[#dbc9a7] hover:bg-[#faf2e2]"
+              onClick={() => setActiveCategory(cat)}
+              className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold transition ${
+                activeCategory === cat
+                  ? "bg-gradient-to-r from-[#c86224] to-[#e2a13c] text-white shadow-[0_6px_18px_-6px_rgba(200,98,36,0.5)]"
+                  : "border border-white/15 bg-white/8 text-white/70 hover:bg-white/14 backdrop-blur-sm"
               }`}
             >
-              {category}
+              {cat}
             </button>
           ))}
         </div>
-        <div className="-mx-4 overflow-x-auto px-4 pb-4">
-          <div className="flex min-w-max snap-x snap-mandatory gap-4">
-            {filteredVideos.map((video) => (
-              <button
-                key={video.id}
-                type="button"
-                onClick={() => setSelectedVideoId(video.id)}
-                className="group w-[240px] shrink-0 snap-start text-left sm:w-[260px] lg:w-[280px]"
-              >
-                <div className="overflow-hidden rounded-[22px] bg-white ring-1 ring-[#dcc8a2] transition-transform duration-200 group-hover:-translate-y-1">
-                  <div className="relative aspect-[9/16] overflow-hidden bg-stone-900">
-                    <img
-                      src={getYouTubeThumbnail(video.youtubeId)}
-                      alt={video.title}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                      onError={(event) => {
-                        const target = event.currentTarget
-                        if (target.src.includes("maxresdefault.jpg")) {
-                          target.src = `https://i.ytimg.com/vi/${video.youtubeId}/sddefault.jpg`
-                          return
-                        }
-                        if (target.src.includes("sddefault.jpg")) {
-                          target.src = `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`
-                        }
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
-                    <div className="absolute left-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Short</div>
-                    <div className="absolute bottom-3 right-3 rounded-full bg-white/90 p-2 text-[#c76618]">
-                      <PlayCircle className="h-5 w-5" />
+      </div>
+
+      {/* Grid */}
+      <div className="px-5 py-8">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {filtered.map((video) => (
+            <button
+              key={video.id}
+              type="button"
+              onClick={() => setSelectedId(video.id)}
+              className="group text-left"
+            >
+              <div className="overflow-hidden rounded-[1.25rem] border border-stone-200/80 bg-white shadow-[0_4px_20px_-8px_rgba(0,0,0,0.1)] dark:border-stone-800 dark:bg-stone-900 transition hover:-translate-y-1 hover:shadow-[0_12px_32px_-10px_rgba(0,0,0,0.18)]">
+                {/* Thumbnail */}
+                <div className="relative aspect-[9/16] overflow-hidden bg-stone-900">
+                  <img
+                    src={getYouTubeThumbnail(video.youtubeId)}
+                    alt={video.title}
+                    className="h-full w-full object-cover transition group-hover:scale-105 duration-300"
+                    loading="lazy"
+                    onError={(e) => {
+                      const t = e.currentTarget
+                      if (t.src.includes("maxresdefault")) t.src = `https://i.ytimg.com/vi/${video.youtubeId}/sddefault.jpg`
+                      else if (t.src.includes("sddefault")) t.src = `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`
+                    }}
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
+
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 shadow-lg">
+                      <PlayCircle className="h-7 w-7 text-[#c86224]" />
                     </div>
                   </div>
+
+                  {/* Duration badge */}
+                  <div className="absolute bottom-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-[10px] font-bold text-white">
+                    {video.duration}
+                  </div>
                 </div>
-                <div className="px-1 pb-1 pt-3">
-                  <p className="line-clamp-2 text-base font-black leading-6 text-stone-950">{video.title}</p>
-                  <p className="mt-2 line-clamp-2 text-sm leading-5 text-stone-600">{video.description}</p>
+
+                {/* Info */}
+                <div className="p-3">
+                  <p className="text-xs font-bold text-stone-900 dark:text-white line-clamp-2 leading-4">{video.title}</p>
+                  <p className="mt-1 text-[10px] text-stone-400 dark:text-stone-500 truncate">{video.speaker}</p>
                 </div>
-              </button>
-            ))}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Video modal */}
+      {selected && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setSelectedId(null)}>
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          <div
+            className="relative z-10 w-full max-w-sm overflow-hidden rounded-[2rem] bg-white dark:bg-stone-900 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.6)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Video */}
+            <div className="aspect-[9/16] w-full overflow-hidden rounded-t-[2rem] bg-black">
+              <iframe
+                title={selected.title}
+                src={`https://www.youtube-nocookie.com/embed/${selected.youtubeId}?autoplay=1`}
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+
+            {/* Close */}
+            <button
+              type="button"
+              onClick={() => setSelectedId(null)}
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            {/* Info */}
+            <div className="p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-orange-600 dark:text-amber-400 mb-1">{selected.category}</p>
+              <h2 className="text-base font-black text-stone-900 dark:text-white leading-tight">{selected.title}</h2>
+              <p className="mt-1 text-xs text-stone-400 dark:text-stone-500">{selected.speaker}</p>
+              <p className="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">{selected.description}</p>
+            </div>
           </div>
         </div>
-        <Dialog open={selectedVideo !== null} onOpenChange={(open) => !open && setSelectedVideoId(null)}>
-          <DialogContent className="max-w-md border-[#d8c395] bg-[#fffaf0] p-4 sm:p-5">
-            {selectedVideo ? (
-              <>
-                <DialogHeader className="pr-8">
-                  <DialogTitle className="text-xl text-stone-950">{selectedVideo.title}</DialogTitle>
-                  <DialogDescription className="text-stone-600">
-                    {selectedVideo.speaker} • {selectedVideo.category}
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-[24px] bg-stone-950">
-                    <div className="aspect-[9/16]">
-                      <iframe
-                        title={selectedVideo.title}
-                        src={`https://www.youtube-nocookie.com/embed/${selectedVideo.youtubeId}`}
-                        className="h-full w-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
-                  <div className="rounded-3xl bg-[#f5eddc] p-4">
-                    <p className="text-sm font-semibold text-stone-900">{selectedVideo.description}</p>
-                  </div>
-                  <Badge className="rounded-full bg-gradient-to-r from-[#f97316] to-[#f59e0b] text-white hover:brightness-105">{selectedVideo.duration}</Badge>
-                </div>
-              </>
-            ) : null}
-          </DialogContent>
-        </Dialog>
-      </section>
+      )}
     </div>
   )
 }

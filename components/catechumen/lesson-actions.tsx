@@ -17,6 +17,21 @@ interface LessonActionsProps {
 export function LessonActions({ lessonId, nextLessonSlug, requireQuizPass = false }: LessonActionsProps) {
   const [completed, setCompleted] = useState(false)
   const [quizPassed, setQuizPassed] = useState(!requireQuizPass)
+  const totalLessons = catechumenLessons.length
+
+  function updateProgress(markComplete: boolean) {
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEY)
+      const parsed = raw ? JSON.parse(raw) : []
+      const current = Array.isArray(parsed) ? parsed.filter((value): value is number => typeof value === "number") : []
+      const next = markComplete ? Array.from(new Set([...current, lessonId])).sort((a, b) => a - b) : current.filter((id) => id !== lessonId)
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+      setCompleted(markComplete)
+    } catch {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(markComplete ? [lessonId] : []))
+      setCompleted(markComplete)
+    }
+  }
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -64,22 +79,6 @@ export function LessonActions({ lessonId, nextLessonSlug, requireQuizPass = fals
       window.removeEventListener("catechumen-quiz-updated", syncQuizState)
     }
   }, [lessonId, requireQuizPass])
-
-  const totalLessons = catechumenLessons.length
-
-  function updateProgress(markComplete: boolean) {
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY)
-      const parsed = raw ? JSON.parse(raw) : []
-      const current = Array.isArray(parsed) ? parsed.filter((value): value is number => typeof value === "number") : []
-      const next = markComplete ? Array.from(new Set([...current, lessonId])).sort((a, b) => a - b) : current.filter((id) => id !== lessonId)
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
-      setCompleted(markComplete)
-    } catch {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(markComplete ? [lessonId] : []))
-      setCompleted(markComplete)
-    }
-  }
 
   function goToCheckSection() {
     if (typeof window === "undefined") return

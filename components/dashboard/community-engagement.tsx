@@ -41,7 +41,7 @@ export function CommunityEngagement() {
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
               <div className="flex items-start gap-3 mb-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                  <Image src="/placeholder.svg?height=40&width=40" alt="User avatar" fill className="object-cover" />
+                  <Image src="/images/logo.png" alt="User avatar" fill className="object-cover" />
                 </div>
                 <div>
                   <h4 className="font-medium">Dawit M.</h4>
@@ -76,7 +76,7 @@ export function CommunityEngagement() {
             <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
               <div className="flex items-start gap-3 mb-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                  <Image src="/placeholder.svg?height=40&width=40" alt="User avatar" fill className="object-cover" />
+                  <Image src="/images/logo.png" alt="User avatar" fill className="object-cover" />
                 </div>
                 <div>
                   <h4 className="font-medium">Selam T.</h4>
