@@ -79,7 +79,8 @@ function QnaCard({ qna, onClick }: { qna: QnaMeta; onClick: () => void }) {
       )}
     >
       {/* Dark maroon header with Q badge */}
-      <div className="relative flex h-20 w-full items-center justify-between px-3.5"
+      <div
+        className="relative flex h-20 w-full items-center justify-between px-3.5"
         style={{ background: "#1e0a00", backgroundImage: CROSS_BG }}
       >
         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#9a3412] text-[16px] font-black text-white shadow-inner">
